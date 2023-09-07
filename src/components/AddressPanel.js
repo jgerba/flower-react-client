@@ -1,4 +1,4 @@
-function AddressPanel() {
+function AddressPanel(props) {
     return (
         <article>
             <div>
@@ -9,6 +9,13 @@ function AddressPanel() {
                 <address>ул. Тимирязева 67</address>
                 <p>10:00 до 21:00 {<br />}без выходных</p>
             </div>
+
+            {props.footer && (
+                <div>
+                    <a href="tel:+37529-113-69-69">+375 (29) 113-69-69</a>
+                    <p>прием звонков круглосуточно</p>
+                </div>
+            )}
         </article>
     );
 }

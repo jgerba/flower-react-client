@@ -1,9 +1,7 @@
-import { NavLink } from 'react-router-dom';
-
 function CallPanel() {
     return (
         <aside>
-            <p>+375 (29) 113-69-69</p>
+            <a href="tel:+37529-113-69-69">+375 (29) 113-69-69</a>
             <div>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
