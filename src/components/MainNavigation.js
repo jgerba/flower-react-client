@@ -5,7 +5,7 @@ function MainNavigation() {
         <nav>
             <ul>
                 <NavLink to="/" end>
-                    ГЛАВНОЕ
+                    LF
                 </NavLink>
                 <NavLink to="/catalogue">КАТАЛОГ</NavLink>
                 <NavLink to="/payment">ДОСТАВКА И ОПЛАТА</NavLink>

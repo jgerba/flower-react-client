@@ -11,3 +11,9 @@
 
     font-family: 'Cormorant', serif;
 }
+
+button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
