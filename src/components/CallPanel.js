@@ -17,7 +17,7 @@ function CallPanel() {
                         fill="#43FFD2"
                     />
                 </svg>
-                <NavLink to="/contacts">заказать звонок</NavLink>
+                <button>заказать звонок</button>
             </div>
         </aside>
     );

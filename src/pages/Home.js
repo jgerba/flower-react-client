@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 
 import AddressPanel from '../components/AddressPanel';
 import CallPanel from '../components/CallPanel';
-import MenuBtn from '../components/MenuBtn';
+import MenuBtn from '../components/UI/MenuBtn';
 import SocialPanel from '../components/SocialPanel';
-import TextCard from '../components/TextCard';
-import TextHeading from '../components/TextHeading';
+import TextCard from '../components/UI/TextCard';
+import TextHeading from '../components/UI/TextHeading';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
 
@@ -136,7 +136,7 @@ function HomePage() {
                 <h2>остались</h2>
                 <h2>вопросы?</h2>
 
-                <FeedBackForm />
+                <FeedBackForm message="true" />
 
                 <img alt=""></img>
                 <img alt=""></img>

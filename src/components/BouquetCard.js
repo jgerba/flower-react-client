@@ -1,4 +1,4 @@
-import MenuBtn from './MenuBtn';
+import MenuBtn from './UI/MenuBtn';
 
 function BouquetCard(props) {
     return (

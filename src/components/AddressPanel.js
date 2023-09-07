@@ -2,11 +2,11 @@ function AddressPanel() {
     return (
         <article>
             <div>
-                <span>zakaz@loverflower.by</span>
+                <address>zakaz@loverflower.by</address>
                 <p>Доставка 24/7 по договоренности с оператором</p>
             </div>
             <div>
-                <span>ул. Тимирязева 67</span>
+                <address>ул. Тимирязева 67</address>
                 <p>10:00 до 21:00 {<br />}без выходных</p>
             </div>
         </article>

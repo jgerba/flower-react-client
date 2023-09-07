@@ -1,6 +1,6 @@
-import MenuBtn from './MenuBtn';
+import MenuBtn from './UI/MenuBtn';
 
-function FeedBackForm() {
+function FeedBackForm(props) {
     return (
         <>
             <div className="decorRect"></div>
@@ -12,9 +12,17 @@ function FeedBackForm() {
             <form>
                 <input placeholder="Ваше имя"></input>
                 <input placeholder="+7 (977) 777-77-77"></input>
-                <textarea placeholder="Ваш комментарий"></textarea>
+                {props.message && (
+                    <textarea placeholder="Ваш комментарий"></textarea>
+                )}
 
                 <MenuBtn>отправить</MenuBtn>
+
+                <small>
+                    Нажимая на кнопку «Отправить», я даю свое согласие на
+                    обработку персональных данных, в соответствии с
+                    <a>Политикой конфиденциальности</a>
+                </small>
             </form>
         </>
     );

@@ -1,4 +1,4 @@
-import IconBtn from './IconBtn';
+import IconBtn from './UI/IconBtn';
 
 function SocialPanel() {
     return (
