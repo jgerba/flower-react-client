@@ -1,8 +1,5 @@
-.main {
-    background: var(--customBlack);
-}
-
 .main-header {
+    text-align: center;
     font-size: 200px;
     font-style: normal;
     font-weight: 300;
@@ -13,7 +10,25 @@
     color: var(--customWhite);
 }
 
-.title-section {
+h1.main-header {
+    position: relative;
+
+    top: -86px;
+}
+
+.slogan {
+    position: relative;
+    top: -86px;
+
+    text-align: center;
+    font-family: Oswald;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.4px;
+
+    color: var(--customWhite);
 }
 
 .title-oval-left {

@@ -17,10 +17,9 @@ function HomePage() {
         <>
             <main className={classes.main}>
                 <section className={classes['title-section']}>
-                    <h1 className={classes['main-header']}>
-                        lower {<br />}flower
-                    </h1>
-                    <p>
+                    <h2 className={classes['main-header']}>lower</h2>
+                    <h1 className={classes['main-header']}>flower</h1>
+                    <p className={classes.slogan}>
                         Создаём для тех, кто ценит свежесть и изящество цветка
                     </p>
                     <AddressPanel />
