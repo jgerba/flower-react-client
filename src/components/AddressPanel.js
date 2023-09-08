@@ -2,17 +2,16 @@ import classes from './AddressPanel.module.css';
 
 function AddressPanel(props) {
     return (
-        <article className={classes.panel}>
-            <div>
-                <address className={classes.address}>
-                    zakaz@loverflower.by
-                </address>
-                <p>Доставка 24/7 по договоренности с оператором</p>
-            </div>
-            <div>
-                <address className={classes.address}>ул. Тимирязева 67</address>
-                <p>10:00 до 21:00 {<br />}без выходных</p>
-            </div>
+        <article className={props.footer || classes.panel}>
+            <address className={classes.address}>zakaz@loverflower.by</address>
+            <p className={classes.description}>
+                Доставка 24/7 по договоренности с оператором
+            </p>
+
+            <address className={classes.address}>ул. Тимирязева 67</address>
+            <p className={classes.description}>
+                10:00 до 21:00 {<br />}без выходных
+            </p>
 
             {props.footer && (
                 <div>

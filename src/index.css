@@ -25,6 +25,10 @@
     font-family: 'Cormorant', serif;
 }
 
+body {
+    background: var(--customBlack);
+}
+
 header {
     display: flex;
     justify-content: space-evenly;
