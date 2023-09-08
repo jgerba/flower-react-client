@@ -1,0 +1,51 @@
+.btn {
+    width: 220px;
+    height: 50px;
+    flex-shrink: 0;
+
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--customBlack);
+    background: var(--customGreen);
+}
+
+.btn:hover {
+    color: var(--customWhite);
+    background: var(--customPurple);
+}
+
+.btn:focus {
+    color: var(--customBlack);
+    background: var(--customGreen);
+}
+
+.btn:active {
+    color: var(--customWhite);
+    background: var(--customPurple);
+}
+
+.blank {
+    color: var(--customWhite);
+    color: var(--customBlack);
+}
+
+.blank:hover {
+    color: var(--customBlack);
+    background: var(--customGreen);
+}
+
+.blank:focus {
+    color: var(--customWhite);
+    color: var(--customBlack);
+}
+
+.blank:active {
+    color: var(--customBlack);
+    background: var(--customGreen);
+}

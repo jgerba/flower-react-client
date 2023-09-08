@@ -1,6 +1,10 @@
+import classes from './MenuBtn.module.css';
+
 function MenuBtn(props) {
     return (
-        <button className={`button ${props.blank ? 'blank' : ''}`}>
+        <button
+            className={`${classes.btn} ${props.blank ? classes.blank : null}`}
+        >
             {props.children}
         </button>
     );

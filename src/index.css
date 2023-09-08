@@ -3,6 +3,14 @@
     src: url('/src/fonts/Cormorant-Regular.woff2') format('woff2');
 }
 
+:root {
+    --customBlack: #040a0a;
+    --customGreen: #43ffd2;
+    --customPurple: #7d2253;
+    --customPink: #d978ac;
+    --customWhite: #ffffff;
+}
+
 * {
     box-sizing: border-box;
 

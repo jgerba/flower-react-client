@@ -1,14 +1,16 @@
 import { NavLink } from 'react-router-dom';
+
 import CallPanel from './CallPanel';
+import classes from './MainNavigation.module.css';
 
 function MainNavigation() {
     return (
         <header>
-            <nav className="nav">
-                <ul className="nav__ul">
-                    <NavLink className="home--logo" to="/" end>
-                        <p>l</p>
-                        <p className="home--logo__F">f</p>
+            <nav className={classes.nav}>
+                <ul className={classes.ul}>
+                    <NavLink className={classes.logo} to="/" end>
+                        <p className={classes['logo-L']}>l</p>
+                        <p className={classes['logo-F']}>f</p>
                     </NavLink>
                     <NavLink to="/catalogue">КАТАЛОГ</NavLink>
                     <NavLink to="/payment">ДОСТАВКА И ОПЛАТА</NavLink>

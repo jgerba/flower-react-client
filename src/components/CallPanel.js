@@ -2,7 +2,11 @@ function CallPanel(props) {
     return (
         <aside>
             <a href="tel:+37529-113-69-69">+375 (29) 113-69-69</a>
-            <div>
+            <div
+                className={`phone-icon ${
+                    props.mainNav ? 'nav__phone-icon' : ''
+                }`}
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
