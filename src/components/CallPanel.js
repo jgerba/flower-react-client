@@ -1,4 +1,4 @@
-function CallPanel() {
+function CallPanel(props) {
     return (
         <aside>
             <a href="tel:+37529-113-69-69">+375 (29) 113-69-69</a>
@@ -15,7 +15,7 @@ function CallPanel() {
                         fill="#43FFD2"
                     />
                 </svg>
-                <button>заказать звонок</button>
+                {props.mainNav || <button>заказать звонок</button>}
             </div>
         </aside>
     );
