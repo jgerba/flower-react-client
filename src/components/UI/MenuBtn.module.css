@@ -32,7 +32,7 @@
 
 .blank {
     color: var(--customWhite);
-    color: var(--customBlack);
+    background: var(--customBlack);
 }
 
 .blank:hover {
@@ -42,7 +42,7 @@
 
 .blank:focus {
     color: var(--customWhite);
-    color: var(--customBlack);
+    background: var(--customBlack);
 }
 
 .blank:active {

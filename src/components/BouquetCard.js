@@ -6,7 +6,7 @@ function BouquetCard(props) {
             <img alt={`Букет ${props.title}`}>{props.image}</img>
             <p>{props.title}</p>
             <p>{props.price}</p>
-            <MenuBtn>В корзину</MenuBtn>
+            <MenuBtn blank={true}>В корзину</MenuBtn>
         </div>
     );
 }
