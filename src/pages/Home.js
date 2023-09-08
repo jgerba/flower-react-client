@@ -10,12 +10,16 @@ import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
 import Footer from '../components/Footer';
 
+import classes from './Home.module.css';
+
 function HomePage() {
     return (
         <>
-            <main>
-                <section>
-                    <h1>lower {<br />}flower</h1>
+            <main className={classes.main}>
+                <section className={classes['title-section']}>
+                    <h1 className={classes['main-header']}>
+                        lower {<br />}flower
+                    </h1>
                     <p>
                         Создаём для тех, кто ценит свежесть и изящество цветка
                     </p>
@@ -23,6 +27,8 @@ function HomePage() {
                     <SocialPanel />
                     <CallPanel />
                     <MenuBtn>смотреть каталог</MenuBtn>
+                    <div className={classes['title-oval-left']}></div>
+                    <div className={classes['title-oval-right']}></div>
                 </section>
                 <section>
                     <h2>каталог</h2>

@@ -5,7 +5,7 @@ import classes from './MainNavigation.module.css';
 
 function MainNavigation() {
     return (
-        <header>
+        <header className={classes.header}>
             <nav className={classes.nav}>
                 <ul className={classes.ul}>
                     <NavLink className={classes.logo} to="/" end>

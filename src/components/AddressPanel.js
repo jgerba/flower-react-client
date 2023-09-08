@@ -1,12 +1,16 @@
+import classes from './AddressPanel.module.css';
+
 function AddressPanel(props) {
     return (
-        <article>
+        <article className={classes.panel}>
             <div>
-                <address>zakaz@loverflower.by</address>
+                <address className={classes.address}>
+                    zakaz@loverflower.by
+                </address>
                 <p>Доставка 24/7 по договоренности с оператором</p>
             </div>
             <div>
-                <address>ул. Тимирязева 67</address>
+                <address className={classes.address}>ул. Тимирязева 67</address>
                 <p>10:00 до 21:00 {<br />}без выходных</p>
             </div>
 

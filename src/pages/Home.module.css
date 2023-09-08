@@ -1,0 +1,41 @@
+.main {
+    background: var(--customBlack);
+}
+
+.main-header {
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.title-section {
+}
+
+.title-oval-left {
+    width: 358.902px;
+    height: 293.047px;
+    transform: rotate(41.599deg);
+
+    border-radius: 358.902px;
+    background: #249479;
+    filter: blur(125px);
+
+    z-index: -1;
+}
+
+.title-oval-right {
+    width: 472.65px;
+    height: 211.054px;
+    transform: rotate(-43.21deg);
+
+    border-radius: 472.65px;
+    background: #7d2253;
+    filter: blur(125px);
+
+    z-index: -1;
+}

@@ -1,0 +1,16 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.address {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
