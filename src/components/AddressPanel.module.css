@@ -10,8 +10,6 @@
 }
 
 .address {
-    display: inline-block;
-
     margin-bottom: 4px;
 
     font-family: 'Oswald', sans-serif;
@@ -37,8 +35,4 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
-}
-
-.mail-section {
-    width: 253px;
 }
