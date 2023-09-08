@@ -3,6 +3,11 @@
     src: url('/src/fonts/Cormorant-Regular.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: 'Oswald';
+    src: url('./fonts/Oswald-Regular.woff2') format('woff2');
+}
+
 :root {
     --customBlack: #040a0a;
     --customGreen: #43ffd2;
@@ -18,10 +23,6 @@
     padding: 0;
 
     font-family: 'Cormorant', serif;
-}
-
-body {
-    padding: 20px 12% 0 12%;
 }
 
 header {
