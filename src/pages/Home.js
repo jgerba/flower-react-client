@@ -25,7 +25,9 @@ function HomePage() {
                     <AddressPanel />
                     <SocialPanel />
                     <CallPanel />
-                    <MenuBtn>смотреть каталог</MenuBtn>
+                    <MenuBtn className={classes['title-catalogue-btn']}>
+                        смотреть каталог
+                    </MenuBtn>
                     <div className={classes['title-oval-left']}></div>
                     <div className={classes['title-oval-right']}></div>
                 </section>

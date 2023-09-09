@@ -55,3 +55,10 @@ h1.main-header {
 
     z-index: -1;
 }
+
+.title-catalogue-btn {
+    position: absolute;
+
+    left: calc(50% - 110px);
+    top: 588px;
+}
