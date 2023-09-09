@@ -1,8 +1,10 @@
 import IconBtn from './UI/IconBtn';
 
+import classes from './SocialPanel.module.css';
+
 function SocialPanel() {
     return (
-        <aside>
+        <aside className={classes.panel}>
             <IconBtn>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
