@@ -1,4 +1,7 @@
 .main-header {
+    position: relative;
+    top: 35px;
+
     text-align: center;
     font-size: 200px;
     font-style: normal;
@@ -11,14 +14,12 @@
 }
 
 h1.main-header {
-    position: relative;
-
-    top: -86px;
+    top: -54px;
 }
 
 .slogan {
     position: relative;
-    top: -86px;
+    top: -52px;
 
     text-align: center;
     font-family: Oswald;
