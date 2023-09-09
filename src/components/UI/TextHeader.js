@@ -1,5 +1,5 @@
 function TextHeader(props) {
-    return <h3>{props.children}</h3>;
+    return <h3 className={props.className}>{props.children}</h3>;
 }
 
 export default TextHeader;

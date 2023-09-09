@@ -1,5 +1,5 @@
 function TextCard(props) {
-    return <div>{props.children}</div>;
+    return <div className={props.className}>{props.children}</div>;
 }
 
 export default TextCard;
