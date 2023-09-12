@@ -1,3 +1,8 @@
+.cart {
+    right: 4%;
+    top: 651px;
+}
+
 .cart::after {
     content: attr(data-items);
     position: absolute;

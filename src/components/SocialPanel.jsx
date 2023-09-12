@@ -1,10 +1,11 @@
+import ContentCard from './UI/ContentCard';
 import IconBtn from './UI/IconBtn';
 
 import classes from './SocialPanel.module.css';
 
 function SocialPanel() {
     return (
-        <aside className={classes.panel}>
+        <ContentCard className={classes.panel}>
             <IconBtn>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +53,7 @@ function SocialPanel() {
                     />
                 </svg>
             </IconBtn>
-        </aside>
+        </ContentCard>
     );
 }
 

@@ -1,10 +1,12 @@
+import ContentCard from './UI/ContentCard';
+
 import classes from './ShopCart.module.css';
 
 function ShopCart() {
     const items = 1;
 
     return (
-        <div className={classes.cart} data-items={items}>
+        <ContentCard className={classes.cart} items={items}>
             <svg
                 width="30"
                 height="30"
@@ -20,7 +22,7 @@ function ShopCart() {
                     />
                 </g>
             </svg>
-        </div>
+        </ContentCard>
     );
 }
 
