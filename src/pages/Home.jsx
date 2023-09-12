@@ -10,6 +10,7 @@ import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
 import Footer from '../components/Footer';
 import ShopCart from '../components/ShopCart';
+import ContentCard from '../components/UI/ContentCard';
 
 import classes from './Home.module.css';
 
@@ -29,9 +30,11 @@ function HomePage() {
                     <MenuBtn className={classes['title-catalogue-btn']}>
                         смотреть каталог
                     </MenuBtn>
+                    <ContentCard className={classes['shop-cart']}>
+                        <ShopCart />
+                    </ContentCard>
                     <div className={classes['title-oval-left']}></div>
                     <div className={classes['title-oval-right']}></div>
-                    <ShopCart />
                 </section>
                 <section>
                     <h2>каталог</h2>

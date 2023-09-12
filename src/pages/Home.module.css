@@ -36,6 +36,18 @@ h1.main-header {
     color: var(--customWhite);
 }
 
+.title-catalogue-btn {
+    position: absolute;
+
+    left: calc(50% - 110px);
+    top: 588px;
+}
+
+.shop-cart {
+    right: 4%;
+    top: 651px;
+}
+
 .title-oval-left {
     width: 358.902px;
     height: 293.047px;
@@ -58,11 +70,4 @@ h1.main-header {
     filter: blur(125px);
 
     z-index: -1;
-}
-
-.title-catalogue-btn {
-    position: absolute;
-
-    left: calc(50% - 110px);
-    top: 588px;
 }
