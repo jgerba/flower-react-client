@@ -1,6 +1,8 @@
 .cart {
     right: 4%;
     top: 651px;
+
+    padding: 15px;
 }
 
 .cart::after {
