@@ -1,0 +1,22 @@
+.cart::after {
+    content: attr(data-items);
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+    width: 16px;
+    height: 16px;
+    right: 9px;
+    top: 13px;
+
+    border-radius: 50%;
+
+    font-family: 'Oswald';
+    font-size: 12px;
+    letter-spacing: 0.48px;
+
+    color: var(--customBlack);
+    background: var(--customGreen);
+}

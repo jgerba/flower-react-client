@@ -1,6 +1,10 @@
-function ShopCart(params) {
+import classes from './ShopCart.module.css';
+
+function ShopCart() {
+    const items = 1;
+
     return (
-        <>
+        <div className={classes.cart} data-items={items}>
             <svg
                 width="30"
                 height="30"
@@ -16,7 +20,7 @@ function ShopCart(params) {
                     />
                 </g>
             </svg>
-        </>
+        </div>
     );
 }
 
