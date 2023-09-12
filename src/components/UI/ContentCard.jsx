@@ -6,6 +6,7 @@ function ContentCard(props) {
             className={`${classes.card} ${
                 props.className ? props.className : ''
             }`}
+            data-items={props.items ? props.items : ''}
         >
             {props.children}
         </div>
