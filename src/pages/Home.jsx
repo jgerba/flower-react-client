@@ -4,11 +4,12 @@ import AddressPanel from '../components/AddressPanel';
 import CallPanel from '../components/CallPanel';
 import MenuBtn from '../components/UI/MenuBtn';
 import SocialPanel from '../components/SocialPanel';
-import TextCard from '../components/UI/TextCard';
+import TextCard from '../components/UI/ContentCard';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
 import Footer from '../components/Footer';
+import ShopCart from '../components/ShopCart';
 
 import classes from './Home.module.css';
 
@@ -30,6 +31,7 @@ function HomePage() {
                     </MenuBtn>
                     <div className={classes['title-oval-left']}></div>
                     <div className={classes['title-oval-right']}></div>
+                    <ShopCart />
                 </section>
                 <section>
                     <h2>каталог</h2>

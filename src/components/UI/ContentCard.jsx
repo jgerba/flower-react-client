@@ -1,5 +1,5 @@
-function TextCard(props) {
+function ContentCard(props) {
     return <div className={props.className}>{props.children}</div>;
 }
 
-export default TextCard;
+export default ContentCard;
