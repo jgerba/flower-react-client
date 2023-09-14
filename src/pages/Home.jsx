@@ -12,6 +12,8 @@ import Footer from '../components/Footer';
 import ShopCart from '../components/ShopCart';
 import ContentCard from '../components/UI/ContentCard';
 
+import logo from '../svg/loverFlower.svg';
+
 import classes from './Home.module.css';
 
 function HomePage() {
@@ -31,49 +33,59 @@ function HomePage() {
                     <MenuBtn className={classes['title-catalogue-btn']}>
                         смотреть каталог
                     </MenuBtn>
-                    <div className={classes['title-oval-left']}></div>
-                    <div className={classes['title-oval-right']}></div>
+                    <div className={classes['decor-flower']}></div>
+                    <div className={classes['decor-flower-back']}></div>
+                    <div className={classes['decor-flower-shadow']}></div>
+                    <div className={classes['decor-title-oval-left']}></div>
+                    <div className={classes['decor-title-oval-right']}></div>
+                    <img
+                        className={classes['lower-logo']}
+                        src={logo}
+                        alt="Logo"
+                    />
                 </section>
-                <section>
-                    <h2>каталог</h2>
-                    <p>
-                        У нас самый большой выбор цветов, букетов, открыток и
-                        подарков. Мы всегда поможем вам подобрать букет для
-                        вашего события, наш менеджер вас проконсультирует и
-                        поможет определиться с выбором
-                    </p>
-                    <p>Ознакомьтесь с нашими разделами каталога</p>
-                    <TextCard>
-                        <TextHeader>готовые букеты из сухоцветов</TextHeader>
-                        <ul>
-                            <li>букеты</li>
-                            <li>для интерьера</li>
-                            <li>Композиции</li>
-                        </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
-                    <TextCard>
-                        <TextHeader>Цветы</TextHeader>
-                        <ul>
-                            <li>Сборные букеты</li>
-                            <li>Монобукеты</li>
-                            <li>Композиции из цветов</li>
-                            <li>розы</li>
-                            <li>свадебные</li>
-                        </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
-                    <TextCard>
-                        <TextHeader>дополнительно</TextHeader>
-                        <ul>
-                            <li>шары</li>
-                            <li>игрушки</li>
-                            <li>открытки</li>
-                            <li>упаковка</li>
-                        </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
-                </section>
+                <h2
+                    className={`${classes['section-header']} ${classes['catalogue-header']}`}
+                >
+                    каталог
+                </h2>
+                <p>
+                    У нас самый большой выбор цветов, букетов, открыток и
+                    подарков. Мы всегда поможем вам подобрать букет для вашего
+                    события, наш менеджер вас проконсультирует и поможет
+                    определиться с выбором
+                </p>
+                <p>Ознакомьтесь с нашими разделами каталога</p>
+                <TextCard>
+                    <TextHeader>готовые букеты из сухоцветов</TextHeader>
+                    <ul>
+                        <li>букеты</li>
+                        <li>для интерьера</li>
+                        <li>Композиции</li>
+                    </ul>
+                    <NavLink to="/catalogue">смотреть каталог</NavLink>
+                </TextCard>
+                <TextCard>
+                    <TextHeader>Цветы</TextHeader>
+                    <ul>
+                        <li>Сборные букеты</li>
+                        <li>Монобукеты</li>
+                        <li>Композиции из цветов</li>
+                        <li>розы</li>
+                        <li>свадебные</li>
+                    </ul>
+                    <NavLink to="/catalogue">смотреть каталог</NavLink>
+                </TextCard>
+                <TextCard>
+                    <TextHeader>дополнительно</TextHeader>
+                    <ul>
+                        <li>шары</li>
+                        <li>игрушки</li>
+                        <li>открытки</li>
+                        <li>упаковка</li>
+                    </ul>
+                    <NavLink to="/catalogue">смотреть каталог</NavLink>
+                </TextCard>
                 <section>
                     <h2>Популярные</h2>
                     <h2>букеты</h2>

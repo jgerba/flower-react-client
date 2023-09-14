@@ -2,6 +2,95 @@
     height: 1244px;
 }
 
+.decor-flower {
+    position: absolute;
+
+    width: 100%;
+    height: 1244px;
+
+    top: 0px;
+    left: 0px;
+
+    background: url('../images/titleImage.png');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-back {
+    position: absolute;
+
+    width: 100%;
+    height: 1244px;
+
+    top: 0px;
+    left: 0px;
+
+    background-color: #061618;
+
+    z-index: -5;
+}
+
+.decor-flower-shadow {
+    position: absolute;
+
+    height: 406px;
+    width: 100%;
+
+    top: 838px;
+
+    background: linear-gradient(180deg, rgba(4, 10, 10, 0) 0%, #040a0a 100%);
+
+    z-index: -1;
+}
+
+.decor-title-oval-left {
+    position: absolute;
+
+    width: 358.902px;
+    height: 293.047px;
+    left: -33.48px;
+    top: 365.24px;
+
+    transform: rotate(41.599deg);
+    border-radius: 358.902px;
+    background: #249479;
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-title-oval-right {
+    position: absolute;
+
+    width: 472.65px;
+    height: 211.054px;
+    right: 14.89px;
+    top: 236.18px;
+
+    transform: rotate(-43.21deg);
+    border-radius: 472.65px;
+    background: #7d2253;
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.lower-logo {
+    position: absolute;
+
+    width: 305px;
+    right: 99px;
+    top: 1136px;
+
+    transform: rotate(-10.255deg);
+
+    z-index: -1;
+}
+
 .main-header {
     position: relative;
     top: 35px;
@@ -19,6 +108,10 @@
 
 h1.main-header {
     top: -54px;
+}
+
+h2.main-header {
+    z-index: -3;
 }
 
 .slogan {
@@ -43,34 +136,20 @@ h1.main-header {
     top: 588px;
 }
 
-.title-oval-left {
-    position: absolute;
+.section-header {
+    position: relative;
 
-    width: 358.902px;
-    height: 293.047px;
-    left: -33.48px;
-    top: 365.24px;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
-    transform: rotate(41.599deg);
-    border-radius: 358.902px;
-    background: #249479;
-    filter: blur(125px);
-
-    z-index: -1;
+    color: var(--customWhite);
 }
 
-.title-oval-right {
-    position: absolute;
-
-    width: 472.65px;
-    height: 211.054px;
-    right: 14.89px;
-    top: 236.18px;
-
-    transform: rotate(-43.21deg);
-    border-radius: 472.65px;
-    background: #7d2253;
-    filter: blur(125px);
-
-    z-index: -1;
+.catalogue-header {
+    left: 165px;
+    top: 44px;
 }
