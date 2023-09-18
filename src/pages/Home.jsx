@@ -44,48 +44,54 @@ function HomePage() {
                         alt="Logo"
                     />
                 </section>
-                <h2
-                    className={`${classes['section-header']} ${classes['catalogue-header']}`}
-                >
-                    каталог
-                </h2>
-                <p>
-                    У нас самый большой выбор цветов, букетов, открыток и
-                    подарков. Мы всегда поможем вам подобрать букет для вашего
-                    события, наш менеджер вас проконсультирует и поможет
-                    определиться с выбором
-                </p>
-                <p>Ознакомьтесь с нашими разделами каталога</p>
-                <TextCard>
-                    <TextHeader>готовые букеты из сухоцветов</TextHeader>
-                    <ul>
-                        <li>букеты</li>
-                        <li>для интерьера</li>
-                        <li>Композиции</li>
-                    </ul>
-                    <NavLink to="/catalogue">смотреть каталог</NavLink>
-                </TextCard>
-                <TextCard>
-                    <TextHeader>Цветы</TextHeader>
-                    <ul>
-                        <li>Сборные букеты</li>
-                        <li>Монобукеты</li>
-                        <li>Композиции из цветов</li>
-                        <li>розы</li>
-                        <li>свадебные</li>
-                    </ul>
-                    <NavLink to="/catalogue">смотреть каталог</NavLink>
-                </TextCard>
-                <TextCard>
-                    <TextHeader>дополнительно</TextHeader>
-                    <ul>
-                        <li>шары</li>
-                        <li>игрушки</li>
-                        <li>открытки</li>
-                        <li>упаковка</li>
-                    </ul>
-                    <NavLink to="/catalogue">смотреть каталог</NavLink>
-                </TextCard>
+                <section className={classes['catalogue-section']}>
+                    <h2
+                        className={`${classes['section-header']} ${classes['catalogue-header']}`}
+                    >
+                        каталог
+                    </h2>
+
+                    <div className={classes['catalogue-intro']}>
+                        <p>
+                            У нас самый большой выбор цветов, букетов, открыток
+                            и подарков. Мы всегда поможем вам подобрать букет
+                            для вашего события, наш менеджер вас
+                            проконсультирует и поможет определиться с выбором
+                        </p>
+                        <p>Ознакомьтесь с нашими разделами каталога</p>
+                    </div>
+
+                    <TextCard>
+                        <TextHeader>готовые букеты из сухоцветов</TextHeader>
+                        <ul>
+                            <li>букеты</li>
+                            <li>для интерьера</li>
+                            <li>Композиции</li>
+                        </ul>
+                        <NavLink to="/catalogue">смотреть каталог</NavLink>
+                    </TextCard>
+                    <TextCard>
+                        <TextHeader>Цветы</TextHeader>
+                        <ul>
+                            <li>Сборные букеты</li>
+                            <li>Монобукеты</li>
+                            <li>Композиции из цветов</li>
+                            <li>розы</li>
+                            <li>свадебные</li>
+                        </ul>
+                        <NavLink to="/catalogue">смотреть каталог</NavLink>
+                    </TextCard>
+                    <TextCard>
+                        <TextHeader>дополнительно</TextHeader>
+                        <ul>
+                            <li>шары</li>
+                            <li>игрушки</li>
+                            <li>открытки</li>
+                            <li>упаковка</li>
+                        </ul>
+                        <NavLink to="/catalogue">смотреть каталог</NavLink>
+                    </TextCard>
+                </section>
                 <section>
                     <h2>Популярные</h2>
                     <h2>букеты</h2>

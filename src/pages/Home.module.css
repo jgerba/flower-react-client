@@ -136,6 +136,9 @@ h2.main-header {
     top: 588px;
 }
 
+.catalogue-section {
+}
+
 .section-header {
     position: relative;
 
@@ -152,4 +155,28 @@ h2.main-header {
 .catalogue-header {
     left: 165px;
     top: 44px;
+}
+
+.catalogue-intro {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    width: 566px;
+    height: 134px;
+
+    top: 50px;
+    left: 14%;
+
+    text-align: justify;
+}
+
+.catalogue-intro p {
+    font-family: 'Oswald';
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.8px;
+
+    color: var(--customWhite);
 }
