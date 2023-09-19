@@ -137,6 +137,7 @@ h2.main-header {
 }
 
 .catalogue-section {
+    height: 950px;
 }
 
 .section-header {
@@ -179,4 +180,66 @@ h2.main-header {
     letter-spacing: 0.8px;
 
     color: var(--customWhite);
+}
+
+.catalogue__flowers-bouquet {
+    position: relative;
+
+    width: 540px;
+    height: 310px;
+
+    top: 96px;
+    left: 19%;
+    padding: 30px 30px 30px 50px;
+}
+
+.catalogue__ready-bouquet {
+    position: relative;
+
+    width: 445px;
+    height: 281px;
+
+    top: -400px;
+    left: 66%;
+    padding: 30px 30px 30px 50px;
+}
+
+.catalogue__extra-bouquet {
+    position: relative;
+
+    width: 540px;
+    height: 310px;
+
+    top: -360px;
+    left: 53%;
+    padding: 30px 30px 30px 50px;
+}
+
+.catalogue-list {
+    position: relative;
+
+    left: 7px;
+
+    font-family: 'Oswald';
+    font-size: 18px;
+    letter-spacing: 0.72px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.catalogue-nav {
+    position: absolute;
+
+    right: 30px;
+    bottom: 30px;
+
+    font-family: 'Oswald';
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+
+    color: var(--customPink);
 }

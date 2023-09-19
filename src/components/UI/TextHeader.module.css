@@ -1,0 +1,8 @@
+.head {
+    font-family: Oswald;
+    font-size: 30px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}

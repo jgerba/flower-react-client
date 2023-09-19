@@ -60,35 +60,61 @@ function HomePage() {
                         <p>Ознакомьтесь с нашими разделами каталога</p>
                     </div>
 
-                    <ContentCard>
-                        <TextHeader>готовые букеты из сухоцветов</TextHeader>
-                        <ul>
-                            <li>букеты</li>
-                            <li>для интерьера</li>
-                            <li>Композиции</li>
-                        </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </ContentCard>
-                    <ContentCard>
+                    <ContentCard
+                        className={classes['catalogue__flowers-bouquet']}
+                    >
                         <TextHeader>Цветы</TextHeader>
-                        <ul>
+                        <ul className={classes['catalogue-list']}>
                             <li>Сборные букеты</li>
                             <li>Монобукеты</li>
                             <li>Композиции из цветов</li>
                             <li>розы</li>
                             <li>свадебные</li>
                         </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
+                        <NavLink
+                            className={classes['catalogue-nav']}
+                            to="/catalogue"
+                        >
+                            смотреть каталог
+                        </NavLink>
                     </ContentCard>
-                    <ContentCard>
+                    <ContentCard
+                        className={classes['catalogue__ready-bouquet']}
+                    >
+                        <TextHeader>
+                            готовые букеты
+                            <br />
+                            из сухоцветов
+                        </TextHeader>
+                        <ul className={classes['catalogue-list']}>
+                            <li>букеты</li>
+                            <li>для интерьера</li>
+                            <li>Композиции</li>
+                        </ul>
+                        <NavLink
+                            className={classes['catalogue-nav']}
+                            to="/catalogue"
+                        >
+                            смотреть каталог
+                        </NavLink>
+                    </ContentCard>
+
+                    <ContentCard
+                        className={classes['catalogue__extra-bouquet']}
+                    >
                         <TextHeader>дополнительно</TextHeader>
-                        <ul>
+                        <ul className={classes['catalogue-list']}>
                             <li>шары</li>
                             <li>игрушки</li>
                             <li>открытки</li>
                             <li>упаковка</li>
                         </ul>
-                        <NavLink to="/catalogue">смотреть каталог</NavLink>
+                        <NavLink
+                            className={classes['catalogue-nav']}
+                            to="/catalogue"
+                        >
+                            смотреть каталог
+                        </NavLink>
                     </ContentCard>
                 </section>
                 <section>
