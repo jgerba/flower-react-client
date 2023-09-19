@@ -4,7 +4,6 @@ import AddressPanel from '../components/AddressPanel';
 import CallPanel from '../components/CallPanel';
 import MenuBtn from '../components/UI/MenuBtn';
 import SocialPanel from '../components/SocialPanel';
-import TextCard from '../components/UI/ContentCard';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
@@ -61,7 +60,7 @@ function HomePage() {
                         <p>Ознакомьтесь с нашими разделами каталога</p>
                     </div>
 
-                    <TextCard>
+                    <ContentCard>
                         <TextHeader>готовые букеты из сухоцветов</TextHeader>
                         <ul>
                             <li>букеты</li>
@@ -69,8 +68,8 @@ function HomePage() {
                             <li>Композиции</li>
                         </ul>
                         <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
-                    <TextCard>
+                    </ContentCard>
+                    <ContentCard>
                         <TextHeader>Цветы</TextHeader>
                         <ul>
                             <li>Сборные букеты</li>
@@ -80,8 +79,8 @@ function HomePage() {
                             <li>свадебные</li>
                         </ul>
                         <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
-                    <TextCard>
+                    </ContentCard>
+                    <ContentCard>
                         <TextHeader>дополнительно</TextHeader>
                         <ul>
                             <li>шары</li>
@@ -90,7 +89,7 @@ function HomePage() {
                             <li>упаковка</li>
                         </ul>
                         <NavLink to="/catalogue">смотреть каталог</NavLink>
-                    </TextCard>
+                    </ContentCard>
                 </section>
                 <section>
                     <h2>Популярные</h2>
