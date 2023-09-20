@@ -47,7 +47,7 @@
     z-index: -1;
 }
 
-.decor-title-oval-left {
+.title__decor-oval-left {
     position: absolute;
 
     width: 358.902px;
@@ -63,7 +63,7 @@
     z-index: -4;
 }
 
-.decor-title-oval-right {
+.title__decor-oval-right {
     position: absolute;
 
     width: 472.65px;

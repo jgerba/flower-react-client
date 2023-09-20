@@ -35,8 +35,8 @@ function HomePage() {
                     <div className={classes['decor-flower']}></div>
                     <div className={classes['decor-flower-back']}></div>
                     <div className={classes['decor-flower-shadow']}></div>
-                    <div className={classes['decor-title-oval-left']}></div>
-                    <div className={classes['decor-title-oval-right']}></div>
+                    <div className={classes['title__decor-oval-left']}></div>
+                    <div className={classes['title__decor-oval-right']}></div>
                     <img
                         className={classes['lower-logo']}
                         src={logo}
@@ -116,6 +116,13 @@ function HomePage() {
                             смотреть каталог
                         </NavLink>
                     </ContentCard>
+
+                    <div
+                        className={classes['catalogue__decor-oval-left']}
+                    ></div>
+                    <div
+                        className={classes['catalogue__decor-oval-right']}
+                    ></div>
                 </section>
                 <section>
                     <h2>Популярные</h2>
