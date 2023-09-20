@@ -123,6 +123,15 @@ function HomePage() {
                     <div
                         className={classes['catalogue__decor-oval-right']}
                     ></div>
+                    <p className={classes['catalogue__decor-sign-bouquet']}>
+                        букеты
+                    </p>
+                    <p className={classes['catalogue__decor-sign-flowers']}>
+                        Цветы
+                    </p>
+                    <p className={classes['catalogue__decor-sign-extra']}>
+                        дополнительно
+                    </p>
                 </section>
                 <section>
                     <h2>Популярные</h2>
