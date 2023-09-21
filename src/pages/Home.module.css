@@ -247,16 +247,16 @@ h2.main-header {
 .catalogue__decor-oval-left {
     position: absolute;
 
-    width: 707.545px;
-    height: 236.872px;
-    left: -8vw;
-    top: 1571px;
+    width: 847px;
+    height: 280px;
+    left: -5vw;
+    top: 1729px;
 
     transform: rotate(32.828deg);
 
     border-radius: 707.545px;
     background: #7d2253;
-    filter: blur(125px);
+    filter: blur(150px);
 
     z-index: -4;
 }
@@ -264,16 +264,16 @@ h2.main-header {
 .catalogue__decor-oval-right {
     position: absolute;
 
-    width: 879.44px;
-    height: 211.054px;
-    right: -8vw;
+    width: 1055px;
+    height: 250px;
+    right: -1vw;
     top: 1741px;
 
     transform: rotate(32.828deg);
 
     border-radius: 879.44px;
     background: #43ffd2;
-    filter: blur(125px);
+    filter: blur(150px);
 
     z-index: -4;
 }
@@ -327,4 +327,28 @@ h2.main-header {
     color: #0a1717;
 
     z-index: -5;
+}
+
+.popular-section .section-header:first-of-type {
+    left: 365px;
+}
+
+.popular-section .section-header:nth-of-type(2) {
+    top: -21px;
+    text-align: center;
+}
+
+.popular-intro {
+    position: relative;
+    display: block;
+
+    top: -10px;
+    text-align: center;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+
+    color: var(--customWhite);
 }

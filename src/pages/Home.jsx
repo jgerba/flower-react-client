@@ -133,15 +133,25 @@ function HomePage() {
                         дополнительно
                     </p>
                 </section>
-                <section>
-                    <h2>Популярные</h2>
-                    <h2>букеты</h2>
+                <section className={classes['popular-section']}>
+                    <h2 className={classes['section-header']}>Популярные</h2>
+                    <h2 className={classes['section-header']}>букеты</h2>
+                    <p className={classes['popular-intro']}>
+                        Самые любимые композиции наших клиентов
+                    </p>
 
-                    <BouquetCard />
-                    <BouquetCard />
-                    <BouquetCard />
+                    <BouquetCard
+                        className={'popular-card'}
+                        title="лучший день"
+                        price="167.000 ₽"
+                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
+                    />
+                    <BouquetCard className={'popular-card'} />
+                    <BouquetCard className={'popular-card'} />
 
                     <NavLink to="/catalogue">смотреть весь каталог</NavLink>
+                    <div className={classes['popular__decor-oval-left']}></div>
+                    <div className={classes['popular__decor-oval-right']}></div>
                 </section>
                 <section>
                     <h2>Как сделать</h2>
