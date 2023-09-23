@@ -1,0 +1,17 @@
+.card {
+    width: 240px;
+}
+
+.header {
+    color: var(--customPink);
+}
+
+.text {
+    font-family: 'Oswald';
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
