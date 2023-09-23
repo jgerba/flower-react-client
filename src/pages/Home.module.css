@@ -352,3 +352,55 @@ h2.main-header {
 
     color: var(--customWhite);
 }
+
+.popular-bouquets {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 86px;
+}
+
+.popular__decor-back {
+    position: absolute;
+
+    width: 1300px;
+    height: 748px;
+
+    right: 0px;
+    top: 2273px;
+
+    background: url('../images/popBouquet.png') no-repeat;
+    z-index: -1;
+}
+
+.popular__decor-oval-left {
+    position: absolute;
+
+    width: 900px;
+    height: 500px;
+    left: -5vw;
+    top: 2946px;
+
+    transform: rotate(32.828deg);
+
+    background-color: rgba(67, 255, 210, 0.47);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.popular__decor-oval-right {
+    position: absolute;
+
+    width: 685px;
+    height: 476px;
+    left: 34vw;
+    top: 2946px;
+
+    transform: rotate(32.828deg);
+
+    background-color: #7d2253;
+    filter: blur(125px);
+
+    z-index: -4;
+}

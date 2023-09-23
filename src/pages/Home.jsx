@@ -139,17 +139,28 @@ function HomePage() {
                     <p className={classes['popular-intro']}>
                         Самые любимые композиции наших клиентов
                     </p>
-
-                    <BouquetCard
-                        className={'popular-card'}
-                        title="лучший день"
-                        price="167.000 ₽"
-                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
-                    />
-                    <BouquetCard className={'popular-card'} />
-                    <BouquetCard className={'popular-card'} />
-
+                    <div className={classes['popular-bouquets']}>
+                        <BouquetCard
+                            className={'popular-card'}
+                            title="лучший день"
+                            price="167.000 ₽"
+                            src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
+                        />
+                        <BouquetCard
+                            className={'popular-card'}
+                            title="лучший день"
+                            price="167.000 ₽"
+                            src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
+                        />
+                        <BouquetCard
+                            className={'popular-card'}
+                            title="лучший день"
+                            price="167.000 ₽"
+                            src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
+                        />
+                    </div>
                     <NavLink to="/catalogue">смотреть весь каталог</NavLink>
+                    <div className={classes['popular__decor-back']}></div>
                     <div className={classes['popular__decor-oval-left']}></div>
                     <div className={classes['popular__decor-oval-right']}></div>
                 </section>
