@@ -12,39 +12,57 @@
 
     color: var(--customBlack);
     background: var(--customGreen);
+
+    border: 0.5px solid var(--customGreen);
 }
 
 .btn:hover {
     color: var(--customWhite);
     background: var(--customPurple);
+
+    border: 0.5px solid var(--customPurple);
 }
 
 .btn:focus {
     color: var(--customBlack);
     background: var(--customGreen);
+
+    border: 0.5px solid var(--customPurple);
 }
 
 .btn:active {
     color: var(--customWhite);
     background: var(--customPurple);
+
+    border: 0.5px solid var(--customPurple);
+    box-shadow: 0px 0px 10px 0px #1b000e inset;
 }
 
 .blank {
     color: var(--customWhite);
-    background: var(--customBlack);
+    background: transparent;
+
+    border: 0.5px solid var(--customWhite);
 }
 
 .blank:hover {
     color: var(--customBlack);
     background: var(--customGreen);
+
+    border: 0.5px solid var(--customGreen);
 }
 
 .blank:focus {
     color: var(--customWhite);
-    background: var(--customBlack);
+    background: transparent;
+
+    border: 0.5px solid var(--customGreen);
 }
 
 .blank:active {
     color: var(--customBlack);
     background: var(--customGreen);
+
+    border: 0.5px solid var(--customGreen);
+    box-shadow: 0px 0px 10px 0px #01281f inset;
 }
