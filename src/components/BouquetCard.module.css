@@ -1,0 +1,58 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    width: 255px;
+    height: 650px;
+}
+
+.popular-card {
+    width: 350px;
+    margin-left: 30px;
+}
+
+.image {
+    width: 255px;
+    height: 335px;
+}
+
+.popular-card .image {
+    width: 350px;
+    height: 450px;
+
+    filter: grayscale();
+}
+
+.popular-card .image:hover {
+    filter: none;
+}
+
+.title {
+    margin-top: 10px;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.price {
+    margin-top: 10px;
+
+    font-family: 'Oswald';
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.button {
+    width: 100%;
+    margin-top: 30px;
+}
