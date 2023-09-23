@@ -159,7 +159,12 @@ function HomePage() {
                             src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                         />
                     </div>
-                    <NavLink to="/catalogue">смотреть весь каталог</NavLink>
+                    <NavLink
+                        className={classes['popular-catalogue-link']}
+                        to="/catalogue"
+                    >
+                        смотреть весь каталог
+                    </NavLink>
                     <div className={classes['popular__decor-back']}></div>
                     <div className={classes['popular__decor-oval-left']}></div>
                     <div className={classes['popular__decor-oval-right']}></div>

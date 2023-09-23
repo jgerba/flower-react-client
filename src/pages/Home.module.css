@@ -360,6 +360,29 @@ h2.main-header {
     margin-top: 86px;
 }
 
+.popular-catalogue-link {
+    position: relative;
+
+    left: 22%;
+    top: 60px;
+
+    font-family: 'Oswald';
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--customPink);
+}
+
+.popular-catalogue-link:after {
+    position: relative;
+    content: url('../svg/Arrow\ 7.svg');
+
+    top: -3px;
+    left: 3px;
+}
+
 .popular__decor-back {
     position: absolute;
 
