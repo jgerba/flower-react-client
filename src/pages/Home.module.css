@@ -329,6 +329,10 @@ h2.main-header {
     z-index: -5;
 }
 
+.popular-section {
+    height: 1150px;
+}
+
 .popular-section .section-header:first-of-type {
     left: 365px;
 }
@@ -355,16 +359,17 @@ h2.main-header {
 
 .popular-bouquets {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
 
-    margin-top: 86px;
+    width: 1140px;
+    margin: 86px auto 0px auto;
 }
 
 .popular-catalogue-link {
     position: relative;
 
-    left: 22%;
     top: 60px;
+    margin-left: 30px;
 
     font-family: 'Oswald';
     font-size: 12px;
@@ -426,4 +431,24 @@ h2.main-header {
     filter: blur(125px);
 
     z-index: -4;
+}
+
+.order-section .section-header {
+    left: 315px;
+}
+
+.order-section .section-header:nth-of-type(2) {
+    top: -25px;
+
+    z-index: -3;
+}
+
+.order-steps {
+    position: relative;
+    display: flex;
+    left: 545px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 400px;
+    justify-content: flex-start;
 }

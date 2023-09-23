@@ -10,6 +10,7 @@ import FeedBackForm from '../components/FeedBackForm';
 import Footer from '../components/Footer';
 import ShopCart from '../components/ShopCart';
 import ContentCard from '../components/UI/ContentCard';
+import OrderStep from '../components/UI/OrderStep';
 
 import logo from '../svg/loverFlower.svg';
 
@@ -158,58 +159,55 @@ function HomePage() {
                             price="167.000 ₽"
                             src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                         />
+
+                        <NavLink
+                            className={classes['popular-catalogue-link']}
+                            to="/catalogue"
+                        >
+                            смотреть весь каталог
+                        </NavLink>
                     </div>
-                    <NavLink
-                        className={classes['popular-catalogue-link']}
-                        to="/catalogue"
-                    >
-                        смотреть весь каталог
-                    </NavLink>
+
                     <div className={classes['popular__decor-back']}></div>
                     <div className={classes['popular__decor-oval-left']}></div>
                     <div className={classes['popular__decor-oval-right']}></div>
                 </section>
-                <section>
-                    <h2>Как сделать</h2>
-                    <h2>заказ</h2>
+                <section className={classes['order-section']}>
+                    <h2 className={classes['section-header']}>Как сделать</h2>
+                    <h2 className={classes['section-header']}>заказ</h2>
                     <div className="decorRect"></div>
                     <div className="decorRect vertical"></div>
-                    <div>
-                        <TextHeader>1 шаг</TextHeader>
-                        <p>Выберите какие цветы или подарки вы хотите купить</p>
-                    </div>
-                    <div>
-                        <TextHeader>2 шаг</TextHeader>
-                        <p>
+                    <div className={classes['order-steps']}>
+                        <OrderStep step="1">
+                            Выберите какие цветы или подарки вы хотите купить
+                        </OrderStep>
+                        <OrderStep step="2">
                             Оформите заказ, и мы отправим вам подтверждение на
                             электронную почту, а так же менеджер свяжется с вами
                             по телефону или в WhatsApp
-                        </p>
-                    </div>
-                    <div>
-                        <TextHeader>3 шаг</TextHeader>
-                        <p>
+                        </OrderStep>
+                        <OrderStep step="3">
                             Наши флористы бережно подойдут к созданию букета
                             цветов в самом начале дня или накануне
-                        </p>
-                    </div>
-                    <div>
-                        <TextHeader>4 шаг</TextHeader>
-                        <p>
+                        </OrderStep>
+                        <OrderStep step="4">
                             Один из наших курьеров или партнёров доставит ваш
                             заказ по указанному адресу. Мы отправим вам
                             сообщение в Whats App как только заказ будет
                             доставлен
-                        </p>
-                    </div>
-                    <div>
-                        <TextHeader>5 шаг</TextHeader>
-                        <p>
+                        </OrderStep>
+                        <OrderStep step="5">
                             Наслаждайтесь цветами , если вы заказали их для дома
                             или любовью, которой поделились, если вы заказали
                             для друга
-                        </p>
+                        </OrderStep>
                     </div>
+
+                    <img
+                        className={classes['lower-logo']}
+                        src={logo}
+                        alt="Logo"
+                    />
                 </section>
                 <section>
                     <h2>особенный</h2>
