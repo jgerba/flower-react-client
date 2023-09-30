@@ -7,7 +7,6 @@ import SocialPanel from '../components/SocialPanel';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
-import Footer from '../components/Footer';
 import ShopCart from '../components/ShopCart';
 import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
@@ -254,7 +253,6 @@ function HomePage() {
                     <SocialPanel />
                 </section>
             </main>
-            <Footer />
         </>
     );
 }
