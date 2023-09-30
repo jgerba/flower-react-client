@@ -11,7 +11,7 @@
     top: 0px;
     left: 0px;
 
-    background: url('../images/titleImage.png');
+    background-image: url('../images/titleImage.png');
 
     background-size: cover;
     background-repeat: no-repeat;
@@ -42,7 +42,11 @@
 
     top: 838px;
 
-    background: linear-gradient(180deg, rgba(4, 10, 10, 0) 0%, #040a0a 100%);
+    background-image: linear-gradient(
+        180deg,
+        rgba(4, 10, 10, 0) 0%,
+        #040a0a 100%
+    );
 
     z-index: -1;
 }
@@ -83,7 +87,7 @@
     position: absolute;
 
     width: 305px;
-    right: 129px;
+    right: 14%;
     top: 1036px;
 
     transform: rotate(-10.255deg);
@@ -267,7 +271,7 @@ h2.main-header {
     width: 1055px;
     height: 250px;
     right: -1vw;
-    top: 1741px;
+    top: 1800px;
 
     transform: rotate(32.828deg);
 
@@ -407,7 +411,7 @@ h2.main-header {
     width: 900px;
     height: 500px;
     left: -5vw;
-    top: 2946px;
+    top: 2754px;
 
     transform: rotate(32.828deg);
 
@@ -446,9 +450,61 @@ h2.main-header {
 .order-steps {
     position: relative;
     display: flex;
-    left: 545px;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 400px;
-    justify-content: flex-start;
+
+    width: 1200px;
+    height: 500px;
+
+    left: 36%;
+}
+
+.order-decor-rect {
+    position: absolute;
+
+    top: -40px;
+
+    width: 65px;
+    height: 10px;
+
+    background-color: var(--customPink);
+}
+
+.order-decor-rect-vertical {
+    position: relative;
+
+    width: 1px;
+    height: 427px;
+    top: 40px;
+
+    background-color: var(--customPink);
+}
+
+.order-lower-logo {
+    position: absolute;
+
+    width: 305px;
+    right: 13%;
+    top: 4052px;
+
+    transform: rotate(-10.255deg);
+
+    z-index: -1;
+}
+
+.order-back-flower {
+    position: absolute;
+
+    width: 562px;
+    height: 845px;
+
+    top: 3448px;
+    left: 0px;
+
+    background-image: url('../images/homeOrderBack.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
 }

@@ -175,9 +175,10 @@ function HomePage() {
                 <section className={classes['order-section']}>
                     <h2 className={classes['section-header']}>Как сделать</h2>
                     <h2 className={classes['section-header']}>заказ</h2>
-                    <div className="decorRect"></div>
-                    <div className="decorRect vertical"></div>
+
                     <div className={classes['order-steps']}>
+                        <div className={classes['order-decor-rect']}></div>
+
                         <OrderStep step="1">
                             Выберите какие цветы или подарки вы хотите купить
                         </OrderStep>
@@ -201,10 +202,14 @@ function HomePage() {
                             или любовью, которой поделились, если вы заказали
                             для друга
                         </OrderStep>
-                    </div>
 
+                        <div
+                            className={classes['order-decor-rect-vertical']}
+                        ></div>
+                    </div>
+                    <div className={classes['order-back-flower']}></div>
                     <img
-                        className={classes['lower-logo']}
+                        className={classes['order-lower-logo']}
                         src={logo}
                         alt="Logo"
                     />
