@@ -214,9 +214,12 @@ function HomePage() {
                         alt="Logo"
                     />
                 </section>
-                <section>
-                    <h2>особенный</h2>
-                    <h2>повод?</h2>
+                <section className={classes['special-section']}>
+                    <div className={classes['special-header']}>
+                        <h2 className={classes['section-header']}>особенный</h2>
+                        <h2 className={classes['section-header']}>повод?</h2>
+                    </div>
+
                     <p>
                         Мы готовы прийти на помощь и собрать уникальный букет,
                         на любой вкус, бюджет и для любого события по вашему

@@ -508,3 +508,33 @@ h2.main-header {
 
     z-index: -2;
 }
+
+.special-section {
+    margin-top: 150px;
+}
+
+.special-header {
+    position: relative;
+    left: 17%;
+}
+
+.special-header h2:nth-child(2) {
+    position: relative;
+
+    top: -10px;
+    left: 376px;
+}
+
+.special-header h2:nth-child(2)::before {
+    display: block;
+    position: relative;
+    content: '';
+
+    width: 255px;
+    height: 1px;
+
+    left: -281px;
+    top: 63px;
+
+    background-color: var(--customPink);
+}
