@@ -530,6 +530,7 @@ h2.main-header {
 
 .special-header {
     grid-area: special-header;
+    justify-self: left;
 }
 
 .special-header h2:nth-child(2) {
@@ -554,10 +555,12 @@ h2.main-header {
 }
 
 .special-descr {
+    position: relative;
     grid-area: special-descr;
     justify-self: center;
 
     width: 255px;
+    left: -53px;
 
     font-family: 'Oswald';
     text-align: justify;
@@ -583,7 +586,7 @@ h2.main-header {
     grid-area: special-btn;
     position: relative;
 
-    left: 90px;
+    left: 40px;
     top: 10px;
 }
 
