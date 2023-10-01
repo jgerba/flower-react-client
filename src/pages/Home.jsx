@@ -12,6 +12,10 @@ import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
 
 import logo from '../svg/loverFlower.svg';
+import specialImgGift from '../images/special-1.png';
+import specialImgBouquet from '../images/special-2.png';
+import specialImgCard from '../images/special-3.png';
+import specialImgWreath from '../images/special-4.png';
 
 import classes from './Home.module.css';
 
@@ -194,26 +198,45 @@ function HomePage() {
                     alt="Logo"
                 />
             </section>
-            <section className={classes['special-section']}>
+            <section
+                className={`${classes['special-section']} ${classes['section']}`}
+            >
                 <div className={classes['special-header']}>
                     <h2 className={classes['section-header']}>особенный</h2>
                     <h2 className={classes['section-header']}>повод?</h2>
                 </div>
+                <div className={classes['special-descr']}>
+                    <p>
+                        Мы готовы прийти на помощь и собрать уникальный букет,
+                        на любой вкус, бюджет и для любого события по вашему
+                        индивидуальному заказу.
+                    </p>
+                    <ul>
+                        <li>учтем даже самые изысканные пожелания;</li>
+                        <li>
+                            подберем свежайшие цветы и сделаем уникальный букет
+                            или композицию;
+                        </li>
+                        <li>оплатить можно при получении</li>
+                    </ul>
+                </div>
 
-                <p>
-                    Мы готовы прийти на помощь и собрать уникальный букет, на
-                    любой вкус, бюджет и для любого события по вашему
-                    индивидуальному заказу.
-                </p>
-                <ul>
-                    <li>учтем даже самые изысканные пожелания;</li>
-                    <li>
-                        подберем свежайшие цветы и сделаем уникальный букет или
-                        композицию;
-                    </li>
-                    <li>оплатить можно при получении</li>
-                </ul>
-                <MenuBtn>
+                <img
+                    src={specialImgGift}
+                    className={classes['special-img-gift']}
+                    alt="Подарки"
+                ></img>
+
+                <div className={classes['special-imgs']}>
+                    <img src={specialImgBouquet} alt="Букет цветов"></img>
+                    <img src={specialImgCard} alt="Праздничная открытка"></img>
+                    <img
+                        src={specialImgWreath}
+                        alt="Рожденственский венок"
+                    ></img>
+                </div>
+
+                <MenuBtn className={classes['special-btn']}>
                     <NavLink to="/contacts">
                         собрать индивидуальный букет
                     </NavLink>
