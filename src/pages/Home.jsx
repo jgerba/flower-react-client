@@ -219,7 +219,7 @@ function HomePage() {
                     </NavLink>
                 </MenuBtn>
             </section>
-            <section>
+            <section className={classes['feedback-section']}>
                 <h2>остались</h2>
                 <h2>вопросы?</h2>
 

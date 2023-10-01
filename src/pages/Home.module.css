@@ -123,7 +123,7 @@ h2.main-header {
     top: -52px;
 
     text-align: center;
-    font-family: Oswald;
+    font-family: 'Oswald';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -141,7 +141,7 @@ h2.main-header {
 }
 
 .catalogue-section {
-    height: 950px;
+    height: 889px;
 }
 
 .section-header {
@@ -437,6 +437,10 @@ h2.main-header {
     z-index: -4;
 }
 
+.order-section {
+    height: 1000px;
+}
+
 .order-section .section-header {
     left: 315px;
 }
@@ -510,7 +514,7 @@ h2.main-header {
 }
 
 .special-section {
-    margin-top: 150px;
+    height: 1000px;
 }
 
 .special-header {
@@ -537,4 +541,8 @@ h2.main-header {
     top: 63px;
 
     background-color: var(--customPink);
+}
+
+.feedback-section {
+    height: 1000px;
 }
