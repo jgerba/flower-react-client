@@ -1,6 +1,6 @@
 import MenuBtn from './UI/MenuBtn';
 
-import logo from '../svg/have any questions_.svg';
+import sign from '../svg/have any questions_.svg';
 import classes from './FeedBackForm.module.css';
 
 function FeedBackForm(props) {
@@ -30,7 +30,7 @@ function FeedBackForm(props) {
             </form>
             <div className={classes['decor-back']}></div>
             <div className={classes['decor-shadow']}></div>
-            <img className={classes.logo} src={logo} alt="Logo" />
+            <img className={classes.sign} src={sign} alt="Sign" />
         </div>
     );
 }
