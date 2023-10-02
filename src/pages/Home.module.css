@@ -145,6 +145,13 @@ h2.main-header {
     top: 588px;
 }
 
+.title__soc-panel {
+    width: 60px;
+    height: 154px;
+    top: 219px;
+    right: 4%;
+}
+
 .catalogue-section {
     height: 889px;
 }
@@ -287,55 +294,33 @@ h2.main-header {
     z-index: -4;
 }
 
-.catalogue__decor-sign-bouquet {
+.decor-sign {
     position: absolute;
 
+    font-family: 'Oswald';
+    font-size: 200px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+
+    color: #0a1717;
+
+    z-index: -5;
+}
+
+.catalogue__sign-bouquet {
     top: 1332px;
     right: 6vw;
-
-    font-family: 'Oswald';
-    font-size: 200px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-
-    color: #0a1717;
-
-    z-index: -5;
 }
 
-.catalogue__decor-sign-flowers {
-    position: absolute;
-
+.catalogue__sign-flowers {
     top: 1541px;
     left: -1vw;
-
-    font-family: 'Oswald';
-    font-size: 200px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-
-    color: #0a1717;
-
-    z-index: -5;
 }
 
-.catalogue__decor-sign-extra {
-    position: absolute;
-
+.catalogue__sign-extra {
     top: 1824px;
     right: -33vw;
-
-    font-family: 'Oswald';
-    font-size: 200px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-
-    color: #0a1717;
-
-    z-index: -5;
 }
 
 .popular-section {
@@ -667,5 +652,112 @@ h2.main-header {
 }
 
 .social-section {
-    height: 621px;
+    height: 600px;
+
+    justify-items: end;
+    grid-template-rows: repeat(3, 220px);
+    grid-template-areas:
+        '. . . . . . . soc-sign soc-sign . . .'
+        '. soc-image soc-image soc-image soc-image soc-image soc-image . social social . .'
+        '. . . . . . . . . . . .';
+}
+
+.social-images {
+    grid-area: soc-image;
+    justify-self: flex-start;
+    display: flex;
+    gap: 30px;
+}
+
+.social-sign {
+    grid-area: soc-sign;
+    position: relative;
+
+    width: 250px;
+    height: 163px;
+    top: 136px;
+}
+
+.social-sign::before {
+    display: block;
+    position: relative;
+    content: '';
+
+    width: 350px;
+    height: 1px;
+
+    top: 85px;
+
+    background-color: var(--customGreen);
+}
+
+.social__panel {
+    grid-area: social;
+    position: static;
+    align-self: flex-end;
+    flex-direction: row;
+    gap: 30px;
+
+    width: 180px;
+    height: 40px;
+}
+
+.social__panel svg,
+.social__panel button {
+    width: 40px;
+    height: 40px;
+}
+
+.social__sign {
+    top: 6100px;
+    left: 1%;
+}
+
+.social__decor-oval-green-left {
+    position: absolute;
+
+    width: 99.587px;
+    height: 211.054px;
+
+    left: 1%;
+    top: 6285px;
+
+    transform: rotate(21.097deg);
+
+    background-color: var(--customGreen);
+    filter: blur(125px);
+    z-index: -4;
+}
+
+.social__decor-oval-green-center {
+    position: absolute;
+
+    width: 879.44px;
+    height: 211.054px;
+
+    left: 41%;
+    top: 6391px;
+
+    transform: rotate(21.097deg);
+
+    border-radius: 879.44px;
+    background-color: var(--customGreen);
+    filter: blur(125px);
+    z-index: -4;
+}
+
+.social__decor-oval-red {
+    position: absolute;
+
+    width: 354.93px;
+    height: 364.216px;
+
+    right: -1%;
+    top: 6288px;
+
+    transform: rotate(32.828deg);
+
+    background-color: #7d2253;
+    filter: blur(125px);
+    z-index: -4;
 }

@@ -12,10 +12,15 @@ import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
 
 import logo from '../svg/loverFlower.svg';
+import socialSign from '../svg/our social networks.svg';
 import specialImgGift from '../images/special-1.png';
 import specialImgBouquet from '../images/special-2.png';
 import specialImgCard from '../images/special-3.png';
 import specialImgWreath from '../images/special-4.png';
+import xmasTree from '../images/social1.png';
+import xmasBouquet from '../images/social2.png';
+import xmasToys from '../images/social3.png';
+import strangeBouquet from '../images/social4.png';
 
 import classes from './Home.module.css';
 
@@ -29,7 +34,7 @@ function HomePage() {
                     Создаём для тех, кто ценит свежесть и изящество цветка
                 </p>
                 <AddressPanel />
-                <SocialPanel />
+                <SocialPanel className={classes['title__soc-panel']} />
                 <CallPanel />
                 <ShopCart />
                 <MenuBtn className={classes['title-catalogue-btn']}>
@@ -112,13 +117,19 @@ function HomePage() {
 
                 <div className={classes['catalogue__decor-oval-left']}></div>
                 <div className={classes['catalogue__decor-oval-right']}></div>
-                <p className={classes['catalogue__decor-sign-bouquet']}>
+                <p
+                    className={`${classes['decor-sign']} ${classes['catalogue__sign-bouquet']}`}
+                >
                     букеты
                 </p>
-                <p className={classes['catalogue__decor-sign-flowers']}>
+                <p
+                    className={`${classes['decor-sign']} ${classes['catalogue__sign-flowers']}`}
+                >
                     Цветы
                 </p>
-                <p className={classes['catalogue__decor-sign-extra']}>
+                <p
+                    className={`${classes['decor-sign']} ${classes['catalogue__sign-extra']}`}
+                >
                     дополнительно
                 </p>
             </section>
@@ -258,13 +269,27 @@ function HomePage() {
             <section
                 className={`${classes['social-section']} ${classes['section']}`}
             >
-                <img alt=""></img>
-                <img alt=""></img>
-                <img alt=""></img>
-                <img alt=""></img>
+                <div className={classes['social-images']}>
+                    <img src={xmasTree} alt=""></img>
+                    <img src={xmasBouquet} alt=""></img>
+                    <img src={xmasToys} alt=""></img>
+                    <img src={strangeBouquet} alt=""></img>
+                </div>
 
-                <div className="decorRect"></div>
-                <SocialPanel />
+                <div className={classes['social-sign']}>
+                    <img src={socialSign} alt="Our social networks sign" />
+                </div>
+                <SocialPanel className={classes['social__panel']} />
+                <p
+                    className={`${classes['decor-sign']} ${classes['social__sign']}`}
+                >
+                    instagram
+                </p>
+                <div className={classes['social__decor-oval-green-left']}></div>
+                <div
+                    className={classes['social__decor-oval-green-center']}
+                ></div>
+                <div className={classes['social__decor-oval-red']}></div>
             </section>
         </main>
     );
