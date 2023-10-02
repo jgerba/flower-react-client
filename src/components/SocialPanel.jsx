@@ -3,9 +3,13 @@ import IconBtn from './UI/IconBtn';
 
 import classes from './SocialPanel.module.css';
 
-function SocialPanel() {
+function SocialPanel(props) {
     return (
-        <ContentCard className={classes.panel}>
+        <ContentCard
+            className={`${classes.panel} ${
+                props.className ? props.className : ''
+            }`}
+        >
             <IconBtn>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
