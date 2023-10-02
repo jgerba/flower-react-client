@@ -30,7 +30,11 @@ function FeedBackForm(props) {
             </form>
             <div className={classes['decor-back']}></div>
             <div className={classes['decor-shadow']}></div>
-            <img className={classes.sign} src={sign} alt="Sign" />
+            <img
+                className={classes.sign}
+                src={sign}
+                alt="Have any questions? sign"
+            />
         </div>
     );
 }
