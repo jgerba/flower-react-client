@@ -242,12 +242,22 @@ function HomePage() {
                     </NavLink>
                 </MenuBtn>
             </section>
-            <section className={classes['feedback-section']}>
-                <h2>остались</h2>
-                <h2>вопросы?</h2>
+            <section className={`${classes['feedback-section']}`}>
+                <div className={classes['feedback-header']}>
+                    <h2 className={classes['section-header']}>остались</h2>
+                    <h2 className={classes['section-header']}>вопросы?</h2>
+                </div>
 
-                <FeedBackForm message="true" />
-
+                <FeedBackForm
+                    className={classes['feedback-form']}
+                    message="true"
+                />
+                <div className={classes['feedback-decor-oval-red']}></div>
+                <div className={classes['feedback-decor-oval-green']}></div>
+            </section>
+            <section
+                className={`${classes['social-section']} ${classes['section']}`}
+            >
                 <img alt=""></img>
                 <img alt=""></img>
                 <img alt=""></img>

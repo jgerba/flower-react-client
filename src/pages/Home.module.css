@@ -1,6 +1,6 @@
 .section {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(12, 1fr);
 }
 
 .title-section {
@@ -523,9 +523,9 @@ h2.main-header {
     grid-template-rows: 223px 292px 250px;
     row-gap: 30px;
     grid-template-areas:
-        '. special-header special-header special-header . special-img-gift .'
-        '. special-descr special-descr special-imgs special-imgs special-imgs .'
-        '. special-btn . . . . .';
+        '. . special-header special-header special-header special-header . . special-img-gift special-img-gift . .'
+        '. . special-descr special-descr special-descr special-imgs special-imgs special-imgs special-imgs special-imgs . .'
+        '. . special-btn . . . . . . . . .';
 }
 
 .special-header {
@@ -586,7 +586,7 @@ h2.main-header {
     grid-area: special-btn;
     position: relative;
 
-    left: 40px;
+    left: 81px;
     top: 10px;
 }
 
@@ -618,5 +618,54 @@ h2.main-header {
 }
 
 .feedback-section {
-    height: 1000px;
+    height: 666px;
+    background-color: #0f2222;
+}
+
+.feedback-header {
+    position: absolute;
+
+    top: 5229px;
+    left: 14%;
+
+    z-index: 1;
+}
+
+.feedback-header h2:nth-child(2) {
+    position: relative;
+
+    top: -10px;
+    left: 96px;
+}
+
+.feedback-decor-oval-red {
+    position: absolute;
+
+    width: 416.232px;
+    height: 427.121px;
+
+    top: 5233px;
+    left: 4%;
+
+    transform: rotate(32.828deg);
+    background-color: #7d2253;
+    filter: blur(125px);
+}
+
+.feedback-decor-oval-green {
+    position: absolute;
+
+    width: 244.77px;
+    height: 285.945px;
+
+    top: 5400px;
+    left: 24%;
+
+    transform: rotate(32.828deg);
+    background-color: #43ffd2;
+    filter: blur(125px);
+}
+
+.social-section {
+    height: 621px;
 }
