@@ -1,0 +1,84 @@
+.footer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: '. cred cred cat cat bok bok links links adr adr .';
+
+    width: 100%;
+    height: 337px;
+
+    padding-top: 30px;
+
+    background-color: var(--customBlack);
+}
+
+.header {
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+
+    width: 244px;
+}
+
+.descr {
+    font-family: Oswald;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.credentials {
+    grid-area: cred;
+    gap: 10px;
+}
+
+.logo {
+    height: 75px;
+}
+
+.logo p:first-of-type {
+    top: 0px;
+}
+
+.logo p:last-of-type {
+    top: -59px;
+}
+
+.catalogue {
+    grid-area: cat;
+}
+
+.bouquet {
+    grid-area: bok;
+}
+
+.links {
+    grid-area: links;
+    gap: 20px;
+}
+
+.address {
+    grid-area: adr;
+
+    width: 253px;
+}
+
+.social {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+
+    margin-top: 30px;
+
+    width: 112px;
+}
