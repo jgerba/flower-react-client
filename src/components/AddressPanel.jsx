@@ -14,7 +14,7 @@ function AddressPanel(props) {
             </p>
 
             {props.footer && (
-                <div>
+                <div className={classes.call}>
                     <a href="tel:+37529-113-69-69">+375 (29) 113-69-69</a>
                     <p>прием звонков круглосуточно</p>
                 </div>

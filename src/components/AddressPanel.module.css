@@ -9,30 +9,32 @@
     right: 4%;
 }
 
-.address {
-    margin-bottom: 4px;
-
+.address,
+.call a {
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 1.4px;
     text-transform: uppercase;
 
     color: var(--customGreen);
 }
 
-.description {
-    margin-bottom: 26px;
+.address {
+    margin-bottom: 4px;
+}
 
+.description,
+.call p {
     font-family: 'Oswald', sans-serif;
     font-size: 10px;
     font-style: normal;
-    font-weight: 300;
-    line-height: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.description {
+    margin-bottom: 26px;
 }
