@@ -657,8 +657,8 @@ h2.main-header {
     justify-items: end;
     grid-template-rows: repeat(3, 220px);
     grid-template-areas:
-        '. . . . . . . soc-sign soc-sign . . .'
-        '. soc-image soc-image soc-image soc-image soc-image soc-image . social social . .'
+        '. . . . . . . . soc-sign soc-sign . .'
+        '. . soc-image soc-image soc-image soc-image soc-image soc-image social social . .'
         '. . . . . . . . . . . .';
 }
 
