@@ -171,9 +171,13 @@ function HomePage() {
                 <div className={classes['popular__decor-oval-left']}></div>
                 <div className={classes['popular__decor-oval-right']}></div>
             </section>
-            <section className={classes['order-section']}>
-                <h2 className={classes['section-header']}>Как сделать</h2>
-                <h2 className={classes['section-header']}>заказ</h2>
+            <section
+                className={`${classes['section']} ${classes['order-section']}`}
+            >
+                <div className={classes['order__header']}>
+                    <h2 className={classes['section-header']}>Как сделать</h2>
+                    <h2 className={classes['section-header']}>заказ</h2>
+                </div>
 
                 <div className={classes['order-steps']}>
                     <div className={classes['order-decor-rect']}></div>
@@ -199,8 +203,6 @@ function HomePage() {
                         Наслаждайтесь цветами , если вы заказали их для дома или
                         любовью, которой поделились, если вы заказали для друга
                     </OrderStep>
-
-                    <div className={classes['order-decor-rect-vertical']}></div>
                 </div>
                 <div className={classes['order-back-flower']}></div>
                 <img
@@ -210,7 +212,7 @@ function HomePage() {
                 />
             </section>
             <section
-                className={`${classes['special-section']} ${classes['section']}`}
+                className={`${classes['section']} ${classes['special-section']}`}
             >
                 <div className={classes['special-header']}>
                     <h2 className={classes['section-header']}>особенный</h2>
@@ -267,7 +269,7 @@ function HomePage() {
                 <div className={classes['feedback-decor-oval-green']}></div>
             </section>
             <section
-                className={`${classes['social-section']} ${classes['section']}`}
+                className={`${classes['section']} ${classes['social-section']}`}
             >
                 <div className={classes['social-images']}>
                     <img src={xmasTree} alt=""></img>

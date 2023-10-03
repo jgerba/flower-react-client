@@ -1,5 +1,6 @@
 .section {
     display: grid;
+    justify-items: end;
     grid-template-columns: repeat(12, 1fr);
 }
 
@@ -428,48 +429,52 @@ h2.main-header {
 }
 
 .order-section {
+    grid-template-areas:
+        '. . or-head or-head or-head or-head . . . . . .'
+        '. . . . or-steps or-steps or-steps or-steps or-steps or-steps . .';
+
     height: 1000px;
+
+    padding-bottom: 90px;
 }
 
-.order-section .section-header {
-    left: 315px;
+.order__header {
+    grid-area: or-head;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: 686px;
 }
 
-.order-section .section-header:nth-of-type(2) {
-    top: -25px;
+.order__header .section-header:nth-of-type(2) {
+    top: -26px;
 
     z-index: -3;
 }
 
 .order-steps {
-    position: relative;
+    grid-area: or-steps;
+
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-content: space-between;
 
-    width: 1200px;
+    width: 875px;
     height: 500px;
-
-    left: 36%;
 }
 
-.order-decor-rect {
-    position: absolute;
-
-    top: -40px;
-
-    width: 65px;
-    height: 10px;
-
-    background-color: var(--customPink);
-}
-
-.order-decor-rect-vertical {
-    position: relative;
+.order-steps::after {
+    display: block;
+    content: '';
 
     width: 1px;
     height: 427px;
     top: 40px;
+
+    margin-top: 40px;
 
     background-color: var(--customPink);
 }
@@ -492,7 +497,7 @@ h2.main-header {
     width: 562px;
     height: 845px;
 
-    top: 3448px;
+    top: 3384px;
     left: 0px;
 
     background-image: url('../images/homeOrderBack.png');
@@ -504,7 +509,6 @@ h2.main-header {
 }
 
 .special-section {
-    justify-items: end;
     grid-template-rows: 223px 292px 250px;
     row-gap: 30px;
     grid-template-areas:
@@ -654,12 +658,10 @@ h2.main-header {
 .social-section {
     height: 600px;
 
-    justify-items: end;
-    grid-template-rows: repeat(3, 220px);
+    grid-template-rows: repeat(2, 220px);
     grid-template-areas:
         '. . . . . . . . soc-sign soc-sign . .'
-        '. . soc-image soc-image soc-image soc-image soc-image soc-image social social . .'
-        '. . . . . . . . . . . .';
+        '. . soc-image soc-image soc-image soc-image soc-image soc-image social social . .';
 }
 
 .social-images {
