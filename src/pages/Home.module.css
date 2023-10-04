@@ -449,13 +449,12 @@ h2.main-header {
 }
 
 .order-section {
+    grid-template-rows: repeat(2, max-content);
     grid-template-areas:
         '. . or-head or-head or-head or-head or-head . . . . .'
         '. . . . or-steps or-steps or-steps or-steps or-steps or-steps . .';
 
-    height: 1000px;
-
-    padding-bottom: 90px;
+    margin-top: 160px;
 }
 
 .order__header {
@@ -514,7 +513,7 @@ h2.main-header {
     width: 562px;
     height: 845px;
 
-    top: 3384px;
+    top: 3426px;
     left: 0px;
 
     background-image: url('../images/homeOrderBack.png');
@@ -526,12 +525,14 @@ h2.main-header {
 }
 
 .special-section {
-    grid-template-rows: 223px 292px 250px;
+    grid-template-rows: repeat(3, max-content);
     row-gap: 30px;
     grid-template-areas:
         '. . sp-head sp-head sp-head sp-head sp-head sp-head sp-img-gift sp-img-gift . .'
         '. . sp-descr sp-descr sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs . .'
         '. . sp-btn sp-btn . . . . . . . .';
+
+    margin-top: 160px;
 }
 
 .special-header {
@@ -630,7 +631,7 @@ h2.main-header {
 }
 
 .feedback-section {
-    height: 666px;
+    margin-top: 60px;
     background-color: #0f2222;
 }
 
@@ -663,12 +664,13 @@ h2.main-header {
 }
 
 .social-section {
-    height: 600px;
-
-    grid-template-rows: repeat(2, 220px);
+    grid-template-rows: repeat(2, max-content);
     grid-template-areas:
         '. . . . . . . . soc-sign soc-sign . .'
-        '. . soc-image soc-image soc-image soc-image soc-image soc-image social social . .';
+        '. . soc-image soc-image soc-image soc-image soc-image soc-image soc-panel soc-panel . .';
+
+    margin-top: 260px;
+    margin-bottom: 200px;
 }
 
 .social-images {
@@ -678,13 +680,20 @@ h2.main-header {
     gap: 30px;
 }
 
+.social-images img {
+    width: 200px;
+    height: 200px;
+}
+
 .social-sign {
     grid-area: soc-sign;
     position: relative;
 
     width: 250px;
     height: 163px;
-    top: 136px;
+
+    left: -99px;
+    top: 79px;
 }
 
 .social-sign::before {
@@ -701,7 +710,7 @@ h2.main-header {
 }
 
 .social__panel {
-    grid-area: social;
+    grid-area: soc-panel;
     position: static;
     align-self: flex-end;
     flex-direction: row;
