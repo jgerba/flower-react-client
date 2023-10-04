@@ -509,13 +509,13 @@ h2.main-header {
     grid-template-rows: 223px 292px 250px;
     row-gap: 30px;
     grid-template-areas:
-        '. . special-header special-header special-header special-header special-header special-header special-img-gift special-img-gift . .'
-        '. . special-descr special-descr special-imgs special-imgs special-imgs special-imgs special-imgs special-imgs . .'
-        '. . special-btn special-btn . . . . . . . .';
+        '. . sp-head sp-head sp-head sp-head sp-head sp-head sp-img-gift sp-img-gift . .'
+        '. . sp-descr sp-descr sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs . .'
+        '. . sp-btn sp-btn . . . . . . . .';
 }
 
 .special-header {
-    grid-area: special-header;
+    grid-area: sp-head;
     justify-self: left;
 }
 
@@ -542,7 +542,7 @@ h2.main-header {
 
 .special-descr {
     position: relative;
-    grid-area: special-descr;
+    grid-area: sp-descr;
     justify-self: left;
 
     width: 255px;
@@ -576,14 +576,14 @@ h2.main-header {
 }
 
 .special-btn {
-    grid-area: special-btn;
+    grid-area: sp-btn;
     justify-self: left;
 
     margin-top: 10px;
 }
 
 .special-img-gift {
-    grid-area: special-img-gift;
+    grid-area: sp-img-gift;
 
     width: 255px;
     height: 223px;
@@ -592,7 +592,7 @@ h2.main-header {
 }
 
 .special-imgs {
-    grid-area: special-imgs;
+    grid-area: sp-imgs;
     display: flex;
     gap: 30px;
 }
