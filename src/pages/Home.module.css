@@ -325,16 +325,35 @@ h2.main-header {
 }
 
 .popular-section {
+    grid-template-rows: repeat(3, min-content);
+    grid-template-areas:
+        '. . pop-head pop-head pop-head pop-head pop-head pop-head pop-head pop-head . .'
+        '. . pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq . .'
+        '. . pop-btn pop-btn . . . . . . . .';
+
     height: 1150px;
 }
 
-.popular-section .section-header:first-of-type {
-    left: 365px;
+.popular__header {
+    grid-area: pop-head;
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    padding-bottom: 86px;
 }
 
-.popular-section .section-header:nth-of-type(2) {
+.popular__header .section-header:first-of-type {
+    align-self: flex-start;
+}
+
+.popular__header .section-header:nth-of-type(2) {
     top: -21px;
-    text-align: center;
+    width: fit-content;
 }
 
 .popular-intro {
@@ -353,18 +372,21 @@ h2.main-header {
 }
 
 .popular-bouquets {
-    display: flex;
-    flex-wrap: wrap;
+    grid-area: pop-bouq;
 
-    width: 1140px;
-    margin: 86px auto 0px auto;
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
 }
 
 .popular-catalogue-link {
-    position: relative;
+    grid-area: pop-btn;
+    justify-self: left;
 
-    top: 60px;
-    margin-left: 30px;
+    height: fit-content;
+
+    margin-top: 60px;
 
     font-family: 'Oswald';
     font-size: 12px;

@@ -133,12 +133,18 @@ function HomePage() {
                     дополнительно
                 </p>
             </section>
-            <section className={classes['popular-section']}>
-                <h2 className={classes['section-header']}>Популярные</h2>
-                <h2 className={classes['section-header']}>букеты</h2>
-                <p className={classes['popular-intro']}>
-                    Самые любимые композиции наших клиентов
-                </p>
+            <section
+                className={`${classes['section']} ${classes['popular-section']}`}
+            >
+                <div className={classes['popular__header']}>
+                    <h2 className={classes['section-header']}>Популярные</h2>
+                    <h2 className={classes['section-header']}>букеты</h2>
+
+                    <p className={classes['popular-intro']}>
+                        Самые любимые композиции наших клиентов
+                    </p>
+                </div>
+
                 <div className={classes['popular-bouquets']}>
                     <BouquetCard
                         className={'popular-card'}
@@ -158,15 +164,13 @@ function HomePage() {
                         price="167.000 ₽"
                         src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                     />
-
-                    <NavLink
-                        className={classes['popular-catalogue-link']}
-                        to="/catalogue"
-                    >
-                        смотреть весь каталог
-                    </NavLink>
                 </div>
-
+                <NavLink
+                    className={classes['popular-catalogue-link']}
+                    to="/catalogue"
+                >
+                    смотреть весь каталог
+                </NavLink>
                 <div className={classes['popular__decor-back']}></div>
                 <div className={classes['popular__decor-oval-left']}></div>
                 <div className={classes['popular__decor-oval-right']}></div>
