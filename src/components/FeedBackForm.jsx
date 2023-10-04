@@ -10,6 +10,12 @@ function FeedBackForm(props) {
                 props.className ? props.className : ''
             }`}
         >
+            {props.homePage && (
+                <div className={classes['header-container']}>
+                    <h2 className={classes.header}>остались</h2>
+                    <h2 className={classes.header}>вопросы?</h2>
+                </div>
+            )}
             <form className={classes.form}>
                 <p className={classes.descr}>
                     Отправьте ваш вопрос, заказ, предложение или жалобу через

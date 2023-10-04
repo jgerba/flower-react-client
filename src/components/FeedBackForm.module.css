@@ -6,12 +6,35 @@
     grid-template-rows: repeat(4, 150px);
 
     grid-template-areas:
-        '. . . . . . . . . . . .'
-        'decor . logo logo . . form form form form . .'
-        'decor . logo logo . . form form form form . .'
-        'decor . . . . . . . . . . .';
+        '. . header header header header . . . . . .'
+        '. . . . . . form form form form . .'
+        '. . . . logo logo form form form form . .'
+        '. . . . logo logo . . . . . .';
 
     z-index: 1;
+}
+
+.header-container {
+    grid-area: header;
+    justify-self: left;
+}
+
+.header-container h2:nth-child(2) {
+    top: -10px;
+    left: 96px;
+}
+
+.header {
+    position: relative;
+
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
 }
 
 .form {
@@ -19,7 +42,6 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
 
     height: 400px;
@@ -87,7 +109,7 @@
 .agreement {
     width: 342px;
 
-    font-family: 'Roboto' Condensed;
+    font-family: 'Roboto';
     font-size: 10px;
     letter-spacing: 0.2px;
 

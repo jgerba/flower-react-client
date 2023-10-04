@@ -430,7 +430,7 @@ h2.main-header {
 
 .order-section {
     grid-template-areas:
-        '. . or-head or-head or-head or-head . . . . . .'
+        '. . or-head or-head or-head or-head or-head . . . . .'
         '. . . . or-steps or-steps or-steps or-steps or-steps or-steps . .';
 
     height: 1000px;
@@ -440,11 +440,8 @@ h2.main-header {
 
 .order__header {
     grid-area: or-head;
+    justify-self: flex-start;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
     width: 686px;
 }
 
@@ -512,9 +509,9 @@ h2.main-header {
     grid-template-rows: 223px 292px 250px;
     row-gap: 30px;
     grid-template-areas:
-        '. . special-header special-header special-header special-header . . special-img-gift special-img-gift . .'
-        '. . special-descr special-descr special-descr special-imgs special-imgs special-imgs special-imgs special-imgs . .'
-        '. . special-btn . . . . . . . . .';
+        '. . special-header special-header special-header special-header special-header special-header special-img-gift special-img-gift . .'
+        '. . special-descr special-descr special-imgs special-imgs special-imgs special-imgs special-imgs special-imgs . .'
+        '. . special-btn special-btn . . . . . . . .';
 }
 
 .special-header {
@@ -546,10 +543,9 @@ h2.main-header {
 .special-descr {
     position: relative;
     grid-area: special-descr;
-    justify-self: center;
+    justify-self: left;
 
     width: 255px;
-    left: -53px;
 
     font-family: 'Oswald';
     text-align: justify;
@@ -573,10 +569,9 @@ h2.main-header {
 
 .special-btn {
     grid-area: special-btn;
-    position: relative;
+    justify-self: left;
 
-    left: 81px;
-    top: 10px;
+    margin-top: 10px;
 }
 
 .special-img-gift {
@@ -609,22 +604,6 @@ h2.main-header {
 .feedback-section {
     height: 666px;
     background-color: #0f2222;
-}
-
-.feedback-header {
-    position: absolute;
-
-    top: 5229px;
-    left: 14%;
-
-    z-index: 1;
-}
-
-.feedback-header h2:nth-child(2) {
-    position: relative;
-
-    top: -10px;
-    left: 96px;
 }
 
 .feedback-decor-oval-red {

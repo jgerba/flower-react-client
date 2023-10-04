@@ -256,14 +256,10 @@ function HomePage() {
                 </MenuBtn>
             </section>
             <section className={`${classes['feedback-section']}`}>
-                <div className={classes['feedback-header']}>
-                    <h2 className={classes['section-header']}>остались</h2>
-                    <h2 className={classes['section-header']}>вопросы?</h2>
-                </div>
-
                 <FeedBackForm
                     className={classes['feedback-form']}
                     message="true"
+                    homePage="true"
                 />
                 <div className={classes['feedback-decor-oval-red']}></div>
                 <div className={classes['feedback-decor-oval-green']}></div>
