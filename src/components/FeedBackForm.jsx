@@ -39,7 +39,7 @@ function FeedBackForm(props) {
             <img
                 className={classes.sign}
                 src={sign}
-                alt="Have any questions? sign"
+                alt="Have any questions?"
             />
         </div>
     );
