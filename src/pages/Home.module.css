@@ -270,7 +270,6 @@ h2.main-header {
 
 .catalogue__extra-bouquet {
     grid-area: cat-extra;
-    justify-self: left;
 
     position: relative;
 
@@ -371,7 +370,7 @@ h2.main-header {
 
 .catalogue__sign-extra {
     top: 522px;
-    right: -34.2vw;
+    right: -16.6vw;
 }
 
 .popular-section {
@@ -732,8 +731,6 @@ h2.main-header {
     gap: 30px;
 
     position: relative;
-
-    left: -133px;
 }
 
 .social-images img {
@@ -748,7 +745,7 @@ h2.main-header {
     width: 250px;
     height: 163px;
 
-    right: -35px;
+    right: 98px;
     top: 79px;
 }
 
@@ -774,8 +771,6 @@ h2.main-header {
 
     width: 180px;
     height: 40px;
-
-    right: -133px;
 }
 
 .social__panel svg,
