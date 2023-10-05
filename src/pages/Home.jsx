@@ -47,14 +47,16 @@ function HomePage() {
                 <div className={classes['title__decor-oval-right']}></div>
                 <img className={classes['lower-logo']} src={logo} alt="Logo" />
             </section>
-            <section className={classes['catalogue-section']}>
+            <section
+                className={`${classes['section']} ${classes['catalogue-section']}`}
+            >
                 <h2
                     className={`${classes['section-header']} ${classes['catalogue-header']}`}
                 >
                     каталог
                 </h2>
 
-                <div className={classes['catalogue-intro']}>
+                <div className={classes['cat-descr']}>
                     <p>
                         У нас самый большой выбор цветов, букетов, открыток и
                         подарков. Мы всегда поможем вам подобрать букет для

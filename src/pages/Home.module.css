@@ -4,6 +4,19 @@
     grid-template-columns: repeat(12, 1fr);
 }
 
+.section-header {
+    position: relative;
+
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
 .title-section {
     height: 1244px;
 }
@@ -154,29 +167,20 @@ h2.main-header {
 }
 
 .catalogue-section {
-    height: 889px;
-}
-
-.section-header {
-    position: relative;
-
-    font-size: 100px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
+    grid-template-areas:
+        '. . cat-head cat-head cat-head cat-head . . . . . .'
+        '. . cat-descr cat-descr cat-descr cat-descr cat-bouq cat-bouq cat-bouq cat-bouq . .'
+        '. . cat-flw cat-flw cat-flw cat-flw cat-extra cat-extra cat-extra cat-extra . .';
 }
 
 .catalogue-header {
-    left: 165px;
-    top: -33px;
+    grid-area: cat-head;
+    justify-self: left;
 }
 
-.catalogue-intro {
-    position: relative;
+.cat-descr {
+    grid-area: cat-descr;
+
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -184,13 +188,10 @@ h2.main-header {
     width: 566px;
     height: 134px;
 
-    top: -26px;
-    left: 18vw;
-
     text-align: justify;
 }
 
-.catalogue-intro p {
+.cat-descr p {
     font-family: 'Oswald';
     font-size: 20px;
     line-height: 26px;
@@ -200,35 +201,43 @@ h2.main-header {
 }
 
 .catalogue__flowers-bouquet {
+    grid-area: cat-flw;
+    justify-self: left;
+
     position: relative;
 
     width: 540px;
     height: 310px;
 
-    top: 48px;
-    left: 12vw;
+    top: -60px;
+
     padding: 30px 30px 30px 50px;
 }
 
 .catalogue__ready-bouquet {
+    grid-area: cat-bouq;
+
     position: relative;
 
     width: 445px;
     height: 281px;
 
-    top: -465px;
-    left: 62vw;
+    top: -30px;
+
     padding: 30px 30px 30px 50px;
 }
 
 .catalogue__extra-bouquet {
+    grid-area: cat-extra;
+    justify-self: left;
+
     position: relative;
 
     width: 540px;
     height: 310px;
 
-    top: -436px;
-    left: 53vw;
+    top: 30px;
+
     padding: 30px 30px 30px 50px;
 }
 
@@ -310,26 +319,27 @@ h2.main-header {
 }
 
 .catalogue__sign-bouquet {
-    top: 1332px;
-    right: 6vw;
+    top: 1320px;
+    right: 8vw;
 }
 
 .catalogue__sign-flowers {
-    top: 1541px;
-    left: -1vw;
+    top: 1568px;
+    left: -0.1vw;
 }
 
 .catalogue__sign-extra {
-    top: 1824px;
-    right: -33vw;
+    top: 1844px;
+    right: -22.2vw;
 }
 
 .popular-section {
-    grid-template-rows: repeat(3, min-content);
     grid-template-areas:
         '. . pop-head pop-head pop-head pop-head pop-head pop-head pop-head pop-head . .'
         '. . pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq . .'
         '. . pop-btn pop-btn . . . . . . . .';
+
+    margin-top: 200px;
 }
 
 .popular__header {
@@ -449,7 +459,6 @@ h2.main-header {
 }
 
 .order-section {
-    grid-template-rows: repeat(2, max-content);
     grid-template-areas:
         '. . or-head or-head or-head or-head or-head . . . . .'
         '. . . . or-steps or-steps or-steps or-steps or-steps or-steps . .';
@@ -513,7 +522,7 @@ h2.main-header {
     width: 562px;
     height: 845px;
 
-    top: 3426px;
+    top: 3448px;
     left: 0px;
 
     background-image: url('../images/homeOrderBack.png');
@@ -525,7 +534,6 @@ h2.main-header {
 }
 
 .special-section {
-    grid-template-rows: repeat(3, max-content);
     row-gap: 30px;
     grid-template-areas:
         '. . sp-head sp-head sp-head sp-head sp-head sp-head sp-img-gift sp-img-gift . .'
@@ -664,7 +672,6 @@ h2.main-header {
 }
 
 .social-section {
-    grid-template-rows: repeat(2, max-content);
     grid-template-areas:
         '. . . . . . . . soc-sign soc-sign . .'
         '. . soc-image soc-image soc-image soc-image soc-image soc-image soc-panel soc-panel . .';
@@ -727,8 +734,8 @@ h2.main-header {
 }
 
 .social__sign {
-    top: 6100px;
-    left: 1%;
+    top: 6103px;
+    left: -0.5%;
 }
 
 .social__decor-oval-green-left {
