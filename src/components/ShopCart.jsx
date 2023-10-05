@@ -2,11 +2,16 @@ import ContentCard from './UI/ContentCard';
 
 import classes from './ShopCart.module.css';
 
-function ShopCart() {
+function ShopCart(props) {
     const items = 1;
 
     return (
-        <ContentCard className={classes.cart} items={items}>
+        <ContentCard
+            className={`${classes.cart} ${
+                props.className ? props.className : ''
+            }`}
+            items={items}
+        >
             <svg
                 width="30"
                 height="30"

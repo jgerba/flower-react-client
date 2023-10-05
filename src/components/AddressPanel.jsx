@@ -2,7 +2,11 @@ import classes from './AddressPanel.module.css';
 
 function AddressPanel(props) {
     return (
-        <article className={props.footer ? '' : classes.panel}>
+        <article
+            className={`${props.footer ? '' : classes.panel} ${
+                props.className ? props.className : ''
+            }`}
+        >
             <address className={classes.address}>zakaz@loverflower.by</address>
             <p className={classes.description}>
                 Доставка 24/7 по договоренности с оператором

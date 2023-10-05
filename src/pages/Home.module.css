@@ -19,6 +19,98 @@
 
 .title-section {
     height: 1244px;
+
+    grid-template-areas:
+        '. . . title-head title-head title-head title-head title-head title-head title-info title-info .'
+        '. . . title-head title-head title-head title-head title-head title-head . . .';
+}
+
+.title__header-section {
+    grid-area: title-head;
+    justify-self: center;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-header {
+    position: relative;
+    top: 35px;
+
+    text-align: center;
+    font-size: 200px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+h1.main-header {
+    top: -54px;
+}
+
+h2.main-header {
+    z-index: -3;
+}
+
+.slogan {
+    position: relative;
+    top: -52px;
+
+    text-align: center;
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.4px;
+
+    color: var(--customWhite);
+}
+
+.title-catalogue-btn {
+    position: absolute;
+
+    top: 588px;
+}
+
+.title__extra-info-panel {
+    grid-area: title-info;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.title__addr-panel {
+    position: static;
+}
+
+.title__soc-panel {
+    width: 60px;
+    height: 154px;
+
+    margin-top: 158px;
+}
+
+.title__call-panel {
+    right: 0px;
+    bottom: 0px;
+}
+
+.title__call-panel a {
+    text-align: end;
+}
+
+.title__shop-cart {
+    right: 0px;
+    height: 76px;
 }
 
 .decor-flower {
@@ -114,59 +206,8 @@
     z-index: -1;
 }
 
-.main-header {
-    position: relative;
-    top: 35px;
-
-    text-align: center;
-    font-size: 200px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 40px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
-}
-
-h1.main-header {
-    top: -54px;
-}
-
-h2.main-header {
-    z-index: -3;
-}
-
-.slogan {
-    position: relative;
-    top: -52px;
-
-    text-align: center;
-    font-family: 'Oswald';
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.4px;
-
-    color: var(--customWhite);
-}
-
-.title-catalogue-btn {
-    position: absolute;
-
-    left: calc(50% - 110px);
-    top: 588px;
-}
-
-.title__soc-panel {
-    width: 60px;
-    height: 154px;
-    top: 219px;
-    right: 4%;
-}
-
 .catalogue-section {
+    position: relative;
     grid-template-areas:
         '. . cat-head cat-head cat-head cat-head . . . . . .'
         '. . cat-descr cat-descr cat-descr cat-descr cat-bouq cat-bouq cat-bouq cat-bouq . .'
@@ -185,7 +226,6 @@ h2.main-header {
     flex-wrap: wrap;
     align-content: space-between;
 
-    width: 566px;
     height: 134px;
 
     text-align: justify;
@@ -206,10 +246,11 @@ h2.main-header {
 
     position: relative;
 
-    width: 540px;
+    width: 500px;
     height: 310px;
 
     top: -60px;
+    left: -133px;
 
     padding: 30px 30px 30px 50px;
 }
@@ -219,10 +260,10 @@ h2.main-header {
 
     position: relative;
 
-    width: 445px;
+    width: 500px;
     height: 281px;
 
-    top: -30px;
+    right: -133px;
 
     padding: 30px 30px 30px 50px;
 }
@@ -233,7 +274,7 @@ h2.main-header {
 
     position: relative;
 
-    width: 540px;
+    width: 500px;
     height: 310px;
 
     top: 30px;
@@ -276,7 +317,7 @@ h2.main-header {
     width: 847px;
     height: 280px;
     left: -5vw;
-    top: 1729px;
+    top: 407px;
 
     transform: rotate(32.828deg);
 
@@ -293,7 +334,7 @@ h2.main-header {
     width: 1055px;
     height: 250px;
     right: -1vw;
-    top: 1800px;
+    top: 473px;
 
     transform: rotate(32.828deg);
 
@@ -319,18 +360,18 @@ h2.main-header {
 }
 
 .catalogue__sign-bouquet {
-    top: 1320px;
-    right: 8vw;
+    top: 24px;
+    right: 5vw;
 }
 
 .catalogue__sign-flowers {
-    top: 1568px;
+    top: 245px;
     left: -0.1vw;
 }
 
 .catalogue__sign-extra {
-    top: 1844px;
-    right: -22.2vw;
+    top: 522px;
+    right: -34.2vw;
 }
 
 .popular-section {
@@ -460,8 +501,8 @@ h2.main-header {
 
 .order-section {
     grid-template-areas:
-        '. . or-head or-head or-head or-head or-head . . . . .'
-        '. . . . or-steps or-steps or-steps or-steps or-steps or-steps . .';
+        '. . or-head or-head or-head or-head or-head or-head . . . .'
+        '. . . or-steps or-steps or-steps or-steps or-steps or-steps or-steps . .';
 
     margin-top: 160px;
 }
@@ -489,6 +530,8 @@ h2.main-header {
 
     width: 875px;
     height: 500px;
+
+    padding-left: 36px;
 }
 
 .order-steps::after {
@@ -676,6 +719,8 @@ h2.main-header {
         '. . . . . . . . soc-sign soc-sign . .'
         '. . soc-image soc-image soc-image soc-image soc-image soc-image soc-panel soc-panel . .';
 
+    position: relative;
+
     margin-top: 260px;
     margin-bottom: 200px;
 }
@@ -685,6 +730,10 @@ h2.main-header {
     justify-self: flex-start;
     display: flex;
     gap: 30px;
+
+    position: relative;
+
+    left: -133px;
 }
 
 .social-images img {
@@ -699,7 +748,7 @@ h2.main-header {
     width: 250px;
     height: 163px;
 
-    left: -99px;
+    right: -35px;
     top: 79px;
 }
 
@@ -718,13 +767,15 @@ h2.main-header {
 
 .social__panel {
     grid-area: soc-panel;
-    position: static;
+    position: relative;
     align-self: flex-end;
     flex-direction: row;
     gap: 30px;
 
     width: 180px;
     height: 40px;
+
+    right: -133px;
 }
 
 .social__panel svg,
@@ -734,7 +785,7 @@ h2.main-header {
 }
 
 .social__sign {
-    top: 6103px;
+    bottom: 63px;
     left: -0.5%;
 }
 
@@ -745,7 +796,7 @@ h2.main-header {
     height: 211.054px;
 
     left: 1%;
-    top: 6285px;
+    bottom: -300px;
 
     transform: rotate(21.097deg);
 
@@ -757,11 +808,11 @@ h2.main-header {
 .social__decor-oval-green-center {
     position: absolute;
 
-    width: 879.44px;
+    width: 679.44px;
     height: 211.054px;
 
-    left: 41%;
-    top: 6391px;
+    left: 36%;
+    bottom: -339px;
 
     transform: rotate(21.097deg);
 
@@ -778,7 +829,7 @@ h2.main-header {
     height: 364.216px;
 
     right: -1%;
-    top: 6288px;
+    bottom: -396px;
 
     transform: rotate(32.828deg);
 

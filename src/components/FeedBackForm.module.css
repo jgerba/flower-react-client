@@ -7,7 +7,7 @@
 
     grid-template-areas:
         '. . header header header header form form form form . .'
-        '. . . . . . form form form form . .'
+        '. . header header header header form form form form . .'
         '. . . . sign sign form form form form . .'
         '. . . . sign sign form form form form . .';
 
@@ -17,11 +17,14 @@
 .header-container {
     grid-area: header;
     justify-self: left;
+
+    position: relative;
 }
 
 .header-container h2:nth-child(2) {
-    top: -10px;
+    top: 94px;
     left: 96px;
+    position: absolute;
 }
 
 .header {
@@ -125,11 +128,12 @@
 .sign {
     grid-area: sign;
     justify-self: left;
-    position: relative;
+    position: absolute;
 
     width: 305px;
 
     left: -57px;
+    top: 89px;
 
     font-family: Relative;
     font-size: 160px;

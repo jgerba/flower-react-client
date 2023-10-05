@@ -2,7 +2,11 @@ import classes from './CallPanel.module.css';
 
 function CallPanel(props) {
     return (
-        <aside className={classes.panel}>
+        <aside
+            className={`${classes.panel} ${
+                props.className ? props.className : ''
+            }`}
+        >
             <a className={classes.phone} href="tel:+37529-113-69-69">
                 +375 (29) 113-69-69
             </a>

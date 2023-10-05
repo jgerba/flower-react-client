@@ -27,19 +27,27 @@ import classes from './Home.module.css';
 function HomePage() {
     return (
         <main className={classes.main}>
-            <section className={classes['title-section']}>
-                <h2 className={classes['main-header']}>lower</h2>
-                <h1 className={classes['main-header']}>flower</h1>
-                <p className={classes.slogan}>
-                    Создаём для тех, кто ценит свежесть и изящество цветка
-                </p>
-                <AddressPanel />
-                <SocialPanel className={classes['title__soc-panel']} />
-                <CallPanel />
-                <ShopCart />
-                <MenuBtn className={classes['title-catalogue-btn']}>
-                    смотреть каталог
-                </MenuBtn>
+            <section
+                className={`${classes['section']} ${classes['title-section']}`}
+            >
+                <div className={classes['title__header-section']}>
+                    <h2 className={classes['main-header']}>lower</h2>
+                    <h1 className={classes['main-header']}>flower</h1>
+                    <p className={classes.slogan}>
+                        Создаём для тех, кто ценит свежесть и изящество цветка
+                    </p>
+                    <MenuBtn className={classes['title-catalogue-btn']}>
+                        смотреть каталог
+                    </MenuBtn>
+                </div>
+
+                <aside className={classes['title__extra-info-panel']}>
+                    <AddressPanel className={classes['title__addr-panel']} />
+                    <SocialPanel className={classes['title__soc-panel']} />
+                    <CallPanel className={classes['title__call-panel']} />
+                    <ShopCart className={classes['title__shop-cart']} />
+                </aside>
+
                 <div className={classes['decor-flower']}></div>
                 <div className={classes['decor-flower-back']}></div>
                 <div className={classes['decor-flower-shadow']}></div>
