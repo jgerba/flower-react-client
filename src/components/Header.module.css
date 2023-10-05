@@ -1,27 +1,21 @@
 .header {
-    padding: 20px 8%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    grid-template-areas: '. . . nav nav nav nav nav nav . . .';
+
+    height: 80px;
 }
 
 .nav {
-    width: 80%;
-    height: 80px;
-
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.56px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
+    grid-area: nav;
 }
 
 .ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
-    width: 90%;
     height: 80px;
 }
 

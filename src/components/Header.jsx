@@ -11,10 +11,6 @@ function Header() {
             <nav className={classes.nav}>
                 <ul className={classes.ul}>
                     <Logo />
-                    <NavLink className={`${classes.logo} `} to="/" end>
-                        <p className={classes['logo-L']}>l</p>
-                        <p className={classes['logo-F']}>f</p>
-                    </NavLink>
                     <NavLink className={classes.link} to="/catalogue">
                         КАТАЛОГ
                     </NavLink>
