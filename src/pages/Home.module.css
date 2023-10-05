@@ -250,7 +250,6 @@ h2.main-header {
     height: 310px;
 
     top: -60px;
-    left: -133px;
 
     padding: 30px 30px 30px 50px;
 }
@@ -263,13 +262,12 @@ h2.main-header {
     width: 500px;
     height: 281px;
 
-    right: -133px;
-
     padding: 30px 30px 30px 50px;
 }
 
 .catalogue__extra-bouquet {
     grid-area: cat-extra;
+    justify-self: left;
 
     position: relative;
 
