@@ -61,7 +61,7 @@ function HomePage() {
             >
                 <SectionHeader
                     className={classes['catalogue-header']}
-                    homePage={true}
+                    smallHeader={true}
                 >
                     каталог
                 </SectionHeader>
@@ -149,8 +149,8 @@ function HomePage() {
                 className={`${classes['section']} ${classes['popular-section']}`}
             >
                 <div className={classes['popular__header']}>
-                    <SectionHeader homePage={true}>Популярные</SectionHeader>
-                    <SectionHeader homePage={true}>букеты</SectionHeader>
+                    <SectionHeader smallHeader={true}>Популярные</SectionHeader>
+                    <SectionHeader smallHeader={true}>букеты</SectionHeader>
 
                     <p className={classes['popular-intro']}>
                         Самые любимые композиции наших клиентов
@@ -191,8 +191,10 @@ function HomePage() {
                 className={`${classes['section']} ${classes['order-section']}`}
             >
                 <div className={classes['order__header']}>
-                    <SectionHeader homePage={true}>Как сделать</SectionHeader>
-                    <SectionHeader homePage={true}>заказ</SectionHeader>
+                    <SectionHeader smallHeader={true}>
+                        Как сделать
+                    </SectionHeader>
+                    <SectionHeader smallHeader={true}>заказ</SectionHeader>
                 </div>
 
                 <div className={classes['order-steps']}>
@@ -231,8 +233,8 @@ function HomePage() {
                 className={`${classes['section']} ${classes['special-section']}`}
             >
                 <div className={classes['special-header']}>
-                    <SectionHeader homePage={true}>особенный</SectionHeader>
-                    <SectionHeader homePage={true}>повод?</SectionHeader>
+                    <SectionHeader smallHeader={true}>особенный</SectionHeader>
+                    <SectionHeader smallHeader={true}>повод?</SectionHeader>
                 </div>
                 <div className={classes['special-descr']}>
                     <p>

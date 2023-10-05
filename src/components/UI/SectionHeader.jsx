@@ -2,7 +2,7 @@ import classes from './SectionHeader.module.css';
 
 function SectionHeader(props) {
     let header;
-    props.homePage
+    props.smallHeader
         ? (header = (
               <h2
                   className={`${classes.header} ${
