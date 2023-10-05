@@ -4,19 +4,6 @@
     grid-template-columns: repeat(12, 1fr);
 }
 
-.section-header {
-    position: relative;
-
-    font-size: 100px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
-}
-
 .title-section {
     height: 1244px;
 
@@ -393,11 +380,11 @@ h2.main-header {
     padding-bottom: 86px;
 }
 
-.popular__header .section-header:first-of-type {
+.popular__header h2:first-of-type {
     align-self: flex-start;
 }
 
-.popular__header .section-header:nth-of-type(2) {
+.popular__header h2:nth-of-type(2) {
     top: -21px;
     width: fit-content;
 }

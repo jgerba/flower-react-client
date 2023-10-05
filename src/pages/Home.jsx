@@ -10,6 +10,7 @@ import FeedBackForm from '../components/FeedBackForm';
 import ShopCart from '../components/ShopCart';
 import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
+import SectionHeader from '../components/UI/SectionHeader';
 
 import logo from '../svg/loverFlower.svg';
 import socialSign from '../svg/our social networks.svg';
@@ -58,11 +59,12 @@ function HomePage() {
             <section
                 className={`${classes['section']} ${classes['catalogue-section']}`}
             >
-                <h2
-                    className={`${classes['section-header']} ${classes['catalogue-header']}`}
+                <SectionHeader
+                    className={classes['catalogue-header']}
+                    homePage={true}
                 >
                     каталог
-                </h2>
+                </SectionHeader>
 
                 <div className={classes['cat-descr']}>
                     <p>
@@ -147,8 +149,8 @@ function HomePage() {
                 className={`${classes['section']} ${classes['popular-section']}`}
             >
                 <div className={classes['popular__header']}>
-                    <h2 className={classes['section-header']}>Популярные</h2>
-                    <h2 className={classes['section-header']}>букеты</h2>
+                    <SectionHeader homePage={true}>Популярные</SectionHeader>
+                    <SectionHeader homePage={true}>букеты</SectionHeader>
 
                     <p className={classes['popular-intro']}>
                         Самые любимые композиции наших клиентов
@@ -189,8 +191,8 @@ function HomePage() {
                 className={`${classes['section']} ${classes['order-section']}`}
             >
                 <div className={classes['order__header']}>
-                    <h2 className={classes['section-header']}>Как сделать</h2>
-                    <h2 className={classes['section-header']}>заказ</h2>
+                    <SectionHeader homePage={true}>Как сделать</SectionHeader>
+                    <SectionHeader homePage={true}>заказ</SectionHeader>
                 </div>
 
                 <div className={classes['order-steps']}>
@@ -229,8 +231,8 @@ function HomePage() {
                 className={`${classes['section']} ${classes['special-section']}`}
             >
                 <div className={classes['special-header']}>
-                    <h2 className={classes['section-header']}>особенный</h2>
-                    <h2 className={classes['section-header']}>повод?</h2>
+                    <SectionHeader homePage={true}>особенный</SectionHeader>
+                    <SectionHeader homePage={true}>повод?</SectionHeader>
                 </div>
                 <div className={classes['special-descr']}>
                     <p>
