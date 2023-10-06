@@ -7,3 +7,7 @@
         '. . . . . . . . . . . .'
         '. . . . . . . . . . . .';
 }
+
+.left-filter ul {
+    list-style-type: none;
+}
