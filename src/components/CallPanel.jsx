@@ -2,7 +2,7 @@ import classes from './CallPanel.module.css';
 
 function CallPanel(props) {
     return (
-        <aside
+        <article
             className={`${classes.panel} ${
                 props.className ? props.className : ''
             }`}
@@ -28,7 +28,7 @@ function CallPanel(props) {
                     заказать звонок
                 </button>
             )}
-        </aside>
+        </article>
     );
 }
 

@@ -7,7 +7,7 @@ import classes from './InfoPanel.module.css';
 
 function InfoPanel(props) {
     return (
-        <aside
+        <article
             className={`${classes.panel} ${
                 props.className ? props.className : ''
             }`}
@@ -16,7 +16,7 @@ function InfoPanel(props) {
             <SocialPanel className={classes.social} />
             <CallPanel className={classes.call} />
             <ShopCart className={classes.cart} />
-        </aside>
+        </article>
     );
 }
 

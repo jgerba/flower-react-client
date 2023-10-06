@@ -5,7 +5,7 @@ import classes from './FeedBackForm.module.css';
 
 function FeedBackForm(props) {
     return (
-        <div
+        <article
             className={`${classes.feedback} ${
                 props.className ? props.className : ''
             }`}
@@ -41,7 +41,7 @@ function FeedBackForm(props) {
                 src={sign}
                 alt="Have any questions?"
             />
-        </div>
+        </article>
     );
 }
 
