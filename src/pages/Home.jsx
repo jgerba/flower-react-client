@@ -13,7 +13,7 @@ import OrderStep from '../components/UI/OrderStep';
 import SectionHeader from '../components/UI/SectionHeader';
 
 import logo from '../svg/loverFlower.svg';
-import socialSign from '../svg/our social networks.svg';
+import socialSign from '../svg/ourSocialNetworks.svg';
 import specialImgGift from '../images/special-1.png';
 import specialImgBouquet from '../images/special-2.png';
 import specialImgCard from '../images/special-3.png';
@@ -32,12 +32,12 @@ function HomePage() {
                 className={`${classes['section']} ${classes['title-section']}`}
             >
                 <div className={classes['title__header-section']}>
-                    <h2 className={classes['main-header']}>lower</h2>
-                    <h1 className={classes['main-header']}>flower</h1>
+                    <h2 className={classes['title__header']}>lower</h2>
+                    <h1 className={classes['title__header']}>flower</h1>
                     <p className={classes.slogan}>
                         Создаём для тех, кто ценит свежесть и изящество цветка
                     </p>
-                    <MenuBtn className={classes['title-catalogue-btn']}>
+                    <MenuBtn className={classes['title__catalogue-btn']}>
                         смотреть каталог
                     </MenuBtn>
                 </div>
@@ -49,24 +49,24 @@ function HomePage() {
                     <ShopCart className={classes['title__shop-cart']} />
                 </aside>
 
-                <div className={classes['decor-flower']}></div>
-                <div className={classes['decor-flower-back']}></div>
-                <div className={classes['decor-flower-shadow']}></div>
-                <div className={classes['title__decor-oval-left']}></div>
-                <div className={classes['title__decor-oval-right']}></div>
+                <div className={classes['title__decor-flower']}></div>
+                <div className={classes['title__decor-flower-back']}></div>
+                <div className={classes['title__decor-flower-shadow']}></div>
+                <div className={classes['title__decor-ellipse-left']}></div>
+                <div className={classes['title__decor-ellipse-right']}></div>
                 <img className={classes['lower-logo']} src={logo} alt="Logo" />
             </section>
             <section
                 className={`${classes['section']} ${classes['catalogue-section']}`}
             >
                 <SectionHeader
-                    className={classes['catalogue-header']}
+                    className={classes['catalogue__header']}
                     smallHeader={true}
                 >
                     каталог
                 </SectionHeader>
 
-                <div className={classes['cat-descr']}>
+                <div className={classes['catalogue__description']}>
                     <p>
                         У нас самый большой выбор цветов, букетов, открыток и
                         подарков. Мы всегда поможем вам подобрать букет для
@@ -78,7 +78,7 @@ function HomePage() {
 
                 <ContentCard className={classes['catalogue__flowers-bouquet']}>
                     <TextHeader>Цветы</TextHeader>
-                    <ul className={classes['catalogue-list']}>
+                    <ul className={classes['catalogue__list']}>
                         <li>Сборные букеты</li>
                         <li>Монобукеты</li>
                         <li>Композиции из цветов</li>
@@ -86,7 +86,7 @@ function HomePage() {
                         <li>свадебные</li>
                     </ul>
                     <NavLink
-                        className={classes['catalogue-nav']}
+                        className={classes['catalogue__link']}
                         to="/catalogue"
                     >
                         смотреть каталог
@@ -98,13 +98,13 @@ function HomePage() {
                         <br />
                         из сухоцветов
                     </TextHeader>
-                    <ul className={classes['catalogue-list']}>
+                    <ul className={classes['catalogue__list']}>
                         <li>букеты</li>
                         <li>для интерьера</li>
                         <li>Композиции</li>
                     </ul>
                     <NavLink
-                        className={classes['catalogue-nav']}
+                        className={classes['catalogue__link']}
                         to="/catalogue"
                     >
                         смотреть каталог
@@ -113,34 +113,36 @@ function HomePage() {
 
                 <ContentCard className={classes['catalogue__extra-bouquet']}>
                     <TextHeader>дополнительно</TextHeader>
-                    <ul className={classes['catalogue-list']}>
+                    <ul className={classes['catalogue__list']}>
                         <li>шары</li>
                         <li>игрушки</li>
                         <li>открытки</li>
                         <li>упаковка</li>
                     </ul>
                     <NavLink
-                        className={classes['catalogue-nav']}
+                        className={classes['catalogue__link']}
                         to="/catalogue"
                     >
                         смотреть каталог
                     </NavLink>
                 </ContentCard>
 
-                <div className={classes['catalogue__decor-oval-left']}></div>
-                <div className={classes['catalogue__decor-oval-right']}></div>
+                <div className={classes['catalogue__decor-ellipse-left']}></div>
+                <div
+                    className={classes['catalogue__decor-ellipse-right']}
+                ></div>
                 <p
-                    className={`${classes['decor-sign']} ${classes['catalogue__sign-bouquet']}`}
+                    className={`${classes['decor-sign']} ${classes['catalogue__bouquet-sign']}`}
                 >
                     букеты
                 </p>
                 <p
-                    className={`${classes['decor-sign']} ${classes['catalogue__sign-flowers']}`}
+                    className={`${classes['decor-sign']} ${classes['catalogue__flowers-sign']}`}
                 >
                     Цветы
                 </p>
                 <p
-                    className={`${classes['decor-sign']} ${classes['catalogue__sign-extra']}`}
+                    className={`${classes['decor-sign']} ${classes['catalogue__extra-sign']}`}
                 >
                     дополнительно
                 </p>
@@ -152,40 +154,39 @@ function HomePage() {
                     <SectionHeader smallHeader={true}>Популярные</SectionHeader>
                     <SectionHeader smallHeader={true}>букеты</SectionHeader>
 
-                    <p className={classes['popular-intro']}>
+                    <p className={classes['popular__description']}>
                         Самые любимые композиции наших клиентов
                     </p>
                 </div>
 
-                <div className={classes['popular-bouquets']}>
+                <div className={classes['popular__bouquets']}>
                     <BouquetCard
-                        className={'popular-card'}
+                        className={classes['popular__card']}
                         title="лучший день"
                         price="167.000 ₽"
                         src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                     />
                     <BouquetCard
-                        className={'popular-card'}
+                        className={classes['popular__card']}
                         title="лучший день"
                         price="167.000 ₽"
                         src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                     />
                     <BouquetCard
-                        className={'popular-card'}
+                        className={classes['popular__card']}
                         title="лучший день"
                         price="167.000 ₽"
                         src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                     />
                 </div>
                 <NavLink
-                    className={classes['popular-catalogue-link']}
+                    className={classes['popular__catalogue-link']}
                     to="/catalogue"
                 >
                     смотреть весь каталог
                 </NavLink>
-                <div className={classes['popular__decor-back']}></div>
-                <div className={classes['popular__decor-oval-left']}></div>
-                <div className={classes['popular__decor-oval-right']}></div>
+                <div className={classes['popular__decor-ellipse-left']}></div>
+                <div className={classes['popular__decor-ellipse-right']}></div>
             </section>
             <section
                 className={`${classes['section']} ${classes['order-section']}`}
@@ -197,9 +198,7 @@ function HomePage() {
                     <SectionHeader smallHeader={true}>заказ</SectionHeader>
                 </div>
 
-                <div className={classes['order-steps']}>
-                    <div className={classes['order-decor-rect']}></div>
-
+                <div className={classes['order__steps']}>
                     <OrderStep step="1">
                         Выберите какие цветы или подарки вы хотите купить
                     </OrderStep>
@@ -222,9 +221,9 @@ function HomePage() {
                         любовью, которой поделились, если вы заказали для друга
                     </OrderStep>
                 </div>
-                <div className={classes['order-back-flower']}></div>
+                <div className={classes['order__back-flower']}></div>
                 <img
-                    className={classes['order-lower-logo']}
+                    className={classes['order__lower-logo']}
                     src={logo}
                     alt="Logo"
                 />
@@ -232,11 +231,11 @@ function HomePage() {
             <section
                 className={`${classes['section']} ${classes['special-section']}`}
             >
-                <div className={classes['special-header']}>
+                <div className={classes['special__header']}>
                     <SectionHeader smallHeader={true}>особенный</SectionHeader>
                     <SectionHeader smallHeader={true}>повод?</SectionHeader>
                 </div>
-                <div className={classes['special-descr']}>
+                <div className={classes['special__description']}>
                     <p>
                         Мы готовы прийти на помощь и собрать уникальный букет,
                         на любой вкус, бюджет и для любого события по вашему
@@ -254,11 +253,11 @@ function HomePage() {
 
                 <img
                     src={specialImgGift}
-                    className={classes['special-img-gift']}
+                    className={classes['special__img-gift']}
                     alt="Подарки"
                 ></img>
 
-                <div className={classes['special-imgs']}>
+                <div className={classes['special__images']}>
                     <img src={specialImgBouquet} alt="Букет цветов"></img>
                     <img src={specialImgCard} alt="Праздничная открытка"></img>
                     <img
@@ -267,45 +266,45 @@ function HomePage() {
                     ></img>
                 </div>
 
-                <MenuBtn className={classes['special-btn']}>
+                <MenuBtn className={classes['special__btn']}>
                     <NavLink to="/contacts">
                         собрать индивидуальный букет
                     </NavLink>
                 </MenuBtn>
+
+                <div className={classes['special__decor-ellipse-red']}></div>
             </section>
             <section className={`${classes['feedback-section']}`}>
-                <FeedBackForm
-                    className={classes['feedback-form']}
-                    message="true"
-                    homePage="true"
-                />
-                <div className={classes['feedback-decor-oval-red']}></div>
-                <div className={classes['feedback-decor-oval-green']}></div>
+                <FeedBackForm message="true" homePage="true" />
+                <div className={classes['feedback__decor-ellipse-red']}></div>
+                <div className={classes['feedback__decor-ellipse-green']}></div>
             </section>
             <section
                 className={`${classes['section']} ${classes['social-section']}`}
             >
-                <div className={classes['social-images']}>
-                    <img src={xmasTree} alt=""></img>
-                    <img src={xmasBouquet} alt=""></img>
-                    <img src={xmasToys} alt=""></img>
-                    <img src={strangeBouquet} alt=""></img>
+                <div className={classes['social__images']}>
+                    <img src={xmasTree} alt="Christmas tree"></img>
+                    <img src={xmasBouquet} alt="Christmas bouquet"></img>
+                    <img src={xmasToys} alt="Christmas toys"></img>
+                    <img src={strangeBouquet} alt="Creative bouquet"></img>
                 </div>
 
-                <div className={classes['social-sign']}>
-                    <img src={socialSign} alt="Our social networks sign" />
+                <div className={classes['social__sign']}>
+                    <img src={socialSign} alt="ourSocialNetworks sign" />
                 </div>
                 <SocialPanel className={classes['social__panel']} />
                 <p
-                    className={`${classes['decor-sign']} ${classes['social__sign']}`}
+                    className={`${classes['decor-sign']} ${classes['social__instagram-sign']}`}
                 >
                     instagram
                 </p>
-                <div className={classes['social__decor-oval-green-left']}></div>
                 <div
-                    className={classes['social__decor-oval-green-center']}
+                    className={classes['social__decor-ellipse-green-left']}
                 ></div>
-                <div className={classes['social__decor-oval-red']}></div>
+                <div
+                    className={classes['social__decor-ellipse-green-center']}
+                ></div>
+                <div className={classes['social__decor-ellipse-red']}></div>
             </section>
         </main>
     );

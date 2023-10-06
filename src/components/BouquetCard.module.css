@@ -6,24 +6,13 @@
     height: auto;
 }
 
-.popular-card {
+.popular__card {
     width: 350px;
 }
 
 .image {
     width: 255px;
     height: 335px;
-}
-
-.popular-card .image {
-    width: 350px;
-    height: 450px;
-
-    filter: grayscale();
-}
-
-.popular-card .image:hover {
-    filter: none;
 }
 
 .title {

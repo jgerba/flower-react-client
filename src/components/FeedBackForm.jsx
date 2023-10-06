@@ -1,6 +1,6 @@
 import MenuBtn from './UI/MenuBtn';
 
-import sign from '../svg/have any questions_.svg';
+import sign from '../svg/haveAnyQuestions.svg';
 import classes from './FeedBackForm.module.css';
 
 function FeedBackForm(props) {
