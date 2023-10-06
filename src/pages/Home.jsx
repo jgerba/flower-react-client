@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
-import AddressPanel from '../components/AddressPanel';
-import CallPanel from '../components/CallPanel';
 import MenuBtn from '../components/UI/MenuBtn';
+import InfoPanel from '../components/InfoPanel';
 import SocialPanel from '../components/SocialPanel';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';
-import ShopCart from '../components/ShopCart';
 import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
 import SectionHeader from '../components/UI/SectionHeader';
@@ -42,12 +40,7 @@ function HomePage() {
                     </MenuBtn>
                 </div>
 
-                <aside className={classes['title__extra-info-panel']}>
-                    <AddressPanel className={classes['title__addr-panel']} />
-                    <SocialPanel className={classes['title__soc-panel']} />
-                    <CallPanel className={classes['title__call-panel']} />
-                    <ShopCart className={classes['title__shop-cart']} />
-                </aside>
+                <InfoPanel className={classes['title__info-panel']} />
 
                 <div className={classes['title__decor-flower']}></div>
                 <div className={classes['title__decor-flower-back']}></div>

@@ -70,38 +70,8 @@ h2.title__header {
     top: 588px;
 }
 
-.title__extra-info-panel {
+.title__info-panel {
     grid-area: title-info;
-
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.title__addr-panel {
-    position: static;
-}
-
-.title__soc-panel {
-    width: 60px;
-    height: 154px;
-
-    margin-top: 158px;
-}
-
-.title__call-panel {
-    right: 0px;
-    bottom: 0px;
-}
-
-.title__call-panel a {
-    text-align: end;
-}
-
-.title__shop-cart {
-    right: 0px;
-    height: 76px;
 }
 
 .title__decor-flower {
