@@ -3,7 +3,6 @@ import MenuBtn from './UI/MenuBtn';
 import classes from './BouquetCard.module.css';
 
 function BouquetCard(props) {
-    console.log(props.src);
     return (
         <div
             className={`${classes.card} ${
