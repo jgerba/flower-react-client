@@ -8,19 +8,22 @@ import classes from './Catalogue.module.css';
 function CataloguePage() {
     return (
         <main className={classes.main}>
-            <ContentCard>
-                <SectionHeader></SectionHeader>
-                <SectionHeader smallHeader={true}></SectionHeader>
+            <ContentCard className={classes.head}>
+                <div className={classes.header}>
+                    <SectionHeader>каталог</SectionHeader>
+                    <SectionHeader smallHeader={true}>букетов</SectionHeader>
+                </div>
                 <p>
                     В нашем магазине самый большой выбор букетов для любых
                     событий:
                 </p>
                 <div className={classes['filter']}></div>
             </ContentCard>
-            <InfoPanel />
-            <div className={classes['sort-menu']}></div>
+            <InfoPanel className={classes['info-panel']} />
+            <div className={classes['sort-menu']}>
+                <p>sort menu</p>
+            </div>
 
-            <section className={classes['goods-section']}></section>
             <ContentCard className={classes['left-filter']}>
                 <ul>
                     <h3>По свету</h3>
@@ -50,6 +53,8 @@ function CataloguePage() {
                     <input id="price" name="price" type="range" />
                 </label>
             </ContentCard>
+
+            <section className={classes.goods}></section>
         </main>
     );
 }
