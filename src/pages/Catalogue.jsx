@@ -2,6 +2,7 @@ import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
 import InfoPanel from '../components/InfoPanel';
 import FilterItem from '../components/FilterItem';
+import RangeSlider from '../components/RangeSlider';
 
 import classes from './Catalogue.module.css';
 
@@ -49,9 +50,11 @@ function CataloguePage() {
                     <FilterItem name="box">в шляпной коробке</FilterItem>
                     <FilterItem name="crate">в ящике</FilterItem>
                 </ul>
-                <label htmlFor="price">
-                    <input id="price" name="price" type="range" />
-                </label>
+                <RangeSlider
+                    onChange={({ min, max }) =>
+                        console.log(`min = ${min}, max = ${max}`)
+                    }
+                />
             </ContentCard>
 
             <section className={classes.goods}></section>
