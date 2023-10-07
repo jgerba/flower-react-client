@@ -90,4 +90,12 @@
 
 .goods {
     grid-area: goods;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bouquet {
+    margin-bottom: 30px;
 }

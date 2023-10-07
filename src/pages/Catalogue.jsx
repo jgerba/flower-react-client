@@ -1,8 +1,11 @@
+import { useId } from 'react';
+
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
 import InfoPanel from '../components/InfoPanel';
 import FilterItem from '../components/FilterItem';
 import RangeSlider from '../components/RangeSlider';
+import BouquetCard from '../components/BouquetCard';
 
 import classes from './Catalogue.module.css';
 
@@ -18,7 +21,7 @@ function CataloguePage() {
                     В нашем магазине самый большой выбор букетов для любых
                     событий:
                 </p>
-                <div className={classes['filter']}></div>
+                <div className={classes['marks-filter']}></div>
             </ContentCard>
             <InfoPanel className={classes['info-panel']} />
             <div className={classes['sort-menu']}>
@@ -61,9 +64,200 @@ function CataloguePage() {
                 </div>
             </ContentCard>
 
-            <section className={classes.goods}></section>
+            <section className={classes.goods}>
+                {items.map(item => (
+                    <BouquetCard
+                        className={classes.bouquet}
+                        key={item.id}
+                        title={item.title}
+                        price={item.price}
+                        src={item.src}
+                        new={item.new}
+                        sale={item.sale}
+                    />
+                ))}
+            </section>
         </main>
     );
 }
 
 export default CataloguePage;
+
+const items = [
+    {
+        id: 1,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 2,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 3,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 4,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 5,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 6,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 7,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 8,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 9,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 10,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 11,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 12,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 13,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 14,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 15,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+    {
+        id: 16,
+        title: 'рубиновые искры',
+        price: 167,
+        src: 'https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666271382_64-mykaleidoscope-ru-p-buket-s-otkritkoi-vnutri-krasivo-67.jpg',
+        descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
+        composition:
+            'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
+        new: false,
+        sale: true,
+    },
+];
