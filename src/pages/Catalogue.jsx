@@ -4,6 +4,7 @@ import InfoPanel from '../components/InfoPanel';
 import FilterItem from '../components/FilterItem';
 import RangeSlider from '../components/RangeSlider';
 import BouquetCard from '../components/BouquetCard';
+import MenuBtn from '../components/UI/MenuBtn';
 
 import classes from './Catalogue.module.css';
 import DropdownMenu from '../components/DropdownMenu';
@@ -57,7 +58,6 @@ function CataloguePage() {
                     <FilterItem name="box">в шляпной коробке</FilterItem>
                     <FilterItem name="crate">в ящике</FilterItem>
                 </ul>
-
                 <div className={classes.slider}>
                     <h3>стоимость</h3>
                     <RangeSlider
@@ -66,6 +66,8 @@ function CataloguePage() {
                         }
                     />
                 </div>
+
+                <MenuBtn blank={true}>Сбросить фильтр</MenuBtn>
             </ContentCard>
 
             <section className={classes.goods}>
