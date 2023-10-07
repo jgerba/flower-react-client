@@ -1,4 +1,6 @@
 .card {
+    position: relative;
+
     display: flex;
     flex-direction: column;
 
@@ -43,5 +45,35 @@
 
 .button {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
+}
+
+.sale-badge,
+.new-badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+
+    right: -15px;
+    top: -15px;
+
+    border-radius: 50%;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #040a0a;
+}
+
+.sale-badge {
+    background-color: #d978ac;
+}
+
+.new-badge {
+    background-color: #31985a;
 }

@@ -20,6 +20,17 @@ function BouquetCard(props) {
             <MenuBtn className={classes.button} blank={true}>
                 В корзину
             </MenuBtn>
+
+            {props.sale && (
+                <div className={classes['sale-badge']}>
+                    <p>sale</p>
+                </div>
+            )}
+            {props.new && (
+                <div className={classes['new-badge']}>
+                    <p>new</p>
+                </div>
+            )}
         </div>
     );
 }
