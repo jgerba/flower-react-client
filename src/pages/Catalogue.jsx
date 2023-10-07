@@ -50,11 +50,15 @@ function CataloguePage() {
                     <FilterItem name="box">в шляпной коробке</FilterItem>
                     <FilterItem name="crate">в ящике</FilterItem>
                 </ul>
-                <RangeSlider
-                    onChange={({ min, max }) =>
-                        console.log(`min = ${min}, max = ${max}`)
-                    }
-                />
+
+                <div className={classes.slider}>
+                    <h3>стоимость</h3>
+                    <RangeSlider
+                        onChange={({ min, max }) =>
+                            console.log(`min = ${min}, max = ${max}`)
+                        }
+                    />
+                </div>
             </ContentCard>
 
             <section className={classes.goods}></section>

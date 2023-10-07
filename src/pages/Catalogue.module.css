@@ -34,8 +34,8 @@
     align-self: center;
 
     font-family: 'Oswald';
-    font-size: 14px;
-    letter-spacing: 0.56px;
+    font-size: 12px;
+    letter-spacing: 0.48px;
     text-transform: uppercase;
 
     color: var(--customWhite);
@@ -57,12 +57,35 @@
 .left-filter {
     grid-area: filter;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     width: 100%;
-    height: 818px;
+    height: 560px;
 }
 
 .left-filter ul {
     list-style-type: none;
+}
+
+.left-filter h3 {
+    margin-bottom: 8px;
+
+    font-family: 'Oswald';
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.left-filter .slider h3 {
+    margin-bottom: 0px;
+}
+
+.slider {
+    position: relative;
 }
 
 .goods {
