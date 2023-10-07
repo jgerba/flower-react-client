@@ -1,8 +1,7 @@
 .cart {
-    position: absolute;
+    position: relative;
 
-    right: 4%;
-    top: 651px;
+    bottom: 0px;
 
     padding: 15px;
 }

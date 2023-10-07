@@ -1,12 +1,9 @@
 .panel {
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 
     width: 260px;
-    top: 30px;
-    right: 4%;
 }
 
 .address,

@@ -1,19 +1,15 @@
 .panel {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
 
-    right: 4%;
-    top: 561px;
+    top: 78px;
 }
 
 .phone,
 .button {
-    font-family: Oswald;
+    font-family: 'Oswald';
     font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 1.6px;
     text-transform: uppercase;
 

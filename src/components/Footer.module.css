@@ -1,9 +1,9 @@
 .footer {
+    position: relative;
+
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas: '. cred cred cat cat bok bok links links adr adr .';
-
-    position: relative;
 
     width: 100%;
     height: 337px;
