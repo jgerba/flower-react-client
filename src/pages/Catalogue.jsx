@@ -36,27 +36,87 @@ function CataloguePage() {
             <ContentCard className={classes['left-filter']}>
                 <ul>
                     <h3>По свету</h3>
-                    <FilterItem name="gentle">нежный</FilterItem>
-                    <FilterItem name="bright">яркие</FilterItem>
+                    <FilterItem
+                        name="gentle"
+                        onCheck={name => console.log(name)}
+                    >
+                        нежный
+                    </FilterItem>
+                    <FilterItem
+                        name="bright"
+                        onCheck={name => console.log(name)}
+                    >
+                        яркие
+                    </FilterItem>
                 </ul>
                 <ul>
                     <h3>По цвету</h3>
-                    <FilterItem name="white">белый</FilterItem>
-                    <FilterItem name="yellow">желтый</FilterItem>
-                    <FilterItem name="green">зеленый</FilterItem>
-                    <FilterItem name="red">красный</FilterItem>
-                    <FilterItem name="orange">оранжевый</FilterItem>
-                    <FilterItem name="pink">розовый</FilterItem>
-                    <FilterItem name="blue">синий</FilterItem>
+                    <FilterItem
+                        name="white"
+                        onCheck={name => console.log(name)}
+                    >
+                        белый
+                    </FilterItem>
+                    <FilterItem
+                        name="yellow"
+                        onCheck={name => console.log(name)}
+                    >
+                        желтый
+                    </FilterItem>
+                    <FilterItem
+                        name="green"
+                        onCheck={name => console.log(name)}
+                    >
+                        зеленый
+                    </FilterItem>
+                    <FilterItem name="red" onCheck={name => console.log(name)}>
+                        красный
+                    </FilterItem>
+                    <FilterItem
+                        name="orange"
+                        onCheck={name => console.log(name)}
+                    >
+                        оранжевый
+                    </FilterItem>
+                    <FilterItem name="pink" onCheck={name => console.log(name)}>
+                        розовый
+                    </FilterItem>
+                    <FilterItem name="blue" onCheck={name => console.log(name)}>
+                        синий
+                    </FilterItem>
                 </ul>
                 <ul>
                     <h3>По формату</h3>
-                    <FilterItem name="bouquet">букет</FilterItem>
-                    <FilterItem name="vase">в вазе</FilterItem>
-                    <FilterItem name="envelope">в конверте</FilterItem>
-                    <FilterItem name="basket">в корзине</FilterItem>
-                    <FilterItem name="box">в шляпной коробке</FilterItem>
-                    <FilterItem name="crate">в ящике</FilterItem>
+                    <FilterItem
+                        name="bouquet"
+                        onCheck={name => console.log(name)}
+                    >
+                        букет
+                    </FilterItem>
+                    <FilterItem name="vase" onCheck={name => console.log(name)}>
+                        в вазе
+                    </FilterItem>
+                    <FilterItem
+                        name="envelope"
+                        onCheck={name => console.log(name)}
+                    >
+                        в конверте
+                    </FilterItem>
+                    <FilterItem
+                        name="basket"
+                        onCheck={name => console.log(name)}
+                    >
+                        в корзине
+                    </FilterItem>
+                    <FilterItem name="box" onCheck={name => console.log(name)}>
+                        в шляпной коробке
+                    </FilterItem>
+                    <FilterItem
+                        name="crate"
+                        onCheck={name => console.log(name)}
+                    >
+                        в ящике
+                    </FilterItem>
                 </ul>
                 <div className={classes.slider}>
                     <h3>стоимость</h3>
