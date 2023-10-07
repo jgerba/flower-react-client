@@ -1,5 +1,3 @@
-import { useId } from 'react';
-
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
 import InfoPanel from '../components/InfoPanel';
@@ -8,6 +6,7 @@ import RangeSlider from '../components/RangeSlider';
 import BouquetCard from '../components/BouquetCard';
 
 import classes from './Catalogue.module.css';
+import DropdownMenu from '../components/DropdownMenu';
 
 function CataloguePage() {
     return (
@@ -23,10 +22,15 @@ function CataloguePage() {
                 </p>
                 <div className={classes['marks-filter']}></div>
             </ContentCard>
+
             <InfoPanel className={classes['info-panel']} />
-            <div className={classes['sort-menu']}>
-                <p>sort menu</p>
-            </div>
+
+            <DropdownMenu
+                className={classes['sort-menu']}
+                onSort={option => {
+                    console.log(option);
+                }}
+            />
 
             <ContentCard className={classes['left-filter']}>
                 <ul>
@@ -103,8 +107,8 @@ const items = [
         descr: 'Завораживающая глубина ваших чувств передана огненными красками этого букета',
         composition:
             'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
-        new: false,
-        sale: true,
+        new: true,
+        sale: false,
     },
     {
         id: 3,
@@ -115,7 +119,7 @@ const items = [
         composition:
             'Гвоздика (Диантус), Леукодендрон, Леукоспермум (Нутан), Лотос, Роза',
         new: false,
-        sale: true,
+        sale: false,
     },
     {
         id: 4,

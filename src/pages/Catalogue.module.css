@@ -47,11 +47,6 @@
 
 .sort-menu {
     grid-area: sort;
-
-    /* TEST */
-    color: white;
-    text-align: center;
-    /* ! */
 }
 
 .left-filter {

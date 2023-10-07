@@ -1,0 +1,28 @@
+.menu {
+    width: 257px;
+    height: 40px;
+
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    background-color: rgba(48, 44, 44, 0.2);
+
+    z-index: 1;
+}
+
+.current-option {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+.current-option p {
+    font-family: 'Oswald';
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
