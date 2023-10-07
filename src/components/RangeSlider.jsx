@@ -79,9 +79,10 @@ const RangeSlider = ({ min = 0, max = 10000, onChange = () => {} }) => {
             <div className={classes.slider}>
                 <div className={classes['slider__track']} />
                 <div ref={range} className={classes['slider__range']} />
-                <div className={classes['slider__left-value']}>{minVal}</div>
-                <div className={classes['slider__right-value']}>{maxVal}</div>
             </div>
+            <p
+                className={classes['slider__value']}
+            >{`Цена: ${minVal} ₽ – ${maxVal} ₽`}</p>
         </div>
     );
 };
