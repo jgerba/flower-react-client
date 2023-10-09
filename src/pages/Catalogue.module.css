@@ -109,7 +109,7 @@
     top: -145px;
     left: -20vw;
 
-    background-image: url('../images/cat_right_flower.png');
+    background-image: url('../images/cat_flower.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -128,7 +128,7 @@
 
     rotate: -79.244deg;
 
-    background-image: url('../images/cat_right_flower.png');
+    background-image: url('../images/cat_flower.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
