@@ -28,36 +28,18 @@
 .checkmark {
     position: absolute;
 
-    height: 18px;
-    width: 18px;
+    height: 12px;
+    width: 12px;
 
-    border: 1px solid var(--customBlack);
-    background-color: var(--customWhite);
-}
+    left: -17px;
+    top: 4px;
 
-.item:hover .checkmark {
-    background-color: var(--customPurple);
+    border: 0.5px solid var(--customWhite);
+    border-radius: 2px;
+
+    background-color: transparent;
 }
 
 .input:checked ~ .checkmark {
-    background-color: var(--customGreen);
-}
-
-.checkmark:after {
-    content: '';
-    position: absolute;
-    display: none;
-
-    top: -1px;
-    left: 4px;
-    width: 5px;
-    height: 12px;
-
-    border: solid var(--customBlack);
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-}
-
-.input:checked ~ .checkmark:after {
-    display: block;
+    background-color: var(--customWhite);
 }
