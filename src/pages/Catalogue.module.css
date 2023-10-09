@@ -2,10 +2,11 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 90px auto;
 
     grid-template-areas:
         '. . head head head head head head . info info .'
-        '. . . . . . . . . sort . .'
+        '. . . . . . . . sort sort . .'
         '. . filter filter goods goods goods goods goods goods . .';
 }
 
@@ -56,12 +57,15 @@
     flex-direction: column;
     justify-content: space-between;
 
-    width: 100%;
-    height: 670px;
+    width: 252px;
+    height: 700px;
+
+    padding: 20px 16px 30px 16px;
 }
 
 .left-filter ul {
     list-style-type: none;
+    margin-left: 18px;
 }
 
 .left-filter h3 {
@@ -81,6 +85,7 @@
 
 .slider {
     position: relative;
+    width: 100%;
 }
 
 .goods {
@@ -88,9 +93,187 @@
 
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    justify-content: space-between;
 }
 
 .bouquet {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+}
+
+.decor-flower-left {
+    position: absolute;
+
+    width: 1073px;
+    height: 812px;
+
+    top: -85px;
+    left: -3vw;
+
+    background-image: url('../images/cat_left_flower.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-right {
+    position: absolute;
+
+    width: 1173px;
+    height: 1012px;
+
+    top: -131px;
+    right: -17vw;
+
+    rotate: -79.244deg;
+
+    background-image: url('../images/cat_right_flower.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-ellipse-purple-top-left {
+    position: absolute;
+
+    width: 704.417px;
+    height: 460.441px;
+
+    top: 148px;
+    left: -3vw;
+
+    border-radius: 504.417px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-top-middle {
+    position: absolute;
+
+    width: 534.992px;
+    height: 356.066px;
+
+    top: 615px;
+    right: 11vw;
+
+    border-radius: 434.992px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-top-right {
+    position: absolute;
+
+    width: 592.696px;
+    height: 380.609px;
+
+    top: -85px;
+    right: -3vw;
+
+    border-radius: 392.696px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-middle {
+    position: absolute;
+
+    width: 604.417px;
+    height: 460.441px;
+
+    top: 815px;
+    left: -4vw;
+
+    border-radius: 504.417px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-middle {
+    position: absolute;
+
+    width: 847.738px;
+    height: 173.928px;
+
+    top: 1520px;
+    left: -9vw;
+
+    border-radius: 747.738px;
+    transform: rotate(-71.859deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-bottom-left {
+    position: absolute;
+
+    width: 199.587px;
+    height: 311.054px;
+
+    bottom: 0px;
+    left: -3vw;
+
+    transform: rotate(21.097deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-bottom-middle {
+    position: absolute;
+
+    width: 979.44px;
+    height: 311.054px;
+
+    bottom: -196px;
+    left: 28vw;
+
+    border-radius: 879.44px;
+    transform: rotate(21.097deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-bottom-right {
+    position: absolute;
+
+    width: 454.93px;
+    height: 464.216px;
+
+    bottom: -105px;
+    right: -9vw;
+
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
 }

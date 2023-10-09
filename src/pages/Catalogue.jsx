@@ -23,16 +23,13 @@ function CataloguePage() {
                 </p>
                 <div className={classes['marks-filter']}></div>
             </ContentCard>
-
             <InfoPanel className={classes['info-panel']} />
-
             <DropdownMenu
                 className={classes['sort-menu']}
                 onSort={option => {
                     console.log(option);
                 }}
             />
-
             <ContentCard className={classes['left-filter']}>
                 <ul>
                     <h3>По свету</h3>
@@ -69,7 +66,10 @@ function CataloguePage() {
                     >
                         зеленый
                     </FilterItem>
-                    <FilterItem name="red" onCheck={name => console.log(name)}>
+                    <FilterItem
+                        name="purple"
+                        onCheck={name => console.log(name)}
+                    >
                         красный
                     </FilterItem>
                     <FilterItem
@@ -129,7 +129,6 @@ function CataloguePage() {
 
                 <MenuBtn blank={true}>Сбросить фильтр</MenuBtn>
             </ContentCard>
-
             <section className={classes.goods}>
                 {items.map(item => (
                     <BouquetCard
@@ -143,6 +142,16 @@ function CataloguePage() {
                     />
                 ))}
             </section>
+            <div className={classes['decor-flower-left']}></div>
+            <div className={classes['decor-flower-right']}></div>
+            <div className={classes['decor-ellipse-purple-top-left']}></div>
+            <div className={classes['decor-ellipse-purple-top-middle']}></div>
+            <div className={classes['decor-ellipse-purple-top-right']}></div>
+            <div className={classes['decor-ellipse-purple-middle']}></div>
+            <div className={classes['decor-ellipse-green-middle']}></div>
+            <div className={classes['decor-ellipse-green-bottom-left']}></div>
+            <div className={classes['decor-ellipse-green-bottom-middle']}></div>
+            <div className={classes['decor-ellipse-purple-bottom-right']}></div>
         </main>
     );
 }
