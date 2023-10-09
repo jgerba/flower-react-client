@@ -1,13 +1,13 @@
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
-import InfoPanel from '../components/InfoPanel';
-import FilterItem from '../components/FilterItem';
-import RangeSlider from '../components/RangeSlider';
+import InfoPanel from '../components/info/InfoPanel';
+import FilterItem from '../components/filter/FilterItem';
+import RangeSlider from '../components/filter/RangeSlider';
 import BouquetCard from '../components/BouquetCard';
 import MenuBtn from '../components/UI/MenuBtn';
+import DropdownMenu from '../components/dropdown/DropdownMenu';
 
 import classes from './Catalogue.module.css';
-import DropdownMenu from '../components/DropdownMenu';
 
 function CataloguePage() {
     return (

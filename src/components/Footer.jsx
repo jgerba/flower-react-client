@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 import Logo from './Logo';
-import AddressPanel from './AddressPanel';
-import SocialPanel from './SocialPanel';
+import AddressPanel from './info/AddressPanel';
+import SocialPanel from './info/SocialPanel';
 
 import classes from './Footer.module.css';
 

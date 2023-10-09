@@ -1,7 +1,7 @@
 import AddressPanel from './AddressPanel';
 import CallPanel from './CallPanel';
 import SocialPanel from './SocialPanel';
-import ShopCart from './ShopCart';
+import ShopCart from '../ShopCart';
 
 import classes from './InfoPanel.module.css';
 

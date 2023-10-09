@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import Logo from './Logo';
-import CallPanel from './CallPanel';
+import CallPanel from './info/CallPanel';
 
 import classes from './Header.module.css';
 

@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 import MenuBtn from '../components/UI/MenuBtn';
-import InfoPanel from '../components/InfoPanel';
-import SocialPanel from '../components/SocialPanel';
+import InfoPanel from '../components/info/InfoPanel';
+import SocialPanel from '../components/info/SocialPanel';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
 import FeedBackForm from '../components/FeedBackForm';

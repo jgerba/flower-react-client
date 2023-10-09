@@ -1,5 +1,5 @@
-import ContentCard from './UI/ContentCard';
-import IconBtn from './UI/IconBtn';
+import ContentCard from '../UI/ContentCard';
+import IconBtn from '../UI/IconBtn';
 
 import classes from './SocialPanel.module.css';
 
