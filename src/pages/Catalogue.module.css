@@ -154,7 +154,7 @@
     height: 460.441px;
 
     top: 148px;
-    left: -3vw;
+    left: -7vw;
 
     border-radius: 504.417px;
     transform: rotate(32.828deg);
@@ -172,7 +172,7 @@
     height: 356.066px;
 
     top: 615px;
-    right: 11vw;
+    right: -3vw;
 
     border-radius: 434.992px;
     transform: rotate(32.828deg);
@@ -189,8 +189,8 @@
     width: 592.696px;
     height: 380.609px;
 
-    top: -85px;
-    right: -3vw;
+    top: -186px;
+    right: -15vw;
 
     border-radius: 392.696px;
     transform: rotate(32.828deg);
@@ -207,7 +207,7 @@
     width: 604.417px;
     height: 460.441px;
 
-    top: 815px;
+    top: 733px;
     left: -4vw;
 
     border-radius: 504.417px;
@@ -225,8 +225,8 @@
     width: 847.738px;
     height: 173.928px;
 
-    top: 1520px;
-    left: -9vw;
+    top: 1420px;
+    left: -12vw;
 
     border-radius: 747.738px;
     transform: rotate(-71.859deg);
@@ -243,8 +243,8 @@
     width: 199.587px;
     height: 311.054px;
 
-    bottom: 0px;
-    left: -3vw;
+    bottom: -124px;
+    left: -12vw;
 
     transform: rotate(21.097deg);
 
@@ -257,7 +257,7 @@
 .decor-ellipse-green-bottom-middle {
     position: absolute;
 
-    width: 979.44px;
+    width: 779.44px;
     height: 311.054px;
 
     bottom: -196px;
@@ -278,7 +278,7 @@
     width: 454.93px;
     height: 464.216px;
 
-    bottom: -105px;
+    bottom: -206px;
     right: -9vw;
 
     transform: rotate(32.828deg);

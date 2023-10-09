@@ -128,8 +128,9 @@ h2.title__header {
 
     width: 358.902px;
     height: 293.047px;
-    left: -33.48px;
-    top: 365.24px;
+
+    left: 14vw;
+    top: 468.24px;
 
     transform: rotate(41.599deg);
     border-radius: 358.902px;
@@ -144,8 +145,9 @@ h2.title__header {
 
     width: 472.65px;
     height: 211.054px;
-    right: 14.89px;
-    top: 236.18px;
+
+    right: 12vw;
+    top: 340.18px;
 
     transform: rotate(-43.21deg);
     border-radius: 472.65px;
@@ -277,6 +279,7 @@ h2.title__header {
 
     width: 847px;
     height: 280px;
+
     left: -5vw;
     top: 407px;
 
@@ -293,15 +296,16 @@ h2.title__header {
     position: absolute;
 
     width: 955px;
-    height: 250px;
+    height: 393px;
+
     right: -1vw;
-    top: 493px;
+    top: 294px;
 
     transform: rotate(32.828deg);
 
     border-radius: 879.44px;
     background-color: var(--customGreen);
-    filter: blur(150px);
+    filter: blur(225px);
 
     z-index: -4;
 }
@@ -697,7 +701,7 @@ h2.title__header {
 
     transform: rotate(32.828deg);
     background-color: var(--customGreen);
-    filter: blur(125px);
+    filter: blur(110px);
 }
 
 /* Social networks section */
@@ -807,15 +811,15 @@ h2.title__header {
 .social__decor-ellipse-purple {
     position: absolute;
 
-    width: 354.93px;
-    height: 364.216px;
+    width: 454.93px;
+    height: 464.216px;
+    right: -6vw;
 
-    right: -1%;
     bottom: -396px;
 
     transform: rotate(32.828deg);
 
     background-color: var(--customPurple);
-    filter: blur(125px);
+    filter: blur(140px);
     z-index: -4;
 }
