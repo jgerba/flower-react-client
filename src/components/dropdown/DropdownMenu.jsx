@@ -18,17 +18,18 @@ function DropdownMenu(props) {
         <div
             className={`${classes.menu} ${
                 props.className ? props.className : ''
-            }`}
+            } ${isOpen ? classes['menu-is-open'] : ''} `}
         >
             <div
                 className={classes['current-option']}
                 onClick={() => setIsOpen(isOpen => !isOpen)}
             >
                 <p>{currentOption}</p>
+                <div className={classes.arrow}></div>
             </div>
 
             {isOpen && (
-                <div className={classes.options}>
+                <div>
                     <DropOption onSelect={option => selectOption(option)}>
                         Сначала дешевые
                     </DropOption>
