@@ -144,6 +144,7 @@ function CataloguePage() {
             </section>
             <div className={classes['decor-flower-left']}></div>
             <div className={classes['decor-flower-right']}></div>
+
             <div className={classes['decor-ellipse-purple-top-left']}></div>
             <div className={classes['decor-ellipse-purple-top-middle']}></div>
             <div className={classes['decor-ellipse-purple-top-right']}></div>

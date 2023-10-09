@@ -1,0 +1,15 @@
+.header {
+    position: relative;
+
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 64px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.white {
+    color: var(--customWhite);
+}

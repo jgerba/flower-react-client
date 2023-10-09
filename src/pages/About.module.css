@@ -1,0 +1,275 @@
+.main {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+
+    margin-left: 11vw;
+    margin-right: 11vw;
+
+    grid-template-areas:
+        ' head head head . . . .'
+        ' . lower lower . . . . '
+        ' . . lower-p lower-p lower-p lower-p lower-p'
+        ' . gts gts gts gts gts gts'
+        ' . order order order order order .'
+        ' . . order-ul order-ul order-ul order-ul order-ul'
+        ' ending ending ending ending ending ending ending'
+        '. end-p end-p end-p end-p . .';
+}
+
+.main p {
+    text-align: justify;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.8px;
+
+    color: var(--customWhite);
+}
+
+.main li {
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 34px;
+    letter-spacing: 0.8px;
+
+    color: var(--customWhite);
+}
+
+.header {
+    grid-area: head;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.lower {
+    grid-area: lower;
+
+    margin-bottom: 400px;
+}
+
+.lower::after {
+    position: absolute;
+    display: block;
+    content: '';
+
+    width: 60px;
+    height: 1px;
+
+    right: 90px;
+
+    background-color: var(--customGreen);
+
+    transform: translateY(-32px);
+}
+
+.lower-p {
+    grid-area: lower-p;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100vw;
+    height: 282px;
+
+    top: -380px;
+
+    padding: 40px 20px 40px 20px;
+}
+
+.lower-p p:first-child {
+    width: 577px;
+
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.lower-p p:nth-child(2) {
+    width: 661px;
+}
+
+.guarantees {
+    grid-area: gts;
+
+    margin-bottom: 100px;
+}
+
+.guarantees h2 {
+    margin-bottom: 20px;
+}
+
+.order {
+    grid-area: order;
+
+    margin-bottom: 20px;
+}
+
+.order-ul {
+    grid-area: order-ul;
+
+    margin-left: 20px;
+    margin-bottom: 160px;
+}
+
+.end {
+    grid-area: ending;
+
+    margin-bottom: 40px;
+}
+
+.end-p {
+    grid-area: end-p;
+
+    margin-bottom: 200px;
+}
+
+.decor-flower-top-left {
+    position: absolute;
+
+    width: 1084.504px;
+    height: 807.365px;
+
+    top: -189px;
+    left: -39vw;
+
+    transform: rotate(16.717deg);
+
+    background-image: url('../images/about.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-top-right {
+    position: absolute;
+
+    width: 928px;
+    height: 690px;
+
+    top: -219px;
+    right: -19vw;
+
+    background-image: url('../images/about.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-bottom {
+    position: absolute;
+
+    width: 1282.404px;
+    height: 954.692px;
+
+    bottom: 81px;
+    right: -34vw;
+
+    transform: scaleX(-1) rotate(29deg);
+
+    background-image: url('../images/about.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-ellipse-top-left {
+    position: absolute;
+
+    width: 274.924px;
+    height: 220.329px;
+
+    top: -170px;
+    left: -16vw;
+
+    border-radius: 274.924px;
+    transform: rotate(-71.859deg);
+
+    background-color: #c8a156;
+    filter: blur(125px);
+
+    z-index: -2;
+}
+
+.decor-ellipse-top-middle {
+    position: absolute;
+
+    width: 293.556px;
+    height: 235.261px;
+
+    top: 551px;
+    left: 15vw;
+
+    border-radius: 293.556px;
+    transform: rotate(-71.859deg);
+
+    background-color: #c8a156;
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-top-right {
+    position: absolute;
+
+    width: 293.556px;
+    height: 235.261px;
+
+    top: 348px;
+    right: 7vw;
+
+    border-radius: 293.556px;
+    transform: rotate(-71.859deg);
+
+    background-color: #c8a156;
+    filter: blur(125px);
+
+    z-index: -2;
+}
+
+.decor-ellipse-bottom-left {
+    position: absolute;
+
+    width: 205.975px;
+    height: 436.521px;
+
+    bottom: -152px;
+    left: -6vw;
+
+    border-radius: 436.521px;
+    transform: rotate(21.097deg);
+
+    background-color: #c8a156;
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-bottom-right {
+    position: absolute;
+
+    width: 354.93px;
+    height: 364.216px;
+
+    bottom: -152px;
+    right: -13vw;
+
+    transform: rotate(32.828deg);
+
+    background-color: #c8a156;
+    filter: blur(125px);
+
+    z-index: -2;
+}
