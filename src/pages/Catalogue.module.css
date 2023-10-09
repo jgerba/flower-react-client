@@ -103,14 +103,14 @@
 .decor-flower-left {
     position: absolute;
 
-    width: 1073px;
-    height: 812px;
+    width: 1373px;
+    height: 811px;
 
-    top: -85px;
-    left: -3vw;
+    top: -145px;
+    left: -20vw;
 
-    background-image: url('../images/cat_left_flower.png');
-    background-size: contain;
+    background-image: url('../images/cat_right_flower.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
