@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+
+import useWindowSize from '../hooks/useWindowSize';
+
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
 import InfoPanel from '../components/info/InfoPanel';
@@ -10,6 +14,17 @@ import DropdownMenu from '../components/dropdown/DropdownMenu';
 import classes from './Catalogue.module.css';
 
 function CataloguePage() {
+    const [showScrollBtn, setShowScrollBtn] = useState();
+    const [scrollY, winWidth, winHeight] = useWindowSize();
+
+    useEffect(() => {
+        if (items.length === 0) return;
+
+        scrollY - winHeight >= 1
+            ? setShowScrollBtn(true)
+            : setShowScrollBtn(false);
+    }, [scrollY, winWidth, winHeight]);
+
     return (
         <main className={classes.main}>
             <ContentCard className={classes.head}>
@@ -142,6 +157,16 @@ function CataloguePage() {
                     />
                 ))}
             </section>
+
+            {showScrollBtn && (
+                <button
+                    className={classes['scroll-btn']}
+                    onClick={() =>
+                        window.scroll({ top: 0, behavior: 'smooth' })
+                    }
+                ></button>
+            )}
+
             <div className={classes['decor-flower-left']}></div>
             <div className={classes['decor-flower-right']}></div>
 
