@@ -1,10 +1,15 @@
 .header {
+    position: fixed;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 80px;
 
-    grid-template-areas: '. . . nav nav nav nav nav nav . . .';
+    grid-template-areas: 'nav nav nav nav nav . info';
 
-    height: 80px;
+    margin-left: 11vw;
+    margin-right: 11vw;
+
+    z-index: 1;
 }
 
 .nav {
@@ -36,4 +41,10 @@
 
     top: 3px;
     left: -4px;
+}
+
+.info-panel {
+    grid-area: info;
+
+    margin-top: 29.7px;
 }

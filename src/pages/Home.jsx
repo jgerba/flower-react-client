@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
 import MenuBtn from '../components/UI/MenuBtn';
-import InfoPanel from '../components/info/InfoPanel';
 import SocialPanel from '../components/info/SocialPanel';
 import TextHeader from '../components/UI/TextHeader';
 import BouquetCard from '../components/BouquetCard';
@@ -39,8 +38,6 @@ function HomePage() {
                         смотреть каталог
                     </MenuBtn>
                 </div>
-
-                <InfoPanel className={classes['title__info-panel']} />
 
                 <div className={classes['title__decor-flower']}></div>
                 <div className={classes['title__decor-flower-back']}></div>

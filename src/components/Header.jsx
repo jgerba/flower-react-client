@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import Logo from './Logo';
-import CallPanel from './info/CallPanel';
+import InfoPanel from './info/InfoPanel';
 
 import classes from './Header.module.css';
 
@@ -49,7 +49,8 @@ function Header() {
                     </NavLink>
                 </ul>
             </nav>
-            {/* <CallPanel mainNav={true} /> */}
+
+            <InfoPanel className={classes['info-panel']} />
         </header>
     );
 }

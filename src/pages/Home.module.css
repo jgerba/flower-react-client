@@ -10,10 +10,9 @@
 
 .title-section {
     height: 1244px;
+    padding-top: 75px;
 
-    grid-template-areas:
-        '. . . title-head title-head title-head title-head title-head title-head title-info title-info .'
-        '. . . title-head title-head title-head title-head title-head title-head . . .';
+    grid-template-areas: '. . . title-head title-head title-head title-head title-head title-head . . .';
 }
 
 .title__header-section {
@@ -68,10 +67,6 @@ h2.title__header {
     position: absolute;
 
     top: 588px;
-}
-
-.title__info-panel {
-    grid-area: title-info;
 }
 
 .title__decor-flower {
