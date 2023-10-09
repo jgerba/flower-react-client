@@ -149,7 +149,7 @@ h2.title__header {
 
     transform: rotate(-43.21deg);
     border-radius: 472.65px;
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(125px);
 
     z-index: -4;
@@ -283,7 +283,7 @@ h2.title__header {
     transform: rotate(32.828deg);
 
     border-radius: 707.545px;
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(150px);
 
     z-index: -4;
@@ -300,7 +300,7 @@ h2.title__header {
     transform: rotate(32.828deg);
 
     border-radius: 879.44px;
-    background-color: #43ffd2;
+    background-color: var(--customGreen);
     filter: blur(150px);
 
     z-index: -4;
@@ -454,7 +454,7 @@ h2.title__header {
 
     transform: rotate(32.828deg);
 
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(148px);
 
     z-index: -4;
@@ -657,7 +657,7 @@ h2.title__header {
 
     transform: rotate(32.828deg);
 
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(130px);
 
     z-index: -4;
@@ -682,7 +682,7 @@ h2.title__header {
     left: 4%;
 
     transform: rotate(32.828deg);
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(125px);
 }
 
@@ -696,7 +696,7 @@ h2.title__header {
     left: 26vw;
 
     transform: rotate(32.828deg);
-    background-color: #43ffd2;
+    background-color: var(--customGreen);
     filter: blur(125px);
 }
 
@@ -815,7 +815,7 @@ h2.title__header {
 
     transform: rotate(32.828deg);
 
-    background-color: #7d2253;
+    background-color: var(--customPurple);
     filter: blur(125px);
     z-index: -4;
 }
