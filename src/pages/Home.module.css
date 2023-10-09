@@ -646,7 +646,7 @@ h2.title__header {
     height: 292px;
 }
 
-.special__decor-ellipse-red {
+.special__decor-ellipse-purple {
     position: absolute;
 
     width: 500px;
@@ -672,7 +672,7 @@ h2.title__header {
     background-color: #0f2222;
 }
 
-.feedback__decor-ellipse-red {
+.feedback__decor-ellipse-purple {
     position: absolute;
 
     width: 350px;
@@ -804,7 +804,7 @@ h2.title__header {
     z-index: -4;
 }
 
-.social__decor-ellipse-red {
+.social__decor-ellipse-purple {
     position: absolute;
 
     width: 354.93px;

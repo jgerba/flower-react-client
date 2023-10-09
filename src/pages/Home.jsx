@@ -271,11 +271,13 @@ function HomePage() {
                     </NavLink>
                 </MenuBtn>
 
-                <div className={classes['special__decor-ellipse-red']}></div>
+                <div className={classes['special__decor-ellipse-purple']}></div>
             </section>
             <section className={`${classes['feedback-section']}`}>
                 <FeedBackForm message="true" homePage="true" />
-                <div className={classes['feedback__decor-ellipse-red']}></div>
+                <div
+                    className={classes['feedback__decor-ellipse-purple']}
+                ></div>
                 <div className={classes['feedback__decor-ellipse-green']}></div>
             </section>
             <section
@@ -303,7 +305,7 @@ function HomePage() {
                 <div
                     className={classes['social__decor-ellipse-green-center']}
                 ></div>
-                <div className={classes['social__decor-ellipse-red']}></div>
+                <div className={classes['social__decor-ellipse-purple']}></div>
             </section>
         </main>
     );
