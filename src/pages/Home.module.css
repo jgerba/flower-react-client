@@ -32,11 +32,10 @@
     position: relative;
     top: 35px;
 
+    font-family: Cormorant;
     text-align: center;
     font-size: 200px;
-    font-style: normal;
     font-weight: 300;
-    line-height: normal;
     letter-spacing: 40px;
     text-transform: uppercase;
 
@@ -58,9 +57,6 @@ h2.title__header {
     text-align: center;
     font-family: 'Oswald';
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 0.4px;
 
     color: var(--customWhite);
@@ -171,9 +167,9 @@ h2.title__header {
 
 .catalogue-section {
     grid-template-areas:
-        '. . cat-head cat-head cat-head cat-head . . . . . .'
-        '. . cat-descr cat-descr cat-descr cat-descr cat-bouq cat-bouq cat-bouq cat-bouq . .'
-        '. . cat-flw cat-flw cat-flw cat-flw cat-extra cat-extra cat-extra cat-extra . .';
+        'cat-head cat-head cat-head cat-head . . .'
+        'cat-descr cat-descr cat-descr . cat-bouq cat-bouq cat-bouq'
+        'cat-flw cat-flw cat-flw cat-extra cat-extra cat-extra cat-extra';
 
     margin-top: 100px;
 }
@@ -211,7 +207,7 @@ h2.title__header {
     position: relative;
 
     width: 500px;
-    height: 310px;
+    height: 280px;
 
     top: -60px;
 
@@ -224,7 +220,7 @@ h2.title__header {
     position: relative;
 
     width: 500px;
-    height: 281px;
+    height: 280px;
 
     padding: 30px 30px 30px 50px;
 }
@@ -236,7 +232,7 @@ h2.title__header {
     position: relative;
 
     width: 500px;
-    height: 310px;
+    height: 280px;
 
     top: 30px;
 
@@ -297,7 +293,7 @@ h2.title__header {
     height: 393px;
 
     right: -1vw;
-    top: 294px;
+    top: 595px;
 
     transform: rotate(32.828deg);
 
@@ -341,9 +337,9 @@ h2.title__header {
 
 .popular-section {
     grid-template-areas:
-        '. . pop-head pop-head pop-head pop-head pop-head pop-head pop-head pop-head . .'
-        '. . pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq . .'
-        '. . pop-btn pop-btn . . . . . . . .';
+        'pop-head pop-head pop-head pop-head pop-head . .'
+        '. pop-bouq pop-bouq pop-bouq pop-bouq pop-bouq .'
+        '. pop-btn pop-btn . . . .';
 
     margin-top: 200px;
 }
@@ -366,8 +362,9 @@ h2.title__header {
 }
 
 .popular__header h2:nth-of-type(2) {
-    top: -21px;
     width: fit-content;
+    right: -60px;
+    top: -21px;
 }
 
 .popular__description {
@@ -419,14 +416,14 @@ h2.title__header {
     left: 3px;
 }
 
-.popular__card .image {
+.popular__card img {
     width: 350px;
     height: 450px;
 
     filter: grayscale();
 }
 
-.popular__card .image:hover {
+.popular__card img:hover {
     filter: none;
 }
 
@@ -436,7 +433,7 @@ h2.title__header {
     width: 900px;
     height: 500px;
     left: -5vw;
-    top: 581px;
+    top: 439px;
 
     transform: rotate(32.828deg);
 
@@ -466,8 +463,8 @@ h2.title__header {
 
 .order-section {
     grid-template-areas:
-        '. . or-head or-head or-head or-head or-head or-head . . . .'
-        '. . . or-steps or-steps or-steps or-steps or-steps or-steps or-steps . .';
+        'or-head or-head or-head or-head or-head or-head .'
+        '. or-steps or-steps or-steps or-steps or-steps or-steps';
 
     margin-top: 160px;
 }
@@ -476,11 +473,11 @@ h2.title__header {
     grid-area: or-head;
     justify-self: flex-start;
 
-    width: 686px;
+    width: 695px;
 }
 
-.order__header .section-header:nth-of-type(2) {
-    top: -26px;
+.order__header h2:nth-of-type(2) {
+    top: -15px;
 
     z-index: -3;
 }
@@ -530,8 +527,8 @@ h2.title__header {
     width: 562px;
     height: 845px;
 
-    top: 162px;
-    left: 0px;
+    top: 17px;
+    left: -8vw;
 
     background-image: url('../images/homeOrderBack.png');
     background-size: cover;
@@ -546,9 +543,9 @@ h2.title__header {
 .special-section {
     row-gap: 30px;
     grid-template-areas:
-        '. . sp-head sp-head sp-head sp-head sp-head sp-head sp-img-gift sp-img-gift . .'
-        '. . sp-descr sp-descr sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs . .'
-        '. . sp-btn sp-btn . . . . . . . .';
+        'sp-head sp-head sp-head sp-head sp-head sp-img-gift sp-img-gift'
+        'sp-descr sp-descr sp-imgs sp-imgs sp-imgs sp-imgs sp-imgs'
+        'sp-btn sp-btn . . . . .';
 
     margin-top: 200px;
 }
@@ -680,8 +677,8 @@ h2.title__header {
     width: 350px;
     height: 350px;
 
-    top: 177px;
-    left: 4%;
+    top: 191px;
+    left: -1vw;
 
     transform: rotate(32.828deg);
     background-color: var(--customPurple);
@@ -706,8 +703,8 @@ h2.title__header {
 
 .social-section {
     grid-template-areas:
-        '. . . . . . . . soc-sign soc-sign . .'
-        '. . soc-image soc-image soc-image soc-image soc-image soc-image soc-panel soc-panel . .';
+        '. . . . . soc-sign soc-sign'
+        'soc-image soc-image soc-image soc-image soc-image soc-image soc-panel';
 
     margin-top: 100px;
     margin-bottom: 200px;
@@ -723,8 +720,8 @@ h2.title__header {
 }
 
 .social__images img {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
 }
 
 .social__sign {
@@ -760,6 +757,8 @@ h2.title__header {
 
     width: 180px;
     height: 40px;
+
+    background-color: transparent;
 }
 
 .social__panel svg,

@@ -11,7 +11,7 @@
     padding-left: 11vw;
     padding-right: 11vw;
 
-    z-index: 1;
+    z-index: 5;
 }
 
 .dark {
@@ -34,9 +34,6 @@
 .link {
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     letter-spacing: 0.56px;
     text-transform: uppercase;
 

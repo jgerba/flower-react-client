@@ -168,12 +168,6 @@ function HomePage() {
                         price={167}
                         src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
                     />
-                    <BouquetCard
-                        className={classes['popular__card']}
-                        title="лучший день"
-                        price={167}
-                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
-                    />
                 </div>
                 <NavLink
                     className={classes['popular__catalogue-link']}

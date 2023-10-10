@@ -2,14 +2,16 @@
     position: relative;
     display: grid;
     justify-items: end;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, max-content);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, max-content);
 
     grid-template-areas:
-        '. . header header header header form form form form . .'
-        '. . header header header header form form form form . .'
-        '. . . . sign sign form form form form . .'
-        '. . . . sign sign form form form form . .';
+        'header header header form form form form'
+        '. sign sign form form form form'
+        '. sign sign form form form form';
+
+    padding-left: 11vw;
+    padding-right: 11vw;
 
     z-index: 1;
 }
@@ -30,10 +32,9 @@
 .header {
     position: relative;
 
+    font-family: 'Cormorant';
     font-size: 100px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: 2px;
     text-transform: uppercase;
 
@@ -47,7 +48,7 @@
     flex-direction: column;
     gap: 10px;
 
-    width: 445px;
+    width: 545px;
 
     margin-top: 80px;
     margin-bottom: 50px;
@@ -127,22 +128,12 @@
 
 .sign {
     grid-area: sign;
-    justify-self: left;
     position: absolute;
 
     width: 305px;
 
-    left: -57px;
+    left: 130px;
     top: 89px;
-
-    font-family: Relative;
-    font-size: 160px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 60px;
-    text-transform: lowercase;
-
-    color: #0e2c2c;
 
     z-index: -3;
 }
