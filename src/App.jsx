@@ -25,13 +25,11 @@ function App() {
                 {
                     path: 'catalogue',
                     element: <CataloguePage />,
-                    children: [
-                        {
-                            path: ':bouquetId',
-                            id: 'bouquet-details',
-                            element: <BouquetPage />,
-                        },
-                    ],
+                },
+                {
+                    path: 'catalogue/:bouquetId',
+                    id: 'bouquet-details',
+                    element: <BouquetPage />,
                 },
                 { path: 'payment', element: <PaymentPage /> },
                 { path: 'about', element: <AboutPage /> },

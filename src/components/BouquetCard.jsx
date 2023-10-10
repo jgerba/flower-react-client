@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import MenuBtn from './UI/MenuBtn';
 
 import classes from './BouquetCard.module.css';
@@ -9,11 +11,14 @@ function BouquetCard(props) {
                 props.className ? props.className : ''
             }`}
         >
-            <img
-                className={classes.image}
-                src={props.src}
-                alt={`Букет ${props.title}`}
-            ></img>
+            <Link to={`/catalogue/${props.id}`}>
+                <img
+                    className={classes.image}
+                    src={props.src}
+                    alt={`Букет ${props.title}`}
+                />
+            </Link>
+
             <p className={classes.title}>{props.title}</p>
             <p className={classes.price}>{`${props.price} ₽`}</p>
             <MenuBtn className={classes.button} blank={true}>
