@@ -1,5 +1,7 @@
 .panel {
-    position: relative;
+    justify-self: end;
+
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: flex-end;

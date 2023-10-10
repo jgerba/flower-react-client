@@ -3,7 +3,10 @@
 
     display: grid;
     justify-items: end;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+
+    padding-left: 11vw;
+    padding-right: 11vw;
 }
 
 /* Main title section */
@@ -12,7 +15,7 @@
     height: 1244px;
     padding-top: 75px;
 
-    grid-template-areas: '. . . title-head title-head title-head title-head title-head title-head . . .';
+    grid-template-areas: 'title-head title-head title-head title-head title-head title-head title-head';
 }
 
 .title__header-section {
