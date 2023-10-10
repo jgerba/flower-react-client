@@ -10,11 +10,11 @@ function InfoPanel(props) {
         <article
             className={`${classes.panel} ${
                 props.className ? props.className : ''
-            }`}
+            } ${props.scrollDown ? classes.shrink : ''}`}
         >
             <AddressPanel className={classes.address} />
             <SocialPanel className={classes.social} />
-            <CallPanel className={classes.call} />
+            <CallPanel className={classes.call} scrollDown={props.scrollDown} />
             <ShopCart className={classes.cart} />
         </article>
     );

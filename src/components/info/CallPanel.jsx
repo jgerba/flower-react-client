@@ -5,13 +5,13 @@ function CallPanel(props) {
         <article
             className={`${classes.panel} ${
                 props.className ? props.className : ''
-            }`}
+            } ${props.scrollDown ? classes['panel-onScroll'] : ''}`}
         >
             <a className={classes.phone} href="tel:+37529-113-69-69">
                 +375 (29) 113-69-69
             </a>
 
-            {props.mainNav || (
+            {props.scrollDown || (
                 <button className={classes.button}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

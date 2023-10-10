@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import useWindowSize from '../hooks/useWindowSize';
 
 import Logo from './Logo';
 import InfoPanel from './info/InfoPanel';
@@ -6,8 +9,17 @@ import InfoPanel from './info/InfoPanel';
 import classes from './Header.module.css';
 
 function Header() {
+    const [scrollDown, setScrollDown] = useState();
+    const [scrollY] = useWindowSize();
+
+    useEffect(() => {
+        scrollY > 110 ? setScrollDown(true) : setScrollDown(false);
+    }, [scrollY]);
+
     return (
-        <header className={classes.header}>
+        <header
+            className={`${classes.header} ${scrollDown ? classes.dark : ''}`}
+        >
             <nav className={classes.nav}>
                 <ul className={classes.ul}>
                     <Logo />
@@ -50,7 +62,12 @@ function Header() {
                 </ul>
             </nav>
 
-            <InfoPanel className={classes['info-panel']} />
+            <InfoPanel
+                scrollDown={scrollDown}
+                className={`${classes['info-panel']} ${
+                    scrollDown ? classes.shrink : ''
+                }`}
+            />
         </header>
     );
 }

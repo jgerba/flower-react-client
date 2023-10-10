@@ -5,13 +5,14 @@
     grid-template-rows: auto 90px auto;
 
     grid-template-areas:
-        'head head head head head . info'
+        'head head head head head . .'
         '. . . . . . sort'
         'filter filter goods goods goods goods goods'
         '. . . . . . scroll-btn';
 
     margin-left: 11vw;
     margin-right: 11vw;
+    padding-top: 80px;
 }
 
 .head {
@@ -48,14 +49,6 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
-}
-
-.info-panel {
-    grid-area: info;
-    justify-self: end;
-
-    position: absolute;
-    top: -49.7px;
 }
 
 .sort-menu {
@@ -135,8 +128,8 @@
     width: 1373px;
     height: 811px;
 
-    top: -145px;
-    left: -25vw;
+    top: -35px;
+    left: -31vw;
 
     background-image: url('../images/cat_flower.png');
     background-size: cover;

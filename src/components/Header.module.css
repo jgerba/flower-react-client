@@ -6,10 +6,14 @@
 
     grid-template-areas: 'nav nav nav nav nav . info';
 
-    margin-left: 11vw;
-    margin-right: 11vw;
+    padding-left: 11vw;
+    padding-right: 11vw;
 
     z-index: 1;
+}
+
+.dark {
+    background-color: var(--customBlack);
 }
 
 .nav {
@@ -47,4 +51,8 @@
     grid-area: info;
 
     margin-top: 29.7px;
+}
+
+.shrink {
+    margin-top: 0px;
 }

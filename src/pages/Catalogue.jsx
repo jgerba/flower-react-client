@@ -4,7 +4,6 @@ import useWindowSize from '../hooks/useWindowSize';
 
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
-import InfoPanel from '../components/info/InfoPanel';
 import FilterItem from '../components/filter/FilterItem';
 import RangeSlider from '../components/filter/RangeSlider';
 import BouquetCard from '../components/BouquetCard';
@@ -38,7 +37,6 @@ function CataloguePage() {
                 </p>
                 <div className={classes['marks-filter']}></div>
             </ContentCard>
-            <InfoPanel className={classes['info-panel']} />
             <DropdownMenu
                 className={classes['sort-menu']}
                 onSort={option => {

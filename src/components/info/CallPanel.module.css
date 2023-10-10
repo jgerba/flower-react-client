@@ -6,6 +6,10 @@
     top: 78px;
 }
 
+.panel-onScroll {
+    top: 0px;
+}
+
 .phone,
 .button {
     font-family: 'Oswald';
