@@ -6,7 +6,7 @@
 
     grid-template-areas:
         'head head head head head . .'
-        '. . . . . . sort'
+        '. . . . . sort sort'
         'filter filter goods goods goods goods goods'
         '. . . . . . scroll-btn';
 

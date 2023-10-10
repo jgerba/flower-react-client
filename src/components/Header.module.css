@@ -40,11 +40,23 @@
     color: var(--customWhite);
 }
 
-.icon {
+.search {
     position: relative;
+    margin-left: 28px;
+}
 
-    top: 3px;
-    left: -4px;
+.search::after {
+    display: block;
+    position: absolute;
+    content: '';
+
+    width: 18px;
+    height: 18px;
+
+    top: 2px;
+    left: -28px;
+
+    background-image: url('../svg/search.svg');
 }
 
 .info-panel {
