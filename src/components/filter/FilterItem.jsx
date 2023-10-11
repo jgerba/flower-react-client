@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classes from './FilterItem.module.css';
 
 function FilterItem(props) {
     const [checked, setChecked] = useState(false);
 
-    function checkItem() {
-        setChecked(state => !state);
+    function checkItem(e) {
+        setChecked(e.target.checked);
+
         props.onCheck(props.name);
     }
+
+    useEffect(() => {
+        if (!checked) return;
+
+        setChecked(false);
+        props.onCancelReset();
+    }, [props.uncheck]);
 
     return (
         <li className={classes.item}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import useWindowSize from '../hooks/useWindowSize';
 import useFetch from '../hooks/use-fetch';
@@ -13,11 +13,34 @@ import DropdownMenu from '../components/dropdown/DropdownMenu';
 
 import classes from './Catalogue.module.css';
 
+const filterInitialState = {
+    gentle: false,
+    bright: false,
+    white: false,
+    yellow: false,
+    green: false,
+    purple: false,
+    orange: false,
+    pink: false,
+    blue: false,
+    bouquet: false,
+    vase: false,
+    envelope: false,
+    basket: false,
+    box: false,
+    crate: false,
+    min: 0,
+    max: 10000,
+};
+
 function CataloguePage() {
     const [showScrollBtn, setShowScrollBtn] = useState();
     const [bouquets, setBouquets] = useState([]);
-    const [sortedBouquets, setSortedBouquets] = useState([]);
     const [sort, setSort] = useState('');
+    const [filter, setFilter] = useState(filterInitialState);
+    const [resetFilter, setResetFilter] = useState(false);
+
+    const ref = useRef();
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
@@ -76,6 +99,24 @@ function CataloguePage() {
             : setShowScrollBtn(false);
     }, [scrollY, winWidth, winHeight]);
 
+    function applyFilterHandler(name) {
+        setFilter(state => {
+            const newState = { ...state };
+            newState[name] = !newState[name];
+            return newState;
+        });
+    }
+
+    function resetFilterHandler() {
+        setFilter(filterInitialState);
+        setResetFilter(true);
+    }
+
+    useEffect(() => {
+        console.log(filter);
+        console.log(resetFilter);
+    }, [filter]);
+
     // function createBouquet(bouquetObj) {
     //     items.map(item =>
     //         sendRequest(
@@ -119,13 +160,17 @@ function CataloguePage() {
                     <h3>По свету</h3>
                     <FilterItem
                         name="gentle"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         нежный
                     </FilterItem>
                     <FilterItem
                         name="bright"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         яркие
                     </FilterItem>
@@ -134,38 +179,58 @@ function CataloguePage() {
                     <h3>По цвету</h3>
                     <FilterItem
                         name="white"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         белый
                     </FilterItem>
                     <FilterItem
                         name="yellow"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         желтый
                     </FilterItem>
                     <FilterItem
                         name="green"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         зеленый
                     </FilterItem>
                     <FilterItem
                         name="purple"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         красный
                     </FilterItem>
                     <FilterItem
                         name="orange"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         оранжевый
                     </FilterItem>
-                    <FilterItem name="pink" onCheck={name => console.log(name)}>
+                    <FilterItem
+                        name="pink"
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
+                    >
                         розовый
                     </FilterItem>
-                    <FilterItem name="blue" onCheck={name => console.log(name)}>
+                    <FilterItem
+                        name="blue"
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
+                    >
                         синий
                     </FilterItem>
                 </ul>
@@ -173,31 +238,49 @@ function CataloguePage() {
                     <h3>По формату</h3>
                     <FilterItem
                         name="bouquet"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         букет
                     </FilterItem>
-                    <FilterItem name="vase" onCheck={name => console.log(name)}>
+                    <FilterItem
+                        name="vase"
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
+                    >
                         в вазе
                     </FilterItem>
                     <FilterItem
                         name="envelope"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         в конверте
                     </FilterItem>
                     <FilterItem
                         name="basket"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         в корзине
                     </FilterItem>
-                    <FilterItem name="box" onCheck={name => console.log(name)}>
+                    <FilterItem
+                        name="box"
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
+                    >
                         в шляпной коробке
                     </FilterItem>
                     <FilterItem
                         name="crate"
-                        onCheck={name => console.log(name)}
+                        onCheck={name => applyFilterHandler(name)}
+                        onCancelReset={() => setResetFilter(false)}
+                        uncheck={resetFilter}
                     >
                         в ящике
                     </FilterItem>
@@ -211,21 +294,30 @@ function CataloguePage() {
                     />
                 </div>
 
-                <MenuBtn blank={true}>Сбросить фильтр</MenuBtn>
+                <MenuBtn blank={true} onClick={resetFilterHandler}>
+                    Сбросить фильтр
+                </MenuBtn>
             </ContentCard>
             <section className={classes.goods}>
-                {bouquets.map(item => (
-                    <BouquetCard
-                        className={classes.bouquet}
-                        key={item._id}
-                        id={item._id}
-                        title={item.title}
-                        price={item.price}
-                        src={item.src}
-                        new={item.new}
-                        sale={item.sale}
-                    />
-                ))}
+                {bouquets.length !== 0 ? (
+                    bouquets.map(item => (
+                        <BouquetCard
+                            className={classes.bouquet}
+                            key={item._id}
+                            id={item._id}
+                            title={item.title}
+                            price={item.price}
+                            src={item.src}
+                            new={item.new}
+                            sale={item.sale}
+                        />
+                    ))
+                ) : (
+                    <p>
+                        Извините :\( по данному запросу ничего нет, но мы
+                        работаем над пополнением ассортимента
+                    </p>
+                )}
             </section>
 
             {showScrollBtn && (
