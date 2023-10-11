@@ -16,18 +16,45 @@ import classes from './Catalogue.module.css';
 function CataloguePage() {
     const [showScrollBtn, setShowScrollBtn] = useState();
     const [bouquets, setBouquets] = useState([]);
+    const [sortedBouquets, setSortedBouquets] = useState([]);
+    const [sort, setSort] = useState('');
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
 
-    // show scroll up btn after scrolling 1 screen down
+    // sort bouquets array with dropdown filter
     useEffect(() => {
-        if (items.length === 0) return;
+        if (bouquets.length === 0) return;
 
-        scrollY - winHeight >= 1
-            ? setShowScrollBtn(true)
-            : setShowScrollBtn(false);
-    }, [scrollY, winWidth, winHeight]);
+        switch (sort) {
+            case 'Сначала дешевые':
+                setBouquets(bouquets => [
+                    ...bouquets.sort((a, b) => a.price - b.price),
+                ]);
+                break;
+            case 'Сначала дорогие':
+                setBouquets(bouquets => [
+                    ...bouquets.sort((a, b) => b.price - a.price),
+                ]);
+                break;
+            case 'Сначала новинки':
+                setBouquets(bouquets => [
+                    ...bouquets.sort((a, b) =>
+                        a.new === b.new ? 0 : a.new ? -1 : 1
+                    ),
+                ]);
+                break;
+            case 'Сначала со скидкой':
+                setBouquets(bouquets => [
+                    ...bouquets.sort((a, b) =>
+                        a.sale === b.sale ? 0 : a.sale ? -1 : 1
+                    ),
+                ]);
+                break;
+            default:
+                throw new Error('Неправильное значение сортировки');
+        }
+    }, [sort]);
 
     // get bouquets data on loading page
     useEffect(() => {
@@ -35,10 +62,19 @@ function CataloguePage() {
     }, []);
 
     function applyBouquetsData(data) {
-        if (!data) return setBouquets([]);
+        if (!data) return;
 
         setBouquets(data);
     }
+
+    // show scroll up btn after scrolling 1 screen down
+    useEffect(() => {
+        if (bouquets.length === 0) return;
+
+        scrollY - winHeight >= 1
+            ? setShowScrollBtn(true)
+            : setShowScrollBtn(false);
+    }, [scrollY, winWidth, winHeight]);
 
     // function createBouquet(bouquetObj) {
     //     items.map(item =>
@@ -76,9 +112,7 @@ function CataloguePage() {
             </ContentCard>
             <DropdownMenu
                 className={classes['sort-menu']}
-                onSort={option => {
-                    console.log(option);
-                }}
+                onSort={option => setSort(option)}
             />
             <ContentCard className={classes['left-filter']}>
                 <ul>
