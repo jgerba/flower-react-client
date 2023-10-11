@@ -15,8 +15,6 @@ function useFetch() {
         setIsLoading(true);
         setError(null);
 
-        console.log(config.body);
-
         fetch(config.url, {
             method: config.method ? config.method : 'GET',
             headers: {
