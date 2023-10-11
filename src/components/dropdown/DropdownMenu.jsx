@@ -6,7 +6,7 @@ import classes from './DropdownMenu.module.css';
 
 function DropdownMenu(props) {
     const [isOpen, setIsOpen] = useState(false);
-    const [currentOption, setCurrentOption] = useState('Сначала дешевые');
+    const [currentOption, setCurrentOption] = useState('По умолчанию');
 
     function selectOption(option) {
         setCurrentOption(option);
@@ -37,10 +37,10 @@ function DropdownMenu(props) {
                         Сначала дорогие
                     </DropOption>
                     <DropOption onSelect={option => selectOption(option)}>
-                        Новинки
+                        Сначала новинки
                     </DropOption>
                     <DropOption onSelect={option => selectOption(option)}>
-                        Со скидкой
+                        Сначала со скидкой
                     </DropOption>
                 </div>
             )}

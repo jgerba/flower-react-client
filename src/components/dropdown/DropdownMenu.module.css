@@ -56,6 +56,14 @@
     background-color: var(--customWhite);
 }
 
+.menu-is-open .arrow {
+    top: 9px;
+}
+
+.menu-is-open .arrow::after {
+    top: 9px;
+}
+
 .current-option p {
     font-family: 'Oswald';
     font-size: 12px;
