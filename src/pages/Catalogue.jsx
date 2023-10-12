@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useWindowSize from '../hooks/useWindowSize';
 import useFetch from '../hooks/use-fetch';
@@ -13,37 +13,27 @@ import DropdownMenu from '../components/dropdown/DropdownMenu';
 
 import classes from './Catalogue.module.css';
 
-const filterInitialState = {
-    gentle: false,
-    bright: false,
-    white: false,
-    yellow: false,
-    green: false,
-    purple: false,
-    orange: false,
-    pink: false,
-    blue: false,
-    bouquet: false,
-    vase: false,
-    envelope: false,
-    basket: false,
-    box: false,
-    crate: false,
-    min: 0,
-    max: 10000,
-};
-
 function CataloguePage() {
     const [showScrollBtn, setShowScrollBtn] = useState();
     const [bouquets, setBouquets] = useState([]);
+    const [bouquetsToRender, setBouquetsToRender] = useState([]);
     const [sort, setSort] = useState('');
-    const [filter, setFilter] = useState(filterInitialState);
+    const [filterArr, setFilterArr] = useState([]);
     const [resetFilter, setResetFilter] = useState(false);
-
-    const ref = useRef();
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
+
+    // get bouquets data on loading page
+    useEffect(() => {
+        sendRequest({ url: '/bouquets' }, applyBouquetsData, false);
+    }, []);
+
+    function applyBouquetsData(data) {
+        if (!data) return;
+        setBouquets(data);
+        setBouquetsToRender(data);
+    }
 
     // sort bouquets array with dropdown filter
     useEffect(() => {
@@ -51,24 +41,24 @@ function CataloguePage() {
 
         switch (sort) {
             case 'Сначала дешевые':
-                setBouquets(bouquets => [
+                setBouquetsToRender(bouquets => [
                     ...bouquets.sort((a, b) => a.price - b.price),
                 ]);
                 break;
             case 'Сначала дорогие':
-                setBouquets(bouquets => [
+                setBouquetsToRender(bouquets => [
                     ...bouquets.sort((a, b) => b.price - a.price),
                 ]);
                 break;
             case 'Сначала новинки':
-                setBouquets(bouquets => [
+                setBouquetsToRender(bouquets => [
                     ...bouquets.sort((a, b) =>
                         a.new === b.new ? 0 : a.new ? -1 : 1
                     ),
                 ]);
                 break;
             case 'Сначала со скидкой':
-                setBouquets(bouquets => [
+                setBouquetsToRender(bouquets => [
                     ...bouquets.sort((a, b) =>
                         a.sale === b.sale ? 0 : a.sale ? -1 : 1
                     ),
@@ -79,15 +69,44 @@ function CataloguePage() {
         }
     }, [sort]);
 
-    // get bouquets data on loading page
+    // push filter option to filterArr
+    // remove if it exists
+    function applyFilterHandler(name) {
+        setFilterArr(state => {
+            const newState = [...state];
+            const index = newState.indexOf(name);
+
+            index !== -1 ? newState.splice(index, 1) : newState.push(name);
+            return newState;
+        });
+    }
+
+    // filter items with filterArr options
+    // find filter option matches with item.flags
     useEffect(() => {
-        sendRequest({ url: '/bouquets' }, applyBouquetsData, false);
-    }, []);
+        if (bouquets.length === 0) return;
 
-    function applyBouquetsData(data) {
-        if (!data) return;
+        // situation when filter is unchecked and no other filters left
+        if (filterArr.length === 0) return setBouquetsToRender(bouquets);
 
-        setBouquets(data);
+        const newArr = [
+            ...bouquets.filter(item => {
+                if (item.flags.length === 0) return;
+
+                return filterArr.some(option => {
+                    return item.flags.includes(option);
+                });
+            }),
+        ];
+
+        setBouquetsToRender(newArr);
+    }, [filterArr]);
+
+    // reset all checkboxes through props & put filter object to default
+    function resetFilterHandler() {
+        setFilterArr([]);
+        setBouquetsToRender(bouquets);
+        setResetFilter(true);
     }
 
     // show scroll up btn after scrolling 1 screen down
@@ -99,23 +118,10 @@ function CataloguePage() {
             : setShowScrollBtn(false);
     }, [scrollY, winWidth, winHeight]);
 
-    function applyFilterHandler(name) {
-        setFilter(state => {
-            const newState = { ...state };
-            newState[name] = !newState[name];
-            return newState;
-        });
-    }
-
-    function resetFilterHandler() {
-        setFilter(filterInitialState);
-        setResetFilter(true);
-    }
-
-    useEffect(() => {
-        console.log(filter);
-        console.log(resetFilter);
-    }, [filter]);
+    // useEffect(() => {
+    //     console.log(filterArr);
+    //     console.log(resetFilter);
+    // }, [filterArr]);
 
     // function createBouquet(bouquetObj) {
     //     items.map(item =>
@@ -288,6 +294,8 @@ function CataloguePage() {
                 <div className={classes.slider}>
                     <h3>стоимость</h3>
                     <RangeSlider
+                        min={0}
+                        max={10000}
                         onChange={({ min, max }) =>
                             console.log(`min = ${min}, max = ${max}`)
                         }
@@ -300,7 +308,7 @@ function CataloguePage() {
             </ContentCard>
             <section className={classes.goods}>
                 {bouquets.length !== 0 ? (
-                    bouquets.map(item => (
+                    bouquetsToRender.map(item => (
                         <BouquetCard
                             className={classes.bouquet}
                             key={item._id}

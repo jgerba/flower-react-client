@@ -17,7 +17,7 @@ function useWindowSize() {
 
         return () => {
             window.removeEventListener('resize', updateSize);
-            window.addEventListener('scroll', updateSize);
+            window.removeEventListener('scroll', updateSize);
         };
     }, []);
     return windowSize;
