@@ -102,10 +102,9 @@ function CataloguePage() {
         setBouquetsToRender(newArr);
     }, [filterArr]);
 
-    // reset all checkboxes through props & put filter object to default
+    // reset all checkboxes through props & drop filter arr
     function resetFilterHandler() {
         setFilterArr([]);
-        setBouquetsToRender(bouquets);
         setResetFilter(true);
     }
 
@@ -307,7 +306,7 @@ function CataloguePage() {
                 </MenuBtn>
             </ContentCard>
             <section className={classes.goods}>
-                {bouquets.length !== 0 ? (
+                {bouquetsToRender.length !== 0 ? (
                     bouquetsToRender.map(item => (
                         <BouquetCard
                             className={classes.bouquet}
@@ -321,8 +320,8 @@ function CataloguePage() {
                         />
                     ))
                 ) : (
-                    <p>
-                        Извините :\( по данному запросу ничего нет, но мы
+                    <p className={classes.excuse}>
+                        Извините :( по данному запросу ничего нет, но мы
                         работаем над пополнением ассортимента
                     </p>
                 )}

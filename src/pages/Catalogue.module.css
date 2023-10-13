@@ -40,7 +40,8 @@
     left: 273px;
 }
 
-.head p {
+.head p,
+.excuse {
     align-self: center;
 
     font-family: 'Oswald';
@@ -49,6 +50,10 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.excuse {
+    font-size: 16px;
 }
 
 .sort-menu {
