@@ -19,6 +19,7 @@ function CataloguePage() {
     const [bouquetsToRender, setBouquetsToRender] = useState([]);
     const [sort, setSort] = useState('');
     const [filterArr, setFilterArr] = useState([]);
+    const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
     const [resetFilter, setResetFilter] = useState(false);
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
@@ -72,39 +73,51 @@ function CataloguePage() {
     // push filter option to filterArr
     // remove if it exists
     function applyFilterHandler(name) {
+        setResetFilter(false);
         setFilterArr(state => {
             const newState = [...state];
-            const index = newState.indexOf(name);
 
+            const index = newState.indexOf(name);
             index !== -1 ? newState.splice(index, 1) : newState.push(name);
             return newState;
         });
     }
 
-    // filter items with filterArr options
-    // find filter option matches with item.flags
+    // filter items with price range and filterArr options
     useEffect(() => {
         if (bouquets.length === 0) return;
 
-        // situation when filter is unchecked and no other filters left
-        if (filterArr.length === 0) return setBouquetsToRender(bouquets);
+        // situation when filters are droped
+        if (
+            filterArr.length === 0 &&
+            priceFilter.min === 0 &&
+            priceFilter.max === 10000
+        )
+            return setBouquetsToRender(bouquets);
 
         const newArr = [
             ...bouquets.filter(item => {
-                if (item.flags.length === 0) return;
+                const isInPriceRange =
+                    item.price > priceFilter.min &&
+                    item.price < priceFilter.max;
 
+                if (!isInPriceRange) return;
+                if (isInPriceRange && filterArr.length === 0) return true;
+
+                // find filter option matches with item.flags
                 return filterArr.some(option => {
-                    return item.flags.includes(option);
+                    return isInPriceRange && item.flags.includes(option);
                 });
             }),
         ];
 
         setBouquetsToRender(newArr);
-    }, [filterArr]);
+    }, [filterArr, priceFilter]);
 
-    // reset all checkboxes through props & drop filter arr
+    // reset all checkboxes through props & drop filters
     function resetFilterHandler() {
         setFilterArr([]);
+        setPriceFilter({ min: 0, max: 10000 });
         setResetFilter(true);
     }
 
@@ -116,11 +129,6 @@ function CataloguePage() {
             ? setShowScrollBtn(true)
             : setShowScrollBtn(false);
     }, [scrollY, winWidth, winHeight]);
-
-    // useEffect(() => {
-    //     console.log(filterArr);
-    //     console.log(resetFilter);
-    // }, [filterArr]);
 
     // function createBouquet(bouquetObj) {
     //     items.map(item =>
@@ -166,7 +174,6 @@ function CataloguePage() {
                     <FilterItem
                         name="gentle"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         нежный
@@ -174,7 +181,6 @@ function CataloguePage() {
                     <FilterItem
                         name="bright"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         яркие
@@ -185,7 +191,6 @@ function CataloguePage() {
                     <FilterItem
                         name="white"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         белый
@@ -193,7 +198,6 @@ function CataloguePage() {
                     <FilterItem
                         name="yellow"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         желтый
@@ -201,15 +205,13 @@ function CataloguePage() {
                     <FilterItem
                         name="green"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         зеленый
                     </FilterItem>
                     <FilterItem
-                        name="purple"
+                        name="red"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         красный
@@ -217,7 +219,6 @@ function CataloguePage() {
                     <FilterItem
                         name="orange"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         оранжевый
@@ -225,7 +226,6 @@ function CataloguePage() {
                     <FilterItem
                         name="pink"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         розовый
@@ -233,7 +233,6 @@ function CataloguePage() {
                     <FilterItem
                         name="blue"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         синий
@@ -244,7 +243,6 @@ function CataloguePage() {
                     <FilterItem
                         name="bouquet"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         букет
@@ -252,7 +250,6 @@ function CataloguePage() {
                     <FilterItem
                         name="vase"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         в вазе
@@ -260,7 +257,6 @@ function CataloguePage() {
                     <FilterItem
                         name="envelope"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         в конверте
@@ -268,7 +264,6 @@ function CataloguePage() {
                     <FilterItem
                         name="basket"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         в корзине
@@ -276,7 +271,6 @@ function CataloguePage() {
                     <FilterItem
                         name="box"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         в шляпной коробке
@@ -284,7 +278,6 @@ function CataloguePage() {
                     <FilterItem
                         name="crate"
                         onCheck={name => applyFilterHandler(name)}
-                        onCancelReset={() => setResetFilter(false)}
                         uncheck={resetFilter}
                     >
                         в ящике
@@ -295,9 +288,11 @@ function CataloguePage() {
                     <RangeSlider
                         min={0}
                         max={10000}
-                        onChange={({ min, max }) =>
-                            console.log(`min = ${min}, max = ${max}`)
-                        }
+                        onChange={value => {
+                            setResetFilter(false);
+                            setPriceFilter(value);
+                        }}
+                        reset={resetFilter}
                     />
                 </div>
 

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 
 import classes from './RangeSlider.module.css';
 
-const RangeSlider = ({ min, max, onChange = () => {} }) => {
+const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
 
@@ -41,6 +41,15 @@ const RangeSlider = ({ min, max, onChange = () => {} }) => {
     useEffect(() => {
         onChange({ min: minVal, max: maxVal });
     }, [minVal, maxVal]);
+
+    useEffect(() => {
+        if (minVal === min && maxVal === max) return;
+
+        setMinVal(min);
+        setMaxVal(max);
+        minValRef.current = min;
+        maxValRef.current = max;
+    }, [reset]);
 
     return (
         <div className={classes.container}>

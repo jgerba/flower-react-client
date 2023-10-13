@@ -15,7 +15,6 @@ function FilterItem(props) {
         if (!checked) return;
 
         setChecked(false);
-        props.onCancelReset();
     }, [props.uncheck]);
 
     return (
