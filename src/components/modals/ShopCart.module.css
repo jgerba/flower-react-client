@@ -1,0 +1,33 @@
+.cart {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 420px;
+    height: 100%;
+
+    top: 0px;
+    right: 0px;
+
+    padding: 20px 30px;
+
+    background-color: var(--customBlack);
+
+    z-index: 4;
+}
+
+.cancel {
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    top: 30px;
+    right: 30px;
+}
+
+.checkout {
+    width: 100%;
+}
