@@ -25,8 +25,13 @@ function Header() {
     }, [scrollY]);
 
     function searchValueHandler(event) {
-        dispatch(bouqetActions.applySearchValue(event.target.value));
+        dispatch(bouqetActions.applySearchValue(event.target.value.trim()));
         navigate('/search');
+    }
+
+    function resetInput() {
+        setShowInput(false);
+        dispatch(bouqetActions.applySearchValue(''));
     }
 
     return (
@@ -61,7 +66,11 @@ function Header() {
                         </button>
                     )}
                     {showInput && (
-                        <form className={classes['search_form']}>
+                        <form
+                            action=""
+                            className={classes['search_form']}
+                            onSubmit={event => event.preventDefault()}
+                        >
                             <input
                                 className={classes['search_input']}
                                 type="search"
@@ -75,7 +84,7 @@ function Header() {
                                 className={classes['search_reset-btn']}
                                 name="Сброс поиска"
                                 type="reset"
-                                onClick={() => setShowInput(false)}
+                                onClick={resetInput}
                             >
                                 <img src={crossImg} />
                             </button>
