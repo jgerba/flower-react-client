@@ -5,6 +5,7 @@ import useFetch from '../hooks/use-fetch';
 import useWindowSize from '../hooks/useWindowSize';
 
 import BouquetCard from '../components/BouquetCard';
+import ScrollBtn from '../components/ScrollBtn';
 
 import classes from './Search.module.css';
 
@@ -78,14 +79,7 @@ function SearchPage() {
                       )}
             </section>
 
-            {showScrollBtn && (
-                <button
-                    className={classes['scroll-btn']}
-                    onClick={() =>
-                        window.scroll({ top: 0, behavior: 'smooth' })
-                    }
-                ></button>
-            )}
+            {showScrollBtn && <ScrollBtn />}
 
             <div className={classes['decor-ellipse-green-top-left']}></div>
             <div className={classes['decor-ellipse-purple-top-right']}></div>
