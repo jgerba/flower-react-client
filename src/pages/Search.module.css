@@ -6,7 +6,7 @@
         'header header header header header . .'
         'results results results results results results results';
 
-    height: calc(100vh - 337px);
+    min-height: calc(100vh - 337px);
 
     margin-left: 11vw;
     margin-right: 11vw;
@@ -46,6 +46,20 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.scroll-btn {
+    grid-area: top-btn;
+    justify-self: end;
+
+    position: fixed;
+
+    width: 100px;
+    height: 100px;
+
+    bottom: 450px;
+
+    background: url('../svg/up_btn_arrow.svg');
 }
 
 .decor-ellipse-green-top-left {

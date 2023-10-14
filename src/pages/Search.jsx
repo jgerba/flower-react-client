@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import useFetch from '../hooks/use-fetch';
+import useWindowSize from '../hooks/useWindowSize';
 
 import BouquetCard from '../components/BouquetCard';
 
@@ -10,10 +11,12 @@ import classes from './Search.module.css';
 function SearchPage() {
     const [bouquets, setBouquets] = useState([]);
     const [foundBouquets, setFoundBouquets] = useState([]);
+    const [showScrollBtn, setShowScrollBtn] = useState();
 
     const searchValue = useSelector(state => state.bouqets.searchValue);
 
     const { sendRequest, isLoading, error } = useFetch();
+    const [scrollY, winWidth, winHeight] = useWindowSize();
 
     // get bouquets data
     useEffect(() => {
@@ -36,6 +39,15 @@ function SearchPage() {
 
         setFoundBouquets(filteredBouquets);
     }, [searchValue]);
+
+    // show scroll up btn after scrolling 1 screen down
+    useEffect(() => {
+        if (bouquets.length === 0) return;
+
+        scrollY - winHeight >= 1
+            ? setShowScrollBtn(true)
+            : setShowScrollBtn(false);
+    }, [scrollY, winWidth, winHeight]);
 
     return (
         <main className={classes.main}>
@@ -65,6 +77,15 @@ function SearchPage() {
                           </p>
                       )}
             </section>
+
+            {showScrollBtn && (
+                <button
+                    className={classes['scroll-btn']}
+                    onClick={() =>
+                        window.scroll({ top: 0, behavior: 'smooth' })
+                    }
+                ></button>
+            )}
 
             <div className={classes['decor-ellipse-green-top-left']}></div>
             <div className={classes['decor-ellipse-purple-top-right']}></div>
