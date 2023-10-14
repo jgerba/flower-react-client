@@ -5,6 +5,10 @@
     text-transform: uppercase;
 }
 
+.logo:hover {
+    transform: scale(1.1);
+}
+
 .logo-L {
     display: block;
     position: relative;

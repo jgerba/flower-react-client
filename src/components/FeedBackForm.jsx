@@ -16,7 +16,11 @@ function FeedBackForm(props) {
                     <h2 className={classes.header}>вопросы?</h2>
                 </div>
             )}
-            <form action="" className={classes.form}>
+            <form
+                action=""
+                name="Форма обратной связи"
+                className={classes.form}
+            >
                 <p className={classes.descr}>
                     Отправьте ваш вопрос, заказ, предложение или жалобу через
                     форму обратной связи, и наш специалист свяжется с вами в

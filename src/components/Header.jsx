@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
+
 import { bouqetActions } from '../store/bouqets';
 
 import Logo from './Logo';
@@ -14,6 +15,8 @@ import crossImg from '../svg/closeBtn.svg';
 function Header() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const showInfoPanel = useSelector(state => state.style.fullInfoPanel);
 
     const [scrollDown, setScrollDown] = useState();
     const [showInput, setShowInput] = useState(false);
@@ -39,7 +42,9 @@ function Header() {
 
     return (
         <header
-            className={`${classes.header} ${scrollDown ? classes.dark : ''}`}
+            className={`${classes.header} ${
+                showInfoPanel && !scrollDown ? classes.transparent : ''
+            }`}
         >
             <nav className={classes.nav}>
                 <Logo />
@@ -71,14 +76,14 @@ function Header() {
                     {showInput && (
                         <form
                             action=""
+                            name="Форма поиска"
                             className={classes['search_form']}
                             onSubmit={event => event.preventDefault()}
                         >
                             <input
                                 className={classes['search_input']}
                                 type="search"
-                                id="search_input"
-                                name="searchPhrase"
+                                name="Поле поиска"
                                 maxLength="30"
                                 placeholder="Введите свой запрос"
                                 onChange={searchValueHandler}
@@ -97,9 +102,10 @@ function Header() {
             </nav>
 
             <InfoPanel
+                showPanel={showInfoPanel}
                 scrollDown={scrollDown}
                 className={`${classes['info-panel']} ${
-                    scrollDown ? classes.shrink : ''
+                    showInfoPanel && !scrollDown ? classes.show : ''
                 }`}
             />
         </header>

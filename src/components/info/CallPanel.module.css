@@ -3,14 +3,11 @@
     display: flex;
     flex-direction: column;
 
-    top: 78px;
-}
-
-.panel-onScroll {
     top: 0px;
 }
 
-.panel-onScroll::after {
+.show {
+    top: 78px;
 }
 
 .phone,
@@ -47,7 +44,7 @@
 }
 
 .button::after,
-.panel-onScroll::after {
+.panel::after {
     display: block;
     position: absolute;
     content: '';
@@ -55,12 +52,18 @@
     width: 16px;
     height: 16px;
 
-    left: 13px;
-
     background-image: url('../../svg/phone.svg');
 }
 
-.panel-onScroll::after {
+.button::after {
+    left: 13px;
+}
+
+.panel::after {
     left: -24px;
     top: 4px;
+}
+
+.show.panel::after {
+    display: none;
 }

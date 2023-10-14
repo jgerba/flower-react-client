@@ -11,11 +11,13 @@
     padding-left: 11vw;
     padding-right: 11vw;
 
+    background-color: var(--customBlack);
+
     z-index: 5;
 }
 
-.dark {
-    background-color: var(--customBlack);
+.transparent {
+    background-color: transparent;
 }
 
 .nav {
@@ -36,6 +38,10 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.link:hover {
+    color: var(--customGreen);
 }
 
 .search {
@@ -114,9 +120,9 @@
 .info-panel {
     grid-area: info;
 
-    margin-top: 29.7px;
+    margin-top: 0px;
 }
 
-.shrink {
-    margin-top: 0px;
+.show {
+    margin-top: 29.7px;
 }

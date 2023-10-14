@@ -3,19 +3,19 @@
 
     position: absolute;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 
-    height: 700px;
+    height: 80px;
     width: 255px;
 }
 
-.panel.shrink {
-    flex-direction: row;
-    align-items: center;
+.panel.show {
+    flex-direction: column;
+    align-items: flex-end;
 
-    height: 80px;
+    height: 700px;
 }
 
 .social {
@@ -29,14 +29,14 @@
     text-align: end;
 }
 
-.shrink .social {
-    display: none;
+.show .social {
+    display: flex;
 }
 
-.shrink .address {
-    display: none;
+.show .address {
+    display: flex;
 }
 
-.shrink .cart {
-    right: -25px;
+.show .cart {
+    right: 0px;
 }

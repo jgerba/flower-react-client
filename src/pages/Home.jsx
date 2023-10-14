@@ -1,4 +1,8 @@
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { styleActions } from '../store/style';
 
 import MenuBtn from '../components/UI/MenuBtn';
 import SocialPanel from '../components/info/SocialPanel';
@@ -23,6 +27,15 @@ import strangeBouquet from '../images/social4.png';
 import classes from './Home.module.css';
 
 function HomePage() {
+    const dispatch = useDispatch();
+
+    // show full info panel before scrolling
+    // minimize it before redirecting to other pages
+    useEffect(() => {
+        dispatch(styleActions.showInfoPanel());
+        return () => dispatch(styleActions.minimizeInfoPanel());
+    }, []);
+
     return (
         <main className={classes.main}>
             <section

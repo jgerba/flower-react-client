@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
 import useFetch from '../hooks/use-fetch';
+
+import { styleActions } from '../store/style';
 
 import ContentCard from '../components/UI/ContentCard';
 import SectionHeader from '../components/UI/SectionHeader';
@@ -14,6 +17,8 @@ import DropdownMenu from '../components/dropdown/DropdownMenu';
 import classes from './Catalogue.module.css';
 
 function CataloguePage() {
+    const dispatch = useDispatch();
+
     const [showScrollBtn, setShowScrollBtn] = useState();
     const [bouquets, setBouquets] = useState([]);
     const [bouquetsToRender, setBouquetsToRender] = useState([]);
@@ -129,6 +134,13 @@ function CataloguePage() {
             ? setShowScrollBtn(true)
             : setShowScrollBtn(false);
     }, [scrollY, winWidth, winHeight]);
+
+    // show full info panel before scrolling
+    // minimize it before redirecting to other pages
+    useEffect(() => {
+        dispatch(styleActions.showInfoPanel());
+        return () => dispatch(styleActions.minimizeInfoPanel());
+    }, []);
 
     return (
         <main className={classes.main}>
