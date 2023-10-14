@@ -13,19 +13,20 @@ import RangeSlider from '../components/filter/RangeSlider';
 import BouquetCard from '../components/BouquetCard';
 import MenuBtn from '../components/UI/MenuBtn';
 import DropdownMenu from '../components/dropdown/DropdownMenu';
+import ScrollBtn from '../components/ScrollBtn';
 
 import classes from './Catalogue.module.css';
 
 function CataloguePage() {
     const dispatch = useDispatch();
 
-    const [showScrollBtn, setShowScrollBtn] = useState();
     const [bouquets, setBouquets] = useState([]);
     const [bouquetsToRender, setBouquetsToRender] = useState([]);
     const [sort, setSort] = useState('');
     const [filterArr, setFilterArr] = useState([]);
     const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
     const [resetFilter, setResetFilter] = useState(false);
+    const [showScrollBtn, setShowScrollBtn] = useState();
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
@@ -313,14 +314,7 @@ function CataloguePage() {
                 )}
             </section>
 
-            {showScrollBtn && (
-                <button
-                    className={classes['scroll-btn']}
-                    onClick={() =>
-                        window.scroll({ top: 0, behavior: 'smooth' })
-                    }
-                ></button>
-            )}
+            {showScrollBtn && <ScrollBtn />}
 
             <div className={classes['decor-flower-left']}></div>
             <div className={classes['decor-flower-right']}></div>

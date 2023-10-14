@@ -1,0 +1,18 @@
+.btn {
+    position: fixed;
+
+    width: 75px;
+    height: 75px;
+
+    bottom: 450px;
+    right: 75px;
+
+    border-radius: 50%;
+
+    background: rgba(117, 116, 116, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn img {
+    transform: scale(1.5);
+}

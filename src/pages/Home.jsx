@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
+import useWindowSize from '../hooks/useWindowSize';
 
 import { styleActions } from '../store/style';
 
@@ -12,6 +14,7 @@ import FeedBackForm from '../components/FeedBackForm';
 import ContentCard from '../components/UI/ContentCard';
 import OrderStep from '../components/UI/OrderStep';
 import SectionHeader from '../components/UI/SectionHeader';
+import ScrollBtn from '../components/ScrollBtn';
 
 import logo from '../svg/loverFlower.svg';
 import socialSign from '../svg/ourSocialNetworks.svg';
@@ -29,12 +32,22 @@ import classes from './Home.module.css';
 function HomePage() {
     const dispatch = useDispatch();
 
+    const [showScrollBtn, setShowScrollBtn] = useState();
+    const [scrollY, winWidth, winHeight] = useWindowSize();
+
     // show full info panel before scrolling
     // minimize it before redirecting to other pages
     useEffect(() => {
         dispatch(styleActions.showInfoPanel());
         return () => dispatch(styleActions.minimizeInfoPanel());
     }, []);
+
+    // show scroll up btn after scrolling 1 screen down
+    useEffect(() => {
+        scrollY - winHeight >= 1
+            ? setShowScrollBtn(true)
+            : setShowScrollBtn(false);
+    }, [scrollY, winWidth, winHeight]);
 
     return (
         <main className={classes.main}>
@@ -59,6 +72,7 @@ function HomePage() {
                 <div className={classes['title__decor-ellipse-right']}></div>
                 <img className={classes['lower-logo']} src={logo} alt="Logo" />
             </section>
+
             <section
                 className={`${classes['section']} ${classes['catalogue-section']}`}
             >
@@ -150,6 +164,7 @@ function HomePage() {
                     дополнительно
                 </p>
             </section>
+
             <section
                 className={`${classes['section']} ${classes['popular-section']}`}
             >
@@ -191,6 +206,7 @@ function HomePage() {
                 <div className={classes['popular__decor-ellipse-left']}></div>
                 <div className={classes['popular__decor-ellipse-right']}></div>
             </section>
+
             <section
                 className={`${classes['section']} ${classes['order-section']}`}
             >
@@ -231,6 +247,7 @@ function HomePage() {
                     alt="Logo"
                 />
             </section>
+
             <section
                 className={`${classes['section']} ${classes['special-section']}`}
             >
@@ -277,6 +294,7 @@ function HomePage() {
 
                 <div className={classes['special__decor-ellipse-purple']}></div>
             </section>
+
             <section className={`${classes['feedback-section']}`}>
                 <FeedBackForm message="true" homePage="true" />
                 <div
@@ -284,6 +302,7 @@ function HomePage() {
                 ></div>
                 <div className={classes['feedback__decor-ellipse-green']}></div>
             </section>
+
             <section
                 className={`${classes['section']} ${classes['social-section']}`}
             >
@@ -311,6 +330,8 @@ function HomePage() {
                 ></div>
                 <div className={classes['social__decor-ellipse-purple']}></div>
             </section>
+
+            {showScrollBtn && <ScrollBtn />}
         </main>
     );
 }

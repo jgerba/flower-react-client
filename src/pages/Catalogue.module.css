@@ -7,8 +7,7 @@
     grid-template-areas:
         'head head head head head . .'
         '. . . . . sort sort'
-        'filter filter goods goods goods goods goods'
-        '. . . . . . scroll-btn';
+        'filter filter goods goods goods goods goods';
 
     margin-left: 11vw;
     margin-right: 11vw;
@@ -111,20 +110,6 @@
 
 .bouquet {
     margin-bottom: 30px;
-}
-
-.scroll-btn {
-    grid-area: top-btn;
-    justify-self: end;
-
-    position: fixed;
-
-    width: 100px;
-    height: 100px;
-
-    bottom: 450px;
-
-    background: url('../svg/up_btn_arrow.svg');
 }
 
 .decor-flower-left {
