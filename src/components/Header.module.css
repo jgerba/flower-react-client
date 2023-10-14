@@ -20,15 +20,13 @@
 
 .nav {
     grid-area: nav;
-    margin-right: 100px;
-}
 
-.ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     height: 80px;
+    margin-right: 100px;
 }
 
 .link {
@@ -42,6 +40,10 @@
 
 .search {
     position: relative;
+
+    width: 40px;
+    height: 21px;
+
     margin-left: 28px;
 }
 
@@ -57,6 +59,56 @@
     left: -28px;
 
     background-image: url('../svg/search.svg');
+}
+
+.search_form {
+    position: absolute;
+
+    width: 280px;
+    left: -27px;
+    top: -5px;
+}
+
+.search_label {
+    position: absolute;
+
+    left: 20px;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.28px;
+
+    color: #7c7c7c;
+}
+
+.search_input {
+    width: 100%;
+
+    padding: 5px 5px 5px 25px;
+
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid #555;
+    background-color: transparent;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.28px;
+
+    color: #7c7c7c;
+}
+
+.search_input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.search_reset-btn {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+    right: 0px;
+    top: 9px;
 }
 
 .info-panel {
