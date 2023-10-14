@@ -15,6 +15,7 @@ function SearchPage() {
 
     const { sendRequest, isLoading, error } = useFetch();
 
+    // get bouquets data
     useEffect(() => {
         sendRequest({ url: '/bouquets' }, applyBouquetsData, false);
     }, []);
@@ -24,6 +25,8 @@ function SearchPage() {
         setBouquets(data);
     }
 
+    // filter bouqets with search value and render them
+    // if search value is empty reset rendered bouquets
     useEffect(() => {
         if (!searchValue) return setFoundBouquets([]);
 

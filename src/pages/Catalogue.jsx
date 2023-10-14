@@ -25,7 +25,7 @@ function CataloguePage() {
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
 
-    // get bouquets data on loading page
+    // get bouquets data
     useEffect(() => {
         sendRequest({ url: '/bouquets' }, applyBouquetsData, false);
     }, []);
@@ -129,27 +129,6 @@ function CataloguePage() {
             ? setShowScrollBtn(true)
             : setShowScrollBtn(false);
     }, [scrollY, winWidth, winHeight]);
-
-    // function createBouquet(bouquetObj) {
-    //     items.map(item =>
-    //         sendRequest(
-    //             {
-    //                 url: '/bouquet',
-    //                 method: 'POST',
-    //                 body: item,
-    //             },
-    //             data => {
-    //                 console.log(data);
-    //                 setBouquets(prevBouq => {
-    //                     const newBouq = [...prevBouq];
-    //                     newBouq.unshift(data);
-    //                     return newBouq;
-    //                 });
-    //             },
-    //             false
-    //         )
-    //     );
-    // }
 
     return (
         <main className={classes.main}>

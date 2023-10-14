@@ -20,15 +20,18 @@ function Header() {
 
     const [scrollY] = useWindowSize();
 
+    // minimize header after scrolling
     useEffect(() => {
         scrollY > 110 ? setScrollDown(true) : setScrollDown(false);
     }, [scrollY]);
 
+    // add search value to store & redirect to search page
     function searchValueHandler(event) {
         dispatch(bouqetActions.applySearchValue(event.target.value.trim()));
         navigate('/search');
     }
 
+    // reset form input & search value in store
     function resetInput() {
         setShowInput(false);
         dispatch(bouqetActions.applySearchValue(''));
