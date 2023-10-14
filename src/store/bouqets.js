@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const bouqetsSlice = createSlice({
+const bouqetSlice = createSlice({
     name: 'Bouquets',
     initialState: { bouqets: [], searchValue: '' },
     reducers: {
@@ -13,7 +13,5 @@ const bouqetsSlice = createSlice({
     },
 });
 
-export function applyData(data) {}
-
-export const bouqetsActions = bouqetsSlice.actions;
-export default bouqetsSlice.reducer;
+export const bouqetActions = bouqetSlice.actions;
+export default bouqetSlice.reducer;
