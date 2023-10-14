@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
+import { bouqetActions } from '../store/bouqets';
 
 import Logo from './Logo';
 import InfoPanel from './info/InfoPanel';
@@ -12,6 +13,7 @@ import crossImg from '../svg/closeBtn.svg';
 
 function Header() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [scrollDown, setScrollDown] = useState();
     const [showInput, setShowInput] = useState(false);
@@ -22,7 +24,10 @@ function Header() {
         scrollY > 110 ? setScrollDown(true) : setScrollDown(false);
     }, [scrollY]);
 
-    function searchValueHandler(params) {}
+    function searchValueHandler(event) {
+        dispatch(bouqetActions.applySearchValue(event.target.value));
+        navigate('/search');
+    }
 
     return (
         <header
