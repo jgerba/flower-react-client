@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = { bouqets: [], searchValue: '' };
+
 const bouqetSlice = createSlice({
     name: 'Bouquets',
-    initialState: { bouqets: [], searchValue: '' },
+    initialState,
     reducers: {
         applyBouquets(state, action) {
             state.bouqets = action.payload;
