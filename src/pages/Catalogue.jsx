@@ -298,12 +298,7 @@ function CataloguePage() {
                         <BouquetCard
                             className={classes.bouquet}
                             key={item._id}
-                            id={item._id}
-                            title={item.title}
-                            price={item.price}
-                            src={item.src}
-                            new={item.new}
-                            sale={item.sale}
+                            item={item}
                         />
                     ))
                 ) : (

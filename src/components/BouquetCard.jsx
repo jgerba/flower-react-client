@@ -1,36 +1,45 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../store/cart';
 
 import MenuBtn from './UI/MenuBtn';
 
 import classes from './BouquetCard.module.css';
 
-function BouquetCard(props) {
+function BouquetCard({ className, item = {} }) {
+    const dispatch = useDispatch();
+
+    function addToCart() {
+        dispatch(cartActions.addToCart(item));
+    }
+
     return (
-        <div
-            className={`${classes.card} ${
-                props.className ? props.className : ''
-            }`}
-        >
-            <Link to={`/catalogue/${props.id}`}>
+        <div className={`${classes.card} ${className ? className : ''}`}>
+            <Link to={`/catalogue/${item._id}`}>
                 <img
                     className={classes.image}
-                    src={props.src}
-                    alt={`Букет ${props.title}`}
+                    src={item.src}
+                    alt={`Букет ${item.title}`}
                 />
             </Link>
 
-            <p className={classes.title}>{props.title}</p>
-            <p className={classes.price}>{`${props.price} ₽`}</p>
-            <MenuBtn className={classes.button} blank={true}>
+            <p className={classes.title}>{item.title}</p>
+            <p className={classes.price}>{`${item.price} ₽`}</p>
+            <MenuBtn
+                className={classes.button}
+                blank={true}
+                onClick={addToCart}
+            >
                 В корзину
             </MenuBtn>
 
-            {props.sale && (
+            {item.sale && (
                 <div className={classes['sale-badge']}>
                     <p>sale</p>
                 </div>
             )}
-            {props.new && (
+            {item.new && (
                 <div className={classes['new-badge']}>
                     <p>new</p>
                 </div>

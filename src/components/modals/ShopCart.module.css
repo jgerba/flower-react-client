@@ -31,3 +31,14 @@
 .checkout {
     width: 100%;
 }
+
+.goods {
+    position: relative;
+
+    height: 500px;
+    width: 100%;
+}
+
+.item {
+    color: aliceblue;
+}
