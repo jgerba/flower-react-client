@@ -77,6 +77,7 @@ function Header() {
                         <form
                             action=""
                             name="Форма поиска"
+                            autoComplete="off"
                             className={classes['search_form']}
                             onSubmit={event => event.preventDefault()}
                         >
