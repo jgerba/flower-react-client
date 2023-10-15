@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import TextHeader from '../UI/TextHeader';
 import MenuBtn from '../UI/MenuBtn';
+import CartItem from '../CartItem';
 
 import cross from '../../svg/closeCartBtn.svg';
 import classes from './ShopCart.module.css';
@@ -24,9 +25,11 @@ function ShopCart(props) {
 
             <section className={classes.goods}>
                 {itemsToRender.map(item => (
-                    <div key={item._id} className={classes.item}>
-                        <p>{item.title}</p>
-                    </div>
+                    <CartItem
+                        key={item._id}
+                        className={classes.item}
+                        item={item}
+                    />
                 ))}
             </section>
 

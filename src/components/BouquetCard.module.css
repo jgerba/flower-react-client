@@ -13,10 +13,10 @@
 }
 
 .image {
-    object-fit: cover;
-
     width: 255px;
     height: 335px;
+
+    object-fit: cover;
 }
 
 .title {
