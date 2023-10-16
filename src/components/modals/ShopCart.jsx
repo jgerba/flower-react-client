@@ -33,15 +33,24 @@ function ShopCart(props) {
                 ))}
             </section>
 
-            <div className={classes.extra}></div>
-            <div className={classes.total}></div>
+            <section>
+                <div className={classes.extra}></div>
+                <div className={classes.total}>
+                    <p>Предварительный итог: {} руб.</p>
+                    <p>
+                        Чтобы узнать стоимость доставки, перейдите к оформлению
+                        заказа.
+                    </p>
+                </div>
+
+                <MenuBtn className={classes.checkout} blank={true}>
+                    Оформить заказ
+                </MenuBtn>
+            </section>
 
             <button className={classes.cancel} onClick={() => props.onClose()}>
                 <img src={cross} alt="Закрыть корзину" />
             </button>
-            <MenuBtn className={classes.checkout} blank={true}>
-                Оформить заказ
-            </MenuBtn>
         </section>
     );
 }

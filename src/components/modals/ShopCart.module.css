@@ -28,15 +28,21 @@
     right: 30px;
 }
 
+.header {
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #555;
+}
+
 .checkout {
     width: 100%;
 }
 
 .goods {
-    position: relative;
+    position: absolute;
 
-    height: 500px;
-    width: 100%;
+    width: 360px;
+    top: 100px;
 }
 
 .item {

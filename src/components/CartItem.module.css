@@ -12,6 +12,8 @@
 
     padding-top: 20px;
     padding-bottom: 20px;
+
+    border-bottom: 1px solid #555;
 }
 
 .image {
@@ -53,33 +55,21 @@
 .quantity-btns {
     grid-area: btns;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
 
     width: 100px;
     height: 30px;
 
+    color: #555;
     border: 0.5px solid #555;
 }
 
-.quantity-btns button:first-of-type {
-    background-image: url('../svg/minus.svg');
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.quantity-btns button:last-of-type {
-    background-image: url('../svg/plus.svg');
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.quantity-btns button {
+    align-self: flex-end;
 }
 
 .quantity-btns p {
-    text-align: center;
-    color: #555;
 }
 
 .delete-btn {

@@ -1,3 +1,5 @@
+import minus from '../svg/minus.svg';
+import plus from '../svg/plus.svg';
 import classes from './CartItem.module.css';
 
 function CartItem({ item }) {
@@ -8,9 +10,13 @@ function CartItem({ item }) {
             <p className={classes.price}>{`${item.price} ₽`}</p>
 
             <div className={classes['quantity-btns']}>
-                <button>-</button>
+                <button>
+                    <img src={minus} alt="Минус" />
+                </button>
                 <p>{item.inCart}</p>
-                <button>+</button>
+                <button>
+                    <img src={plus} alt="Плюс" />
+                </button>
             </div>
 
             <button className={classes['delete-btn']}>Удалить</button>

@@ -12,6 +12,10 @@ const items = 1;
 function ShopCartWidget(props) {
     const [showCart, setShowCart] = useState(false);
 
+    function toggleCart() {
+        showCart ? setShowCart(false) : setShowCart(true);
+    }
+
     function closeCart() {
         setShowCart(false);
     }
@@ -21,9 +25,7 @@ function ShopCartWidget(props) {
             <button
                 className={classes.cart}
                 data-items={items}
-                onClick={() => {
-                    setShowCart(true);
-                }}
+                onClick={toggleCart}
             >
                 <img src={cart} alt="Корзина" />
             </button>
