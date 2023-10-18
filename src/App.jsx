@@ -12,8 +12,7 @@ import SearchPage from './pages/Search';
 import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
-
-import './App.css';
+import LogIn from './pages/LogIn';
 
 function App() {
     const router = createBrowserRouter([
@@ -39,6 +38,7 @@ function App() {
                 { path: 'search', element: <SearchPage /> },
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
+                { path: 'login', element: <LogIn /> },
             ],
         },
     ]);

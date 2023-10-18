@@ -49,6 +49,9 @@ function Footer() {
                 <NavLink className={classes.header} to="/corporate">
                     для корпоративных <br /> клиентов
                 </NavLink>
+                <NavLink className={classes.header} to="/login">
+                    Вход
+                </NavLink>
             </div>
             <div className={`${classes.column} ${classes.address}`}>
                 <AddressPanel footer={true} />
