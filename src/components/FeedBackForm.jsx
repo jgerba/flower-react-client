@@ -20,6 +20,7 @@ function FeedBackForm(props) {
                 action=""
                 name="Форма обратной связи"
                 className={classes.form}
+                onSubmit={event => event.preventDefault()}
             >
                 <p className={classes.descr}>
                     Отправьте ваш вопрос, заказ, предложение или жалобу через
