@@ -66,6 +66,8 @@ function ShopCart(props) {
             <button className={classes.cancel} onClick={() => props.onClose()}>
                 <img src={cross} alt="Закрыть корзину" />
             </button>
+
+            <div className={classes['decor-ellipse']}></div>
         </section>
     );
 }

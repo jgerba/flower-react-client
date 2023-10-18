@@ -81,3 +81,21 @@
 .checkout {
     width: 100%;
 }
+
+.decor-ellipse {
+    position: absolute;
+
+    width: 504.417px;
+    height: 360.441px;
+
+    top: 246px;
+    right: -17vw;
+
+    border-radius: 504.417px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
