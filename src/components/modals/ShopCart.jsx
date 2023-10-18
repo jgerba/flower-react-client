@@ -25,18 +25,14 @@ function ShopCart(props) {
 
             <section className={classes.goods}>
                 {itemsToRender.map(item => (
-                    <CartItem
-                        key={item._id}
-                        className={classes.item}
-                        item={item}
-                    />
+                    <CartItem key={item._id} item={item} />
                 ))}
             </section>
 
-            <section>
+            <section className={classes['checkout-section']}>
                 <div className={classes.extra}></div>
                 <div className={classes.total}>
-                    <p>Предварительный итог: {} руб.</p>
+                    <strong>Предварительный итог: {} руб.</strong>
                     <p>
                         Чтобы узнать стоимость доставки, перейдите к оформлению
                         заказа.
