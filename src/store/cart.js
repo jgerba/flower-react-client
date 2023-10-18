@@ -1,15 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { cartItems: [] };
+const initialState = { cartItems: [], totalItems: 0 };
 
 const cartSlice = createSlice({
     name: 'Cart',
     initialState,
     reducers: {
         addToCart(state, action) {
-            const index = state.cartItems.findIndex(
-                item => item._id === action.payload._id
-            );
+            const index = findIndex(state.cartItems, action.payload._id);
 
             // add new item to cart
             // if already have an item => +1 to 'inCart' property
@@ -22,9 +20,7 @@ const cartSlice = createSlice({
         },
 
         increaseQuantity(state, action) {
-            const index = state.cartItems.findIndex(
-                item => item._id === action.payload._id
-            );
+            const index = findIndex(state.cartItems, action.payload._id);
 
             // if 'inCart' property is empty => 2 - temporarly - update the base
             state.cartItems[index].inCart
@@ -33,9 +29,7 @@ const cartSlice = createSlice({
         },
 
         decreaseQuantity(state, action) {
-            const index = state.cartItems.findIndex(
-                item => item._id === action.payload._id
-            );
+            const index = findIndex(state.cartItems, action.payload._id);
 
             // if quantity is more than 1 => -1 to quantity
             // else remove position from cart
@@ -46,9 +40,8 @@ const cartSlice = createSlice({
 
         // remove from cart despite of quantity
         removePosition(state, action) {
-            const index = state.cartItems.findIndex(
-                item => item._id === action.payload._id
-            );
+            const index = findIndex(state.cartItems, action.payload._id);
+
             state.cartItems.splice(index, 1);
         },
 
@@ -57,6 +50,17 @@ const cartSlice = createSlice({
         },
     },
 });
+
+function findIndex(items, id) {
+    return items.findIndex(item => item._id === id);
+}
+
+function calculateItems(state) {
+    return state.cartItems.reduce(
+        (sum, item) => sum + item.inCart,
+        state.totalItems
+    );
+}
 
 export const cartActions = cartSlice.actions;
 export default cartSlice.reducer;

@@ -4,9 +4,9 @@ import classes from './CartItem.module.css';
 
 function CartItem({
     item = {},
-    onDelete = () => {},
     onDecrement = () => {},
     onIncrement = () => {},
+    onDelete = () => {},
 }) {
     return (
         <div className={classes.position}>

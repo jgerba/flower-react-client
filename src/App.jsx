@@ -11,6 +11,7 @@ import FaqPage from './pages/Faq';
 import SearchPage from './pages/Search';
 import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
+import Checkout from './pages/Checkout';
 
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
                 { path: 'faq', element: <FaqPage /> },
                 { path: 'search', element: <SearchPage /> },
                 { path: 'corporate', element: <CorporatePage /> },
+                { path: 'checkout', element: <Checkout /> },
             ],
         },
     ]);

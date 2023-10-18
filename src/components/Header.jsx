@@ -25,7 +25,7 @@ function Header() {
 
     // minimize header after scrolling
     useEffect(() => {
-        scrollY > 110 ? setScrollDown(true) : setScrollDown(false);
+        scrollY > 85 ? setScrollDown(true) : setScrollDown(false);
     }, [scrollY]);
 
     // add search value to store & redirect to search page
