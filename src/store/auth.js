@@ -7,7 +7,9 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         logIn(state, action) {
-            document.cookie = `token=${action.payload};path=/`;
+            if (action.payload) {
+                document.cookie = `token=${action.payload};path=/`;
+            }
             state.isAuth = true;
         },
         logOut(state) {

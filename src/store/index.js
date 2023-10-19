@@ -4,6 +4,7 @@ import bouqetReducer from './bouqets';
 import styleReducer from './style';
 import cartReducer from './cart';
 import authReducer from './auth';
+import notifyReducer from './notify';
 
 const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
         style: styleReducer,
         cart: cartReducer,
         auth: authReducer,
+        notify: notifyReducer,
     },
 });
 

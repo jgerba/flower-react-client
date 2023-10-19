@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/use-fetch';
 
 import { authActions } from '../store/auth';
+import { notifyActions } from '../store/notify';
 
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
@@ -32,13 +33,14 @@ function LogIn() {
                     password: formRef.current.password.value,
                 },
             },
-            applyData,
+            applyLogin,
             false
         );
     }
 
-    function applyData(data) {
+    function applyLogin(data) {
         dispatch(authActions.logIn(data.token));
+        dispatch(notifyActions.applyMessage('Успешный вход'));
         navigate('/admins');
     }
 

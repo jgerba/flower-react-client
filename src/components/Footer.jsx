@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getCookie } from '../utils/handleCookies';
@@ -14,13 +14,18 @@ import classes from './Footer.module.css';
 function Footer() {
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.auth.isAuth);
+    const message = useSelector(state => state.notify.message);
 
     useEffect(() => {
         if (isAuth) return;
 
         const token = getCookie();
 
-        token ? dispatch(authActions.logIn()) : dispatch(authActions.logOut());
+        if (token) {
+            dispatch(authActions.logIn());
+        } else {
+            dispatch(authActions.logOut());
+        }
     }, [isAuth]);
 
     return (
@@ -79,6 +84,12 @@ function Footer() {
                 <AddressPanel footer={true} />
                 <SocialPanel className={classes.social} />
             </div>
+
+            {message && (
+                <aside className={classes['info_pop-up']}>
+                    <p>{message}</p>
+                </aside>
+            )}
         </footer>
     );
 }

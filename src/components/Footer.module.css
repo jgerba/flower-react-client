@@ -89,3 +89,15 @@
 
     width: 112px;
 }
+
+.info_pop-up {
+    position: absolute;
+
+    width: 100px;
+    height: 30px;
+
+    right: -10px;
+    top: 0px;
+
+    background-color: var(--customGreen);
+}

@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import useFetch from '../hooks/use-fetch';
 
-import { authActions } from '../store/auth';
+import { notifyActions } from '../store/notify';
 
 import MenuBtn from '../components/UI/MenuBtn';
 
 import classes from './Admins.module.css';
 
 function Admins() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuth = useSelector(state => state.auth.isAuth);
 
@@ -22,8 +23,13 @@ function Admins() {
                 url: '/logout',
                 method: 'POST',
             },
-            () => navigate('/login')
+            applyLogout
         );
+    }
+
+    function applyLogout() {
+        dispatch(notifyActions.applyMessage('Успешный выход'));
+        navigate('/login');
     }
 
     return (
