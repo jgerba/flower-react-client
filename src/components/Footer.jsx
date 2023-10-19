@@ -1,4 +1,9 @@
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getCookie } from '../utils/handleCookies';
+import { authActions } from '../store/auth';
 
 import Logo from './Logo';
 import AddressPanel from './info/AddressPanel';
@@ -7,6 +12,17 @@ import SocialPanel from './info/SocialPanel';
 import classes from './Footer.module.css';
 
 function Footer() {
+    const dispatch = useDispatch();
+    const isAuth = useSelector(state => state.auth.isAuth);
+
+    useEffect(() => {
+        if (isAuth) return;
+
+        const token = getCookie();
+
+        token ? dispatch(authActions.logIn()) : dispatch(authActions.logOut());
+    }, [isAuth]);
+
     return (
         <footer className={classes.footer}>
             <div className={`${classes.column} ${classes.credentials}`}>
@@ -49,9 +65,15 @@ function Footer() {
                 <NavLink className={classes.header} to="/corporate">
                     для корпоративных <br /> клиентов
                 </NavLink>
-                <NavLink className={classes.header} to="/login">
-                    Вход
-                </NavLink>
+                {isAuth ? (
+                    <NavLink className={classes.header} to="/admins">
+                        Кабинет администратора
+                    </NavLink>
+                ) : (
+                    <NavLink className={classes.header} to="/login">
+                        Вход
+                    </NavLink>
+                )}
             </div>
             <div className={`${classes.column} ${classes.address}`}>
                 <AddressPanel footer={true} />

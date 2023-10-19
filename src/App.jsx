@@ -13,6 +13,7 @@ import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
 import LogIn from './pages/LogIn';
+import Admins from './pages/Admins';
 
 function App() {
     const router = createBrowserRouter([
@@ -39,6 +40,7 @@ function App() {
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
                 { path: 'login', element: <LogIn /> },
+                { path: 'admins', element: <Admins /> },
             ],
         },
     ]);

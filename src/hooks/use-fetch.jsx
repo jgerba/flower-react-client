@@ -37,16 +37,6 @@ function useFetch() {
                     return;
                 }
 
-                // if (
-                //     (config.url === '/notes/archive/' &&
-                //         config.method === 'DELETE') ||
-                //     config.url === '/notes/order' ||
-                //     response.status === 204
-                // ) {
-                //     applyData();
-                //     return;
-                // }
-
                 const data = await response.json();
                 applyData(data);
             })

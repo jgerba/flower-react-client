@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+import useFetch from '../hooks/use-fetch';
+
+import { authActions } from '../store/auth';
+
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
 import ContentCard from '../components/UI/ContentCard';
@@ -7,33 +11,51 @@ import ContentCard from '../components/UI/ContentCard';
 import classes from './LogIn.module.css';
 import showPass from '../svg/showPass.svg';
 import hidePass from '../svg/hidePass.svg';
+import { useDispatch } from 'react-redux';
 
 function LogIn() {
-    // const nameRef = useRef();
-
+    const dispatch = useDispatch();
+    const formRef = useRef();
     const [passIsVisible, setPassIsVisible] = useState(false);
+
+    const { sendRequest, isLoading, error } = useFetch();
+
+    function fetchData() {
+        sendRequest(
+            {
+                url: '/login',
+                method: 'POST',
+                body: {
+                    name: formRef.current.login.value,
+                    password: formRef.current.password.value,
+                },
+            },
+            applyData,
+            false
+        );
+    }
+
+    function applyData() {
+        dispatch(authActions.logIn());
+    }
 
     return (
         <main className={classes.main}>
             <ContentCard>
                 <form
+                    ref={formRef}
                     action=""
                     name="Вход для администратора"
                     onSubmit={event => event.preventDefault()}
                     className={classes.form}
-                    autoComplete="off"
                 >
                     <TextHeader>Вход для администратора</TextHeader>
 
                     <label htmlFor="adm-login">Введите ваш логин</label>
                     <input
-                        // ref={nameRef}
-                        // className={`modal_input ${
-                        //     props.error ? 'wrong-input' : ''
-                        // }`}
                         id="adm-login"
                         type="text"
-                        name="Логин администратора"
+                        name="login"
                         placeholder="Логин администратора"
                         required
                         className={classes.input}
@@ -42,13 +64,9 @@ function LogIn() {
 
                     <label htmlFor="adm-pass">Введите ваш пароль</label>
                     <input
-                        // ref={nameRef}
-                        // className={`modal_input ${
-                        //     props.error ? 'wrong-input' : ''
-                        // }`}
                         id="adm-pass"
                         type={passIsVisible ? 'text' : 'password'}
-                        name="Пароль администратора"
+                        name="password"
                         placeholder="Пароль администратора"
                         required
                         className={classes.input}
@@ -69,7 +87,12 @@ function LogIn() {
                         />
                     </button>
 
-                    <MenuBtn className={classes['submit-btn']}>Войти</MenuBtn>
+                    <MenuBtn
+                        className={classes['submit-btn']}
+                        onClick={fetchData}
+                    >
+                        Войти
+                    </MenuBtn>
                 </form>
             </ContentCard>
         </main>
