@@ -1,17 +1,18 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-// import { useDispatch } from 'react-redux';
-// import { authActions } from '../store/auth';
+import { authActions } from '../store/auth';
 
 import { getCookie } from '../utils/handleCookies';
 
 function useFetch() {
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     // const dispatch = useDispatch();
 
-    function sendRequest(config, applyData, auth = true) {
+    function sendRequest(config, applyData = () => {}, auth = true) {
         setIsLoading(true);
         setError(null);
 
@@ -30,9 +31,7 @@ function useFetch() {
                 }
 
                 if (config.url === `/logout`) {
-                    document.cookie =
-                        'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                    // dispatch(authActions.logOut());
+                    dispatch(authActions.logOut());
                     applyData();
                     return;
                 }

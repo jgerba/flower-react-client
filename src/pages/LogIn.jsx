@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import useFetch from '../hooks/use-fetch';
 
@@ -11,10 +13,10 @@ import ContentCard from '../components/UI/ContentCard';
 import classes from './LogIn.module.css';
 import showPass from '../svg/showPass.svg';
 import hidePass from '../svg/hidePass.svg';
-import { useDispatch } from 'react-redux';
 
 function LogIn() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const formRef = useRef();
     const [passIsVisible, setPassIsVisible] = useState(false);
 
@@ -35,8 +37,9 @@ function LogIn() {
         );
     }
 
-    function applyData() {
-        dispatch(authActions.logIn());
+    function applyData(data) {
+        dispatch(authActions.logIn(data.token));
+        navigate('/admins');
     }
 
     return (
