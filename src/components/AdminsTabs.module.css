@@ -2,12 +2,16 @@
     position: fixed;
     display: flex;
     justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
     gap: 50px;
 
     width: 350px;
     height: 50px;
 
-    top: 150px;
+    top: 100px;
+
+    z-index: 3;
 }
 
 .tabs a {

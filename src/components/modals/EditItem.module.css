@@ -1,0 +1,43 @@
+.modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    width: 545px;
+    top: 150px;
+    right: calc(50% - 273px);
+
+    padding: 30px;
+
+    border-radius: 5px;
+    background-color: #0f2222;
+
+    z-index: 4;
+}
+
+.input {
+    height: 60px;
+    width: 100%;
+    padding: 19px 20px 20px 20px;
+
+    border: 1px solid var(--customWhite);
+
+    color: var(--customWhite);
+    background: #0f2222;
+}
+
+.input::placeholder {
+    font-family: 'Oswald';
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: #395959;
+}
+
+.textarea {
+    height: 240px;
+}
