@@ -13,7 +13,9 @@ import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
 import LogIn from './pages/LogIn';
-import Admins from './pages/Admins';
+import Goods from './pages/Goods';
+import Orders from './pages/Orders';
+import Feedback from './pages/Feedback';
 
 function App() {
     const router = createBrowserRouter([
@@ -40,7 +42,9 @@ function App() {
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
                 { path: 'login', element: <LogIn /> },
-                { path: 'admins', element: <Admins /> },
+                { path: 'orders', element: <Orders /> },
+                { path: 'goods', element: <Goods /> },
+                { path: 'feedback', element: <Feedback /> },
             ],
         },
     ]);
