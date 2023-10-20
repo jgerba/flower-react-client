@@ -1,9 +1,0 @@
-.main {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    min-height: calc(100vh - 337px);
-}
