@@ -1,0 +1,30 @@
+.main {
+    position: relative;
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    grid-template-areas:
+        '. . . tabs . . .'
+        '. . goods goods goods . .';
+
+    width: 100vw;
+    min-height: calc(100vh - 337px);
+}
+
+.tabs {
+    grid-area: tabs;
+}
+
+.goods {
+    grid-area: goods;
+
+    margin-top: 300px;
+}
+
+.exit-btn {
+    position: absolute;
+
+    top: 150px;
+    right: 50px;
+}

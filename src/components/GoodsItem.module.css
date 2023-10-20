@@ -1,0 +1,40 @@
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+
+    width: 800px;
+    height: 70px;
+
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.item p {
+    width: 200px;
+
+    text-align: center;
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.84px;
+}
+
+.title {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--customWhite);
+}
+
+.price {
+    color: var(--customGreen);
+}
+
+.descr {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    color: var(--customWhite);
+}
