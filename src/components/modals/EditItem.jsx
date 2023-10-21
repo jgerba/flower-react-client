@@ -1,3 +1,4 @@
+import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';
 
 import classes from './EditItem.module.css';
@@ -10,55 +11,21 @@ function EditItem(props) {
             className={classes.modal}
             onSubmit={event => event.preventDefault()}
         >
-            <label htmlFor="title-edit">Заголовок</label>
-            <input
-                id="title-edit"
-                type="text"
-                name="title"
-                placeholder="Заголовок"
-                required
-                className={classes.input}
-                onChange={event => {}}
-            />
-            <label htmlFor="price-edit">Цена</label>
-            <input
+            <FormInput title="Заголовок" id="title-edit" onChange={() => {}} />
+            <FormInput
+                title="Цена"
                 id="price-edit"
                 type="number"
-                name="price"
-                placeholder="Цена"
-                required
-                className={classes.input}
-                onChange={event => {}}
+                onChange={() => {}}
             />
-            <label htmlFor="descr-edit">Описание</label>
-            <textarea
+            <FormInput
+                title="Описание"
                 id="descr-edit"
-                type="text"
-                name="descr"
-                placeholder="Описание"
-                className={`${classes.input} ${classes.textarea}`}
-                onChange={event => {}}
+                textarea={true}
+                onChange={() => {}}
             />
-            <label htmlFor="src-edit">Изображение</label>
-            <input
-                id="src-edit"
-                type="text"
-                name="src"
-                placeholder="Изображение"
-                required
-                className={classes.input}
-                onChange={event => {}}
-            />
-            <label htmlFor="flags-edit">Отметки</label>
-            <input
-                id="flags-edit"
-                type="text"
-                name="flags"
-                placeholder="Отметки"
-                required
-                className={classes.input}
-                onChange={event => {}}
-            />
+            <FormInput title="Изображение" id="src-edit" onChange={() => {}} />
+            <FormInput title="Отметки" id="flags-edit" onChange={() => {}} />
 
             <MenuBtn blank={true}></MenuBtn>
         </form>

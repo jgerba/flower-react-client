@@ -12,6 +12,7 @@ import AdminsTabs from '../components/AdminsTabs';
 import GoodsItem from '../components/GoodsItem';
 import EditItem from '../components/modals/EditItem';
 import Backdrop from '../components/UI/Backdrop';
+import TextHeader from '../components/UI/TextHeader';
 
 import classes from './Goods.module.css';
 
@@ -58,6 +59,8 @@ function Goods() {
     return (
         <main className={classes.main}>
             <AdminsTabs className={classes.tabs} />
+
+            <TextHeader>Товары</TextHeader>
 
             <section className={classes.goods}>
                 {bouquetsToRender.length !== 0 ? (
