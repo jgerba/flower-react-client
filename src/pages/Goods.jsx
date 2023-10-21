@@ -104,6 +104,7 @@ function Goods() {
                     <EditItemForm
                         item={itemToEdit}
                         onItemChange={item => itemChangeHandler(item)}
+                        onClose={hideModalHandler}
                     ></EditItemForm>,
                     document.getElementById('modal-root')
                 )}

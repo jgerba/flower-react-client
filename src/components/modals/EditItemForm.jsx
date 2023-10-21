@@ -5,7 +5,7 @@ import MenuBtn from '../UI/MenuBtn';
 
 import classes from './EditItemForm.module.css';
 
-function EditItemForm({ item, onItemChange }) {
+function EditItemForm({ item, onItemChange, onClose }) {
     const { sendRequest, isLoading, error } = useFetch();
 
     function submitHandler(event) {
@@ -30,6 +30,7 @@ function EditItemForm({ item, onItemChange }) {
 
     function applyData(data) {
         onItemChange(data);
+        onClose();
     }
 
     return (
