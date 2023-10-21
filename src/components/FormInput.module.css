@@ -44,3 +44,23 @@
     height: 170px;
     resize: none;
 }
+
+.error {
+    border-color: #ac3838;
+    animation: error-shake 0.25s forwards;
+}
+
+@keyframes error-shake {
+    0% {
+        transform: rotate(1deg);
+    }
+    30% {
+        transform: rotate(-1deg);
+    }
+    60% {
+        transform: rotate(1deg);
+    }
+    90% {
+        transform: rotate(-1deg);
+    }
+}
