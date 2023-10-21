@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import ShopCart from './modals/ShopCart';
-import Backdrop from './UI/Backdrop';
+import Backdrop from './modals/Backdrop';
 
 import cart from '../svg/cart.svg';
 import classes from './ShopCartWidget.module.css';

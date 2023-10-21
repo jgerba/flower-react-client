@@ -11,7 +11,7 @@ import MenuBtn from '../components/UI/MenuBtn';
 import AdminsTabs from '../components/AdminsTabs';
 import GoodsItem from '../components/GoodsItem';
 import EditItem from '../components/modals/EditItem';
-import Backdrop from '../components/UI/Backdrop';
+import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 
 import classes from './Goods.module.css';
@@ -56,6 +56,10 @@ function Goods() {
         setModalIsVisible(true);
     }
 
+    function hideModalHandler(props) {
+        setModalIsVisible(false);
+    }
+
     return (
         <main className={classes.main}>
             <AdminsTabs className={classes.tabs} />
@@ -92,6 +96,7 @@ function Goods() {
                 createPortal(
                     <Backdrop
                         className={classes['edit-item-modal']}
+                        onClick={hideModalHandler}
                     ></Backdrop>,
                     document.getElementById('backdrop-root')
                 )}
