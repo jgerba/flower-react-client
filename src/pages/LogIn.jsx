@@ -23,7 +23,9 @@ function LogIn() {
 
     const { sendRequest, isLoading, error } = useFetch();
 
-    function fetchData() {
+    function fetchData(event) {
+        event.preventDefault();
+
         sendRequest(
             {
                 url: '/login',
@@ -51,7 +53,6 @@ function LogIn() {
                     ref={formRef}
                     action=""
                     name="Вход для администратора"
-                    onSubmit={event => event.preventDefault()}
                     className={classes.form}
                 >
                     <TextHeader>Вход для администратора</TextHeader>
@@ -94,7 +95,7 @@ function LogIn() {
 
                     <MenuBtn
                         className={classes['submit-btn']}
-                        onClick={fetchData}
+                        onClick={event => fetchData(event)}
                     >
                         Войти
                     </MenuBtn>

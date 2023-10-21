@@ -10,7 +10,7 @@ import { notifyActions } from '../store/notify';
 import MenuBtn from '../components/UI/MenuBtn';
 import AdminsTabs from '../components/AdminsTabs';
 import GoodsItem from '../components/GoodsItem';
-import EditItem from '../components/modals/EditItem';
+import EditItemForm from '../components/modals/EditItemForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 
@@ -21,20 +21,21 @@ function Goods() {
     const navigate = useNavigate();
     const isAuth = useSelector(state => state.auth.isAuth);
 
-    const [bouquets, setBouquets] = useState([]);
-    const [bouquetsToRender, setBouquetsToRender] = useState([]);
+    const [items, setItems] = useState([]);
+    const [itemsToRender, setItemsToRender] = useState([]);
+    const [itemToEdit, setItemToEdit] = useState(null);
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
     useEffect(() => {
-        sendRequest({ url: '/bouquets' }, applyBouquetsData, false);
+        sendRequest({ url: '/bouquets' }, applyItemsData, false);
     }, []);
 
-    function applyBouquetsData(data) {
+    function applyItemsData(data) {
         if (!data) return;
-        setBouquets(data);
-        setBouquetsToRender(data);
+        setItems(data);
+        setItemsToRender(data);
     }
 
     function logOut() {
@@ -52,12 +53,25 @@ function Goods() {
         navigate('/login');
     }
 
-    function showModalHandler(props) {
+    function itemChangeHandler(item) {
+        setItems(items => {
+            const index = items.findIndex(el => el._id === item._id);
+            return items.toSpliced(index, 1, item);
+        });
+    }
+
+    useEffect(() => {
+        setItemsToRender(items);
+    }, [items]);
+
+    function showModalHandler(item) {
+        setItemToEdit(item);
         setModalIsVisible(true);
     }
 
-    function hideModalHandler(props) {
+    function hideModalHandler() {
         setModalIsVisible(false);
+        setItemToEdit(null);
     }
 
     return (
@@ -67,15 +81,15 @@ function Goods() {
             <TextHeader>Товары</TextHeader>
 
             <section className={classes.goods}>
-                {bouquetsToRender.length !== 0 ? (
-                    bouquetsToRender.map(item => (
+                {itemsToRender.length !== 0 ? (
+                    itemsToRender.map(item => (
                         <GoodsItem
                             className={classes.bouquet}
                             key={item._id}
                             title={item.title}
                             price={item.price}
                             descr={item.description}
-                            onClick={showModalHandler}
+                            onClick={() => showModalHandler(item)}
                         />
                     ))
                 ) : (
@@ -87,9 +101,10 @@ function Goods() {
 
             {modalIsVisible &&
                 createPortal(
-                    <EditItem
-                        className={classes['edit-item-modal']}
-                    ></EditItem>,
+                    <EditItemForm
+                        item={itemToEdit}
+                        onItemChange={item => itemChangeHandler(item)}
+                    ></EditItemForm>,
                     document.getElementById('modal-root')
                 )}
             {modalIsVisible &&

@@ -24,6 +24,9 @@
 
     border: 1px solid var(--customWhite);
 
+    font-family: 'Oswald';
+    font-size: 14px;
+    letter-spacing: 0.56px;
     color: var(--customWhite);
     background: #0f2222;
 }
@@ -38,6 +41,6 @@
 }
 
 .textarea {
-    height: 240px;
+    height: 170px;
     resize: none;
 }
