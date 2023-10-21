@@ -55,6 +55,7 @@ function findIndex(items, id) {
     return items.findIndex(item => item._id === id);
 }
 
+// calculate all items in the cart to show them in the widget
 function calculateItems(state) {
     return state.cartItems.reduce(
         (sum, item) => sum + item.inCart,

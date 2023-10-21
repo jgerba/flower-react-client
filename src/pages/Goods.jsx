@@ -28,6 +28,7 @@ function Goods() {
 
     const { sendRequest, isLoading, error } = useFetch();
 
+    // download all items
     useEffect(() => {
         sendRequest({ url: '/bouquets' }, applyItemsData, false);
     }, []);
@@ -38,6 +39,7 @@ function Goods() {
         setItemsToRender(data);
     }
 
+    // logout from admin
     function logOut() {
         sendRequest(
             {
@@ -53,6 +55,7 @@ function Goods() {
         navigate('/login');
     }
 
+    // update item in items array after editing
     function itemChangeHandler(item) {
         setItems(items => {
             const index = items.findIndex(el => el._id === item._id);
@@ -64,6 +67,7 @@ function Goods() {
         setItemsToRender(items);
     }, [items]);
 
+    // choose item to edit and send data to the modal inputs
     function showModalHandler(item) {
         setItemToEdit(item);
         setModalIsVisible(true);

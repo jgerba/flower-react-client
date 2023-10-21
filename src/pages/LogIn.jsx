@@ -26,6 +26,7 @@ function LogIn() {
     function fetchData(event) {
         event.preventDefault();
 
+        // login as admin
         sendRequest(
             {
                 url: '/login',
@@ -40,6 +41,7 @@ function LogIn() {
         );
     }
 
+    // send token to the store for storing as cookie
     function applyLogin(data) {
         dispatch(authActions.logIn(data.token));
         dispatch(notifyActions.applyMessage('Успешный вход'));

@@ -6,6 +6,8 @@ const initialState = {
     loading: false,
 };
 
+// show pop-ups in the bottom right corner of the main
+// (to the top of footer)
 const notifySlice = createSlice({
     name: 'Notification',
     initialState,

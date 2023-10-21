@@ -25,8 +25,10 @@ function CataloguePage() {
     const [sort, setSort] = useState('');
     const [filterArr, setFilterArr] = useState([]);
     const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
-    const [resetFilter, setResetFilter] = useState(false);
     const [showScrollBtn, setShowScrollBtn] = useState();
+
+    // need to push it to the filter item and reset it
+    const [resetFilter, setResetFilter] = useState(false);
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
     const { sendRequest, isLoading, error } = useFetch();
@@ -93,7 +95,7 @@ function CataloguePage() {
     useEffect(() => {
         if (bouquets.length === 0) return;
 
-        // situation when filters are droped
+        // when filters are droped show all bouquets
         if (
             filterArr.length === 0 &&
             priceFilter.min === 0 &&
@@ -108,8 +110,11 @@ function CataloguePage() {
                     item.price <= priceFilter.max;
 
                 if (!isInPriceRange) return;
+
+                // if match in price and has no other filters - stop the search
                 if (isInPriceRange && filterArr.length === 0) return true;
 
+                // if other filters enabled
                 // find filter option matches with item.flags
                 return filterArr.some(option => {
                     return isInPriceRange && item.flags.includes(option);
@@ -127,7 +132,7 @@ function CataloguePage() {
         setResetFilter(true);
     }
 
-    // show scroll up btn after scrolling 1 screen down
+    // show scroll-up-btn after scrolling 1 screen down
     useEffect(() => {
         if (bouquets.length === 0) return;
 

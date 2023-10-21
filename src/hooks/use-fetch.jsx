@@ -10,8 +10,6 @@ function useFetch() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    // const dispatch = useDispatch();
-
     function sendRequest(config, applyData = () => {}, auth = true) {
         setIsLoading(true);
         setError(null);
