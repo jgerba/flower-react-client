@@ -6,7 +6,7 @@ let timer;
 function FormInput(props) {
     const ref = useRef();
     const id = useId();
-    const [value, setValue] = useState(props.value);
+    const [value, setValue] = useState(props.value ? props.value : '');
     const [error, setError] = useState(false);
 
     // check if there empty text inputs, or wrong number value
@@ -59,7 +59,7 @@ function FormInput(props) {
                     id={id + `-${props.name}`}
                     type={props.type ? props.type : 'text'}
                     name={props.name}
-                    placeholder={props.title}
+                    placeholder={props.placeholder}
                     maxLength={200}
                     className={`${classes.input} ${
                         props.className ? props.className : ''
@@ -74,7 +74,7 @@ function FormInput(props) {
                     id={id + `-${props.name}`}
                     type="text"
                     name={props.name}
-                    placeholder={props.title}
+                    placeholder={props.placeholder}
                     maxLength={300}
                     className={`${classes.input} ${classes.textarea} ${
                         props.className ? props.className : ''

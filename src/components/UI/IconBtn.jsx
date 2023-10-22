@@ -1,7 +1,11 @@
 function IconBtn(props) {
     return (
-        <button className={props.className} onClick={props.onClick}>
-            {props.children}
+        <button
+            type="button"
+            className={props.className}
+            onClick={props.onClick}
+        >
+            <img src={props.src} alt={props.alt} />
         </button>
     );
 }

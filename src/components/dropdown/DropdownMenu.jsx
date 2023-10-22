@@ -8,6 +8,7 @@ function DropdownMenu(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [currentOption, setCurrentOption] = useState('По умолчанию');
 
+    // on option select push selected to the parent
     function selectOption(option) {
         setCurrentOption(option);
         props.onSort(option);

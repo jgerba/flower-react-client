@@ -18,6 +18,8 @@ function useFetch() {
             method: config.method ? config.method : 'GET',
             headers: {
                 'Content-type': 'application/json',
+
+                // if need auth use token in cookies
                 Authorization: auth ? 'Bearer ' + getCookie() : '',
             },
             body: config.body ? JSON.stringify(config.body) : null,

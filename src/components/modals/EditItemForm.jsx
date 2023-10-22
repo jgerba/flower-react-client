@@ -62,6 +62,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
             <FormInput
                 title="Заголовок"
                 name="title"
+                placeholder="Заголовок товара до 200 символов - обязательное поле"
                 value={item.title}
                 onChange={() => {}}
             />
@@ -69,6 +70,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 title="Цена"
                 name="price"
                 type="number"
+                placeholder="Цена товара от 1 до 10 000 рублей - обязательное поле"
                 value={item.price}
                 onChange={() => {}}
             />
@@ -76,12 +78,14 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 title="Описание"
                 name="descr"
                 textarea={true}
+                placeholder="Описание товара до 300 символов"
                 value={item.description}
                 onChange={() => {}}
             />
             <FormInput
                 title="Изображение"
                 name="src"
+                placeholder="Ссылка на изображение товара - обязательное поле"
                 value={item.src}
                 onChange={() => {}}
             />

@@ -10,10 +10,12 @@ import { notifyActions } from '../store/notify';
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
 import ContentCard from '../components/UI/ContentCard';
+import FormInput from '../components/FormInput';
 
 import classes from './LogIn.module.css';
 import showPass from '../svg/showPass.svg';
 import hidePass from '../svg/hidePass.svg';
+import IconBtn from '../components/UI/IconBtn';
 
 function LogIn() {
     const dispatch = useDispatch();
@@ -48,6 +50,11 @@ function LogIn() {
         navigate('/orders');
     }
 
+    function submitHandler(event) {
+        event.preventDefault();
+        fetchData(event);
+    }
+
     return (
         <main className={classes.main}>
             <ContentCard>
@@ -56,51 +63,34 @@ function LogIn() {
                     action=""
                     name="Вход для администратора"
                     className={classes.form}
+                    onSubmit={submitHandler}
                 >
                     <TextHeader>Вход для администратора</TextHeader>
 
-                    <label htmlFor="adm-login">Введите ваш логин</label>
-                    <input
-                        id="adm-login"
-                        type="text"
+                    <FormInput
+                        title="Введите ваш логин"
                         name="login"
                         placeholder="Логин администратора"
-                        required
-                        className={classes.input}
-                        onChange={event => {}}
+                        onChange={() => {}}
                     />
 
-                    <label htmlFor="adm-pass">Введите ваш пароль</label>
-                    <input
-                        id="adm-pass"
-                        type={passIsVisible ? 'text' : 'password'}
+                    <FormInput
+                        title="Введите ваш пароль"
                         name="password"
                         placeholder="Пароль администратора"
-                        required
-                        className={classes.input}
-                        onChange={event => {}}
+                        type={passIsVisible ? 'text' : 'password'}
+                        onChange={() => {}}
                     />
-
-                    <button
+                    <IconBtn
+                        src={passIsVisible ? hidePass : showPass}
+                        alt={
+                            passIsVisible ? 'Скрыть пароль' : 'Показать пароль'
+                        }
                         className={classes['toggle-pass']}
                         onClick={() => setPassIsVisible(state => !state)}
-                    >
-                        <img
-                            src={passIsVisible ? hidePass : showPass}
-                            alt={
-                                passIsVisible
-                                    ? 'Скрыть пароль'
-                                    : 'Показать пароль'
-                            }
-                        />
-                    </button>
+                    />
 
-                    <MenuBtn
-                        className={classes['submit-btn']}
-                        onClick={event => fetchData(event)}
-                    >
-                        Войти
-                    </MenuBtn>
+                    <MenuBtn className={classes['submit-btn']}>Войти</MenuBtn>
                 </form>
             </ContentCard>
         </main>

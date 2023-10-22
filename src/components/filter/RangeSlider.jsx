@@ -6,11 +6,12 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
 
+    // saving min & max values
     const minValRef = useRef(min);
     const maxValRef = useRef(max);
     const range = useRef(null);
 
-    // Convert to percentage
+    // Convert value to percentage
     const getPercent = useCallback(
         value => Math.round(((value - min) / (max - min)) * 100),
         [min, max]
@@ -51,6 +52,22 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
         maxValRef.current = max;
     }, [reset]);
 
+    function minChangehandler(event) {
+        // maxVal - 1 maintains a difference of one between minVal and maxVal
+        const value = Math.min(Number(event.target.value), maxVal - 1);
+
+        // is done to make sure that minVal does not exceed maxVal
+        setMinVal(value);
+        minValRef.current = value;
+    }
+
+    function maxChangehandler(event) {
+        // same, but maxVal does not fall below minVal
+        const value = Math.max(Number(event.target.value), minVal + 1);
+        setMaxVal(value);
+        maxValRef.current = value;
+    }
+
     return (
         <div className={classes.container}>
             <input
@@ -58,15 +75,9 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
                 min={min}
                 max={max}
                 value={minVal}
-                onChange={event => {
-                    const value = Math.min(
-                        Number(event.target.value),
-                        maxVal - 1
-                    );
-                    setMinVal(value);
-                    minValRef.current = value;
-                }}
+                onChange={minChangehandler}
                 className={`${classes.thumb} ${classes['thumb--left']}`}
+                // zindex 5 is applied to be able to move the thumb from the extreme right end
                 style={{ zIndex: minVal > max - 100 && '5' }}
             />
             <input
@@ -74,14 +85,7 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
                 min={min}
                 max={max}
                 value={maxVal}
-                onChange={event => {
-                    const value = Math.max(
-                        Number(event.target.value),
-                        minVal + 1
-                    );
-                    setMaxVal(value);
-                    maxValRef.current = value;
-                }}
+                onChange={maxChangehandler}
                 className={`${classes.thumb} ${classes['thumb--right']}`}
             />
 

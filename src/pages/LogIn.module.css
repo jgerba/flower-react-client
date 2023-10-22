@@ -44,20 +44,11 @@
     -webkit-text-fill-color: var(--customWhite);
 }
 
-.form label {
-    font-family: Oswald;
-    font-size: 14px;
-    letter-spacing: 0.56px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
-}
-
 .toggle-pass {
     position: absolute;
 
-    top: 347px;
-    right: -36px;
+    top: 316px;
+    right: 44px;
 }
 
 .toggle-pass:hover {

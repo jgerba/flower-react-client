@@ -5,6 +5,7 @@ import classes from './FilterItem.module.css';
 function FilterItem(props) {
     const [checked, setChecked] = useState(false);
 
+    // on check push inputs name to the parent
     function checkItem(e) {
         setChecked(e.target.checked);
 
