@@ -1,11 +1,19 @@
+import { useState } from 'react';
+
 import useFetch from '../../hooks/use-fetch';
 
 import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';
+import TextHeader from '../UI/TextHeader';
 
 import classes from './EditItemForm.module.css';
 
 function EditItemForm({ item, onItemChange, onClose }) {
+    const [titleValue, setTitleValue] = useState(item.title);
+    const [priceValue, setPriceValue] = useState(item.price);
+    const [imgSrcValue, setImgSrcValue] = useState(item.src);
+    const [isBadImg, setIsBadImg] = useState(false);
+
     const { sendRequest, isLoading, error } = useFetch();
 
     //  check if there empty text inputs, or wrong number value
@@ -13,10 +21,11 @@ function EditItemForm({ item, onItemChange, onClose }) {
         if (
             !item.title?.value.trim() ||
             !item.src?.value.trim() ||
-            !item.price?.value < 1 ||
-            !item.price?.value > 10000
-        )
+            item.price?.value < 1 ||
+            item.price?.value > 10000
+        ) {
             return false;
+        }
 
         return true;
     }
@@ -52,6 +61,11 @@ function EditItemForm({ item, onItemChange, onClose }) {
         onClose();
     }
 
+    function imgSrcHandler(value) {
+        setIsBadImg(false);
+        setImgSrcValue(value);
+    }
+
     return (
         <form
             action=""
@@ -59,12 +73,14 @@ function EditItemForm({ item, onItemChange, onClose }) {
             className={classes.modal}
             onSubmit={submitHandler}
         >
+            <TextHeader>Редактирование товара</TextHeader>
+
             <FormInput
                 title="Заголовок"
                 name="title"
                 placeholder="Заголовок товара до 200 символов - обязательное поле"
                 value={item.title}
-                onChange={() => {}}
+                onChange={value => setTitleValue(value)}
             />
             <FormInput
                 title="Цена"
@@ -72,7 +88,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 type="number"
                 placeholder="Цена товара от 1 до 10 000 рублей - обязательное поле"
                 value={item.price}
-                onChange={() => {}}
+                onChange={value => setPriceValue(value)}
             />
             <FormInput
                 title="Описание"
@@ -87,8 +103,61 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 name="src"
                 placeholder="Ссылка на изображение товара - обязательное поле"
                 value={item.src}
-                onChange={() => {}}
+                onChange={imgSrcHandler}
             />
+
+            <aside className={classes['test-item-card']}>
+                <div>
+                    {!isBadImg ? (
+                        <img
+                            className={classes.image}
+                            src={imgSrcValue}
+                            alt={`Букет ${titleValue}`}
+                            onError={() => setIsBadImg(true)}
+                        />
+                    ) : (
+                        <div className={classes['img-place-holder']}>
+                            <p>Некорректный источник изображения!</p>
+                        </div>
+                    )}
+                </div>
+
+                <p className={classes.title}>{titleValue}</p>
+                <p className={classes.price}>{`${priceValue} ₽`}</p>
+
+                <MenuBtn className={classes.button} blank={true}>
+                    В корзину
+                </MenuBtn>
+
+                {item.sale && (
+                    <div className={classes['sale-badge']}>
+                        <p>sale</p>
+                    </div>
+                )}
+                {item.new && (
+                    <div className={classes['new-badge']}>
+                        <p>new</p>
+                    </div>
+                )}
+            </aside>
+
+            <section className={classes['badge-input']}>
+                <div className={classes['badge-input-none']}>
+                    <label htmlFor="badge-none">Без значка</label>
+                    <input name="badge" id="badge-none" type="radio" />
+                </div>
+
+                <div className={classes['badge-input-sale']}>
+                    <label htmlFor="badge-sale">Значок распродажи</label>
+                    <input name="badge" id="badge-sale" type="radio" />
+                </div>
+
+                <div className={classes['badge-input-new']}>
+                    <label htmlFor="badge-new">Значок новинки</label>
+                    <input name="badge" id="badge-new" type="radio" />
+                </div>
+            </section>
+
             <FormInput
                 title="Отметки"
                 name="flags"

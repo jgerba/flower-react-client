@@ -17,3 +17,99 @@
 
     z-index: 4;
 }
+
+.test-item-card {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 255px;
+    height: auto;
+
+    right: -400px;
+    top: 0px;
+}
+
+.image {
+    width: 255px;
+    height: 335px;
+
+    object-fit: cover;
+}
+
+.img-place-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 255px;
+    height: 335px;
+
+    border: 0.5px solid var(--customWhite);
+}
+
+.price,
+.img-place-holder p {
+    margin-top: 10px;
+
+    font-family: 'Oswald';
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.img-place-holder p {
+    text-transform: none;
+}
+
+.title {
+    margin-top: 10px;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sale-badge,
+.new-badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+
+    right: -15px;
+    top: -15px;
+
+    border-radius: 50%;
+
+    font-family: 'Oswald';
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #040a0a;
+}
+
+.sale-badge {
+    background-color: #d978ac;
+}
+
+.new-badge {
+    background-color: #31985a;
+}

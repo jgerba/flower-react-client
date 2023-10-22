@@ -28,6 +28,7 @@ function FormInput(props) {
 
         if (el.name === 'descr') return;
 
+        props.onChange(el.value);
         // set timeout after changing value and check value after
         clearTimeout(timer);
         setError(false);

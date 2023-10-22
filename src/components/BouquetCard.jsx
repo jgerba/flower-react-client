@@ -7,7 +7,7 @@ import MenuBtn from './UI/MenuBtn';
 
 import classes from './BouquetCard.module.css';
 
-function BouquetCard({ className, item = {} }) {
+function BouquetCard({ className, item = {}, onError = () => {} }) {
     const dispatch = useDispatch();
 
     function addToCart() {
@@ -21,6 +21,7 @@ function BouquetCard({ className, item = {} }) {
                     className={classes.image}
                     src={item.src}
                     alt={`Букет ${item.title}`}
+                    onError={() => onError()}
                 />
             </Link>
 
