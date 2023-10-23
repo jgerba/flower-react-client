@@ -23,6 +23,18 @@ function EditItemForm({ item, onItemChange, onClose }) {
 
     const { sendRequest, isLoading, error } = useFetch();
 
+    // set initial check attr for badges
+    useEffect(() => {
+        if (!item.new && !item.sale) {
+            noBadgeRef.current.setAttribute('checked', '');
+            return;
+        }
+
+        item.sale
+            ? saleBadgeRef.current.setAttribute('checked', '')
+            : newBadgeRef.current.setAttribute('checked', '');
+    }, [item.new, item.sale]);
+
     //  check if there empty text inputs, or wrong number value
     function checkInputs(item) {
         if (
@@ -75,17 +87,6 @@ function EditItemForm({ item, onItemChange, onClose }) {
         setIsBadImg(false);
         setImgSrcVal(value);
     }
-
-    useEffect(() => {
-        if (!item.new && !item.sale) {
-            noBadgeRef.current.setAttribute('checked', '');
-            return;
-        }
-
-        item.sale
-            ? saleBadgeRef.current.setAttribute('checked', '')
-            : newBadgeRef.current.setAttribute('checked', '');
-    }, [item.new, item.sale]);
 
     return (
         <form
