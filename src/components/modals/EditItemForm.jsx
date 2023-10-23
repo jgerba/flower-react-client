@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import useFetch from '../../hooks/use-fetch';
 
@@ -9,10 +9,17 @@ import TextHeader from '../UI/TextHeader';
 import classes from './EditItemForm.module.css';
 
 function EditItemForm({ item, onItemChange, onClose }) {
-    const [titleValue, setTitleValue] = useState(item.title);
-    const [priceValue, setPriceValue] = useState(item.price);
-    const [imgSrcValue, setImgSrcValue] = useState(item.src);
+    const noBadgeRef = useRef();
+    const saleBadgeRef = useRef();
+    const newBadgeRef = useRef();
+
+    const [titleVal, setTitleVal] = useState(item.title);
+    const [priceVal, setPriceVal] = useState(item.price);
+    const [oldPriceVal, setOldPriceVal] = useState(item.oldPrice);
+    const [imgSrcVal, setImgSrcVal] = useState(item.src);
     const [isBadImg, setIsBadImg] = useState(false);
+    const [newBadgeVal, setNewBadgeVal] = useState(item.new);
+    const [saleBadgeVal, setSaleBadgeVal] = useState(item.sale);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -22,7 +29,9 @@ function EditItemForm({ item, onItemChange, onClose }) {
             !item.title?.value.trim() ||
             !item.src?.value.trim() ||
             item.price?.value < 1 ||
-            item.price?.value > 10000
+            item.price?.value > 10000 ||
+            item.oldPrice?.value < 1 ||
+            item.oldPrice?.value > 10000
         ) {
             return false;
         }
@@ -41,10 +50,11 @@ function EditItemForm({ item, onItemChange, onClose }) {
         const itemObj = {
             title: formEl.title.value,
             price: formEl.price.value,
+            oldPrice: formEl.oldPrice.value,
             description: formEl.descr?.value,
             src: formEl.src.value,
-            new: formEl.new ? true : false,
-            sale: formEl.sale ? true : false,
+            new: newBadgeVal,
+            sale: saleBadgeVal,
             flags: formEl.flags.value,
         };
 
@@ -63,8 +73,19 @@ function EditItemForm({ item, onItemChange, onClose }) {
 
     function imgSrcHandler(value) {
         setIsBadImg(false);
-        setImgSrcValue(value);
+        setImgSrcVal(value);
     }
+
+    useEffect(() => {
+        if (!item.new && !item.sale) {
+            noBadgeRef.current.setAttribute('checked', '');
+            return;
+        }
+
+        item.sale
+            ? saleBadgeRef.current.setAttribute('checked', '')
+            : newBadgeRef.current.setAttribute('checked', '');
+    }, [item.new, item.sale]);
 
     return (
         <form
@@ -80,16 +101,28 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 name="title"
                 placeholder="Заголовок товара до 200 символов - обязательное поле"
                 value={item.title}
-                onChange={value => setTitleValue(value)}
+                onChange={value => setTitleVal(value)}
             />
+
             <FormInput
                 title="Цена"
                 name="price"
                 type="number"
                 placeholder="Цена товара от 1 до 10 000 рублей - обязательное поле"
                 value={item.price}
-                onChange={value => setPriceValue(value)}
+                onChange={value => setPriceVal(value)}
             />
+            {saleBadgeVal && (
+                <FormInput
+                    title="Старая цена"
+                    name="oldPrice"
+                    type="number"
+                    placeholder="Цена товара до распродажи - обязательное поле"
+                    value={item.oldPrice}
+                    onChange={value => setOldPriceVal(value)}
+                />
+            )}
+
             <FormInput
                 title="Описание"
                 name="descr"
@@ -98,6 +131,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 value={item.description}
                 onChange={() => {}}
             />
+
             <FormInput
                 title="Изображение"
                 name="src"
@@ -106,57 +140,95 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 onChange={imgSrcHandler}
             />
 
-            <aside className={classes['test-item-card']}>
+            <section className={classes['badge-input']}>
+                <div className={classes['badge-input-none']}>
+                    <label htmlFor="badge-none">Без значка </label>
+                    <input
+                        ref={noBadgeRef}
+                        name="Badge"
+                        id="badge-none"
+                        type="radio"
+                        onChange={() => {
+                            setSaleBadgeVal(false);
+                            setNewBadgeVal(false);
+                        }}
+                    />
+                </div>
+
+                <div className={classes['badge-input-sale']}>
+                    <label htmlFor="badge-sale">Значок распродажи </label>
+                    <input
+                        ref={saleBadgeRef}
+                        name="Badge"
+                        id="badge-sale"
+                        type="radio"
+                        onChange={() => {
+                            setSaleBadgeVal(true);
+                            setNewBadgeVal(false);
+                        }}
+                    />
+                </div>
+
+                <div className={classes['badge-input-new']}>
+                    <label htmlFor="badge-new">Значок новинки </label>
+                    <input
+                        ref={newBadgeRef}
+                        name="Badge"
+                        id="badge-new"
+                        type="radio"
+                        onChange={() => {
+                            setSaleBadgeVal(false);
+                            setNewBadgeVal(true);
+                        }}
+                    />
+                </div>
+            </section>
+
+            <aside className={classes['test__card']}>
+                <TextHeader className={classes['test__header']}>
+                    Предварительный просмотр
+                </TextHeader>
                 <div>
                     {!isBadImg ? (
                         <img
-                            className={classes.image}
-                            src={imgSrcValue}
-                            alt={`Букет ${titleValue}`}
+                            className={classes['test__img']}
+                            src={imgSrcVal}
+                            alt={`Букет ${titleVal}`}
                             onError={() => setIsBadImg(true)}
                         />
                     ) : (
-                        <div className={classes['img-place-holder']}>
+                        <div className={classes['test__img-place']}>
                             <p>Некорректный источник изображения!</p>
                         </div>
                     )}
                 </div>
 
-                <p className={classes.title}>{titleValue}</p>
-                <p className={classes.price}>{`${priceValue} ₽`}</p>
+                <p className={classes['test__title']}>{titleVal}</p>
 
-                <MenuBtn className={classes.button} blank={true}>
+                <div className={classes['test__price-section']}>
+                    <p className={classes['test__price']}>{`${priceVal} ₽`}</p>
+                    {saleBadgeVal && (
+                        <p
+                            className={classes['test__oldPrice']}
+                        >{`${oldPriceVal} ₽`}</p>
+                    )}
+                </div>
+
+                <MenuBtn className={classes['test__btn']} blank={true}>
                     В корзину
                 </MenuBtn>
 
-                {item.sale && (
-                    <div className={classes['sale-badge']}>
+                {saleBadgeVal && (
+                    <div className={classes['test__sale-badge']}>
                         <p>sale</p>
                     </div>
                 )}
-                {item.new && (
-                    <div className={classes['new-badge']}>
+                {newBadgeVal && (
+                    <div className={classes['test__new-badge']}>
                         <p>new</p>
                     </div>
                 )}
             </aside>
-
-            <section className={classes['badge-input']}>
-                <div className={classes['badge-input-none']}>
-                    <label htmlFor="badge-none">Без значка</label>
-                    <input name="badge" id="badge-none" type="radio" />
-                </div>
-
-                <div className={classes['badge-input-sale']}>
-                    <label htmlFor="badge-sale">Значок распродажи</label>
-                    <input name="badge" id="badge-sale" type="radio" />
-                </div>
-
-                <div className={classes['badge-input-new']}>
-                    <label htmlFor="badge-new">Значок новинки</label>
-                    <input name="badge" id="badge-new" type="radio" />
-                </div>
-            </section>
 
             <FormInput
                 title="Отметки"

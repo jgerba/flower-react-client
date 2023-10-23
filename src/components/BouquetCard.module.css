@@ -32,8 +32,6 @@
 }
 
 .price {
-    margin-top: 10px;
-
     font-family: 'Oswald';
     font-size: 14px;
     font-weight: 700;
@@ -41,6 +39,26 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.price-section {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+.old-price {
+    font-family: Oswald;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.56px;
+    text-decoration-line: line-through;
+    text-transform: uppercase;
+
+    color: #939393;
 }
 
 .button {
@@ -68,12 +86,10 @@
     letter-spacing: 0.4px;
     text-transform: uppercase;
     color: #040a0a;
+
+    background-color: #31985a;
 }
 
 .sale-badge {
     background-color: #d978ac;
-}
-
-.new-badge {
-    background-color: #31985a;
 }
