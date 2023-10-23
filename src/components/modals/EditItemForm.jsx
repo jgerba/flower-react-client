@@ -209,7 +209,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                     <p className={classes['test__price']}>{`${priceVal} ₽`}</p>
                     {saleBadgeVal && (
                         <p
-                            className={classes['test__oldPrice']}
+                            className={classes['test__old-price']}
                         >{`${oldPriceVal} ₽`}</p>
                     )}
                 </div>
