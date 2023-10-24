@@ -14,7 +14,6 @@ function BouquetCard({ className, item = {}, onError = () => {} }) {
         dispatch(cartActions.addToCart(item));
     }
 
-    console.log(item.sale);
     return (
         <div className={`${classes.card} ${className ? className : ''}`}>
             <Link to={`/catalogue/${item._id}`}>
