@@ -59,6 +59,10 @@
     grid-area: sort;
 }
 
+.left-filter {
+    grid-area: filter;
+}
+
 .goods {
     grid-area: goods;
 

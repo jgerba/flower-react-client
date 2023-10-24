@@ -5,6 +5,7 @@ import useFetch from '../../hooks/use-fetch';
 import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';
 import TextHeader from '../UI/TextHeader';
+import FlagsFilter from '../filters/FlagsFilter';
 
 import classes from './EditItemForm.module.css';
 
@@ -230,6 +231,14 @@ function EditItemForm({ item, onItemChange, onClose }) {
                     </div>
                 )}
             </aside>
+
+            <FlagsFilter
+                className={classes['flags-filter']}
+                items={item}
+                editForm={true}
+                onDropFilter={() => {}}
+                onFilter={() => {}}
+            />
 
             <FormInput
                 title="Отметки"

@@ -69,7 +69,11 @@ function FlagsFilter(props) {
     }
 
     return (
-        <ContentCard className={classes['left-filter']}>
+        <ContentCard
+            className={`${classes.filter} ${
+                props.className ? props.className : ''
+            }`}
+        >
             <ul>
                 <h3>По свету</h3>
                 <FilterItem

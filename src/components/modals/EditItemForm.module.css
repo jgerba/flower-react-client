@@ -37,6 +37,13 @@
     cursor: pointer;
 }
 
+.flags-filter {
+    position: absolute;
+
+    left: -400px;
+    top: 0px;
+}
+
 .test__card {
     position: absolute;
 
