@@ -101,7 +101,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
             <FormInput
                 title="Заголовок"
                 name="title"
-                placeholder="Заголовок товара до 200 символов - обязательное поле"
+                placeholder="Заголовок товара до 25 символов - обязательное поле"
                 value={item.title}
                 onChange={value => setTitleVal(value)}
             />
@@ -216,10 +216,6 @@ function EditItemForm({ item, onItemChange, onClose }) {
                     )}
                 </div>
 
-                <MenuBtn className={classes['test__btn']} blank={true}>
-                    В корзину
-                </MenuBtn>
-
                 {saleBadgeVal && (
                     <div className={classes['test__sale-badge']}>
                         <p>sale</p>
@@ -239,7 +235,9 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 onFlagSave={flags => console.log(flags)}
             />
 
-            <MenuBtn blank={true}>Сохранить</MenuBtn>
+            <MenuBtn type="submit" blank={true}>
+                Сохранить
+            </MenuBtn>
         </form>
     );
 }

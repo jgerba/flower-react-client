@@ -110,7 +110,7 @@ function CataloguePage() {
             <FlagsFilter
                 className={classes['left-filter']}
                 items={items}
-                onDropFilter={() => setItemsToRender(items)}
+                onDropFlags={() => setItemsToRender(items)}
                 onFilter={filteredItems => setItemsToRender(filteredItems)}
             />
 

@@ -10,21 +10,21 @@ import classes from './FlagsFilter.module.css';
 function FlagsFilter({
     className = null,
     items = [],
-    onDropFilter = () => {},
+    onDropFlags = () => {},
     onFilter = () => {},
     onFlagSave = () => {},
     editForm = false,
 }) {
-    const [filterArr, setFilterArr] = useState([]);
+    const [flagsArr, setFlagsArr] = useState([]);
     const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
 
     // push it to the price range filter and reset it
     const [resetPrice, setResetPrice] = useState(false);
 
-    // push filter option to filterArr
+    // push flag to flagsArr
     // remove if it exists
     function applyFilterHandler(name) {
-        setFilterArr(state => {
+        setFlagsArr(state => {
             const newState = [...state];
 
             const index = newState.indexOf(name);
@@ -33,17 +33,17 @@ function FlagsFilter({
         });
     }
 
-    // filter items with price range and filterArr options
+    // filter items with price range and flagsArr options
     useEffect(() => {
         if (items.length === 0 || editForm) return;
 
         // when filters are droped show all bouquets
         if (
-            filterArr.length === 0 &&
+            flagsArr.length === 0 &&
             priceFilter.min === 0 &&
             priceFilter.max === 10000
         )
-            return onDropFilter();
+            return onDropFlags();
 
         const newArr = [
             ...items.filter(item => {
@@ -54,18 +54,18 @@ function FlagsFilter({
                 if (!isInPriceRange) return;
 
                 // if match in price and has no other filters - stop the search
-                if (isInPriceRange && filterArr.length === 0) return true;
+                if (isInPriceRange && flagsArr.length === 0) return true;
 
                 // if other filters enabled
                 // find filter option matches with item.flags
-                return filterArr.some(option => {
+                return flagsArr.some(option => {
                     return isInPriceRange && item.flags.includes(option);
                 });
             }),
         ];
 
         onFilter(newArr);
-    }, [filterArr, priceFilter]);
+    }, [flagsArr, priceFilter]);
 
     // show item current flags in edit form
     useEffect(() => {
@@ -87,12 +87,12 @@ function FlagsFilter({
             }
         });
 
-        setFilterArr(reset ? [] : currentFlags);
+        setFlagsArr(reset ? [] : currentFlags);
     }
 
     // reset all checkboxes & drop filters
     function resetFilterHandler() {
-        clickFlags(filterArr, true);
+        clickFlags(flagsArr, true);
         if (!editForm) {
             setPriceFilter({ min: 0, max: 10000 });
             setResetPrice(true);
@@ -206,9 +206,8 @@ function FlagsFilter({
             {editForm ? (
                 <div>
                     <MenuBtn
-                        blank={true}
                         onClick={() => {
-                            onFlagSave(filterArr);
+                            onFlagSave(flagsArr);
                         }}
                     >
                         Сохранить отметки
