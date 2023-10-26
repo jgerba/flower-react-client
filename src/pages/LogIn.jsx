@@ -90,7 +90,9 @@ function LogIn() {
                         onClick={() => setPassIsVisible(state => !state)}
                     />
 
-                    <MenuBtn className={classes['submit-btn']}>Войти</MenuBtn>
+                    <MenuBtn type="submit" className={classes['submit-btn']}>
+                        Войти
+                    </MenuBtn>
                 </form>
             </ContentCard>
         </main>

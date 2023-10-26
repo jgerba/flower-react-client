@@ -43,7 +43,11 @@ function AdminsTabs(props) {
             <Link to="/goods">Товары</Link>
             <Link to="/feedback">Обратная связь</Link>
 
-            <MenuBtn className={classes['exit-btn']} onClick={logOut}>
+            <MenuBtn
+                className={classes['exit-btn']}
+                blank={true}
+                onClick={logOut}
+            >
                 Выход из кабинета
             </MenuBtn>
         </aside>

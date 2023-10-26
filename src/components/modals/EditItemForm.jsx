@@ -10,7 +10,7 @@ import ContentCard from '../UI/ContentCard';
 
 import classes from './EditItemForm.module.css';
 
-function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
+function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
     const noBadgeRef = useRef();
     const saleBadgeRef = useRef();
     const newBadgeRef = useRef();
@@ -19,11 +19,11 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
     const [priceVal, setPriceVal] = useState(item.price);
     const [oldPriceVal, setOldPriceVal] = useState(item.oldPrice);
     const [imgSrcVal, setImgSrcVal] = useState(item.src);
-    const [isBadImg, setIsBadImg] = useState(false);
     const [descrVal, setDescrVal] = useState(item.descr);
     const [newBadgeVal, setNewBadgeVal] = useState(item.new);
     const [saleBadgeVal, setSaleBadgeVal] = useState(item.sale);
-    const [flags, setFlags] = useState(item.sale);
+    const [flags, setFlags] = useState(item.flags);
+    const [isBadImg, setIsBadImg] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -76,7 +76,17 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
 
         // upload edited data
         sendRequest(
-            { url: `/bouquet/${item._id}`, method: 'PATCH', body: itemObj },
+            isNewItem
+                ? {
+                      url: `/bouquet`,
+                      method: 'POST',
+                      body: itemObj,
+                  }
+                : {
+                      url: `/bouquet/${item._id}`,
+                      method: 'PATCH',
+                      body: itemObj,
+                  },
             applyData
         );
     }

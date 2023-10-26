@@ -8,6 +8,7 @@ import GoodsItem from '../components/GoodsItem';
 import EditItemForm from '../components/modals/EditItemForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
+import MenuBtn from '../components/UI/MenuBtn';
 
 import classes from './AdminGoods.module.css';
 
@@ -16,6 +17,7 @@ function AdminGoods() {
     const [itemsToRender, setItemsToRender] = useState([]);
     const [itemToEdit, setItemToEdit] = useState(null);
     const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [isNewItem, setIsNewItem] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -43,14 +45,30 @@ function AdminGoods() {
     }, [items]);
 
     // choose item to edit and send data to the modal inputs
-    function showModalHandler(item) {
-        setItemToEdit(item);
+    function showModalHandler(item = null) {
+        if (item) {
+            setItemToEdit(item);
+        } else {
+            setItemToEdit({
+                title: '',
+                price: 0,
+                oldPrice: 0,
+                src: '',
+                description: '',
+                new: false,
+                sale: false,
+                flags: [],
+            });
+            setIsNewItem(true);
+        }
+
         setModalIsVisible(true);
     }
 
     function hideModalHandler() {
         setModalIsVisible(false);
         setItemToEdit(null);
+        setIsNewItem(false);
     }
 
     return (
@@ -59,6 +77,12 @@ function AdminGoods() {
 
             <section className={classes.goods}>
                 <TextHeader className={classes.header}>Товары</TextHeader>
+                <MenuBtn
+                    className={classes['create-btn']}
+                    onClick={() => showModalHandler()}
+                >
+                    Создать товар
+                </MenuBtn>
 
                 {itemsToRender.length !== 0 ? (
                     itemsToRender.map(item => (
@@ -84,6 +108,7 @@ function AdminGoods() {
                         item={itemToEdit}
                         onItemChange={item => itemChangeHandler(item)}
                         onClose={hideModalHandler}
+                        isNewItem={isNewItem}
                     ></EditItemForm>,
                     document.getElementById('modal-root')
                 )}
