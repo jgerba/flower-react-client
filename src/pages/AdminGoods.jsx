@@ -14,9 +14,9 @@ import EditItemForm from '../components/modals/EditItemForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 
-import classes from './Goods.module.css';
+import classes from './AdminGoods.module.css';
 
-function Goods() {
+function AdminGoods() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isAuth = useSelector(state => state.auth.isAuth);
@@ -128,4 +128,4 @@ function Goods() {
     );
 }
 
-export default Goods;
+export default AdminGoods;

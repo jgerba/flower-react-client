@@ -13,9 +13,9 @@ import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
 import LogIn from './pages/LogIn';
-import Goods from './pages/Goods';
+import AdminGoods from './pages/AdminGoods';
 import Orders from './pages/Orders';
-import Feedback from './pages/Feedback';
+import AdminFeedback from './pages/AdminFeedback';
 
 function App() {
     const router = createBrowserRouter([
@@ -43,8 +43,8 @@ function App() {
                 { path: 'checkout', element: <Checkout /> },
                 { path: 'login', element: <LogIn /> },
                 { path: 'orders', element: <Orders /> },
-                { path: 'goods', element: <Goods /> },
-                { path: 'feedback', element: <Feedback /> },
+                { path: 'goods', element: <AdminGoods /> },
+                { path: 'feedback', element: <AdminFeedback /> },
             ],
         },
     ]);

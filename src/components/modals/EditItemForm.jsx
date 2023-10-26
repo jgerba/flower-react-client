@@ -9,7 +9,7 @@ import FlagsFilter from '../filters/FlagsFilter';
 
 import classes from './EditItemForm.module.css';
 
-function EditItemForm({ item, onItemChange, onClose }) {
+function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
     const noBadgeRef = useRef();
     const saleBadgeRef = useRef();
     const newBadgeRef = useRef();
