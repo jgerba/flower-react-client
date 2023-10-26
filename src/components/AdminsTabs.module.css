@@ -1,4 +1,6 @@
 .tabs {
+    grid-area: tabs;
+
     position: fixed;
     display: flex;
     justify-content: space-between;

@@ -6,12 +6,8 @@
 
     grid-template-areas:
         '. . . tabs . . .'
-        '. . orders orders orders . .';
+        '. . feed feed feed . .';
 
     width: 100vw;
     min-height: calc(100vh - 337px);
-}
-
-.tabs {
-    grid-area: tabs;
 }

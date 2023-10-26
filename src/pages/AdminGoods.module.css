@@ -1,18 +1,17 @@
 .main {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 100px;
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    grid-template-areas:
+        '. . . tabs . . .'
+        '. . goods goods goods . .';
 
     width: 100vw;
     min-height: calc(100vh - 337px);
-
-    padding-top: 200px;
-}
-
-.tabs {
 }
 
 .goods {
+    grid-area: goods;
 }

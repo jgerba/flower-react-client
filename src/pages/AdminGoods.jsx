@@ -55,7 +55,7 @@ function AdminGoods() {
 
     return (
         <main className={classes.main}>
-            <AdminsTabs className={classes.tabs} />
+            <AdminsTabs />
 
             <TextHeader>Товары</TextHeader>
 
