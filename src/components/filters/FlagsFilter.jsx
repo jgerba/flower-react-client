@@ -4,6 +4,7 @@ import ContentCard from '../UI/ContentCard';
 import MenuBtn from '../UI/MenuBtn';
 import FilterItem from './FilterItem';
 import RangeSlider from './RangeSlider';
+import TextHeader from '../UI/TextHeader';
 
 import classes from './FlagsFilter.module.css';
 
@@ -12,7 +13,7 @@ function FlagsFilter({
     items = [],
     onDropFlags = () => {},
     onFilter = () => {},
-    onFlagSave = () => {},
+    onFlagsUpd = () => {},
     editForm = false,
 }) {
     const [flagsArr, setFlagsArr] = useState([]);
@@ -35,7 +36,10 @@ function FlagsFilter({
 
     // filter items with price range and flagsArr options
     useEffect(() => {
-        if (items.length === 0 || editForm) return;
+        if (items.length === 0) return;
+
+        // update flags state at edit modal after change
+        if (editForm) return onFlagsUpd(flagsArr);
 
         // when filters are droped show all bouquets
         if (
@@ -75,6 +79,7 @@ function FlagsFilter({
     }, []);
 
     // click all checkboxes = saved flags
+    // if reset uncheck checkboxes
     function clickFlags(flags, reset = false) {
         const currentFlags = [];
 
@@ -103,8 +108,13 @@ function FlagsFilter({
         <ContentCard
             className={`${classes.filter} ${className ? className : ''}`}
         >
+            {editForm && (
+                <TextHeader className={classes.header}>
+                    Укажите метки
+                </TextHeader>
+            )}
             <ul>
-                <h3>По свету</h3>
+                <h3 className={classes['ul-header']}>По свету</h3>
                 <FilterItem
                     name="gentle"
                     onCheck={name => applyFilterHandler(name)}
@@ -119,7 +129,7 @@ function FlagsFilter({
                 </FilterItem>
             </ul>
             <ul>
-                <h3>По цвету</h3>
+                <h3 className={classes['ul-header']}>По цвету</h3>
                 <FilterItem
                     name="white"
                     onCheck={name => applyFilterHandler(name)}
@@ -164,7 +174,7 @@ function FlagsFilter({
                 </FilterItem>
             </ul>
             <ul>
-                <h3>По формату</h3>
+                <h3 className={classes['ul-header']}>По формату</h3>
                 <FilterItem
                     name="bouquet"
                     onCheck={name => applyFilterHandler(name)}
@@ -203,19 +213,9 @@ function FlagsFilter({
                 </FilterItem>
             </ul>
 
-            {editForm ? (
-                <div>
-                    <MenuBtn
-                        onClick={() => {
-                            onFlagSave(flagsArr);
-                        }}
-                    >
-                        Сохранить отметки
-                    </MenuBtn>
-                </div>
-            ) : (
+            {!editForm && (
                 <div className={classes.slider}>
-                    <h3>стоимость</h3>
+                    <h3 className={classes['ul-header']}>стоимость</h3>
                     <RangeSlider
                         min={0}
                         max={10000}

@@ -21,6 +21,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
     const [isBadImg, setIsBadImg] = useState(false);
     const [newBadgeVal, setNewBadgeVal] = useState(item.new);
     const [saleBadgeVal, setSaleBadgeVal] = useState(item.sale);
+    const [flags, setFlags] = useState(item.sale);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -43,8 +44,8 @@ function EditItemForm({ item, onItemChange, onClose }) {
             !item.src?.value.trim() ||
             item.price?.value < 1 ||
             item.price?.value > 10000 ||
-            item.oldPrice?.value < 1 ||
-            item.oldPrice?.value > 10000
+            (saleBadgeVal && item.oldPrice?.value < 1) ||
+            (saleBadgeVal && item.oldPrice?.value > 10000)
         ) {
             return false;
         }
@@ -68,7 +69,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
             src: formEl.src.value,
             new: newBadgeVal,
             sale: saleBadgeVal,
-            flags: formEl.flags.value,
+            flags: flags,
         };
 
         // upload edited item
@@ -232,7 +233,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 className={classes['flags-filter']}
                 items={item}
                 editForm={true}
-                onFlagSave={flags => console.log(flags)}
+                onFlagsUpd={flags => setFlags(flags)}
             />
 
             <MenuBtn type="submit" blank={true}>
