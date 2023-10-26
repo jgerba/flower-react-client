@@ -1,8 +1,8 @@
 import AdminsTabs from '../components/AdminsTabs';
 
-import classes from './Orders.module.css';
+import classes from './AdminOrders.module.css';
 
-function Orders(params) {
+function AdminOrders(params) {
     return (
         <main className={classes.main}>
             <AdminsTabs className={classes.tabs} />
@@ -10,4 +10,4 @@ function Orders(params) {
     );
 }
 
-export default Orders;
+export default AdminOrders;

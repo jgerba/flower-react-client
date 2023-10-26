@@ -14,7 +14,7 @@ import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
 import LogIn from './pages/LogIn';
 import AdminGoods from './pages/AdminGoods';
-import Orders from './pages/Orders';
+import AdminOrders from './pages/AdminOrders';
 import AdminFeedback from './pages/AdminFeedback';
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
                 { path: 'login', element: <LogIn /> },
-                { path: 'orders', element: <Orders /> },
+                { path: 'orders', element: <AdminOrders /> },
                 { path: 'goods', element: <AdminGoods /> },
                 { path: 'feedback', element: <AdminFeedback /> },
             ],
