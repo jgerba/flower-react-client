@@ -8,22 +8,22 @@ import RangeSlider from './RangeSlider';
 import classes from './FlagsFilter.module.css';
 
 function FlagsFilter({
+    className = null,
     items = [],
     onDropFilter = () => {},
     onFilter = () => {},
-    className = null,
+    onFlagSave = () => {},
     editForm = false,
 }) {
     const [filterArr, setFilterArr] = useState([]);
     const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
 
-    // need to push it to the filter item and reset it
-    const [resetFilter, setResetFilter] = useState(false);
+    // push it to the price range filter and reset it
+    const [resetPrice, setResetPrice] = useState(false);
 
     // push filter option to filterArr
     // remove if it exists
     function applyFilterHandler(name) {
-        setResetFilter(false);
         setFilterArr(state => {
             const newState = [...state];
 
@@ -67,21 +67,36 @@ function FlagsFilter({
         onFilter(newArr);
     }, [filterArr, priceFilter]);
 
-    // check item current flags in edit form
+    // show item current flags in edit form
     useEffect(() => {
         if (!editForm || items.flags.length === 0) return;
 
-        items.flags.forEach(flag => {
-            const input = document.querySelector(`input[name='${flag}']`);
-            if (input) input.click();
-        });
+        clickFlags(items.flags);
     }, []);
 
-    // reset all checkboxes through props & drop filters
+    // click all checkboxes = saved flags
+    function clickFlags(flags, reset = false) {
+        const currentFlags = [];
+
+        flags.forEach(flag => {
+            if (!reset) currentFlags.push(flag);
+
+            const input = document.querySelector(`input[name='${flag}']`);
+            if (input) {
+                input.click();
+            }
+        });
+
+        setFilterArr(reset ? [] : currentFlags);
+    }
+
+    // reset all checkboxes & drop filters
     function resetFilterHandler() {
-        setFilterArr([]);
-        setResetFilter(true);
-        if (!editForm) setPriceFilter({ min: 0, max: 10000 });
+        clickFlags(filterArr, true);
+        if (!editForm) {
+            setPriceFilter({ min: 0, max: 10000 });
+            setResetPrice(true);
+        }
     }
 
     return (
@@ -93,14 +108,12 @@ function FlagsFilter({
                 <FilterItem
                     name="gentle"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     нежный
                 </FilterItem>
                 <FilterItem
                     name="bright"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     яркие
                 </FilterItem>
@@ -110,49 +123,42 @@ function FlagsFilter({
                 <FilterItem
                     name="white"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     белый
                 </FilterItem>
                 <FilterItem
                     name="yellow"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     желтый
                 </FilterItem>
                 <FilterItem
                     name="green"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     зеленый
                 </FilterItem>
                 <FilterItem
                     name="red"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     красный
                 </FilterItem>
                 <FilterItem
                     name="orange"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     оранжевый
                 </FilterItem>
                 <FilterItem
                     name="pink"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     розовый
                 </FilterItem>
                 <FilterItem
                     name="blue"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     синий
                 </FilterItem>
@@ -162,42 +168,36 @@ function FlagsFilter({
                 <FilterItem
                     name="bouquet"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     букет
                 </FilterItem>
                 <FilterItem
                     name="vase"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     в вазе
                 </FilterItem>
                 <FilterItem
                     name="envelope"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     в конверте
                 </FilterItem>
                 <FilterItem
                     name="basket"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     в корзине
                 </FilterItem>
                 <FilterItem
                     name="box"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     в шляпной коробке
                 </FilterItem>
                 <FilterItem
                     name="crate"
                     onCheck={name => applyFilterHandler(name)}
-                    uncheck={resetFilter}
                 >
                     в ящике
                 </FilterItem>
@@ -205,7 +205,12 @@ function FlagsFilter({
 
             {editForm ? (
                 <div>
-                    <MenuBtn blank={true} onClick={resetFilterHandler}>
+                    <MenuBtn
+                        blank={true}
+                        onClick={() => {
+                            onFlagSave(filterArr);
+                        }}
+                    >
                         Сохранить отметки
                     </MenuBtn>
                 </div>
@@ -215,11 +220,9 @@ function FlagsFilter({
                     <RangeSlider
                         min={0}
                         max={10000}
-                        onChange={value => {
-                            setResetFilter(false);
-                            setPriceFilter(value);
-                        }}
-                        reset={resetFilter}
+                        onChange={value => setPriceFilter(value)}
+                        reset={resetPrice}
+                        onCancelReset={() => setResetPrice(false)}
                     />
                 </div>
             )}

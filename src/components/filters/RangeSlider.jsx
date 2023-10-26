@@ -2,7 +2,13 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 
 import classes from './RangeSlider.module.css';
 
-const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
+const RangeSlider = ({
+    min,
+    max,
+    reset,
+    onChange = () => {},
+    onCancelReset = () => {},
+}) => {
     const [minVal, setMinVal] = useState(min);
     const [maxVal, setMaxVal] = useState(max);
 
@@ -43,13 +49,16 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
         onChange({ min: minVal, max: maxVal });
     }, [minVal, maxVal]);
 
+    // reset all states on reset command & cancel reset
     useEffect(() => {
-        if (minVal === min && maxVal === max) return;
+        if ((minVal === min && maxVal === max) || !reset) return;
 
         setMinVal(min);
         setMaxVal(max);
         minValRef.current = min;
         maxValRef.current = max;
+
+        onCancelReset();
     }, [reset]);
 
     function minChangehandler(event) {
@@ -77,7 +86,7 @@ const RangeSlider = ({ min, max, reset, onChange = () => {} }) => {
                 value={minVal}
                 onChange={minChangehandler}
                 className={`${classes.thumb} ${classes['thumb--left']}`}
-                // zindex 5 is applied to be able to move the thumb from the extreme right end
+                // z-index 5 is applied to be able to move the thumb from the extreme right end
                 style={{ zIndex: minVal > max - 100 && '5' }}
             />
             <input

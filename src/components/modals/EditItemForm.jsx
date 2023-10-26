@@ -236,8 +236,7 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 className={classes['flags-filter']}
                 items={item}
                 editForm={true}
-                onDropFilter={() => {}}
-                onFilter={() => {}}
+                onFlagSave={flags => console.log(flags)}
             />
 
             <MenuBtn blank={true}>Сохранить</MenuBtn>

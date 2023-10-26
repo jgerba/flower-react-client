@@ -12,12 +12,6 @@ function FilterItem(props) {
         props.onCheck(props.name);
     }
 
-    useEffect(() => {
-        if (!checked) return;
-
-        setChecked(false);
-    }, [props.uncheck]);
-
     return (
         <li className={classes.item}>
             <label className={classes.checkbox} htmlFor={props.name}>
