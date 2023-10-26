@@ -11,6 +11,7 @@ import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
 
 import classes from './AdminGoods.module.css';
+import crossImg from '../svg/closeBtn.svg';
 
 function AdminGoods() {
     const [items, setItems] = useState([]);
@@ -18,6 +19,7 @@ function AdminGoods() {
     const [itemToEdit, setItemToEdit] = useState(null);
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [isNewItem, setIsNewItem] = useState(false);
+    const [searchVal, setSearchVal] = useState('');
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -40,9 +42,15 @@ function AdminGoods() {
         });
     }
 
+    // filter items
     useEffect(() => {
-        setItemsToRender(items);
-    }, [items]);
+        if (!searchVal) return setItemsToRender(items);
+
+        const filteredItems = items.filter(item =>
+            item.title.toLowerCase().match(searchVal.toLowerCase())
+        );
+        setItemsToRender(filteredItems);
+    }, [searchVal]);
 
     // choose item to edit and send data to the modal inputs
     function showModalHandler(item = null) {
@@ -71,6 +79,10 @@ function AdminGoods() {
         setIsNewItem(false);
     }
 
+    function searchHandler(event) {
+        setSearchVal(event.target.value);
+    }
+
     return (
         <main className={classes.main}>
             <AdminsTabs />
@@ -83,6 +95,34 @@ function AdminGoods() {
                 >
                     Создать товар
                 </MenuBtn>
+
+                <form
+                    action=""
+                    name="Форма поиска"
+                    autoComplete="off"
+                    className={classes['search_form']}
+                    onSubmit={event => event.preventDefault()}
+                >
+                    <input
+                        className={classes['search_input']}
+                        type="search"
+                        name="Поле поиска"
+                        maxLength="30"
+                        placeholder="Введите название для поиска"
+                        value={searchVal}
+                        onChange={searchHandler}
+                    />
+                    <button
+                        className={classes['search_reset-btn']}
+                        name="Сброс поиска"
+                        type="reset"
+                        onClick={() => {
+                            setSearchVal('');
+                        }}
+                    >
+                        <img src={crossImg} />
+                    </button>
+                </form>
 
                 {itemsToRender.length !== 0 ? (
                     itemsToRender.map(item => (

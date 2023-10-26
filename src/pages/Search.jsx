@@ -10,8 +10,8 @@ import ScrollBtn from '../components/ScrollBtn';
 import classes from './Search.module.css';
 
 function SearchPage() {
-    const [bouquets, setBouquets] = useState([]);
-    const [foundBouquets, setFoundBouquets] = useState([]);
+    const [items, setItems] = useState([]);
+    const [foundItems, setFoundItems] = useState([]);
     const [showScrollBtn, setShowScrollBtn] = useState();
 
     const searchValue = useSelector(state => state.bouqets.searchValue);
@@ -26,24 +26,24 @@ function SearchPage() {
 
     function applyBouquetsData(data) {
         if (!data) return;
-        setBouquets(data);
+        setItems(data);
     }
 
     // filter bouqets with search value and render them
     // if search value is empty reset rendered bouquets
     useEffect(() => {
-        if (!searchValue) return setFoundBouquets([]);
+        if (!searchValue) return setFoundItems([]);
 
-        const filteredBouquets = bouquets.filter(bouquet =>
-            bouquet.title.match(searchValue)
+        const filteredBouquets = items.filter(bouquet =>
+            bouquet.title.toLowerCase().match(searchValue.toLowerCase())
         );
 
-        setFoundBouquets(filteredBouquets);
+        setFoundItems(filteredBouquets);
     }, [searchValue]);
 
     // show scroll up btn after scrolling 1 screen down
     useEffect(() => {
-        if (bouquets.length === 0) return;
+        if (items.length === 0) return;
 
         scrollY - winHeight >= 1
             ? setShowScrollBtn(true)
@@ -58,8 +58,8 @@ function SearchPage() {
                     : 'Введите свой запрос'}
             </h1>
             <section className={classes.results}>
-                {foundBouquets.length !== 0
-                    ? foundBouquets.map(item => (
+                {foundItems.length !== 0
+                    ? foundItems.map(item => (
                           <BouquetCard
                               className={classes.bouquet}
                               key={item._id}

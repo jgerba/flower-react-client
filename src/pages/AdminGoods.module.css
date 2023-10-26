@@ -22,6 +22,7 @@
     grid-area: goods;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
 }
 
@@ -34,5 +35,45 @@
 }
 
 .create-btn {
-    align-self: center;
+}
+
+.search_form {
+    position: relative;
+    width: 280px;
+}
+
+.search_input {
+    width: 100%;
+
+    padding: 5px 5px 5px 25px;
+
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid #555;
+    background-color: transparent;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.28px;
+
+    color: #7c7c7c;
+}
+
+.search_input::placeholder {
+    text-align: center;
+
+    color: #7c7c7c;
+}
+
+.search_input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.search_reset-btn {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+    right: -16px;
+    top: 9px;
 }

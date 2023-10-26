@@ -60,7 +60,7 @@ function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
 
         const formEl = event.target;
 
-        // if has wrong inputs block submitting
+        // if has wrong inputs - block submitting
         if (!checkInputs(formEl)) return;
 
         const itemObj = {
