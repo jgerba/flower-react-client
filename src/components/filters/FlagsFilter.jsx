@@ -7,7 +7,13 @@ import RangeSlider from './RangeSlider';
 
 import classes from './FlagsFilter.module.css';
 
-function FlagsFilter(props) {
+function FlagsFilter({
+    items = [],
+    onDropFilter = () => {},
+    onFilter = () => {},
+    className = null,
+    editForm = false,
+}) {
     const [filterArr, setFilterArr] = useState([]);
     const [priceFilter, setPriceFilter] = useState({ min: 0, max: 10000 });
 
@@ -29,7 +35,7 @@ function FlagsFilter(props) {
 
     // filter items with price range and filterArr options
     useEffect(() => {
-        if (props.items.length === 0) return;
+        if (items.length === 0 || editForm) return;
 
         // when filters are droped show all bouquets
         if (
@@ -37,10 +43,10 @@ function FlagsFilter(props) {
             priceFilter.min === 0 &&
             priceFilter.max === 10000
         )
-            return props.onDropFilter();
+            return onDropFilter();
 
         const newArr = [
-            ...props.items.filter(item => {
+            ...items.filter(item => {
                 const isInPriceRange =
                     item.price >= priceFilter.min &&
                     item.price <= priceFilter.max;
@@ -58,21 +64,28 @@ function FlagsFilter(props) {
             }),
         ];
 
-        props.onFilter(newArr);
+        onFilter(newArr);
     }, [filterArr, priceFilter]);
+
+    // check item current flags
+    useEffect(() => {
+        if (!editForm || items.flags.length === 0) return;
+        items.flags.forEach(flag => {
+            const input = document.querySelector(`input[name='${flag}']`);
+            if (input) input.click();
+        });
+    }, []);
 
     // reset all checkboxes through props & drop filters
     function resetFilterHandler() {
         setFilterArr([]);
-        setPriceFilter({ min: 0, max: 10000 });
         setResetFilter(true);
+        if (!editForm) setPriceFilter({ min: 0, max: 10000 });
     }
 
     return (
         <ContentCard
-            className={`${classes.filter} ${
-                props.className ? props.className : ''
-            }`}
+            className={`${classes.filter} ${className ? className : ''}`}
         >
             <ul>
                 <h3>По свету</h3>
@@ -188,18 +201,27 @@ function FlagsFilter(props) {
                     в ящике
                 </FilterItem>
             </ul>
-            <div className={classes.slider}>
-                <h3>стоимость</h3>
-                <RangeSlider
-                    min={0}
-                    max={10000}
-                    onChange={value => {
-                        setResetFilter(false);
-                        setPriceFilter(value);
-                    }}
-                    reset={resetFilter}
-                />
-            </div>
+
+            {editForm ? (
+                <div>
+                    <MenuBtn blank={true} onClick={resetFilterHandler}>
+                        Сохранить отметки
+                    </MenuBtn>
+                </div>
+            ) : (
+                <div className={classes.slider}>
+                    <h3>стоимость</h3>
+                    <RangeSlider
+                        min={0}
+                        max={10000}
+                        onChange={value => {
+                            setResetFilter(false);
+                            setPriceFilter(value);
+                        }}
+                        reset={resetFilter}
+                    />
+                </div>
+            )}
 
             <MenuBtn blank={true} onClick={resetFilterHandler}>
                 Сбросить фильтр
