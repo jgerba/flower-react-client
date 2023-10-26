@@ -22,3 +22,9 @@
 
     color: var(--customWhite);
 }
+
+.exit-btn {
+    position: absolute;
+
+    right: -539px;
+}

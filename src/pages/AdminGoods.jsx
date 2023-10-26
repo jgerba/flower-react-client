@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 
 import useFetch from '../hooks/use-fetch';
 
-import { notifyActions } from '../store/notify';
-
-import MenuBtn from '../components/UI/MenuBtn';
 import AdminsTabs from '../components/AdminsTabs';
 import GoodsItem from '../components/GoodsItem';
 import EditItemForm from '../components/modals/EditItemForm';
@@ -17,10 +12,6 @@ import TextHeader from '../components/UI/TextHeader';
 import classes from './AdminGoods.module.css';
 
 function AdminGoods() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const isAuth = useSelector(state => state.auth.isAuth);
-
     const [items, setItems] = useState([]);
     const [itemsToRender, setItemsToRender] = useState([]);
     const [itemToEdit, setItemToEdit] = useState(null);
@@ -37,22 +28,6 @@ function AdminGoods() {
         if (!data) return;
         setItems(data);
         setItemsToRender(data);
-    }
-
-    // logout from admin
-    function logOut() {
-        sendRequest(
-            {
-                url: '/logout',
-                method: 'POST',
-            },
-            applyLogout
-        );
-    }
-
-    function applyLogout() {
-        dispatch(notifyActions.applyMessage('Успешный выход'));
-        navigate('/login');
     }
 
     // update item in items array after editing
@@ -120,10 +95,6 @@ function AdminGoods() {
                     ></Backdrop>,
                     document.getElementById('backdrop-root')
                 )}
-
-            <MenuBtn className={classes['exit-btn']} onClick={logOut}>
-                Выйти
-            </MenuBtn>
         </main>
     );
 }
