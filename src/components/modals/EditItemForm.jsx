@@ -20,6 +20,7 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
     const [oldPriceVal, setOldPriceVal] = useState(item.oldPrice);
     const [imgSrcVal, setImgSrcVal] = useState(item.src);
     const [isBadImg, setIsBadImg] = useState(false);
+    const [descrVal, setDescrVal] = useState(item.descr);
     const [newBadgeVal, setNewBadgeVal] = useState(item.new);
     const [saleBadgeVal, setSaleBadgeVal] = useState(item.sale);
     const [flags, setFlags] = useState(item.sale);
@@ -41,12 +42,12 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
     //  check if there empty text inputs, or wrong number value
     function checkInputs(item) {
         if (
-            !item.title?.value.trim() ||
-            !item.src?.value.trim() ||
-            item.price?.value < 1 ||
-            item.price?.value > 10000 ||
-            (saleBadgeVal && item.oldPrice?.value < 1) ||
-            (saleBadgeVal && item.oldPrice?.value > 10000)
+            !titleVal ||
+            !imgSrcVal ||
+            priceVal < 1 ||
+            priceVal > 10000 ||
+            (saleBadgeVal && oldPriceVal < 1) ||
+            (saleBadgeVal && oldPriceVal > 10000)
         ) {
             return false;
         }
@@ -63,17 +64,17 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
         if (!checkInputs(formEl)) return;
 
         const itemObj = {
-            title: formEl.title.value,
-            price: formEl.price.value,
-            oldPrice: formEl.oldPrice.value,
-            description: formEl.descr?.value,
-            src: formEl.src.value,
+            title: titleVal,
+            price: priceVal,
+            oldPrice: oldPriceVal,
+            description: descrVal,
+            src: imgSrcVal,
             new: newBadgeVal,
             sale: saleBadgeVal,
             flags: flags,
         };
 
-        // upload edited item
+        // upload edited data
         sendRequest(
             { url: `/bouquet/${item._id}`, method: 'PATCH', body: itemObj },
             applyData
@@ -133,7 +134,7 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
                 textarea={true}
                 placeholder="Описание товара до 300 символов"
                 value={item.description}
-                onChange={() => {}}
+                onChange={value => setDescrVal(value)}
             />
 
             <FormInput

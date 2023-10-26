@@ -26,9 +26,10 @@ function FormInput(props) {
         const el = event.target;
         setValue(el.value);
 
+        props.onChange(props.type !== 'number' ? el.value.trim() : el.value);
+
         if (el.name === 'descr') return;
 
-        props.onChange(el.value);
         // set timeout after changing value and check value after
         clearTimeout(timer);
         setError(false);
