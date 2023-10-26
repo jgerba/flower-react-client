@@ -240,13 +240,6 @@ function EditItemForm({ item, onItemChange, onClose }) {
                 onFilter={() => {}}
             />
 
-            <FormInput
-                title="Отметки"
-                name="flags"
-                value={item.flags}
-                onChange={() => {}}
-            />
-
             <MenuBtn blank={true}>Сохранить</MenuBtn>
         </form>
     );

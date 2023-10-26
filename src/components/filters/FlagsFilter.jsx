@@ -67,9 +67,10 @@ function FlagsFilter({
         onFilter(newArr);
     }, [filterArr, priceFilter]);
 
-    // check item current flags
+    // check item current flags in edit form
     useEffect(() => {
         if (!editForm || items.flags.length === 0) return;
+
         items.flags.forEach(flag => {
             const input = document.querySelector(`input[name='${flag}']`);
             if (input) input.click();
