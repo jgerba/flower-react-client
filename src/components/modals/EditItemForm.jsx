@@ -6,6 +6,7 @@ import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';
 import TextHeader from '../UI/TextHeader';
 import FlagsFilter from '../filters/FlagsFilter';
+import ContentCard from '../UI/ContentCard';
 
 import classes from './EditItemForm.module.css';
 
@@ -187,7 +188,7 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
                 </div>
             </section>
 
-            <aside className={classes['test__card']}>
+            <ContentCard className={classes['test__card']}>
                 <TextHeader className={classes['test__header']}>
                     Предварительный просмотр
                 </TextHeader>
@@ -227,7 +228,7 @@ function EditItemForm({ item, onItemChange, onClose, newItem = false }) {
                         <p>new</p>
                     </div>
                 )}
-            </aside>
+            </ContentCard>
 
             <FlagsFilter
                 className={classes['flags-filter']}

@@ -57,13 +57,13 @@ function AdminGoods() {
         <main className={classes.main}>
             <AdminsTabs />
 
-            <TextHeader>Товары</TextHeader>
-
             <section className={classes.goods}>
+                <TextHeader className={classes.header}>Товары</TextHeader>
+
                 {itemsToRender.length !== 0 ? (
                     itemsToRender.map(item => (
                         <GoodsItem
-                            className={classes.bouquet}
+                            className={classes.item}
                             key={item._id}
                             title={item.title}
                             price={item.price}
