@@ -15,15 +15,6 @@
     z-index: 3;
 }
 
-.tabs a {
-    font-family: Oswald;
-    font-size: 14px;
-    letter-spacing: 0.28px;
-    text-transform: uppercase;
-
-    color: var(--customWhite);
-}
-
 .exit-btn {
     position: absolute;
 

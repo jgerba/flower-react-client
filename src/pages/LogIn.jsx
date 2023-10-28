@@ -47,7 +47,7 @@ function LogIn() {
     function applyLogin(data) {
         dispatch(authActions.logIn(data.token));
         dispatch(notifyActions.applyMessage('Успешный вход'));
-        navigate('/orders');
+        navigate('/cabinet');
     }
 
     function submitHandler(event) {

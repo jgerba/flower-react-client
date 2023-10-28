@@ -13,9 +13,7 @@ import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
 import LogIn from './pages/LogIn';
-import AdminGoods from './pages/AdminGoods';
-import AdminOrders from './pages/AdminOrders';
-import AdminFeedback from './pages/AdminFeedback';
+import AdminCabinet from './pages/AdminCabinet';
 
 function App() {
     const router = createBrowserRouter([
@@ -42,9 +40,7 @@ function App() {
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
                 { path: 'login', element: <LogIn /> },
-                { path: 'orders', element: <AdminOrders /> },
-                { path: 'goods', element: <AdminGoods /> },
-                { path: 'feedback', element: <AdminFeedback /> },
+                { path: 'cabinet', element: <AdminCabinet /> },
             ],
         },
     ]);

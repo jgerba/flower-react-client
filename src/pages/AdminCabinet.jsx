@@ -10,10 +10,10 @@ import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
 
-import classes from './AdminGoods.module.css';
+import classes from './AdminCabinet.module.css';
 import crossImg from '../svg/closeBtn.svg';
 
-function AdminGoods() {
+function AdminCabinet() {
     const [showOrders, setShowOrders] = useState(true);
     const [showGoods, setShowGoods] = useState(false);
     const [showFeeds, setShowFeeds] = useState(false);
@@ -45,7 +45,7 @@ function AdminGoods() {
     // download all items
     useEffect(() => {
         sendRequest({ url: url }, applyItemsData, false);
-    }, [url]);
+    }, [url, items]);
 
     function applyItemsData(data) {
         if (!data) return;
@@ -244,4 +244,4 @@ function AdminGoods() {
     );
 }
 
-export default AdminGoods;
+export default AdminCabinet;
