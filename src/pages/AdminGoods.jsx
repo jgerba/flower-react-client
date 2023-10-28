@@ -14,19 +14,39 @@ import classes from './AdminGoods.module.css';
 import crossImg from '../svg/closeBtn.svg';
 
 function AdminGoods() {
+    const [showOrders, setShowOrders] = useState(true);
+    const [showGoods, setShowGoods] = useState(false);
+    const [showFeeds, setShowFeeds] = useState(false);
+    const [url, setUrl] = useState('/orders');
+
     const [items, setItems] = useState([]);
     const [itemsToRender, setItemsToRender] = useState([]);
     const [itemToEdit, setItemToEdit] = useState(null);
+    const [searchVal, setSearchVal] = useState('');
+
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [isNewItem, setIsNewItem] = useState(false);
-    const [searchVal, setSearchVal] = useState('');
 
     const { sendRequest, isLoading, error } = useFetch();
 
+    // change download url according to tab selection
+    useEffect(() => {
+        if (showOrders) setUrl('/orders');
+        if (showGoods) setUrl('/bouquets');
+        if (showFeeds) setUrl('/feeds');
+
+        // drop prev tab items
+        if (items) {
+            setItems([]);
+            setItemsToRender([]);
+        }
+    }, [showOrders, showGoods, showFeeds]);
+
     // download all items
     useEffect(() => {
-        sendRequest({ url: '/bouquets' }, applyItemsData, false);
-    }, []);
+        console.log(url);
+        sendRequest({ url: url }, applyItemsData, false);
+    }, [url]);
 
     function applyItemsData(data) {
         if (!data) return;
@@ -83,9 +103,40 @@ function AdminGoods() {
         setSearchVal(event.target.value);
     }
 
+    // change state of tabs
+    function showTabsHandler(event) {
+        switch (event.target.innerText) {
+            case 'ЗАКАЗЫ':
+                setShowOrders(true);
+                setShowGoods(false);
+                setShowFeeds(false);
+                break;
+
+            case 'ТОВАРЫ':
+                setShowOrders(false);
+                setShowGoods(true);
+                setShowFeeds(false);
+                break;
+
+            case 'ОБРАТНАЯ СВЯЗЬ':
+                setShowOrders(false);
+                setShowGoods(false);
+                setShowFeeds(true);
+                break;
+
+            default:
+                console.log('Что-то сломалось...');
+                break;
+        }
+    }
+
     return (
         <main className={classes.main}>
-            <AdminsTabs />
+            <AdminsTabs
+                onShowOrders={showTabsHandler}
+                onShowGoods={showTabsHandler}
+                onShowFeed={showTabsHandler}
+            />
 
             <section className={classes.goods}>
                 <TextHeader className={classes.header}>Товары</TextHeader>

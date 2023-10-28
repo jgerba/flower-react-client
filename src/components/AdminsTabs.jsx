@@ -1,8 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
-
 import { notifyActions } from '../store/notify';
 
 import useFetch from '../hooks/use-fetch';
@@ -39,15 +37,17 @@ function AdminsTabs(props) {
                 props.className ? props.className : ''
             }`}
         >
-            <Link to="/orders">Заказы</Link>
-            <Link to="/goods">Товары</Link>
-            <Link to="/feedback">Обратная связь</Link>
+            <MenuBtn blank={true} onClick={event => props.onShowOrders(event)}>
+                Заказы
+            </MenuBtn>
+            <MenuBtn blank={true} onClick={event => props.onShowGoods(event)}>
+                Товары
+            </MenuBtn>
+            <MenuBtn blank={true} onClick={event => props.onShowFeed(event)}>
+                Обратная связь
+            </MenuBtn>
 
-            <MenuBtn
-                className={classes['exit-btn']}
-                blank={true}
-                onClick={logOut}
-            >
+            <MenuBtn className={classes['exit-btn']} onClick={logOut}>
                 Выход из кабинета
             </MenuBtn>
         </aside>
