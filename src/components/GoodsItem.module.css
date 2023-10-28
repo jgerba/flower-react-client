@@ -40,3 +40,9 @@
 
     color: var(--customWhite);
 }
+
+.remove-btn {
+    position: absolute;
+
+    right: -35px;
+}
