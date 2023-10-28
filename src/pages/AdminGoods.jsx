@@ -44,7 +44,6 @@ function AdminGoods() {
 
     // download all items
     useEffect(() => {
-        console.log(url);
         sendRequest({ url: url }, applyItemsData, false);
     }, [url]);
 
@@ -73,7 +72,13 @@ function AdminGoods() {
     }, [searchVal]);
 
     // choose item to edit and send data to the modal inputs
-    function showModalHandler(item = null) {
+    function showModalHandler(event, item = null) {
+        if (event?.target.nodeName === 'IMG') return;
+
+        if (event === 'BUTTON') {
+            return;
+        }
+
         if (item) {
             setItemToEdit(item);
         } else {
@@ -130,6 +135,29 @@ function AdminGoods() {
         }
     }
 
+    function removeItemHandler(id) {
+        sendRequest(
+            { url: `${url.slice(0, -1)}/${id}`, method: 'DELETE' },
+            applyRemoveData()
+        );
+
+        function applyRemoveData() {
+            setItems(items => {
+                const newArr = [...items];
+                const index = newArr.findIndex(item => item._id === id);
+                newArr.splice(index, 1);
+                return newArr;
+            });
+            setItemsToRender(items => {
+                const newArr = [...items];
+                const index = newArr.findIndex(item => item._id === id);
+
+                newArr.splice(index, 1);
+                return newArr;
+            });
+        }
+    }
+
     return (
         <main className={classes.main}>
             <AdminsTabs
@@ -183,7 +211,8 @@ function AdminGoods() {
                             title={item.title}
                             price={item.price}
                             descr={item.description}
-                            onClick={() => showModalHandler(item)}
+                            onClick={event => showModalHandler(event, item)}
+                            onRemove={() => removeItemHandler(item._id)}
                         />
                     ))
                 ) : (
