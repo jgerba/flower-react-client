@@ -71,7 +71,7 @@ function Footer() {
                     для корпоративных <br /> клиентов
                 </NavLink>
                 {isAuth ? (
-                    <NavLink className={classes.header} to="/orders">
+                    <NavLink className={classes.header} to="/cabinet">
                         Кабинет администратора
                     </NavLink>
                 ) : (
