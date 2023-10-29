@@ -55,14 +55,14 @@ function FormInput(props) {
                 {props.title}
             </label>
 
-            {!props.textarea ? (
+            {props.type === 'number' ? (
                 <input
                     ref={ref}
                     id={id + `-${props.name}`}
-                    type={props.type ? props.type : 'text'}
+                    type="number"
                     name={props.name}
                     placeholder={props.placeholder}
-                    maxLength={props.name === 'src' ? '' : 25}
+                    maxLength="5"
                     className={`${classes.input} ${
                         props.className ? props.className : ''
                     }`}
@@ -70,7 +70,7 @@ function FormInput(props) {
                     onChange={changeHandler}
                     onBlur={blurHandler}
                 />
-            ) : (
+            ) : props.textarea ? (
                 <textarea
                     ref={ref}
                     id={id + `-${props.name}`}
@@ -83,6 +83,21 @@ function FormInput(props) {
                     }`}
                     value={value}
                     onChange={changeHandler}
+                />
+            ) : (
+                <input
+                    ref={ref}
+                    id={id + `-${props.name}`}
+                    type="text"
+                    name={props.name}
+                    placeholder={props.placeholder}
+                    maxLength={props.name === 'src' ? '' : 25}
+                    className={`${classes.input} ${
+                        props.className ? props.className : ''
+                    }`}
+                    value={value}
+                    onChange={changeHandler}
+                    onBlur={blurHandler}
                 />
             )}
         </div>
