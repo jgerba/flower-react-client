@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { cartActions } from '../../store/cart';
 
@@ -12,6 +13,7 @@ import classes from './ShopCart.module.css';
 
 function ShopCart(props) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
 
     const [itemsToRender, setItemsToRender] = useState([]);
@@ -19,6 +21,11 @@ function ShopCart(props) {
     useEffect(() => {
         setItemsToRender(cartItems);
     }, [cartItems]);
+
+    function makeaOrderHandler() {
+        navigate('./checkout');
+        props.onClose();
+    }
 
     return (
         <section className={classes.cart}>
@@ -58,7 +65,11 @@ function ShopCart(props) {
                     </p>
                 </div>
 
-                <MenuBtn className={classes.checkout} blank={true}>
+                <MenuBtn
+                    className={classes.checkout}
+                    blank={true}
+                    onClick={makeaOrderHandler}
+                >
                     Оформить заказ
                 </MenuBtn>
             </section>

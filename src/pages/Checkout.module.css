@@ -1,4 +1,17 @@
+.main {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 250px 2200px;
+
+    margin-left: 11vw;
+    margin-right: 11vw;
+    padding-top: 80px;
+}
+
 .header {
+    grid-column: 1/5;
+    grid-row: 1;
     position: relative;
 }
 
@@ -7,4 +20,45 @@
 
     top: -15px;
     left: 273px;
+}
+
+.form {
+    grid-column: 1/4;
+    grid-row: 2/3;
+
+    position: relative;
+
+    height: 200px;
+}
+
+.form h4 {
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.84px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.label {
+    align-self: flex-start;
+    text-transform: none;
+}
+
+.delivery p {
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+
+    color: #555;
+}
+
+.total p {
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
 }

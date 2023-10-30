@@ -51,7 +51,12 @@ function FormInput(props) {
 
     return (
         <div className={classes.container}>
-            <label htmlFor={id + `-${props.name}`} className={classes.label}>
+            <label
+                htmlFor={id + `-${props.name}`}
+                className={`${classes.label} ${
+                    props.labelClass ? props.labelClass : ''
+                }`}
+            >
                 {props.title}
             </label>
 
@@ -88,7 +93,7 @@ function FormInput(props) {
                 <input
                     ref={ref}
                     id={id + `-${props.name}`}
-                    type="text"
+                    type={props.type ? props.type : 'text'}
                     name={props.name}
                     placeholder={props.placeholder}
                     maxLength={props.name === 'src' ? '' : 25}
