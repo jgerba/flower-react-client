@@ -2,7 +2,7 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 250px 2200px;
+    grid-template-rows: 250px 1900px;
 
     margin-left: 11vw;
     margin-right: 11vw;
@@ -20,6 +20,24 @@
 
     top: -15px;
     left: 273px;
+}
+
+.cart {
+    grid-template-rows: 80px 1fr 71px;
+
+    top: 280px;
+    right: 165px;
+
+    height: 50%;
+}
+
+.cart__checkout {
+    height: fit-content;
+    margin-top: 20px;
+}
+
+.cart__goods {
+    height: 100%;
 }
 
 .form {
@@ -40,18 +58,61 @@
     color: var(--customGreen);
 }
 
+.container {
+    gap: 10px;
+}
+
 .label {
     align-self: flex-start;
     text-transform: none;
 }
 
-.delivery p {
+.contacts,
+.delivery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.delivery {
+    margin-top: 60px;
+}
+
+.delivery-house {
+    display: flex;
+    gap: 30px;
+}
+
+.delivery small {
     font-family: Oswald;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1.4px;
     text-transform: uppercase;
 
     color: #555;
+}
+
+.promo {
+    display: flex;
+    align-items: flex-end;
+
+    width: 70%;
+    margin-top: 60px;
+}
+
+.promo-container {
+    width: 50%;
+}
+
+.promo button {
+    height: 60px;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 60px;
 }
 
 .total p {
@@ -61,4 +122,36 @@
     text-transform: uppercase;
 
     color: var(--customWhite);
+}
+
+.submit-btn {
+    margin-top: 30px;
+}
+
+.policy {
+    display: block;
+
+    width: 330px;
+
+    margin-top: 10px;
+
+    text-align: justify;
+
+    font-family: Roboto Condensed;
+    font-size: 10px;
+    letter-spacing: 0.2px;
+
+    color: var(--customWhite);
+}
+
+.policy a {
+    font-family: Roboto Condensed;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    text-decoration-line: underline;
+
+    color: var(--customPink);
 }

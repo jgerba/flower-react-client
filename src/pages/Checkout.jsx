@@ -2,6 +2,7 @@ import FormInput from '../components/FormInput';
 import MenuBtn from '../components/UI/MenuBtn';
 import SectionHeader from '../components/UI/SectionHeader';
 import TextHeader from '../components/UI/TextHeader';
+import ShopCart from '../components/modals/ShopCart';
 
 import classes from './Checkout.module.css';
 
@@ -12,10 +13,19 @@ function Checkout(props) {
                 <SectionHeader>оформление</SectionHeader>
                 <SectionHeader smallHeader={true}>заказа</SectionHeader>
             </div>
+
+            <ShopCart
+                containerClass={classes.cart}
+                checkoutClass={classes['cart__checkout']}
+                goodsClass={classes['cart__goods']}
+                checkout={true}
+            />
+
             <form className={classes.form} action="">
-                <div>
+                <section className={classes.contacts}>
                     <h4>Контактные данные</h4>
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Ваше имя*"
                         placeholder="Введите ваше имя"
@@ -23,6 +33,7 @@ function Checkout(props) {
                         onChange={() => {}}
                     />
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Ваш телефон*"
                         placeholder="+7 (977) 777-77-77"
@@ -31,6 +42,7 @@ function Checkout(props) {
                         onChange={() => {}}
                     />
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Ваш e-mail*"
                         placeholder="Введите вашу почту"
@@ -39,6 +51,7 @@ function Checkout(props) {
                         onChange={() => {}}
                     />
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Телефон получателя (необязательно)"
                         placeholder="+7 (977) 777-77-77"
@@ -47,6 +60,7 @@ function Checkout(props) {
                         onChange={() => {}}
                     />
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Имя получателя (необязательно)"
                         placeholder="Введите имя получателя"
@@ -54,6 +68,7 @@ function Checkout(props) {
                         onChange={() => {}}
                     />
                     <FormInput
+                        containerClass={classes.container}
                         labelClass={classes.label}
                         title="Комментарий к заказу"
                         placeholder="Примечания к вашеу заказу,  особые пожелания отделу доставки"
@@ -61,33 +76,87 @@ function Checkout(props) {
                         textarea={true}
                         onChange={() => {}}
                     />
-                </div>
+                </section>
 
-                <div className={classes.delivery}>
+                <section className={classes.delivery}>
                     <h4>Доставка</h4>
-                    <FormInput />
-                    <FormInput />
-                    <div>
-                        <FormInput />
-                        <FormInput />
-                        <FormInput />
+                    <FormInput
+                        containerClass={classes.container}
+                        labelClass={classes.label}
+                        title="Город*"
+                        placeholder="Введите город"
+                        name="city"
+                        onChange={() => {}}
+                    />
+                    <FormInput
+                        containerClass={classes.container}
+                        labelClass={classes.label}
+                        title="Улица*"
+                        placeholder="Введите улицу"
+                        name="street"
+                        onChange={() => {}}
+                    />
+                    <div className={classes['delivery-house']}>
+                        <FormInput
+                            containerClass={classes.container}
+                            labelClass={classes.label}
+                            title="Корп/стр"
+                            placeholder="Корп/стр"
+                            name="building"
+                            onChange={() => {}}
+                        />
+                        <FormInput
+                            containerClass={classes.container}
+                            labelClass={classes.label}
+                            title="Дом"
+                            placeholder="Дом"
+                            name="house"
+                            onChange={() => {}}
+                        />
+                        <FormInput
+                            containerClass={classes.container}
+                            labelClass={classes.label}
+                            title="Кв/офис"
+                            placeholder="Кв/офис"
+                            name="flat"
+                            onChange={() => {}}
+                        />
                     </div>
-                    <FormInput />
-                    <p>{`Стоимость доставки ${0} ₽`}</p>
-                </div>
+                    <FormInput
+                        containerClass={classes.container}
+                        labelClass={classes.label}
+                        title="Время доставки"
+                        placeholder="Введите время доставки"
+                        name="extraName"
+                        onChange={() => {}}
+                    />
+                    <small>{`Стоимость доставки оговаривается после подтверждения заказа нашим администратором`}</small>
+                </section>
 
-                <div>
-                    <input type="text" />
+                <section className={classes.promo}>
+                    <FormInput
+                        containerClass={`${classes.container} ${classes['promo-container']}`}
+                        labelClass={classes.label}
+                        title="Промокод"
+                        placeholder="Промокод"
+                        name="promo"
+                        onChange={() => {}}
+                    />
                     <MenuBtn blank={true}>Применить</MenuBtn>
-                </div>
+                </section>
 
-                <div className={classes.total}>
-                    <TextHeader>Общая сумма заказа</TextHeader>
-                    <p>{`Скидка ${0} ₽`}</p>
-                    <p>{`Доставка ${0} ₽`}</p>
-                </div>
+                <section className={classes.total}>
+                    <TextHeader>{`Общая сумма заказа ${0} ₽`}</TextHeader>
+                    <p>{`Скидка = ${0} ₽`}</p>
+                </section>
 
-                <MenuBtn>Заказать</MenuBtn>
+                <MenuBtn className={classes['submit-btn']}>Заказать</MenuBtn>
+                <small className={classes.policy}>
+                    Нажимая на кнопку «К Оплате», я даю свое согласие на
+                    обработку персональных данных, в соответствии с
+                    <a href=""> Политикой конфиденциальности</a>, а так же
+                    ознакомлен с условиями оплаты и доставки
+                </small>
             </form>
         </main>
     );
