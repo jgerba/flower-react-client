@@ -68,7 +68,8 @@
 }
 
 .contacts,
-.delivery {
+.delivery,
+.delivery__details {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -76,6 +77,27 @@
 
 .delivery {
     margin-top: 60px;
+}
+
+.delivery__input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.delivery__input label {
+    padding-left: 20px;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.input-gray label {
+    color: #353535;
 }
 
 .delivery-house {
