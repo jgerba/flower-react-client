@@ -7,6 +7,8 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart(state, action) {
+            if (state.totalItems === 99) return;
+
             const index = findIndex(state.cartItems, action.payload._id);
 
             // add new item to cart
@@ -19,6 +21,8 @@ const cartSlice = createSlice({
         },
 
         increaseQuantity(state, action) {
+            if (state.totalItems === 99) return;
+
             const index = findIndex(state.cartItems, action.payload._id);
             state.cartItems[index].inCart += 1;
 
