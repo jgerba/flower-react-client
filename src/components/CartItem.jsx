@@ -9,7 +9,7 @@ function CartItem({
     onDelete = () => {},
 }) {
     return (
-        <div className={classes.position}>
+        <div className={classes.item}>
             <img className={classes.image} src={item.src} alt={item.title} />
             <h5 className={classes.title}>{item.title}</h5>
             <p className={classes.price}>{`${item.price} ₽`}</p>
