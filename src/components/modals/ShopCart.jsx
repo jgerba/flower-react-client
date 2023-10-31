@@ -11,7 +11,13 @@ import CartItem from '../CartItem';
 import cross from '../../svg/closeCartBtn.svg';
 import classes from './ShopCart.module.css';
 
-function ShopCart(props) {
+function ShopCart({
+    checkout = false,
+    containerClass = null,
+    checkoutClass = null,
+    goodsClass = null,
+    onClose = () => {},
+}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
@@ -24,14 +30,21 @@ function ShopCart(props) {
 
     function makeaOrderHandler() {
         navigate('./checkout');
-        props.onClose();
+        onClose();
     }
 
     return (
-        <section className={classes.cart}>
-            <TextHeader className={classes.header}>Ваша корзина</TextHeader>
-
-            <section className={classes.goods}>
+        <section
+            className={`${classes.cart} ${
+                containerClass ? containerClass : ''
+            }`}
+        >
+            <TextHeader className={classes.header}>
+                {checkout ? 'Ваш заказ:' : 'Ваша корзина'}
+            </TextHeader>
+            <section
+                className={`${classes.goods} ${goodsClass ? goodsClass : ''}`}
+            >
                 {itemsToRender.map(item => (
                     <CartItem
                         key={item._id}
@@ -54,31 +67,38 @@ function ShopCart(props) {
                     />
                 ))}
             </section>
-
-            <section className={classes['checkout-section']}>
+            <section
+                className={`${classes['checkout-section']} ${
+                    checkoutClass ? checkoutClass : ''
+                }`}
+            >
                 <div className={classes.extra}></div>
                 <div className={classes.total}>
-                    <strong>Предварительный итог: {} руб.</strong>
-                    <p>
-                        Чтобы узнать стоимость доставки, перейдите к оформлению
-                        заказа.
-                    </p>
+                    <strong>Предварительный итог: {0} руб.</strong>
+                    {!checkout && (
+                        <p>
+                            Чтобы узнать стоимость доставки, перейдите к
+                            оформлению заказа.
+                        </p>
+                    )}
                 </div>
 
-                <MenuBtn
-                    className={classes.checkout}
-                    blank={true}
-                    onClick={makeaOrderHandler}
-                >
-                    Оформить заказ
-                </MenuBtn>
+                {!checkout && (
+                    <MenuBtn
+                        className={classes.checkout}
+                        blank={true}
+                        onClick={makeaOrderHandler}
+                    >
+                        Оформить заказ
+                    </MenuBtn>
+                )}
             </section>
-
-            <button className={classes.cancel} onClick={() => props.onClose()}>
-                <img src={cross} alt="Закрыть корзину" />
-            </button>
-
-            <div className={classes['decor-ellipse']}></div>
+            {!checkout && (
+                <button className={classes.cancel} onClick={() => onClose()}>
+                    <img src={cross} alt="Закрыть корзину" />
+                </button>
+            )}
+            {!checkout && <div className={classes['decor-ellipse']}></div>}
         </section>
     );
 }

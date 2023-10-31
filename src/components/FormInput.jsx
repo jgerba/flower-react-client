@@ -50,7 +50,11 @@ function FormInput(props) {
     }
 
     return (
-        <div className={classes.container}>
+        <div
+            className={`${classes.container} ${
+                props.containerClass ? props.containerClass : ''
+            }`}
+        >
             <label
                 htmlFor={id + `-${props.name}`}
                 className={`${classes.label} ${
