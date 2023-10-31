@@ -11,21 +11,18 @@ const cartSlice = createSlice({
 
             // add new item to cart
             // if already have an item => +1 to 'inCart' property
-            // if 'inCart' property is empty => 2 - temporarly - update the base
             index === -1
                 ? state.cartItems.push(action.payload)
-                : state.cartItems[index].inCart
-                ? (state.cartItems[index].inCart += 1)
-                : (state.cartItems[index].inCart = 2);
+                : (state.cartItems[index].inCart += 1);
+
+            state.totalItems = calculateItems(state);
         },
 
         increaseQuantity(state, action) {
             const index = findIndex(state.cartItems, action.payload._id);
+            state.cartItems[index].inCart += 1;
 
-            // if 'inCart' property is empty => 2 - temporarly - update the base
-            state.cartItems[index].inCart
-                ? (state.cartItems[index].inCart += 1)
-                : (state.cartItems[index].inCart = 2);
+            state.totalItems = calculateItems(state);
         },
 
         decreaseQuantity(state, action) {
@@ -36,17 +33,21 @@ const cartSlice = createSlice({
             state.cartItems[index].inCart > 1
                 ? (state.cartItems[index].inCart -= 1)
                 : state.cartItems.splice(index, 1);
+
+            state.totalItems = calculateItems(state);
         },
 
         // remove from cart despite of quantity
         removePosition(state, action) {
             const index = findIndex(state.cartItems, action.payload._id);
-
             state.cartItems.splice(index, 1);
+
+            state.totalItems = calculateItems(state);
         },
 
         emptyCart(state) {
             state.cartItems = [];
+            state.totalItems = 0;
         },
     },
 });
@@ -57,10 +58,7 @@ function findIndex(items, id) {
 
 // calculate all items in the cart to show them in the widget
 function calculateItems(state) {
-    return state.cartItems.reduce(
-        (sum, item) => sum + item.inCart,
-        state.totalItems
-    );
+    return state.cartItems.reduce((sum, item) => sum + item.inCart, 0);
 }
 
 export const cartActions = cartSlice.actions;

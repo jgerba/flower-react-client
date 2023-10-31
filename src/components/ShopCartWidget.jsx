@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useSelector } from 'react-redux';
 
 import ShopCart from './modals/ShopCart';
 import Backdrop from './modals/Backdrop';
@@ -7,9 +8,9 @@ import Backdrop from './modals/Backdrop';
 import cart from '../svg/cart.svg';
 import classes from './ShopCartWidget.module.css';
 
-const items = 1;
-
 function ShopCartWidget(props) {
+    const totalItems = useSelector(state => state.cart.totalItems);
+
     const [showCart, setShowCart] = useState(false);
 
     function toggleCart() {
@@ -21,14 +22,19 @@ function ShopCartWidget(props) {
     }
 
     return (
-        <article>
+        <article className={classes.container}>
             <button
                 className={classes.cart}
-                data-items={items}
+                data-items={totalItems}
                 onClick={toggleCart}
             >
-                <img src={cart} alt="Корзина" />
+                <img src={cart} alt="Корзина для покупок" />
             </button>
+
+            <div className={classes['cart-badge']}>
+                <p>{totalItems}</p>
+            </div>
+
             {showCart &&
                 createPortal(
                     <ShopCart onClose={closeCart} />,
