@@ -118,6 +118,10 @@
     color: #555;
 }
 
+.time-input {
+    width: 191.25px;
+}
+
 .promo {
     display: flex;
     align-items: flex-end;

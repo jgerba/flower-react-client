@@ -13,6 +13,7 @@ function Checkout(props) {
     const formRef = useRef();
     const pickupRef = useRef();
 
+    const cartItems = useSelector(state => state.cart.cartItems);
     const totalPrice = useSelector(state => state.cart.totalPrice);
 
     const [useDelivery, setUseDelivery] = useState(false);
@@ -35,10 +36,19 @@ function Checkout(props) {
             recieverName: el.recieverName?.value,
             comment: el.comment?.value,
             delivery: useDelivery,
-            address: useDelivery ? el.address.value : null,
-            // order: el.order.value,
+            address: useDelivery
+                ? {
+                      city: el.city?.value,
+                      street: el.street?.value,
+                      building: el.building?.value,
+                      house: el.house?.value,
+                      flat: el.flat?.value,
+                      deliverTime: el.deliverTime?.value,
+                  }
+                : null,
+            order: cartItems,
             promo: el.promo?.value,
-            // totalPrice: el.totalPrice.value,
+            totalPrice: totalPrice,
         };
 
         console.log(obj);
@@ -209,13 +219,15 @@ function Checkout(props) {
                             </div>
 
                             <FormInput
-                                containerClass={classes.container}
+                                containerClass={`${classes.container} ${classes['time-input']}`}
                                 labelClass={classes.label}
                                 title="Время доставки"
                                 placeholder="Введите время доставки"
-                                name="extraName"
+                                name="deliverTime"
                                 onChange={() => {}}
+                                type="time"
                             />
+
                             <small>{`Стоимость доставки оговаривается после подтверждения заказа нашим администратором`}</small>
                         </div>
                     )}
