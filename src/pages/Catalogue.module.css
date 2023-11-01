@@ -9,9 +9,11 @@
         '. . . . . sort sort'
         'filter filter goods goods goods goods goods';
 
-    margin-left: 11vw;
-    margin-right: 11vw;
+    padding-left: 11vw;
+    padding-right: 11vw;
     padding-top: 80px;
+
+    overflow: hidden;
 }
 
 .head {

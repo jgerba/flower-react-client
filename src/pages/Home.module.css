@@ -1,3 +1,7 @@
+.main {
+    overflow: hidden;
+}
+
 .section {
     position: relative;
 
