@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { cartItems: [], totalItems: 0 };
+const initialState = { cartItems: [], totalItems: 0, totalPrice: 0 };
 
 const cartSlice = createSlice({
     name: 'Cart',
@@ -18,6 +18,7 @@ const cartSlice = createSlice({
                 : (state.cartItems[index].inCart += 1);
 
             state.totalItems = calculateItems(state);
+            state.totalPrice = calculatePrice(state);
         },
 
         increaseQuantity(state, action) {
@@ -27,6 +28,7 @@ const cartSlice = createSlice({
             state.cartItems[index].inCart += 1;
 
             state.totalItems = calculateItems(state);
+            state.totalPrice = calculatePrice(state);
         },
 
         decreaseQuantity(state, action) {
@@ -39,6 +41,7 @@ const cartSlice = createSlice({
                 : state.cartItems.splice(index, 1);
 
             state.totalItems = calculateItems(state);
+            state.totalPrice = calculatePrice(state);
         },
 
         // remove from cart despite of quantity
@@ -47,11 +50,13 @@ const cartSlice = createSlice({
             state.cartItems.splice(index, 1);
 
             state.totalItems = calculateItems(state);
+            state.totalPrice = calculatePrice(state);
         },
 
         emptyCart(state) {
             state.cartItems = [];
             state.totalItems = 0;
+            state.totalPrice = 0;
         },
     },
 });
@@ -63,6 +68,14 @@ function findIndex(items, id) {
 // calculate all items in the cart to show them in the widget
 function calculateItems(state) {
     return state.cartItems.reduce((sum, item) => sum + item.inCart, 0);
+}
+
+// calculate total price of all items in the cart, for cart & checkout
+function calculatePrice(state) {
+    return state.cartItems.reduce(
+        (sum, item) => sum + item.price * item.inCart,
+        0
+    );
 }
 
 export const cartActions = cartSlice.actions;

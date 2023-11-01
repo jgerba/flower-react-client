@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import FormInput from '../components/FormInput';
 import MenuBtn from '../components/UI/MenuBtn';
 import SectionHeader from '../components/UI/SectionHeader';
@@ -10,7 +12,8 @@ import classes from './Checkout.module.css';
 function Checkout(props) {
     const formRef = useRef();
     const pickupRef = useRef();
-    // const deliveryRef = useRef();
+
+    const totalPrice = useSelector(state => state.cart.totalPrice);
 
     const [useDelivery, setUseDelivery] = useState(false);
 
@@ -28,12 +31,13 @@ function Checkout(props) {
             name: el.name.value,
             phone: +el.phone.value,
             email: el.email.value,
-            recieverPhone: +el.recieverPhone.value,
-            recieverName: el.recieverName.value,
-            comment: el.comment.value,
+            recieverPhone: +el.recieverPhone?.value,
+            recieverName: el.recieverName?.value,
+            comment: el.comment?.value,
+            delivery: useDelivery,
             address: useDelivery ? el.address.value : null,
             // order: el.order.value,
-            promo: el.promo.value,
+            promo: el.promo?.value,
             // totalPrice: el.totalPrice.value,
         };
 
@@ -147,7 +151,6 @@ function Checkout(props) {
                             }`}
                         >
                             <input
-                                // ref={deliveryRef}
                                 name="delivery"
                                 id="delivery"
                                 type="radio"
@@ -231,7 +234,7 @@ function Checkout(props) {
                 </section>
 
                 <section className={classes.total}>
-                    <TextHeader>{`Общая сумма заказа ${0} ₽`}</TextHeader>
+                    <TextHeader>{`Общая сумма заказа ${totalPrice} ₽`}</TextHeader>
                     <p>{`Скидка = ${0} ₽`}</p>
                 </section>
 

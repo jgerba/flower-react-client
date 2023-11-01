@@ -21,6 +21,7 @@ function ShopCart({
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
+    const totalPrice = useSelector(state => state.cart.totalPrice);
 
     const [itemsToRender, setItemsToRender] = useState([]);
 
@@ -74,7 +75,7 @@ function ShopCart({
             >
                 <div className={classes.extra}></div>
                 <div className={classes.total}>
-                    <strong>Предварительный итог: {0} руб.</strong>
+                    <strong>Предварительный итог: {totalPrice} руб.</strong>
                     {!checkout && (
                         <p>
                             Чтобы узнать стоимость доставки, перейдите к
