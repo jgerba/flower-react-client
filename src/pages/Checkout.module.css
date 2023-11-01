@@ -2,11 +2,15 @@
     position: relative;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 250px 1900px;
+    grid-template-rows: 250px 1500px;
 
     margin-left: 11vw;
     margin-right: 11vw;
     padding-top: 80px;
+}
+
+.main.main-delivery {
+    grid-template-rows: 250px 2000px;
 }
 
 .header {

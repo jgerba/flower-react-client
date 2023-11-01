@@ -41,7 +41,11 @@ function Checkout(props) {
     }
 
     return (
-        <main className={classes.main}>
+        <main
+            className={`${classes.main} ${
+                useDelivery ? classes['main-delivery'] : ''
+            }`}
+        >
             <div className={classes.header}>
                 <SectionHeader>оформление</SectionHeader>
                 <SectionHeader smallHeader={true}>заказа</SectionHeader>
