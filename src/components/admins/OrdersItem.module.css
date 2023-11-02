@@ -1,0 +1,36 @@
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+
+    width: 800px;
+    height: 70px;
+
+    padding: 10px;
+
+    background: rgb(0 0 0 / 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.item p {
+    width: 200px;
+
+    text-align: center;
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.84px;
+
+    color: var(--customWhite);
+}
+
+.price {
+    color: var(--customGreen);
+}
+
+.remove-btn {
+    position: absolute;
+
+    right: -35px;
+}

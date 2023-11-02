@@ -5,6 +5,7 @@ import useFetch from '../hooks/use-fetch';
 
 import AdminsTabs from '../components/admins/AdminsTabs';
 import GoodsItem from '../components/admins/GoodsItem';
+import OrdersItem from '../components/admins/OrdersItem';
 import EditItemForm from '../components/modals/EditItemForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
@@ -205,17 +206,30 @@ function AdminCabinet() {
                 </form>
 
                 {itemsToRender.length !== 0 ? (
-                    itemsToRender.map(item => (
-                        <GoodsItem
-                            className={classes.item}
-                            key={item._id}
-                            title={item.title}
-                            price={item.price}
-                            descr={item.description}
-                            onClick={event => showModalHandler(event, item)}
-                            onRemove={() => removeItemHandler(item._id)}
-                        />
-                    ))
+                    itemsToRender.map(item =>
+                        showOrders ? (
+                            <OrdersItem
+                                className={classes.item}
+                                key={item._id}
+                                name={item.name}
+                                price={item.price}
+                                phone={item.phone}
+                                created={item.createdAt}
+                                // onClick={event => showModalHandler(event, item)}
+                                onRemove={() => removeItemHandler(item._id)}
+                            />
+                        ) : (
+                            <GoodsItem
+                                className={classes.item}
+                                key={item._id}
+                                title={item.title}
+                                price={item.price}
+                                descr={item.description}
+                                onClick={event => showModalHandler(event, item)}
+                                onRemove={() => removeItemHandler(item._id)}
+                            />
+                        )
+                    )
                 ) : (
                     <p className={classes.excuse}>
                         Букетов еще нет. Создайте первый букет
