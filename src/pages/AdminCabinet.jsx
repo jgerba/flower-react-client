@@ -3,8 +3,8 @@ import { createPortal } from 'react-dom';
 
 import useFetch from '../hooks/use-fetch';
 
-import AdminsTabs from '../components/AdminsTabs';
-import GoodsItem from '../components/GoodsItem';
+import AdminsTabs from '../components/admins/AdminsTabs';
+import GoodsItem from '../components/admins/GoodsItem';
 import EditItemForm from '../components/modals/EditItemForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
@@ -44,10 +44,11 @@ function AdminCabinet() {
 
     // download all items
     useEffect(() => {
-        sendRequest({ url: url }, applyItemsData, false);
-    }, [url, items]);
+        sendRequest({ url: url }, applyItemsData);
+    }, [url]);
 
     function applyItemsData(data) {
+        console.log(data);
         if (!data) return;
         setItems(data);
         setItemsToRender(data);

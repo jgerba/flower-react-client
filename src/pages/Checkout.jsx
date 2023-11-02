@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+import useFetch from '../hooks/use-fetch';
+
 import FormInput from '../components/FormInput';
 import MenuBtn from '../components/UI/MenuBtn';
 import SectionHeader from '../components/UI/SectionHeader';
@@ -17,16 +19,38 @@ function Checkout(props) {
     const totalPrice = useSelector(state => state.cart.totalPrice);
 
     const [useDelivery, setUseDelivery] = useState(false);
+    const [promo, setPromo] = useState('');
+    const [acceptPromo, setAcceptPromo] = useState(null);
+
+    const { sendRequest, isLoading, error } = useFetch();
 
     // set initial check attr for badges
     useEffect(() => {
         pickupRef.current.setAttribute('checked', '');
     }, []);
 
+    //  check if there empty text inputs
+    function checkInputs(el) {
+        if (
+            !el.name.value ||
+            !el.phone.value ||
+            !el.email.value ||
+            cartItems.length === 0 ||
+            (useDelivery && !el.city.value) ||
+            (useDelivery && !el.street.value)
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
     function submitHandler(event) {
         event.preventDefault();
 
         const el = formRef.current;
+
+        if (!checkInputs(el)) return;
 
         const obj = {
             name: el.name.value,
@@ -47,11 +71,17 @@ function Checkout(props) {
                   }
                 : null,
             order: cartItems,
-            promo: el.promo?.value,
+            promo: acceptPromo,
             totalPrice: totalPrice,
         };
 
         console.log(obj);
+
+        sendRequest({ url: '/order', method: 'POST', body: obj }, applyData);
+
+        function applyData(data) {
+            console.log(data);
+        }
     }
 
     return (
@@ -240,9 +270,11 @@ function Checkout(props) {
                         title="Промокод"
                         placeholder="Промокод"
                         name="promo"
-                        onChange={() => {}}
+                        onChange={value => setPromo(value)}
                     />
-                    <MenuBtn blank={true}>Применить</MenuBtn>
+                    <MenuBtn blank={true} onClick={() => setAcceptPromo(promo)}>
+                        Применить
+                    </MenuBtn>
                 </section>
 
                 <section className={classes.total}>
