@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { notifyActions } from '../store/notify';
+import { notifyActions } from '../../store/notify';
 
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../../hooks/use-fetch';
 
-import MenuBtn from './UI/MenuBtn';
+import MenuBtn from '../UI/MenuBtn';
 
 import classes from './AdminsTabs.module.css';
 

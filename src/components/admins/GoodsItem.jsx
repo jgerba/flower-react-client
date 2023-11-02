@@ -1,5 +1,5 @@
 import classes from './GoodsItem.module.css';
-import bin from '../svg/bin.svg';
+import bin from '../../svg/bin.svg';
 
 function GoodsItem(props) {
     return (
