@@ -9,28 +9,38 @@ const options = {
     minute: 'numeric',
 };
 
-function OrdersItem(props) {
+function OrdersItem({
+    className,
+    item,
+    onClick = () => {},
+    onRemove = () => {},
+}) {
     function dateHandler() {
-        const date = new Date(props.created);
+        const date = new Date(item.createdAt);
         return date.toLocaleDateString('ru-RU', options);
     }
 
     return (
         <div
-            className={`${classes.item} ${
-                props.className ? props.className : ''
-            }`}
-            onClick={props.onClick}
+            className={`${classes.item} ${className ? className : ''}`}
+            onClick={onClick}
         >
-            <p className={classes.created}>{dateHandler()}</p>
-            <p className={classes.name}>{props.name}</p>
-            <p className={classes.phone}>{props.phone}</p>
-            <p className={classes.email}>{props.email}</p>
-            <p className={classes.price}>{props.price}</p>
+            <div className={classes.credentials}>
+                <p className={classes.created}>{dateHandler()}</p>
+                <p className={classes.name}>{item.name}</p>
+                <p className={classes.phone}>{item.phone}</p>
+                <p className={classes.email}>{item.email}</p>
+                <p className={classes.price}>{item.totalPrice}</p>
+            </div>
+
+            <p className={classes.order}>{`Заказ: ${item.order.reduce(
+                (sum, item) => sum + ' ' + item.title,
+                ''
+            )}`}</p>
 
             <button
                 className={classes['remove-btn']}
-                onClick={() => props.onRemove()}
+                onClick={() => onRemove()}
             >
                 <img src={bin} alt="Мусорная корзина" />
             </button>

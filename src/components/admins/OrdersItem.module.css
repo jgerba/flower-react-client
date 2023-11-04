@@ -1,17 +1,30 @@
 .item {
     position: relative;
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    gap: 30px;
+    align-content: space-around;
 
     width: 800px;
-    height: 70px;
+    height: 140px;
 
     padding: 10px;
 
     background: rgb(0 0 0 / 0.2);
     backdrop-filter: blur(10px);
+}
+
+.credentials {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+
+    width: 100%;
+    height: 70px;
 }
 
 .item p {
@@ -27,6 +40,17 @@
 
 .item .name {
     color: var(--customGreen);
+}
+
+.item .order {
+    align-self: flex-start;
+    width: 100%;
+
+    text-transform: none;
+}
+
+.item .order::first-letter {
+    text-transform: capitalize;
 }
 
 .remove-btn {
