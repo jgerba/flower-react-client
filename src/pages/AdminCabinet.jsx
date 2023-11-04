@@ -7,6 +7,7 @@ import AdminsTabs from '../components/admins/AdminsTabs';
 import GoodsItem from '../components/admins/GoodsItem';
 import OrdersItem from '../components/admins/OrdersItem';
 import EditItemForm from '../components/modals/EditItemForm';
+import EditOrderForm from '../components/modals/EditOrderForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
@@ -213,12 +214,8 @@ function AdminCabinet() {
                             <OrdersItem
                                 className={classes.item}
                                 key={item._id}
-                                name={item.name}
-                                price={item.totalPrice}
-                                phone={item.phone}
-                                email={item.email}
-                                created={item.createdAt}
-                                // onClick={event => showModalHandler(event, item)}
+                                item={item}
+                                onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
                             />
                         ) : (
@@ -242,12 +239,20 @@ function AdminCabinet() {
 
             {modalIsVisible &&
                 createPortal(
-                    <EditItemForm
-                        item={itemToEdit}
-                        onItemChange={item => itemChangeHandler(item)}
-                        onClose={hideModalHandler}
-                        isNewItem={isNewItem}
-                    ></EditItemForm>,
+                    showOrders ? (
+                        <EditOrderForm
+                            item={itemToEdit}
+                            onItemChange={item => itemChangeHandler(item)}
+                            onClose={hideModalHandler}
+                        ></EditOrderForm>
+                    ) : (
+                        <EditItemForm
+                            item={itemToEdit}
+                            onItemChange={item => itemChangeHandler(item)}
+                            onClose={hideModalHandler}
+                            isNewItem={isNewItem}
+                        ></EditItemForm>
+                    ),
                     document.getElementById('modal-root')
                 )}
             {modalIsVisible &&
