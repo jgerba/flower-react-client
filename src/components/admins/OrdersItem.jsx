@@ -25,6 +25,7 @@ function OrdersItem(props) {
             <p className={classes.created}>{dateHandler()}</p>
             <p className={classes.name}>{props.name}</p>
             <p className={classes.phone}>{props.phone}</p>
+            <p className={classes.email}>{props.email}</p>
             <p className={classes.price}>{props.price}</p>
 
             <button

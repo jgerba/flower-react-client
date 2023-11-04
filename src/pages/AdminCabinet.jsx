@@ -82,8 +82,10 @@ function AdminCabinet() {
         }
 
         if (item) {
+            // open item to edit
             setItemToEdit(item);
         } else {
+            // create new item
             setItemToEdit({
                 title: '',
                 price: 0,
@@ -212,8 +214,9 @@ function AdminCabinet() {
                                 className={classes.item}
                                 key={item._id}
                                 name={item.name}
-                                price={item.price}
+                                price={item.totalPrice}
                                 phone={item.phone}
+                                email={item.email}
                                 created={item.createdAt}
                                 // onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
