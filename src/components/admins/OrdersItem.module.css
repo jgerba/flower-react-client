@@ -45,12 +45,6 @@
 .item .order {
     align-self: flex-start;
     width: 100%;
-
-    text-transform: none;
-}
-
-.item .order::first-letter {
-    text-transform: capitalize;
 }
 
 .remove-btn {

@@ -34,7 +34,15 @@ function OrdersItem({
             </div>
 
             <p className={classes.order}>{`Заказ: ${item.order.reduce(
-                (sum, item) => sum + ' ' + item.title,
+                (accum, item) => {
+                    //make title first letter capitalized
+                    const capitalTitle =
+                        item.title.charAt(0).toUpperCase() +
+                        item.title.substring(1);
+
+                    // omit the first comma
+                    return accum + (accum === '' ? ' ' : ', ') + capitalTitle;
+                },
                 ''
             )}`}</p>
 

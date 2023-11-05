@@ -172,13 +172,22 @@ function AdminCabinet() {
             />
 
             <section className={classes.goods}>
-                <TextHeader className={classes.header}>Товары</TextHeader>
-                <MenuBtn
-                    className={classes['create-btn']}
-                    onClick={() => showModalHandler()}
-                >
-                    Создать товар
-                </MenuBtn>
+                <TextHeader className={classes.header}>
+                    {showOrders
+                        ? 'Заказы'
+                        : showGoods
+                        ? 'Товары'
+                        : 'Обратная связь'}
+                </TextHeader>
+
+                {showGoods && (
+                    <MenuBtn
+                        className={classes['create-btn']}
+                        onClick={() => showModalHandler()}
+                    >
+                        Создать товар
+                    </MenuBtn>
+                )}
 
                 <form
                     action=""
