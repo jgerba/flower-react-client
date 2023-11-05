@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import { cartActions } from '../store/cart';
 import useFetch from '../hooks/use-fetch';
 
 import FormInput from '../components/FormInput';
@@ -12,6 +14,9 @@ import ShopCart from '../components/modals/ShopCart';
 import classes from './Checkout.module.css';
 
 function Checkout(props) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const formRef = useRef();
     const pickupRef = useRef();
 
@@ -75,12 +80,12 @@ function Checkout(props) {
             totalPrice: totalPrice,
         };
 
-        console.log(obj);
-
         sendRequest({ url: '/order', method: 'POST', body: obj }, applyData);
 
         function applyData(data) {
             console.log(data);
+            dispatch(cartActions.emptyCart());
+            navigate('/');
         }
     }
 
