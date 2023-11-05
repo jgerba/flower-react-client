@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { cartItems: [], totalItems: 0, totalPrice: 0 };
+const initialState = {
+    cartItems: [],
+    orderItems: [],
+    totalItems: 0,
+    totalPrice: 0,
+};
 
 const cartSlice = createSlice({
     name: 'Cart',
@@ -53,8 +58,43 @@ const cartSlice = createSlice({
             state.totalPrice = calculatePrice(state);
         },
 
+        // show order at orderEdit maodal
+        updateOrderItems(state, action) {
+            state.orderItems = action.payload;
+
+            state.totalPrice = calculatePrice(state, true);
+        },
+
+        increaseOrderQuantity(state, action) {
+            const index = findIndex(state.orderItems, action.payload._id);
+            state.orderItems[index].inCart += 1;
+
+            state.totalPrice = calculatePrice(state, true);
+        },
+
+        decreaseOrderQuantity(state, action) {
+            const index = findIndex(state.orderItems, action.payload._id);
+
+            // if quantity is more than 1 => -1 to quantity
+            // else remove position from order
+            state.orderItems[index].inCart > 1
+                ? (state.orderItems[index].inCart -= 1)
+                : state.orderItems.splice(index, 1);
+
+            state.totalPrice = calculatePrice(state, true);
+        },
+
+        // remove from order despite of quantity
+        removeOrderPosition(state, action) {
+            const index = findIndex(state.orderItems, action.payload._id);
+            state.orderItems.splice(index, 1);
+
+            state.totalPrice = calculatePrice(state, true);
+        },
+
         emptyCart(state) {
             state.cartItems = [];
+            state.orderItems = [];
             state.totalItems = 0;
             state.totalPrice = 0;
         },
@@ -70,8 +110,14 @@ function calculateItems(state) {
     return state.cartItems.reduce((sum, item) => sum + item.inCart, 0);
 }
 
-// calculate total price of all items in the cart, for cart & checkout
-function calculatePrice(state) {
+// calculate total price of all items in the order/cart
+function calculatePrice(state, order = false) {
+    if (order)
+        return state.orderItems.reduce(
+            (sum, item) => sum + item.price * item.inCart,
+            0
+        );
+
     return state.cartItems.reduce(
         (sum, item) => sum + item.price * item.inCart,
         0
