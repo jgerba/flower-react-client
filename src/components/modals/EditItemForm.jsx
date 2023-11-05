@@ -40,7 +40,7 @@ function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
     }, [item.new, item.sale]);
 
     //  check if there empty text inputs, or wrong number value
-    function checkInputs(item) {
+    function checkInputs() {
         if (
             !titleVal ||
             !imgSrcVal ||
@@ -58,10 +58,8 @@ function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
     function submitHandler(event) {
         event.preventDefault();
 
-        const formEl = event.target;
-
         // if has wrong inputs - block submitting
-        if (!checkInputs(formEl)) return;
+        if (!checkInputs()) return;
 
         const itemObj = {
             title: titleVal,

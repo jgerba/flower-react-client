@@ -10,8 +10,8 @@ const options = {
 };
 
 function OrdersItem({
-    className,
-    item,
+    className = null,
+    item = {},
     onClick = () => {},
     onRemove = () => {},
 }) {
