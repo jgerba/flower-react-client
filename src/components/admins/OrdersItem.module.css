@@ -40,6 +40,7 @@
 
 .item .name {
     color: var(--customGreen);
+    text-transform: capitalize;
 }
 
 .item .order {

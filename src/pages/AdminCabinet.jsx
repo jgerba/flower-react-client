@@ -62,6 +62,10 @@ function AdminCabinet() {
             const index = items.findIndex(el => el._id === item._id);
             return items.toSpliced(index, 1, item);
         });
+        setItemsToRender(items => {
+            const index = items.findIndex(el => el._id === item._id);
+            return items.toSpliced(index, 1, item);
+        });
     }
 
     // filter items

@@ -35,7 +35,7 @@ function OrdersItem({
 
             <p className={classes.order}>{`Заказ: ${item.order.reduce(
                 (accum, item) => {
-                    //make title first letter capitalized
+                    //make titles first letter capitalized
                     const capitalTitle =
                         item.title.charAt(0).toUpperCase() +
                         item.title.substring(1);
