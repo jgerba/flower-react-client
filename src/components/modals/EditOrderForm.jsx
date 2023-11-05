@@ -108,7 +108,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                 title="Телефон получателя"
                 name="receiverPhone"
                 placeholder="Телефон получателя"
-                value={item.receiverPhone}
+                value={item.recieverPhone}
                 type="phone"
                 onChange={() => {}}
             />
