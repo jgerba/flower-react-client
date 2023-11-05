@@ -12,6 +12,7 @@ import SearchPage from './pages/Search';
 import CorporatePage from './pages/Corporate';
 import BouquetPage from './pages/Bouquet';
 import Checkout from './pages/Checkout';
+import Success from './pages/Success';
 import LogIn from './pages/LogIn';
 import AdminCabinet from './pages/AdminCabinet';
 
@@ -39,6 +40,7 @@ function App() {
                 { path: 'search', element: <SearchPage /> },
                 { path: 'corporate', element: <CorporatePage /> },
                 { path: 'checkout', element: <Checkout /> },
+                { path: 'success', element: <Success /> },
                 { path: 'login', element: <LogIn /> },
                 { path: 'cabinet', element: <AdminCabinet /> },
             ],

@@ -85,7 +85,7 @@ function Checkout(props) {
         function applyData(data) {
             console.log(data);
             dispatch(cartActions.emptyCart());
-            navigate('/');
+            navigate('/success');
         }
     }
 
