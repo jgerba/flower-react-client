@@ -11,13 +11,7 @@ import CartItem from '../CartItem';
 import cross from '../../svg/closeCartBtn.svg';
 import classes from './ShopCart.module.css';
 
-function ShopCart({
-    checkout = false,
-    containerClass = null,
-    checkoutClass = null,
-    goodsClass = null,
-    onClose = () => {},
-}) {
+function ShopCart({ checkout = false, editOrder = false, onClose = () => {} }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
@@ -37,14 +31,20 @@ function ShopCart({
     return (
         <section
             className={`${classes.cart} ${
-                containerClass ? containerClass : ''
+                checkout
+                    ? classes['container-checkout']
+                    : editOrder
+                    ? classes['container-order']
+                    : ''
             }`}
         >
             <TextHeader className={classes.header}>
-                {checkout ? 'Ваш заказ:' : 'Ваша корзина'}
+                {checkout ? 'Ваш заказ:' : editOrder ? 'Заказ' : 'Ваша корзина'}
             </TextHeader>
             <section
-                className={`${classes.goods} ${goodsClass ? goodsClass : ''}`}
+                className={`${classes.goods} ${
+                    checkout || editOrder ? classes['goods-checkout'] : ''
+                }`}
             >
                 {itemsToRender.map(item => (
                     <CartItem
@@ -69,22 +69,30 @@ function ShopCart({
                 ))}
             </section>
             <section
-                className={`${classes['checkout-section']} ${
-                    checkoutClass ? checkoutClass : ''
+                className={`${classes['confirm-section']} ${
+                    checkout
+                        ? classes['confirm-checkout']
+                        : editOrder
+                        ? classes['confirm-order']
+                        : ''
                 }`}
             >
-                <div className={classes.extra}></div>
-                <div className={classes.total}>
+                {/* <div className={classes.extra}></div> */}
+                <div
+                    className={`${classes.total} ${
+                        editOrder ? classes['total-order'] : ''
+                    }`}
+                >
                     <strong>Предварительный итог: {totalPrice} руб.</strong>
-                    {!checkout && (
+                    {/* {!checkout && !editOrder && (
                         <p>
                             Чтобы узнать стоимость доставки, перейдите к
                             оформлению заказа.
                         </p>
-                    )}
+                    )} */}
                 </div>
 
-                {!checkout && (
+                {!checkout && !editOrder && (
                     <MenuBtn
                         className={classes.checkout}
                         blank={true}
@@ -94,12 +102,14 @@ function ShopCart({
                     </MenuBtn>
                 )}
             </section>
-            {!checkout && (
+            {!checkout && !editOrder && (
                 <button className={classes.cancel} onClick={() => onClose()}>
                     <img src={cross} alt="Закрыть корзину" />
                 </button>
             )}
-            {!checkout && <div className={classes['decor-ellipse']}></div>}
+            {!checkout && !editOrder && (
+                <div className={classes['decor-ellipse']}></div>
+            )}
         </section>
     );
 }

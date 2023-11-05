@@ -5,7 +5,7 @@ import useFetch from '../../hooks/use-fetch';
 import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';
 import TextHeader from '../UI/TextHeader';
-import ContentCard from '../UI/ContentCard';
+import ShopCart from './ShopCart';
 
 import classes from './EditOrderForm.module.css';
 
@@ -86,181 +86,185 @@ function EditOrderForm({ item, onItemChange, onClose }) {
     }
 
     return (
-        <form
-            action=""
-            name="Редактирование заказа"
-            className={classes.modal}
-            onSubmit={submitHandler}
-        >
-            <TextHeader>Редактирование заказа</TextHeader>
+        <>
+            <ShopCart editOrder={true} />
 
-            <FormInput
-                className={classes.capitalize}
-                title="Имя"
-                name="name"
-                placeholder="Имя до 30 символов - обязательное поле"
-                value={item.name}
-                onChange={() => {}}
-            />
+            <form
+                action=""
+                name="Редактирование заказа"
+                className={classes.modal}
+                onSubmit={submitHandler}
+            >
+                <TextHeader>Редактирование заказа</TextHeader>
 
-            <FormInput
-                title="Телефон"
-                name="phone"
-                placeholder="Телефон клиента - обязательное поле"
-                value={item.phone}
-                type="phone"
-                onChange={() => {}}
-            />
+                <FormInput
+                    className={classes.capitalize}
+                    title="Имя"
+                    name="name"
+                    placeholder="Имя до 30 символов - обязательное поле"
+                    value={item.name}
+                    onChange={() => {}}
+                />
 
-            <FormInput
-                title="Электронная почта"
-                name="email"
-                placeholder="Электронная почта клиента"
-                value={item.email}
-                onChange={() => {}}
-            />
+                <FormInput
+                    title="Телефон"
+                    name="phone"
+                    placeholder="Телефон клиента - обязательное поле"
+                    value={item.phone}
+                    type="phone"
+                    onChange={() => {}}
+                />
 
-            <FormInput
-                className={classes.capitalize}
-                title="Имя получателя"
-                name="recieverName"
-                placeholder="Имя получателя до 30 символов"
-                value={item.recieverName}
-                onChange={() => {}}
-            />
+                <FormInput
+                    title="Электронная почта"
+                    name="email"
+                    placeholder="Электронная почта клиента"
+                    value={item.email}
+                    onChange={() => {}}
+                />
 
-            <FormInput
-                title="Телефон получателя"
-                name="receiverPhone"
-                placeholder="Телефон получателя"
-                value={item.recieverPhone}
-                type="phone"
-                onChange={() => {}}
-            />
+                <FormInput
+                    className={classes.capitalize}
+                    title="Имя получателя"
+                    name="recieverName"
+                    placeholder="Имя получателя до 30 символов"
+                    value={item.recieverName}
+                    onChange={() => {}}
+                />
 
-            <FormInput
-                title="Комментарий к заказу"
-                name="comment"
-                placeholder="Комментарий к заказу"
-                value={item.comment}
-                textarea={true}
-                onChange={() => {}}
-            />
+                <FormInput
+                    title="Телефон получателя"
+                    name="receiverPhone"
+                    placeholder="Телефон получателя"
+                    value={item.recieverPhone}
+                    type="phone"
+                    onChange={() => {}}
+                />
 
-            <section className={classes.delivery}>
-                <h4>Доставка</h4>
+                <FormInput
+                    title="Комментарий к заказу"
+                    name="comment"
+                    placeholder="Комментарий к заказу"
+                    value={item.comment}
+                    textarea={true}
+                    onChange={() => {}}
+                />
 
-                <section className={classes['delivery__input']}>
-                    <div
-                        className={`${
-                            useDelivery ? classes['input-gray'] : ''
-                        }`}
-                    >
-                        <input
-                            ref={pickupRef}
-                            name="delivery"
-                            id="pickup"
-                            type="radio"
-                            onChange={() => {
-                                setUseDelivery(false);
-                            }}
-                        />
-                        <label htmlFor="pickup">Самовывоз</label>
-                    </div>
+                <section className={classes.delivery}>
+                    <h4>Доставка</h4>
 
-                    <div
-                        className={`${
-                            !useDelivery ? classes['input-gray'] : ''
-                        }`}
-                    >
-                        <input
-                            ref={deliveryRef}
-                            name="delivery"
-                            id="delivery"
-                            type="radio"
-                            onChange={() => {
-                                setUseDelivery(true);
-                            }}
-                        />
-                        <label htmlFor="delivery">Доставка курьером</label>
-                    </div>
-                </section>
-
-                {useDelivery && (
-                    <div className={classes['delivery__details']}>
-                        <FormInput
-                            containerClass={classes.container}
-                            labelClass={classes.label}
-                            title="Город*"
-                            placeholder="Введите город"
-                            name="city"
-                            value={item.address.city}
-                            onChange={() => {}}
-                        />
-                        <FormInput
-                            containerClass={classes.container}
-                            labelClass={classes.label}
-                            title="Улица*"
-                            placeholder="Введите улицу"
-                            name="street"
-                            value={item.address.street}
-                            onChange={() => {}}
-                        />
-
-                        <div className={classes['delivery-house']}>
-                            <FormInput
-                                containerClass={classes.container}
-                                labelClass={classes.label}
-                                title="Корп/стр"
-                                placeholder="Корп/стр"
-                                name="building"
-                                value={item.address.building}
-                                onChange={() => {}}
+                    <section className={classes['delivery__input']}>
+                        <div
+                            className={`${
+                                useDelivery ? classes['input-gray'] : ''
+                            }`}
+                        >
+                            <input
+                                ref={pickupRef}
+                                name="delivery"
+                                id="pickup"
+                                type="radio"
+                                onChange={() => {
+                                    setUseDelivery(false);
+                                }}
                             />
-                            <FormInput
-                                containerClass={classes.container}
-                                labelClass={classes.label}
-                                title="Дом"
-                                placeholder="Дом"
-                                name="house"
-                                value={item.address.house}
-                                onChange={() => {}}
-                            />
-                            <FormInput
-                                containerClass={classes.container}
-                                labelClass={classes.label}
-                                title="Кв/офис"
-                                placeholder="Кв/офис"
-                                name="flat"
-                                value={item.address.flat}
-                                onChange={() => {}}
-                            />
+                            <label htmlFor="pickup">Самовывоз</label>
                         </div>
 
-                        <FormInput
-                            containerClass={`${classes.container} ${classes['time-input']}`}
-                            labelClass={classes.label}
-                            title="Время доставки"
-                            placeholder="Введите время доставки"
-                            name="deliverTime"
-                            value={item.address.deliverTime}
-                            onChange={() => {}}
-                            type="time"
-                        />
-                    </div>
-                )}
-            </section>
+                        <div
+                            className={`${
+                                !useDelivery ? classes['input-gray'] : ''
+                            }`}
+                        >
+                            <input
+                                ref={deliveryRef}
+                                name="delivery"
+                                id="delivery"
+                                type="radio"
+                                onChange={() => {
+                                    setUseDelivery(true);
+                                }}
+                            />
+                            <label htmlFor="delivery">Доставка курьером</label>
+                        </div>
+                    </section>
 
-            <MenuBtn
-                className={`${classes['submit-btn']} ${
-                    useDelivery ? classes['submit-btn--shift'] : ''
-                }`}
-                type="submit"
-                blank={true}
-            >
-                Сохранить
-            </MenuBtn>
-        </form>
+                    {useDelivery && (
+                        <div className={classes['delivery__details']}>
+                            <FormInput
+                                containerClass={classes.container}
+                                labelClass={classes.label}
+                                title="Город*"
+                                placeholder="Введите город"
+                                name="city"
+                                value={item.address.city}
+                                onChange={() => {}}
+                            />
+                            <FormInput
+                                containerClass={classes.container}
+                                labelClass={classes.label}
+                                title="Улица*"
+                                placeholder="Введите улицу"
+                                name="street"
+                                value={item.address.street}
+                                onChange={() => {}}
+                            />
+
+                            <div className={classes['delivery-house']}>
+                                <FormInput
+                                    containerClass={classes.container}
+                                    labelClass={classes.label}
+                                    title="Корп/стр"
+                                    placeholder="Корп/стр"
+                                    name="building"
+                                    value={item.address.building}
+                                    onChange={() => {}}
+                                />
+                                <FormInput
+                                    containerClass={classes.container}
+                                    labelClass={classes.label}
+                                    title="Дом"
+                                    placeholder="Дом"
+                                    name="house"
+                                    value={item.address.house}
+                                    onChange={() => {}}
+                                />
+                                <FormInput
+                                    containerClass={classes.container}
+                                    labelClass={classes.label}
+                                    title="Кв/офис"
+                                    placeholder="Кв/офис"
+                                    name="flat"
+                                    value={item.address.flat}
+                                    onChange={() => {}}
+                                />
+                            </div>
+
+                            <FormInput
+                                containerClass={`${classes.container} ${classes['time-input']}`}
+                                labelClass={classes.label}
+                                title="Время доставки"
+                                placeholder="Введите время доставки"
+                                name="deliverTime"
+                                value={item.address.deliverTime}
+                                onChange={() => {}}
+                                type="time"
+                            />
+                        </div>
+                    )}
+                </section>
+
+                <MenuBtn
+                    className={`${classes['submit-btn']} ${
+                        useDelivery ? classes['submit-btn--shift'] : ''
+                    }`}
+                    type="submit"
+                    blank={true}
+                >
+                    Сохранить
+                </MenuBtn>
+            </form>
+        </>
     );
 }
 

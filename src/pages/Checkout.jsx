@@ -100,12 +100,7 @@ function Checkout(props) {
                 <SectionHeader smallHeader={true}>заказа</SectionHeader>
             </div>
 
-            <ShopCart
-                containerClass={classes.cart}
-                checkoutClass={classes['cart__checkout']}
-                goodsClass={classes['cart__goods']}
-                checkout={true}
-            />
+            <ShopCart checkout={true} />
 
             <form
                 ref={formRef}
