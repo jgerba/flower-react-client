@@ -11,17 +11,26 @@ import CartItem from '../CartItem';
 import cross from '../../svg/closeCartBtn.svg';
 import classes from './ShopCart.module.css';
 
-function ShopCart({ checkout = false, editOrder = false, onClose = () => {} }) {
+function ShopCart({
+    // checkout page logic
+    checkout = false,
+
+    // admins edit order modal logic
+    editOrder = false,
+
+    onClose = () => {},
+}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
+    const orderItems = useSelector(state => state.cart.orderItems);
     const totalPrice = useSelector(state => state.cart.totalPrice);
 
     const [itemsToRender, setItemsToRender] = useState([]);
 
     useEffect(() => {
-        setItemsToRender(cartItems);
-    }, [cartItems]);
+        setItemsToRender(editOrder ? orderItems : cartItems);
+    }, [cartItems, orderItems]);
 
     function makeaOrderHandler() {
         navigate('./checkout');
@@ -51,19 +60,43 @@ function ShopCart({ checkout = false, editOrder = false, onClose = () => {} }) {
                         key={item._id}
                         item={item}
                         onDelete={() =>
-                            dispatch(
-                                cartActions.removePosition({ _id: item._id })
-                            )
+                            editOrder
+                                ? dispatch(
+                                      cartActions.removeOrderPosition({
+                                          _id: item._id,
+                                      })
+                                  )
+                                : dispatch(
+                                      cartActions.removePosition({
+                                          _id: item._id,
+                                      })
+                                  )
                         }
                         onDecrement={() =>
-                            dispatch(
-                                cartActions.decreaseQuantity({ _id: item._id })
-                            )
+                            editOrder
+                                ? dispatch(
+                                      cartActions.decreaseOrderQuantity({
+                                          _id: item._id,
+                                      })
+                                  )
+                                : dispatch(
+                                      cartActions.decreaseQuantity({
+                                          _id: item._id,
+                                      })
+                                  )
                         }
                         onIncrement={() =>
-                            dispatch(
-                                cartActions.increaseQuantity({ _id: item._id })
-                            )
+                            editOrder
+                                ? dispatch(
+                                      cartActions.increaseOrderQuantity({
+                                          _id: item._id,
+                                      })
+                                  )
+                                : dispatch(
+                                      cartActions.increaseQuantity({
+                                          _id: item._id,
+                                      })
+                                  )
                         }
                     />
                 ))}

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { cartActions } from '../../store/cart';
 import useFetch from '../../hooks/use-fetch';
 
 import FormInput from '../FormInput';
@@ -10,6 +12,9 @@ import ShopCart from './ShopCart';
 import classes from './EditOrderForm.module.css';
 
 function EditOrderForm({ item, onItemChange, onClose }) {
+    const dispatch = useDispatch();
+    const orderItems = useSelector(state => state.cart.orderItems);
+
     const pickupRef = useRef();
     const deliveryRef = useRef();
 
@@ -24,13 +29,18 @@ function EditOrderForm({ item, onItemChange, onClose }) {
             : deliveryRef.current.setAttribute('checked', '');
     }, [item.delivery]);
 
+    // update cart view with order items
+    useEffect(() => {
+        dispatch(cartActions.updateOrderItems(item.order));
+    }, []);
+
     //  check if there empty text inputs
     function checkInputs(el) {
         if (
             !el.name.value ||
             !el.phone.value ||
             !el.email.value ||
-            // el.order.length === 0 ||
+            orderItems.length === 0 ||
             (useDelivery && !el.city.value) ||
             (useDelivery && !el.street.value)
         ) {
@@ -47,7 +57,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
 
         if (!checkInputs(el)) return;
 
-        const obj = {
+        const dataObj = {
             name: el.name.value,
             phone: +el.phone.value,
             email: el.email.value,
@@ -57,22 +67,22 @@ function EditOrderForm({ item, onItemChange, onClose }) {
             delivery: useDelivery,
             address: useDelivery
                 ? {
-                      city: el.city?.value,
-                      street: el.street?.value,
+                      city: el.city.value,
+                      street: el.street.value,
                       building: el.building?.value,
                       house: el.house?.value,
                       flat: el.flat?.value,
                       deliverTime: el.deliverTime?.value,
                   }
                 : null,
-            // order: cartItems,
+            order: orderItems,
         };
 
         sendRequest(
             {
                 url: `/order/${item._id}`,
                 method: 'PATCH',
-                body: obj,
+                body: dataObj,
             },
             applyData
         );
@@ -134,7 +144,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
 
                 <FormInput
                     title="Телефон получателя"
-                    name="receiverPhone"
+                    name="recieverPhone"
                     placeholder="Телефон получателя"
                     value={item.recieverPhone}
                     type="phone"
