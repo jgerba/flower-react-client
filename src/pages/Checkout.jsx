@@ -74,7 +74,14 @@ function Checkout(props) {
                       flat: el.flat?.value,
                       deliverTime: el.deliverTime?.value,
                   }
-                : null,
+                : {
+                      city: '',
+                      street: '',
+                      building: null,
+                      house: null,
+                      flat: null,
+                      deliverTime: '',
+                  },
             order: cartItems,
             promo: acceptPromo,
             totalPrice: totalPrice,

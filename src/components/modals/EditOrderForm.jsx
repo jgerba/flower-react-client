@@ -74,7 +74,14 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                       flat: el.flat?.value,
                       deliverTime: el.deliverTime?.value,
                   }
-                : null,
+                : {
+                      city: '',
+                      street: '',
+                      building: null,
+                      house: null,
+                      flat: null,
+                      deliverTime: '',
+                  },
             order: orderItems,
         };
 
@@ -207,7 +214,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                 title="Город*"
                                 placeholder="Введите город"
                                 name="city"
-                                value={item.address.city}
+                                value={item.address?.city}
                                 onChange={() => {}}
                             />
                             <FormInput
@@ -216,7 +223,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                 title="Улица*"
                                 placeholder="Введите улицу"
                                 name="street"
-                                value={item.address.street}
+                                value={item.address?.street}
                                 onChange={() => {}}
                             />
 
@@ -227,7 +234,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                     title="Корп/стр"
                                     placeholder="Корп/стр"
                                     name="building"
-                                    value={item.address.building}
+                                    value={item.address?.building}
                                     onChange={() => {}}
                                 />
                                 <FormInput
@@ -236,7 +243,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                     title="Дом"
                                     placeholder="Дом"
                                     name="house"
-                                    value={item.address.house}
+                                    value={item.address?.house}
                                     onChange={() => {}}
                                 />
                                 <FormInput
@@ -245,7 +252,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                     title="Кв/офис"
                                     placeholder="Кв/офис"
                                     name="flat"
-                                    value={item.address.flat}
+                                    value={item.address?.flat}
                                     onChange={() => {}}
                                 />
                             </div>
@@ -256,7 +263,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
                                 title="Время доставки"
                                 placeholder="Введите время доставки"
                                 name="deliverTime"
-                                value={item.address.deliverTime}
+                                value={item.address?.deliverTime}
                                 onChange={() => {}}
                                 type="time"
                             />
