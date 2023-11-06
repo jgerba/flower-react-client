@@ -1,5 +1,11 @@
+import { useEffect, useState } from 'react';
+
+import useFetch from '../../hooks/use-fetch';
+
 import classes from './OrdersItem.module.css';
 import bin from '../../svg/bin.svg';
+import check from '../../svg/done.svg';
+import uncheck from '../../svg/undone.svg';
 
 const options = {
     year: 'numeric',
@@ -15,6 +21,27 @@ function OrdersItem({
     onClick = () => {},
     onRemove = () => {},
 }) {
+    const [isDone, setIsDone] = useState(item.isDone);
+
+    const { sendRequest, isLoading, error } = useFetch();
+
+    useEffect(() => {
+        if (isDone === item.isDone) return;
+
+        sendRequest(
+            {
+                url: `/order/${item._id}`,
+                method: 'PATCH',
+                body: { isDone: !item.isDone },
+            },
+            applyData
+        );
+    }, [isDone]);
+
+    function applyData(data) {
+        console.log(data);
+    }
+
     function dateHandler() {
         const date = new Date(item.createdAt);
         return date.toLocaleDateString('ru-RU', options);
@@ -22,7 +49,9 @@ function OrdersItem({
 
     return (
         <div
-            className={`${classes.item} ${className ? className : ''}`}
+            className={`${classes.item} ${className ? className : ''} ${
+                isDone ? classes.isDone : ''
+            }`}
             onClick={onClick}
         >
             <div className={classes.credentials}>
@@ -33,7 +62,7 @@ function OrdersItem({
                 <p className={classes.price}>{item.totalPrice}</p>
             </div>
 
-            <p className={classes.order}>{`Заказ: ${item.order.reduce(
+            <p className={classes.order}>{`Заказ: ${item.order?.reduce(
                 (accum, item) => {
                     //make titles first letter capitalized
                     const capitalTitle =
@@ -45,6 +74,16 @@ function OrdersItem({
                 },
                 ''
             )}`}</p>
+
+            <button
+                className={classes['done-btn']}
+                onClick={() => setIsDone(state => !state)}
+            >
+                <img
+                    src={isDone ? uncheck : check}
+                    alt={isDone ? 'Отметить невыполненным' : 'Выполнить'}
+                />
+            </button>
 
             <button
                 className={classes['remove-btn']}
