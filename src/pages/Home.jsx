@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
@@ -32,6 +32,7 @@ import classes from './Home.module.css';
 
 function HomePage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [showScrollBtn, setShowScrollBtn] = useState();
     const [items, setItems] = useState([]);
@@ -89,12 +90,14 @@ function HomePage() {
                     <p className={classes.slogan}>
                         Создаём для тех, кто ценит свежесть и изящество цветка
                     </p>
-                    <MenuBtn className={classes['title__catalogue-btn']}>
+                    <MenuBtn
+                        className={classes['title__catalogue-btn']}
+                        onClick={() => navigate('/catalogue')}
+                    >
                         смотреть каталог
                     </MenuBtn>
                 </div>
-
-                <div className={classes['title__decor-flower']}></div>
+                d<div className={classes['title__decor-flower']}></div>
                 <div className={classes['title__decor-flower-back']}></div>
                 <div className={classes['title__decor-flower-shadow']}></div>
                 <div className={classes['title__decor-ellipse-left']}></div>
