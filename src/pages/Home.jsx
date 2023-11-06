@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
+import useFetch from '../hooks/use-fetch';
 
 import { styleActions } from '../store/style';
 
@@ -33,7 +34,10 @@ function HomePage() {
     const dispatch = useDispatch();
 
     const [showScrollBtn, setShowScrollBtn] = useState();
+    const [items, setItems] = useState([]);
+
     const [scrollY, winWidth, winHeight] = useWindowSize();
+    const { sendRequest, isLoading, error } = useFetch();
 
     // show full info panel before scrolling
     // minimize it before redirecting to other pages
@@ -41,6 +45,31 @@ function HomePage() {
         dispatch(styleActions.showInfoPanel());
         return () => dispatch(styleActions.minimizeInfoPanel());
     }, []);
+
+    useEffect(() => {
+        sendRequest({ url: '/bouquets' }, applyItemsData);
+    }, []);
+
+    function applyItemsData(data) {
+        console.log(data);
+        if (!data) return;
+
+        const popularItems = [];
+
+        // choose 3 random items as 'popular'
+        for (let i = 0; i < 3; i++) {
+            let index = Math.round(Math.random() * data.length - 1);
+
+            // change index if the same item
+            while (popularItems.some(item => item._id === data[index]._id)) {
+                index = Math.round(Math.random() * data.length - 1);
+            }
+
+            popularItems.push(data[index]);
+        }
+
+        setItems(popularItems);
+    }
 
     // show scroll up btn after scrolling 1 screen down
     useEffect(() => {
@@ -178,24 +207,19 @@ function HomePage() {
                 </div>
 
                 <div className={classes['popular__bouquets']}>
-                    <BouquetCard
-                        className={classes['popular__card']}
-                        title="лучший день"
-                        price={167}
-                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
-                    />
-                    <BouquetCard
-                        className={classes['popular__card']}
-                        title="лучший день"
-                        price={167}
-                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
-                    />
-                    <BouquetCard
-                        className={classes['popular__card']}
-                        title="лучший день"
-                        price={167}
-                        src="https://venusinfleurs.ru/image/catalog/product/1380/1380_1.jpg"
-                    />
+                    {items.length !== 0 ? (
+                        items.map(item => (
+                            <BouquetCard
+                                key={item._id}
+                                item={item}
+                                popular={true}
+                            />
+                        ))
+                    ) : (
+                        <p className={classes.excuse}>
+                            Наверное что-то случилось
+                        </p>
+                    )}
                 </div>
                 <NavLink
                     className={classes['popular__catalogue-link']}

@@ -8,15 +8,22 @@
     height: auto;
 }
 
-.popular__card {
-    width: 350px;
-}
-
 .image {
     width: 255px;
     height: 335px;
 
     object-fit: cover;
+}
+
+.popular-card {
+    width: 350px;
+    height: 450px;
+
+    filter: grayscale();
+}
+
+.popular-card:hover {
+    filter: none;
 }
 
 .title {
@@ -92,4 +99,8 @@
 
 .sale-badge {
     background-color: #d978ac;
+}
+
+.popular-badge {
+    right: -105px;
 }
