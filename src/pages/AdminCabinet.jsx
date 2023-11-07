@@ -6,6 +6,7 @@ import useFetch from '../hooks/use-fetch';
 import AdminsTabs from '../components/admins/AdminsTabs';
 import GoodsItem from '../components/admins/GoodsItem';
 import OrdersItem from '../components/admins/OrdersItem';
+import FeedsItem from '../components/admins/FeedsItem';
 import EditItemForm from '../components/modals/EditItemForm';
 import EditOrderForm from '../components/modals/EditOrderForm';
 import Backdrop from '../components/modals/Backdrop';
@@ -33,9 +34,13 @@ function AdminCabinet() {
 
     // change download url according to tab selection
     useEffect(() => {
-        if (showOrders) setUrl('/orders');
-        if (showGoods) setUrl('/bouquets');
-        if (showFeeds) setUrl('/feeds');
+        if (showOrders) {
+            setUrl('/orders');
+        } else if (showGoods) {
+            setUrl('/bouquets');
+        } else {
+            setUrl('/feedbacks');
+        }
 
         // drop prev tab items
         if (items) {
@@ -145,6 +150,7 @@ function AdminCabinet() {
     }
 
     function removeItemHandler(id) {
+        // delete last letter 's' in url
         sendRequest(
             { url: `${url.slice(0, -1)}/${id}`, method: 'DELETE' },
             applyRemoveData()
@@ -222,8 +228,8 @@ function AdminCabinet() {
                 </form>
 
                 {itemsToRender.length !== 0 ? (
-                    itemsToRender.map(item =>
-                        showOrders ? (
+                    itemsToRender.map(item => {
+                        return showOrders ? (
                             <OrdersItem
                                 className={classes.item}
                                 key={item._id}
@@ -231,7 +237,7 @@ function AdminCabinet() {
                                 onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
                             />
-                        ) : (
+                        ) : showGoods ? (
                             <GoodsItem
                                 className={classes.item}
                                 key={item._id}
@@ -241,11 +247,25 @@ function AdminCabinet() {
                                 onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
                             />
-                        )
-                    )
+                        ) : (
+                            <FeedsItem
+                                className={classes.item}
+                                key={item._id}
+                                item={item}
+                                // onClick={event => showModalHandler(event, item)}
+                                onRemove={() => removeItemHandler(item._id)}
+                            />
+                        );
+                    })
                 ) : (
                     <p className={classes.excuse}>
-                        Букетов еще нет. Создайте первый букет
+                        {`${
+                            showOrders
+                                ? 'Заказов'
+                                : showGoods
+                                ? 'Букетов'
+                                : 'Запросов обратной связи'
+                        } еще нет.${showGoods && ' Создайте первый букет'}`}
                     </p>
                 )}
             </section>
