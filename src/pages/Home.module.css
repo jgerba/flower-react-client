@@ -671,6 +671,9 @@ h2.title__header {
 .feedback-section {
     position: relative;
 
+    padding-left: 11vw;
+    padding-right: 11vw;
+
     margin-top: 150px;
     background-color: #0f2222;
 }

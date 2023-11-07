@@ -6,6 +6,7 @@
 
     padding-left: 11vw;
     padding-right: 11vw;
+    padding-top: 180px;
 
     grid-template-areas:
         ' head head head . . . .'
@@ -45,7 +46,6 @@
 .header {
     grid-area: head;
 
-    margin-top: 100px;
     margin-bottom: 100px;
 }
 

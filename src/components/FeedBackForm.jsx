@@ -1,16 +1,15 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import useFetch from '../hooks/use-fetch';
 
 import MenuBtn from './UI/MenuBtn';
 import FormInput from './FormInput';
 
-import sign from '../svg/haveAnyQuestions.svg';
 import classes from './FeedBackForm.module.css';
+import sign from '../svg/sign.svg';
+import signRed from '../svg/sign_red.svg';
 
 function FeedBackForm(props) {
-    const formRef = useRef();
-
     // state to reset input
     const [resetForm, setResetForm] = useState(false);
 
@@ -68,7 +67,6 @@ function FeedBackForm(props) {
             )}
 
             <form
-                ref={formRef}
                 action=""
                 name="Форма обратной связи"
                 className={classes.form}
@@ -119,12 +117,18 @@ function FeedBackForm(props) {
                 </small>
             </form>
 
-            <div className={classes['decor-back']}></div>
-            <div className={classes['decor-shadow']}></div>
+            {!props.contactsPage ? (
+                <>
+                    <div className={classes['decor-back']}></div>
+                    <div className={classes['decor-shadow']}></div>
+                </>
+            ) : (
+                <div className={classes['contacts__decor-back']}></div>
+            )}
 
             <img
                 className={classes.sign}
-                src={sign}
+                src={!props.contactsPage ? sign : signRed}
                 alt="Have any questions?"
             />
         </article>
