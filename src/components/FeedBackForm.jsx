@@ -1,3 +1,5 @@
+import { useRef, useState } from 'react';
+
 import useFetch from '../hooks/use-fetch';
 
 import MenuBtn from './UI/MenuBtn';
@@ -7,6 +9,11 @@ import sign from '../svg/haveAnyQuestions.svg';
 import classes from './FeedBackForm.module.css';
 
 function FeedBackForm(props) {
+    const formRef = useRef();
+
+    // state to reset input
+    const [resetForm, setResetForm] = useState(false);
+
     const { sendRequest, isLoading, error } = useFetch();
 
     function checkInputs(el) {
@@ -44,6 +51,7 @@ function FeedBackForm(props) {
 
     function applyData(data) {
         console.log(data);
+        setResetForm(true);
     }
 
     return (
@@ -60,6 +68,7 @@ function FeedBackForm(props) {
             )}
 
             <form
+                ref={formRef}
                 action=""
                 name="Форма обратной связи"
                 className={classes.form}
@@ -77,7 +86,8 @@ function FeedBackForm(props) {
                     title="Имя"
                     name="name"
                     placeholder="Ваше имя"
-                    onChange={() => {}}
+                    reset={resetForm}
+                    onChange={() => setResetForm(false)}
                 />
                 <FormInput
                     className={classes.input}
@@ -86,7 +96,8 @@ function FeedBackForm(props) {
                     name="phone"
                     type="phone"
                     placeholder="+7 (977) 777-77-77"
-                    onChange={() => {}}
+                    reset={resetForm}
+                    onChange={() => setResetForm(false)}
                 />
                 <FormInput
                     className={classes.input}
@@ -95,7 +106,8 @@ function FeedBackForm(props) {
                     name="comment"
                     placeholder="Ваш комментарий"
                     textarea={true}
-                    onChange={() => {}}
+                    reset={resetForm}
+                    onChange={() => setResetForm(false)}
                 />
 
                 <MenuBtn type="submit">отправить</MenuBtn>

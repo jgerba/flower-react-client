@@ -44,6 +44,15 @@ function FormInput(props) {
         ref.current.classList.toggle(classes.error, error);
     }, [error]);
 
+    // reset input when reset property
+    useEffect(() => {
+        if (!props.reset) return;
+
+        setValue('');
+        setError(false);
+        clearTimeout(timer);
+    }, [props.reset]);
+
     // check inputs immidiately after losing focus
     function blurHandler(event) {
         if (!checkValue(event.target.value)) setError(true);
