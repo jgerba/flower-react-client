@@ -9,40 +9,35 @@ import classes from './FeedBackForm.module.css';
 import sign from '../svg/sign.svg';
 import signRed from '../svg/sign_red.svg';
 
+// init value for the form reset
+const formInitVal = {
+    name: '',
+    phone: '',
+    comment: '',
+};
+
 function FeedBackForm(props) {
-    // state to reset input
-    const [resetForm, setResetForm] = useState(false);
+    const [formVal, setFormVal] = useState({
+        name: '',
+        phone: '',
+        comment: '',
+    });
+    const [hasError, setHasError] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
-
-    function checkInputs(el) {
-        if (!el.name.value || !el.phone.value) {
-            return false;
-        }
-
-        return true;
-    }
 
     function submitHandler(event) {
         event.preventDefault();
 
-        const el = event.target;
-
-        // if has wrong inputs - block submitting
-        if (!checkInputs(el)) return;
-
-        const itemObj = {
-            name: el.name.value,
-            phone: +el.phone.value,
-            comment: el.comment?.value,
-        };
+        if (hasError) return;
+        if (!formVal.name || !formVal.phone) return;
 
         // upload edited data
         sendRequest(
             {
                 url: `/feedback`,
                 method: 'POST',
-                body: itemObj,
+                body: formVal,
             },
             applyData
         );
@@ -50,7 +45,11 @@ function FeedBackForm(props) {
 
     function applyData(data) {
         console.log(data);
-        setResetForm(true);
+        setFormVal(formInitVal);
+    }
+
+    function formChangeHandler(event) {
+        setFormVal({ ...formVal, [event.target.name]: event.target.value });
     }
 
     return (
@@ -84,8 +83,10 @@ function FeedBackForm(props) {
                     title="Имя"
                     name="name"
                     placeholder="Ваше имя"
-                    reset={resetForm}
-                    onChange={() => setResetForm(false)}
+                    value={formVal.name}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
                 <FormInput
                     className={classes.input}
@@ -94,8 +95,10 @@ function FeedBackForm(props) {
                     name="phone"
                     type="phone"
                     placeholder="+7 (977) 777-77-77"
-                    reset={resetForm}
-                    onChange={() => setResetForm(false)}
+                    value={formVal.phone}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
                 <FormInput
                     className={classes.input}
@@ -104,8 +107,9 @@ function FeedBackForm(props) {
                     name="comment"
                     placeholder="Ваш комментарий"
                     textarea={true}
-                    reset={resetForm}
-                    onChange={() => setResetForm(false)}
+                    value={formVal.comment}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <MenuBtn type="submit">отправить</MenuBtn>

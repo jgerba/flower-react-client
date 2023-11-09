@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import useFetch from '../../hooks/use-fetch';
 
@@ -10,12 +9,26 @@ import TextHeader from '../UI/TextHeader';
 import classes from './EditFeedForm.module.css';
 
 function EditFeedForm({ item, onModalChange, onClose }) {
-    const orderItems = useSelector(state => state.cart.orderItems);
-
     const privateRef = useRef();
     const corporateRef = useRef();
 
-    const [isCorporate, setIsCorporate] = useState(item.corporate);
+    const [formVal, setFormVal] = useState({
+        name: item.name,
+        phone: item.phone,
+        comment: item.comment,
+        corporate: item.corporate,
+        organization: item.organization,
+        address: item.address,
+        price: item.price,
+        email: item.email,
+        unp: item.unp,
+        account: item.account,
+        bank: item.bank,
+        entries: item.entries,
+    });
+
+    // error from the inputs, cancel sbm if true
+    const [hasError, setHasError] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -26,58 +39,38 @@ function EditFeedForm({ item, onModalChange, onClose }) {
             : corporateRef.current.setAttribute('checked', '');
     }, [item.corporate]);
 
-    //  check if there empty text inputs
-    function checkInputs(el) {
-        if (!el.name.value || !el.phone.value || !el.email.value) {
-            return false;
-        }
-
-        return true;
-    }
-
     function submitHandler(event) {
         event.preventDefault();
 
-        const el = event.target;
+        if (hasError) return;
 
-        if (!checkInputs(el)) return;
+        // data for the upload
+        const dataObj = {};
 
-        // const dataObj = {
-        //     name: el.name.value,
-        //     phone: +el.phone.value,
-        //     email: el.email.value,
-        //     recieverPhone: +el.recieverPhone?.value,
-        //     recieverName: el.recieverName?.value,
-        //     comment: el.comment?.value,
-        //     corporate: isCorporate,
-        //     address: isCorporate
-        //         ? {
-        //               city: el.city.value,
-        //               street: el.street.value,
-        //               building: el.building?.value,
-        //               house: el.house?.value,
-        //               flat: el.flat?.value,
-        //               deliverTime: el.deliverTime?.value,
-        //           }
-        //         : {
-        //               city: '',
-        //               street: '',
-        //               building: null,
-        //               house: null,
-        //               flat: null,
-        //               deliverTime: '',
-        //           },
-        //     order: orderItems,
-        // };
+        for (const [key, value] of Object.entries(formVal)) {
+            // compare init and form values,
+            // if have difference add to dataObj for upload
+            // hanlde corporate value separately
+            if (value !== item[key] && key !== 'corporate') {
+                dataObj[key] = value;
+            }
 
-        // sendRequest(
-        //     {
-        //         url: `/feedback/${item._id}`,
-        //         method: 'PATCH',
-        //         body: dataObj,
-        //     },
-        //     applyData
-        // );
+            // compare corporate value, add for upload if have difference
+            if (key === 'corporate' && formVal.corporate !== item[key]) {
+                dataObj[key] = formVal.corporate;
+            }
+        }
+
+        if (Object.keys(dataObj).length === 0) return;
+
+        sendRequest(
+            {
+                url: `/feedback/${item._id}`,
+                method: 'PATCH',
+                body: dataObj,
+            },
+            applyData
+        );
     }
 
     // update edited item and close modal after submitting
@@ -87,13 +80,24 @@ function EditFeedForm({ item, onModalChange, onClose }) {
         onClose();
     }
 
+    function formChangeHandler(event, corporate = false, corpVal) {
+        !corporate
+            ? // upd form values except corporate
+              setFormVal({
+                  ...formVal,
+                  [event.target.name]: event.target.value,
+              })
+            : // upd corporate value
+              setFormVal({ ...formVal, corporate: corpVal });
+    }
+
     return (
         <>
             <form
                 action=""
                 name="Feedback edit"
                 className={`${classes.modal} ${
-                    isCorporate ? '' : classes['modal-private']
+                    formVal.corporate ? '' : classes['modal-private']
                 }`}
                 onSubmit={submitHandler}
             >
@@ -104,33 +108,38 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                     title="Контактное лицо"
                     name="name"
                     placeholder="Имя до 30 символов - обязательное поле"
-                    value={item.name}
-                    onChange={() => {}}
+                    value={formVal.name}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Контактный номер телефона"
                     name="phone"
                     placeholder="Телефон клиента - обязательное поле"
-                    value={item.phone}
+                    value={formVal.phone}
                     type="phone"
-                    onChange={() => {}}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Комментарий"
                     name="comment"
                     placeholder="Комментарий"
-                    value={item.comment}
+                    value={formVal.comment}
                     textarea={true}
-                    onChange={() => {}}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <section className={classes.corporate}>
                     <section className={classes['corporate__input']}>
                         <div
                             className={`${
-                                isCorporate ? classes['input-gray'] : ''
+                                formVal.corporate ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -138,8 +147,9 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 name="corporate"
                                 id="private"
                                 type="radio"
-                                onChange={() => {
-                                    setIsCorporate(false);
+                                value={false}
+                                onChange={e => {
+                                    formChangeHandler(e, true, false);
                                 }}
                             />
                             <label htmlFor="private">Физическим лицам</label>
@@ -147,7 +157,7 @@ function EditFeedForm({ item, onModalChange, onClose }) {
 
                         <div
                             className={`${
-                                !isCorporate ? classes['input-gray'] : ''
+                                !formVal.corporate ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -155,8 +165,9 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 name="corporate"
                                 id="corporate"
                                 type="radio"
-                                onChange={() => {
-                                    setIsCorporate(true);
+                                value={true}
+                                onChange={e => {
+                                    formChangeHandler(e, true, true);
                                 }}
                             />
                             <label htmlFor="corporate">
@@ -165,7 +176,7 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                         </div>
                     </section>
 
-                    {isCorporate && (
+                    {formVal.corporate && (
                         <div className={classes['corporate__details']}>
                             <FormInput
                                 containerClass={classes.container}
@@ -173,8 +184,9 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Наименование организации"
                                 placeholder="Введите наименование вашей организации"
                                 name="organization"
-                                value={item.organization}
-                                onChange={() => {}}
+                                value={formVal.organization}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -182,8 +194,9 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Почтовый адрес"
                                 placeholder="Введите почтовый адрес"
                                 name="address"
-                                value={item.address}
-                                onChange={() => {}}
+                                value={formVal.address}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -191,15 +204,18 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Стоимость букета сотруднику (если разная – указать)"
                                 placeholder="Укажите стоимость букета сотруднику"
                                 name="price"
-                                value={item.price}
-                                onChange={() => {}}
+                                type="number"
+                                value={formVal.price}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 title="Адрес электронной почты"
                                 name="email"
                                 placeholder="Адрес электронной почты"
-                                value={item.email}
-                                onChange={() => {}}
+                                value={formVal.email}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -207,8 +223,10 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="УНП"
                                 placeholder="УНП"
                                 name="unp"
-                                value={item.unp}
-                                onChange={() => {}}
+                                type="number"
+                                value={formVal.unp}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -216,8 +234,10 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Расчетный счет"
                                 placeholder="Введите номер расчетного счета"
                                 name="account"
-                                value={item.account}
-                                onChange={() => {}}
+                                type="number"
+                                value={formVal.account}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -225,8 +245,10 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Код банка"
                                 placeholder="Код банка"
                                 name="bank"
-                                value={item.bank}
-                                onChange={() => {}}
+                                type="number"
+                                value={formVal.bank}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -234,8 +256,10 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 title="Предполагаемое количество заявок в месяц"
                                 placeholder="Введите предполагаемое количество заявок в месяц"
                                 name="entries"
-                                value={item.entries}
-                                onChange={() => {}}
+                                type="number"
+                                value={formVal.entries}
+                                onChange={formChangeHandler}
+                                onError={val => setHasError(val)}
                             />
                         </div>
                     )}
@@ -243,7 +267,7 @@ function EditFeedForm({ item, onModalChange, onClose }) {
 
                 <MenuBtn
                     className={`${classes['submit-btn']} ${
-                        isCorporate ? classes['submit-btn--shift'] : ''
+                        formVal.corporate ? classes['submit-btn--shift'] : ''
                     }`}
                     type="submit"
                     blank={true}
