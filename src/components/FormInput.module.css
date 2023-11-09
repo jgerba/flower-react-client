@@ -45,7 +45,7 @@
     resize: none;
 }
 
-.error {
+.input.error {
     border-color: #ac3838;
     animation: error-shake 0.25s forwards;
 }
