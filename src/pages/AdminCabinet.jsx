@@ -9,6 +9,7 @@ import OrdersItem from '../components/admins/OrdersItem';
 import FeedsItem from '../components/admins/FeedsItem';
 import EditItemForm from '../components/modals/EditItemForm';
 import EditOrderForm from '../components/modals/EditOrderForm';
+import EditFeedForm from '../components/modals/EditFeedForm';
 import Backdrop from '../components/modals/Backdrop';
 import TextHeader from '../components/UI/TextHeader';
 import MenuBtn from '../components/UI/MenuBtn';
@@ -252,7 +253,7 @@ function AdminCabinet() {
                                 className={classes.item}
                                 key={item._id}
                                 item={item}
-                                // onClick={event => showModalHandler(event, item)}
+                                onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
                             />
                         );
@@ -278,13 +279,19 @@ function AdminCabinet() {
                             onModalChange={item => modalChangeHandler(item)}
                             onClose={hideModalHandler}
                         ></EditOrderForm>
-                    ) : (
+                    ) : showGoods ? (
                         <EditItemForm
                             item={itemToEdit}
                             onModalChange={item => modalChangeHandler(item)}
                             onClose={hideModalHandler}
                             isNewItem={isNewItem}
                         ></EditItemForm>
+                    ) : (
+                        <EditFeedForm
+                            item={itemToEdit}
+                            onModalChange={item => modalChangeHandler(item)}
+                            onClose={hideModalHandler}
+                        ></EditFeedForm>
                     ),
                     document.getElementById('modal-root')
                 )}

@@ -1,0 +1,83 @@
+.modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    width: 545px;
+    height: calc(100vh - 120px);
+
+    top: 50px;
+    right: calc(50% - 273px);
+
+    padding: 30px 30px 130px 30px;
+
+    overflow-y: auto;
+
+    border-radius: 5px;
+    background-color: #0f2222;
+
+    z-index: 4;
+}
+
+.modal-private {
+    height: calc(100vh - 520px);
+}
+
+.corporate,
+.corporate__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    width: 100%;
+}
+
+.corporate__input {
+    align-self: flex-start;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.corporate__input label {
+    padding-left: 20px;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.input-gray label {
+    color: #353535;
+}
+
+.corporate-house {
+    display: flex;
+    gap: 30px;
+}
+
+.time-input {
+    width: 191.25px;
+}
+
+.submit-btn {
+    position: absolute;
+    bottom: 30px;
+}
+
+.submit-btn--shift {
+    bottom: -640px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
