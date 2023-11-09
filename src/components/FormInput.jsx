@@ -6,15 +6,14 @@ let timer;
 function FormInput(props) {
     const ref = useRef();
     const id = useId();
-    const [value, setValue] = useState(props.value ? props.value : '');
     const [error, setError] = useState(false);
 
     // check if there empty text inputs, or wrong number value
     function checkValue(value) {
         if (
-            (props.type !== 'number' && !value.trim()) ||
-            (props.type === 'number' && value > 10000) ||
-            (props.type === 'number' && value < 1)
+            (props.type !== 'number' && props.required && !value.trim()) ||
+            (props.type === 'number' && value < 0) ||
+            (props.type === 'number' && value === '')
         ) {
             return false;
         }
@@ -23,32 +22,30 @@ function FormInput(props) {
     }
 
     function changeHandler(event) {
-        const el = event.target;
-        setValue(el.value);
+        props.onChange(event);
 
-        props.onChange(props.type !== 'number' ? el.value.trim() : el.value);
-
-        if (el.name === 'descr') return;
-
-        // set timeout after changing value and check value after
+        // check value 2 sec after change
         clearTimeout(timer);
         setError(false);
 
         timer = setTimeout(() => {
-            if (!checkValue(el.value)) setError(true);
+            if (!checkValue(event.target.value)) {
+                setError(true);
+            }
         }, 2000);
     }
 
     // if error add error class and style, remove if not
     useEffect(() => {
         ref.current.classList.toggle(classes.error, error);
+        props.onError(error);
     }, [error]);
 
+    // reset value ???
     // reset input when reset property
     useEffect(() => {
         if (!props.reset) return;
 
-        setValue('');
         setError(false);
         clearTimeout(timer);
     }, [props.reset]);
@@ -80,11 +77,10 @@ function FormInput(props) {
                     type="number"
                     name={props.name}
                     placeholder={props.placeholder}
-                    maxLength="5"
                     className={`${classes.input} ${
                         props.className ? props.className : ''
                     }`}
-                    value={value}
+                    value={props.value}
                     onChange={changeHandler}
                     onBlur={blurHandler}
                 />
@@ -99,7 +95,7 @@ function FormInput(props) {
                     className={`${classes.input} ${classes.textarea} ${
                         props.className ? props.className : ''
                     }`}
-                    value={value}
+                    value={props.value}
                     onChange={changeHandler}
                 />
             ) : (
@@ -113,7 +109,7 @@ function FormInput(props) {
                     className={`${classes.input} ${
                         props.className ? props.className : ''
                     }`}
-                    value={value}
+                    value={props.value}
                     onChange={changeHandler}
                     onBlur={blurHandler}
                 />
