@@ -59,9 +59,9 @@ function Checkout(props) {
 
         const obj = {
             name: el.name.value,
-            phone: +el.phone.value,
+            phone: el.phone.value,
             email: el.email.value,
-            recieverPhone: +el.recieverPhone?.value,
+            recieverPhone: el.recieverPhone?.value,
             recieverName: el.recieverName?.value,
             comment: el.comment?.value,
             delivery: useDelivery,
