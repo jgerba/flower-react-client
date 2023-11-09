@@ -11,7 +11,7 @@ import ShopCart from './ShopCart';
 
 import classes from './EditOrderForm.module.css';
 
-function EditOrderForm({ item, onItemChange, onClose }) {
+function EditOrderForm({ item, onModalChange, onClose }) {
     const dispatch = useDispatch();
     const orderItems = useSelector(state => state.cart.orderItems);
 
@@ -98,7 +98,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
     // update edited item and close modal after submitting
     function applyData(data) {
         console.log(data);
-        onItemChange(data);
+        onModalChange(data);
         onClose();
     }
 
@@ -108,7 +108,7 @@ function EditOrderForm({ item, onItemChange, onClose }) {
 
             <form
                 action=""
-                name="Редактирование заказа"
+                name="Order edit"
                 className={classes.modal}
                 onSubmit={submitHandler}
             >

@@ -10,7 +10,7 @@ import ContentCard from '../UI/ContentCard';
 
 import classes from './EditItemForm.module.css';
 
-function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
+function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
     const noBadgeRef = useRef();
     const saleBadgeRef = useRef();
     const newBadgeRef = useRef();
@@ -91,7 +91,7 @@ function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
 
     // update edited item and close modal after submitting
     function applyData(data) {
-        onItemChange(data);
+        onModalChange(data);
         onClose();
     }
 
@@ -103,7 +103,7 @@ function EditItemForm({ item, onItemChange, onClose, isNewItem = false }) {
     return (
         <form
             action=""
-            name="Редактирование товара"
+            name="Bouquet edit"
             className={classes.modal}
             onSubmit={submitHandler}
         >

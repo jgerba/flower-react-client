@@ -62,7 +62,7 @@ function AdminCabinet() {
     }
 
     // update item in items array after editing
-    function itemChangeHandler(item) {
+    function modalChangeHandler(item) {
         setItems(items => {
             const index = items.findIndex(el => el._id === item._id);
             return items.toSpliced(index, 1, item);
@@ -275,13 +275,13 @@ function AdminCabinet() {
                     showOrders ? (
                         <EditOrderForm
                             item={itemToEdit}
-                            onItemChange={item => itemChangeHandler(item)}
+                            onModalChange={item => modalChangeHandler(item)}
                             onClose={hideModalHandler}
                         ></EditOrderForm>
                     ) : (
                         <EditItemForm
                             item={itemToEdit}
-                            onItemChange={item => itemChangeHandler(item)}
+                            onModalChange={item => modalChangeHandler(item)}
                             onClose={hideModalHandler}
                             isNewItem={isNewItem}
                         ></EditItemForm>
