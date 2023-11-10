@@ -15,14 +15,21 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
     const saleBadgeRef = useRef();
     const newBadgeRef = useRef();
 
-    const [titleVal, setTitleVal] = useState(item.title);
-    const [priceVal, setPriceVal] = useState(item.price);
-    const [oldPriceVal, setOldPriceVal] = useState(item.oldPrice);
-    const [imgSrcVal, setImgSrcVal] = useState(item.src);
-    const [descrVal, setDescrVal] = useState(item.descr);
-    const [newBadgeVal, setNewBadgeVal] = useState(item.new);
-    const [saleBadgeVal, setSaleBadgeVal] = useState(item.sale);
-    const [flags, setFlags] = useState(item.flags);
+    const [formVal, setFormVal] = useState({
+        title: item.title,
+        price: item.price,
+        oldPrice: item.oldPrice,
+        src: item.src,
+        descr: item.descr,
+        new: item.new,
+        sale: item.sale,
+        flags: item.flags,
+    });
+
+    // error from the inputs, cancel sbm if true
+    const [hasError, setHasError] = useState(false);
+
+    // show sign if img src is broken
     const [isBadImg, setIsBadImg] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
@@ -39,52 +46,44 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
             : newBadgeRef.current.setAttribute('checked', '');
     }, [item.new, item.sale]);
 
-    //  check if there empty text inputs, or wrong number value
-    function checkInputs() {
-        if (
-            !titleVal ||
-            !imgSrcVal ||
-            priceVal < 1 ||
-            priceVal > 10000 ||
-            (saleBadgeVal && oldPriceVal < 1) ||
-            (saleBadgeVal && oldPriceVal > 10000)
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
     function submitHandler(event) {
         event.preventDefault();
 
-        // if has wrong inputs - block submitting
-        if (!checkInputs()) return;
+        if (hasError) return;
 
-        const itemObj = {
-            title: titleVal,
-            price: priceVal,
-            oldPrice: oldPriceVal,
-            description: descrVal,
-            src: imgSrcVal,
-            new: newBadgeVal,
-            sale: saleBadgeVal,
-            flags: flags,
-        };
+        // upload new item
+        if (isNewItem) {
+            sendRequest(
+                {
+                    url: `/bouquet`,
+                    method: 'POST',
+                    body: dataObj,
+                },
+                applyData
+            );
+
+            return;
+        }
+
+        const dataObj = {};
+
+        // compare init and form values,
+        // if have difference add to dataObj for upload
+        for (const [key, value] of Object.entries(formVal)) {
+            if (value !== item[key]) dataObj[key] = value;
+        }
+
+        console.log(dataObj);
+
+        if (Object.keys(dataObj).length === 0) return;
 
         // upload edited data
         sendRequest(
-            isNewItem
-                ? {
-                      url: `/bouquet`,
-                      method: 'POST',
-                      body: itemObj,
-                  }
-                : {
-                      url: `/bouquet/${item._id}`,
-                      method: 'PATCH',
-                      body: itemObj,
-                  },
+            {
+                url: `/bouquet/${item._id}`,
+                method: 'PATCH',
+                body: dataObj,
+            },
             applyData
         );
     }
@@ -95,9 +94,13 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
         onClose();
     }
 
-    function imgSrcHandler(value) {
-        setIsBadImg(false);
-        setImgSrcVal(value);
+    function formChangeHandler(event) {
+        if (event.target.name === 'src') setIsBadImg(false);
+
+        setFormVal({
+            ...formVal,
+            [event.target.name]: event.target.value,
+        });
     }
 
     return (
@@ -113,8 +116,10 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                 title="Заголовок"
                 name="title"
                 placeholder="Заголовок товара до 25 символов - обязательное поле"
-                value={item.title}
-                onChange={value => setTitleVal(value)}
+                value={formVal.title}
+                required={true}
+                onError={val => setHasError(val)}
+                onChange={formChangeHandler}
             />
 
             <FormInput
@@ -122,17 +127,21 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                 name="price"
                 type="number"
                 placeholder="Цена товара от 1 до 10 000 рублей - обязательное поле"
-                value={item.price}
-                onChange={value => setPriceVal(value)}
+                value={formVal.price}
+                required={true}
+                onError={val => setHasError(val)}
+                onChange={formChangeHandler}
             />
-            {saleBadgeVal && (
+            {formVal.sale && (
                 <FormInput
                     title="Старая цена"
                     name="oldPrice"
                     type="number"
                     placeholder="Цена товара до распродажи - обязательное поле"
-                    value={item.oldPrice}
-                    onChange={value => setOldPriceVal(value)}
+                    value={formVal.oldPrice}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
             )}
 
@@ -141,16 +150,19 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                 name="descr"
                 textarea={true}
                 placeholder="Описание товара до 300 символов"
-                value={item.description}
-                onChange={value => setDescrVal(value)}
+                value={formVal.descr}
+                onError={val => setHasError(val)}
+                onChange={formChangeHandler}
             />
 
             <FormInput
                 title="Изображение"
                 name="src"
                 placeholder="Ссылка на изображение товара - обязательное поле"
-                value={item.src}
-                onChange={imgSrcHandler}
+                value={formVal.src}
+                required={true}
+                onError={val => setHasError(val)}
+                onChange={formChangeHandler}
             />
 
             <section className={classes['badge-input']}>
@@ -161,10 +173,9 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                         name="Badge"
                         id="badge-none"
                         type="radio"
-                        onChange={() => {
-                            setSaleBadgeVal(false);
-                            setNewBadgeVal(false);
-                        }}
+                        onChange={() =>
+                            setFormVal({ ...formVal, sale: false, new: false })
+                        }
                     />
                 </div>
 
@@ -175,10 +186,9 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                         name="Badge"
                         id="badge-sale"
                         type="radio"
-                        onChange={() => {
-                            setSaleBadgeVal(true);
-                            setNewBadgeVal(false);
-                        }}
+                        onChange={() =>
+                            setFormVal({ ...formVal, sale: true, new: false })
+                        }
                     />
                 </div>
 
@@ -189,10 +199,9 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                         name="Badge"
                         id="badge-new"
                         type="radio"
-                        onChange={() => {
-                            setSaleBadgeVal(false);
-                            setNewBadgeVal(true);
-                        }}
+                        onChange={() =>
+                            setFormVal({ ...formVal, sale: false, new: true })
+                        }
                     />
                 </div>
             </section>
@@ -205,8 +214,8 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                     {!isBadImg ? (
                         <img
                             className={classes['test__img']}
-                            src={imgSrcVal}
-                            alt={`Букет ${titleVal}`}
+                            src={formVal.src}
+                            alt={`Букет ${formVal.title}`}
                             onError={() => setIsBadImg(true)}
                         />
                     ) : (
@@ -216,23 +225,25 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                     )}
                 </div>
 
-                <p className={classes['test__title']}>{titleVal}</p>
+                <p className={classes['test__title']}>{formVal.title}</p>
 
                 <div className={classes['test__price-section']}>
-                    <p className={classes['test__price']}>{`${priceVal} ₽`}</p>
-                    {saleBadgeVal && (
+                    <p
+                        className={classes['test__price']}
+                    >{`${formVal.price} ₽`}</p>
+                    {formVal.sale && (
                         <p
                             className={classes['test__old-price']}
-                        >{`${oldPriceVal} ₽`}</p>
+                        >{`${formVal.oldPrice} ₽`}</p>
                     )}
                 </div>
 
-                {saleBadgeVal && (
+                {formVal.sale && (
                     <div className={classes['test__sale-badge']}>
                         <p>sale</p>
                     </div>
                 )}
-                {newBadgeVal && (
+                {formVal.new && (
                     <div className={classes['test__new-badge']}>
                         <p>new</p>
                     </div>
@@ -243,7 +254,7 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
                 className={classes['flags-filter']}
                 items={item}
                 editForm={true}
-                onFlagsUpd={flags => setFlags(flags)}
+                onFlagsUpd={flags => setFormVal({ ...formVal, flags: flags })}
             />
 
             <MenuBtn type="submit" blank={true}>
