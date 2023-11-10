@@ -57,6 +57,7 @@ function AdminCabinet() {
 
     function applyItemsData(data) {
         console.log(data);
+
         if (!data) return;
         setItems(data);
         setItemsToRender(data);
@@ -99,8 +100,8 @@ function AdminCabinet() {
             // create new item
             setItemToEdit({
                 title: '',
-                price: 0,
-                oldPrice: 0,
+                price: 1,
+                oldPrice: 1,
                 src: '',
                 description: '',
                 new: false,
@@ -194,7 +195,7 @@ function AdminCabinet() {
                 {showGoods && (
                     <MenuBtn
                         className={classes['create-btn']}
-                        onClick={() => showModalHandler()}
+                        onClick={showModalHandler}
                     >
                         Создать товар
                     </MenuBtn>

@@ -12,7 +12,7 @@ function FormInput(props) {
     function checkValue(value) {
         if (
             (props.type !== 'number' && props.required && !value.trim()) ||
-            (props.type === 'number' && value < 0) ||
+            (props.type === 'number' && value < 1) ||
             (props.type === 'number' && value === '')
         ) {
             return false;
@@ -23,6 +23,8 @@ function FormInput(props) {
 
     function changeHandler(event) {
         props.onChange(event);
+
+        if (!props.required) return;
 
         // check value 2 sec after change
         clearTimeout(timer);
@@ -37,12 +39,16 @@ function FormInput(props) {
 
     // if error add error class and style, remove if not
     useEffect(() => {
+        if (!props.required) return;
+
         ref.current.classList.toggle(classes.error, error);
         props.onError(error);
     }, [error]);
 
     // check inputs immidiately after losing focus
     function blurHandler(event) {
+        if (!props.required) return;
+
         if (!checkValue(event.target.value)) setError(true);
     }
 
