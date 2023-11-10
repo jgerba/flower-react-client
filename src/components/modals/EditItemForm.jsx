@@ -20,7 +20,7 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
         price: item.price,
         oldPrice: item.oldPrice,
         src: item.src,
-        descr: item.descr,
+        description: item.description,
         new: item.new,
         sale: item.sale,
         flags: item.flags,
@@ -53,11 +53,22 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
 
         // upload new item
         if (isNewItem) {
+            if (
+                !formVal.title ||
+                !formVal.price ||
+                formVal.price < 1 ||
+                !formVal.src ||
+                (formVal.sale && !formVal.oldPrice) ||
+                (formVal.sale && formVal.oldPrice < 1)
+            ) {
+                return;
+            }
+
             sendRequest(
                 {
                     url: `/bouquet`,
                     method: 'POST',
-                    body: dataObj,
+                    body: formVal,
                 },
                 applyData
             );
@@ -82,8 +93,6 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
             }
         }
 
-        console.log(dataObj);
-
         if (Object.keys(dataObj).length === 0) return;
 
         // upload edited data
@@ -99,6 +108,8 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
 
     // update edited item and close modal after submitting
     function applyData(data) {
+        console.log(data);
+
         onModalChange(data);
         onClose();
     }
@@ -156,11 +167,10 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
 
             <FormInput
                 title="Описание"
-                name="descr"
+                name="description"
                 textarea={true}
                 placeholder="Описание товара до 300 символов"
-                value={formVal.descr}
-                onError={val => setHasError(val)}
+                value={formVal.description}
                 onChange={formChangeHandler}
             />
 
