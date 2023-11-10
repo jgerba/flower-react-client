@@ -70,7 +70,16 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
         // compare init and form values,
         // if have difference add to dataObj for upload
         for (const [key, value] of Object.entries(formVal)) {
-            if (value !== item[key]) dataObj[key] = value;
+            if (value !== item[key] && key !== 'flags') dataObj[key] = value;
+
+            // compare flags arrays
+            if (
+                (key === 'flags' && value.length !== item[key].length) ||
+                (key === 'flags' &&
+                    JSON.stringify(value) !== JSON.stringify(item[key]))
+            ) {
+                dataObj[key] = value;
+            }
         }
 
         console.log(dataObj);
