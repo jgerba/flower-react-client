@@ -18,7 +18,25 @@ function EditOrderForm({ item, onModalChange, onClose }) {
     const pickupRef = useRef();
     const deliveryRef = useRef();
 
-    const [useDelivery, setUseDelivery] = useState(item.delivery);
+    const [formVal, setFormVal] = useState({
+        name: item.name,
+        phone: item.phone,
+        email: item.email,
+        recieverPhone: item.recieverPhone,
+        recieverName: item.recieverName,
+        comment: item.comment,
+        delivery: item.delivery,
+        city: item.city,
+        street: item.street,
+        building: item.building,
+        house: item.house,
+        flat: item.flat,
+        deliverTime: item.deliverTime,
+        order: item.order,
+    });
+
+    // error from the inputs, cancel sbm if true
+    const [hasError, setHasError] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -34,56 +52,33 @@ function EditOrderForm({ item, onModalChange, onClose }) {
         dispatch(cartActions.updateOrderItems(item.order));
     }, []);
 
-    //  check if there empty text inputs
-    function checkInputs(el) {
-        if (
-            !el.name.value ||
-            !el.phone.value ||
-            !el.email.value ||
-            orderItems.length === 0 ||
-            (useDelivery && !el.city.value) ||
-            (useDelivery && !el.street.value)
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
     function submitHandler(event) {
         event.preventDefault();
 
-        const el = event.target;
+        if (hasError) return;
 
-        if (!checkInputs(el)) return;
+        // data for the upload
+        const dataObj = {};
 
-        const dataObj = {
-            name: el.name.value,
-            phone: el.phone.value,
-            email: el.email.value,
-            recieverPhone: el.recieverPhone?.value,
-            recieverName: el.recieverName?.value,
-            comment: el.comment?.value,
-            delivery: useDelivery,
-            address: useDelivery
-                ? {
-                      city: el.city.value,
-                      street: el.street.value,
-                      building: el.building?.value,
-                      house: el.house?.value,
-                      flat: el.flat?.value,
-                      deliverTime: el.deliverTime?.value,
-                  }
-                : {
-                      city: '',
-                      street: '',
-                      building: null,
-                      house: null,
-                      flat: null,
-                      deliverTime: '',
-                  },
-            order: orderItems,
-        };
+        for (const [key, value] of Object.entries(formVal)) {
+            // compare init and form values,
+            // if have difference add to dataObj for upload
+            // hanlde order value separately
+            if (value !== item[key] && key !== 'order') {
+                dataObj[key] = value;
+            }
+
+            // compare order arrays
+            if (
+                (key === 'order' && value.length !== orderItems.length) ||
+                (key === 'order' &&
+                    JSON.stringify(value) !== JSON.stringify(orderItems))
+            ) {
+                dataObj[key] = orderItems;
+            }
+        }
+
+        if (Object.keys(dataObj).length === 0) return;
 
         sendRequest(
             {
@@ -100,6 +95,13 @@ function EditOrderForm({ item, onModalChange, onClose }) {
         console.log(data);
         onModalChange(data);
         onClose();
+    }
+
+    function formChangeHandler(event) {
+        setFormVal({
+            ...formVal,
+            [event.target.name]: event.target.value,
+        });
     }
 
     return (
@@ -119,25 +121,29 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                     title="Имя"
                     name="name"
                     placeholder="Имя до 30 символов - обязательное поле"
-                    value={item.name}
-                    onChange={() => {}}
+                    value={formVal.name}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Телефон"
                     name="phone"
                     placeholder="Телефон клиента - обязательное поле"
-                    value={item.phone}
-                    type="phone"
-                    onChange={() => {}}
+                    type="tel"
+                    value={formVal.phone}
+                    required={true}
+                    onError={val => setHasError(val)}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Электронная почта"
                     name="email"
                     placeholder="Электронная почта клиента"
-                    value={item.email}
-                    onChange={() => {}}
+                    value={formVal.email}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
@@ -145,26 +151,26 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                     title="Имя получателя"
                     name="recieverName"
                     placeholder="Имя получателя до 30 символов"
-                    value={item.recieverName}
-                    onChange={() => {}}
+                    value={formVal.recieverName}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Телефон получателя"
                     name="recieverPhone"
                     placeholder="Телефон получателя"
-                    value={item.recieverPhone}
-                    type="phone"
-                    onChange={() => {}}
+                    type="tel"
+                    value={formVal.recieverPhone}
+                    onChange={formChangeHandler}
                 />
 
                 <FormInput
                     title="Комментарий к заказу"
                     name="comment"
                     placeholder="Комментарий к заказу"
-                    value={item.comment}
                     textarea={true}
-                    onChange={() => {}}
+                    value={formVal.comment}
+                    onChange={formChangeHandler}
                 />
 
                 <section className={classes.delivery}>
@@ -173,7 +179,7 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                     <section className={classes['delivery__input']}>
                         <div
                             className={`${
-                                useDelivery ? classes['input-gray'] : ''
+                                formVal.delivery ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -182,7 +188,10 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                 id="pickup"
                                 type="radio"
                                 onChange={() => {
-                                    setUseDelivery(false);
+                                    setFormVal({
+                                        ...formVal,
+                                        delivery: false,
+                                    });
                                 }}
                             />
                             <label htmlFor="pickup">Самовывоз</label>
@@ -190,7 +199,7 @@ function EditOrderForm({ item, onModalChange, onClose }) {
 
                         <div
                             className={`${
-                                !useDelivery ? classes['input-gray'] : ''
+                                !formVal.delivery ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -199,14 +208,17 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                 id="delivery"
                                 type="radio"
                                 onChange={() => {
-                                    setUseDelivery(true);
+                                    setFormVal({
+                                        ...formVal,
+                                        delivery: true,
+                                    });
                                 }}
                             />
                             <label htmlFor="delivery">Доставка курьером</label>
                         </div>
                     </section>
 
-                    {useDelivery && (
+                    {formVal.delivery && (
                         <div className={classes['delivery__details']}>
                             <FormInput
                                 containerClass={classes.container}
@@ -214,8 +226,8 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                 title="Город*"
                                 placeholder="Введите город"
                                 name="city"
-                                value={item.address?.city}
-                                onChange={() => {}}
+                                value={formVal.city}
+                                onChange={formChangeHandler}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -223,8 +235,8 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                 title="Улица*"
                                 placeholder="Введите улицу"
                                 name="street"
-                                value={item.address?.street}
-                                onChange={() => {}}
+                                value={formVal.street}
+                                onChange={formChangeHandler}
                             />
 
                             <div className={classes['delivery-house']}>
@@ -234,8 +246,8 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                     title="Корп/стр"
                                     placeholder="Корп/стр"
                                     name="building"
-                                    value={item.address?.building}
-                                    onChange={() => {}}
+                                    value={formVal.building}
+                                    onChange={formChangeHandler}
                                 />
                                 <FormInput
                                     containerClass={classes.container}
@@ -243,8 +255,8 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                     title="Дом"
                                     placeholder="Дом"
                                     name="house"
-                                    value={item.address?.house}
-                                    onChange={() => {}}
+                                    value={formVal.house}
+                                    onChange={formChangeHandler}
                                 />
                                 <FormInput
                                     containerClass={classes.container}
@@ -252,8 +264,8 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                     title="Кв/офис"
                                     placeholder="Кв/офис"
                                     name="flat"
-                                    value={item.address?.flat}
-                                    onChange={() => {}}
+                                    value={formVal.flat}
+                                    onChange={formChangeHandler}
                                 />
                             </div>
 
@@ -263,9 +275,9 @@ function EditOrderForm({ item, onModalChange, onClose }) {
                                 title="Время доставки"
                                 placeholder="Введите время доставки"
                                 name="deliverTime"
-                                value={item.address?.deliverTime}
-                                onChange={() => {}}
                                 type="time"
+                                value={formVal.deliverTime}
+                                onChange={formChangeHandler}
                             />
                         </div>
                     )}
@@ -273,7 +285,7 @@ function EditOrderForm({ item, onModalChange, onClose }) {
 
                 <MenuBtn
                     className={`${classes['submit-btn']} ${
-                        useDelivery ? classes['submit-btn--shift'] : ''
+                        formVal.delivery ? classes['submit-btn--shift'] : ''
                     }`}
                     type="submit"
                     blank={true}

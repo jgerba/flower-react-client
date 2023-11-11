@@ -13,7 +13,24 @@ import ShopCart from '../components/modals/ShopCart';
 
 import classes from './Checkout.module.css';
 
-function Checkout(props) {
+const formInitVal = {
+    name: '',
+    phone: '',
+    email: '',
+    recieverPhone: '',
+    recieverName: '',
+    comment: '',
+    delivery: false,
+    city: '',
+    street: '',
+    building: '',
+    house: '',
+    flat: '',
+    deliverTime: '',
+    order: [],
+};
+
+function Checkout() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -23,83 +40,58 @@ function Checkout(props) {
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalPrice = useSelector(state => state.cart.totalPrice);
 
-    const [useDelivery, setUseDelivery] = useState(false);
+    const [formVal, setFormVal] = useState(formInitVal);
+
+    // error from the inputs, cancel sbm if true
+    const [hasError, setHasError] = useState(false);
+
+    // for the future use
     const [promo, setPromo] = useState('');
     const [acceptPromo, setAcceptPromo] = useState(null);
 
     const { sendRequest, isLoading, error } = useFetch();
 
-    // set initial check attr for badges
+    // set initial check attr for badgesц
     useEffect(() => {
         pickupRef.current.setAttribute('checked', '');
     }, []);
 
-    //  check if there empty text inputs
-    function checkInputs(el) {
-        if (
-            !el.name.value ||
-            !el.phone.value ||
-            !el.email.value ||
-            cartItems.length === 0 ||
-            (useDelivery && !el.city.value) ||
-            (useDelivery && !el.street.value)
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
     function submitHandler(event) {
         event.preventDefault();
 
-        const el = formRef.current;
+        if (hasError) return;
+        if (Object.keys(cartItems).length === 0) return;
+        if (!formVal.name || !formVal.phone) return;
 
-        if (!checkInputs(el)) return;
-
-        const obj = {
-            name: el.name.value,
-            phone: el.phone.value,
-            email: el.email.value,
-            recieverPhone: el.recieverPhone?.value,
-            recieverName: el.recieverName?.value,
-            comment: el.comment?.value,
-            delivery: useDelivery,
-            address: useDelivery
-                ? {
-                      city: el.city?.value,
-                      street: el.street?.value,
-                      building: el.building?.value,
-                      house: el.house?.value,
-                      flat: el.flat?.value,
-                      deliverTime: el.deliverTime?.value,
-                  }
-                : {
-                      city: '',
-                      street: '',
-                      building: null,
-                      house: null,
-                      flat: null,
-                      deliverTime: '',
-                  },
-            order: cartItems,
-            promo: acceptPromo,
-            totalPrice: totalPrice,
-        };
-
-        sendRequest({ url: '/order', method: 'POST', body: obj }, applyData);
+        sendRequest(
+            {
+                url: '/order',
+                method: 'POST',
+                body: { ...formVal, order: cartItems },
+            },
+            applyData
+        );
 
         function applyData(data) {
             console.log(data);
+
+            setFormVal(formInitVal);
             dispatch(cartActions.emptyCart());
             navigate('/success');
         }
     }
 
+    function formChangeHandler(event) {
+        setFormVal({
+            ...formVal,
+            [event.target.name]: event.target.value,
+        });
+    }
+
     return (
         <main
             className={`${classes.main} ${
-                useDelivery ? classes['main-delivery'] : ''
+                formVal.delivery ? classes['main-delivery'] : ''
             }`}
         >
             <div className={classes.header}>
@@ -117,14 +109,19 @@ function Checkout(props) {
             >
                 <section className={classes.contacts}>
                     <h4>Контактные данные</h4>
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
                         title="Ваше имя*"
                         placeholder="Введите ваше имя"
                         name="name"
-                        onChange={() => {}}
+                        value={formVal.name}
+                        required={true}
+                        onError={val => setHasError(val)}
+                        onChange={formChangeHandler}
                     />
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
@@ -132,8 +129,12 @@ function Checkout(props) {
                         placeholder="+7 (977) 777-77-77"
                         name="phone"
                         type="tel"
-                        onChange={() => {}}
+                        value={formVal.phone}
+                        required={true}
+                        onError={val => setHasError(val)}
+                        onChange={formChangeHandler}
                     />
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
@@ -141,8 +142,10 @@ function Checkout(props) {
                         placeholder="Введите вашу почту"
                         name="email"
                         type="email"
-                        onChange={() => {}}
+                        value={formVal.email}
+                        onChange={formChangeHandler}
                     />
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
@@ -150,16 +153,20 @@ function Checkout(props) {
                         placeholder="+7 (977) 777-77-77"
                         name="recieverPhone"
                         type="tel"
-                        onChange={() => {}}
+                        value={formVal.recieverPhone}
+                        onChange={formChangeHandler}
                     />
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
                         title="Имя получателя (необязательно)"
                         placeholder="Введите имя получателя"
                         name="recieverName"
-                        onChange={() => {}}
+                        value={formVal.recieverName}
+                        onChange={formChangeHandler}
                     />
+
                     <FormInput
                         containerClass={classes.container}
                         labelClass={classes.label}
@@ -167,7 +174,8 @@ function Checkout(props) {
                         placeholder="Примечания к вашеу заказу,  особые пожелания отделу доставки"
                         name="comment"
                         textarea={true}
-                        onChange={() => {}}
+                        value={formVal.comment}
+                        onChange={formChangeHandler}
                     />
                 </section>
 
@@ -177,7 +185,7 @@ function Checkout(props) {
                     <section className={classes['delivery__input']}>
                         <div
                             className={`${
-                                useDelivery ? classes['input-gray'] : ''
+                                formVal.delivery ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -186,7 +194,10 @@ function Checkout(props) {
                                 id="pickup"
                                 type="radio"
                                 onChange={() => {
-                                    setUseDelivery(false);
+                                    setFormVal({
+                                        ...formVal,
+                                        delivery: false,
+                                    });
                                 }}
                             />
                             <label htmlFor="pickup">Самовывоз</label>
@@ -194,7 +205,7 @@ function Checkout(props) {
 
                         <div
                             className={`${
-                                !useDelivery ? classes['input-gray'] : ''
+                                !formVal.delivery ? classes['input-gray'] : ''
                             }`}
                         >
                             <input
@@ -202,14 +213,17 @@ function Checkout(props) {
                                 id="delivery"
                                 type="radio"
                                 onChange={() => {
-                                    setUseDelivery(true);
+                                    setFormVal({
+                                        ...formVal,
+                                        delivery: true,
+                                    });
                                 }}
                             />
                             <label htmlFor="delivery">Доставка курьером</label>
                         </div>
                     </section>
 
-                    {useDelivery && (
+                    {formVal.delivery && (
                         <div className={classes['delivery__details']}>
                             <FormInput
                                 containerClass={classes.container}
@@ -217,7 +231,8 @@ function Checkout(props) {
                                 title="Город*"
                                 placeholder="Введите город"
                                 name="city"
-                                onChange={() => {}}
+                                value={formVal.city}
+                                onChange={formChangeHandler}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -225,7 +240,8 @@ function Checkout(props) {
                                 title="Улица*"
                                 placeholder="Введите улицу"
                                 name="street"
-                                onChange={() => {}}
+                                value={formVal.street}
+                                onChange={formChangeHandler}
                             />
 
                             <div className={classes['delivery-house']}>
@@ -235,7 +251,8 @@ function Checkout(props) {
                                     title="Корп/стр"
                                     placeholder="Корп/стр"
                                     name="building"
-                                    onChange={() => {}}
+                                    value={formVal.building}
+                                    onChange={formChangeHandler}
                                 />
                                 <FormInput
                                     containerClass={classes.container}
@@ -243,7 +260,8 @@ function Checkout(props) {
                                     title="Дом"
                                     placeholder="Дом"
                                     name="house"
-                                    onChange={() => {}}
+                                    value={formVal.house}
+                                    onChange={formChangeHandler}
                                 />
                                 <FormInput
                                     containerClass={classes.container}
@@ -251,7 +269,8 @@ function Checkout(props) {
                                     title="Кв/офис"
                                     placeholder="Кв/офис"
                                     name="flat"
-                                    onChange={() => {}}
+                                    value={formVal.flat}
+                                    onChange={formChangeHandler}
                                 />
                             </div>
 
@@ -261,8 +280,9 @@ function Checkout(props) {
                                 title="Время доставки"
                                 placeholder="Введите время доставки"
                                 name="deliverTime"
-                                onChange={() => {}}
                                 type="time"
+                                value={formVal.deliverTime}
+                                onChange={formChangeHandler}
                             />
 
                             <small>{`Стоимость доставки оговаривается после подтверждения заказа нашим администратором`}</small>
