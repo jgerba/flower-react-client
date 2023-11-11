@@ -104,7 +104,6 @@ function FeedBackForm(props) {
                     placeholder="Ваш комментарий"
                     textarea={true}
                     value={formVal.comment}
-                    onError={val => setHasError(val)}
                     onChange={formChangeHandler}
                 />
 

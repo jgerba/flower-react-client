@@ -131,7 +131,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                     placeholder="Комментарий"
                     value={formVal.comment}
                     textarea={true}
-                    onError={val => setHasError(val)}
                     onChange={formChangeHandler}
                 />
 
@@ -186,7 +185,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 name="organization"
                                 value={formVal.organization}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -196,7 +194,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 name="address"
                                 value={formVal.address}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -207,7 +204,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 type="number"
                                 value={formVal.price}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 title="Адрес электронной почты"
@@ -215,7 +211,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 placeholder="Адрес электронной почты"
                                 value={formVal.email}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -226,7 +221,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 type="number"
                                 value={formVal.unp}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -237,7 +231,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 type="number"
                                 value={formVal.account}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -248,7 +241,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 type="number"
                                 value={formVal.bank}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                             <FormInput
                                 containerClass={classes.container}
@@ -259,7 +251,6 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                                 type="number"
                                 value={formVal.entries}
                                 onChange={formChangeHandler}
-                                onError={val => setHasError(val)}
                             />
                         </div>
                     )}
