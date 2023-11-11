@@ -119,7 +119,7 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                     name="phone"
                     placeholder="Телефон клиента - обязательное поле"
                     value={formVal.phone}
-                    type="phone"
+                    type="tel"
                     required={true}
                     onError={val => setHasError(val)}
                     onChange={formChangeHandler}

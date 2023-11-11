@@ -17,11 +17,7 @@ const formInitVal = {
 };
 
 function FeedBackForm(props) {
-    const [formVal, setFormVal] = useState({
-        name: '',
-        phone: '',
-        comment: '',
-    });
+    const [formVal, setFormVal] = useState(formInitVal);
     const [hasError, setHasError] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
@@ -93,7 +89,7 @@ function FeedBackForm(props) {
                     labelClass={classes.label}
                     title="Телефон"
                     name="phone"
-                    type="phone"
+                    type="tel"
                     placeholder="+7 (977) 777-77-77"
                     value={formVal.phone}
                     required={true}
