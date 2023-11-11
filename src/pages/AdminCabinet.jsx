@@ -18,9 +18,11 @@ import classes from './AdminCabinet.module.css';
 import crossImg from '../svg/closeBtn.svg';
 
 function AdminCabinet() {
-    const [showOrders, setShowOrders] = useState(true);
-    const [showGoods, setShowGoods] = useState(false);
-    const [showFeeds, setShowFeeds] = useState(false);
+    const [showPage, setShowPage] = useState({
+        orders: true,
+        goods: false,
+        feeds: false,
+    });
     const [url, setUrl] = useState('/orders');
 
     const [items, setItems] = useState([]);
@@ -35,20 +37,17 @@ function AdminCabinet() {
 
     // change download url according to tab selection
     useEffect(() => {
-        if (showOrders) {
-            setUrl('/orders');
-        } else if (showGoods) {
-            setUrl('/bouquets');
-        } else {
-            setUrl('/feedbacks');
-        }
+        showPage.orders
+            ? setUrl('/orders')
+            : showPage.goods
+            ? setUrl('/bouquets')
+            : setUrl('/feedbacks');
 
         // drop prev tab items
         if (items) {
             setItems([]);
-            setItemsToRender([]);
         }
-    }, [showOrders, showGoods, showFeeds]);
+    }, [showPage]);
 
     // download all items
     useEffect(() => {
@@ -60,19 +59,46 @@ function AdminCabinet() {
 
         if (!data) return;
         setItems(data);
-        setItemsToRender(data);
     }
 
-    // update item in items array after editing
-    function modalChangeHandler(item) {
-        setItems(items => {
-            const index = items.findIndex(el => el._id === item._id);
-            return items.toSpliced(index, 1, item);
-        });
-        setItemsToRender(items => {
-            const index = items.findIndex(el => el._id === item._id);
-            return items.toSpliced(index, 1, item);
-        });
+    // update rendered items on items change
+    useEffect(() => {
+        setItemsToRender(items);
+    }, [items]);
+
+    // update item in items array after editing or push if new
+    function modalChangeHandler(item, isNew = false) {
+        isNew
+            ? setItems(items => {
+                  const newData = [...items];
+                  newData.push(item);
+                  return newData;
+              })
+            : setItems(items => {
+                  const index = items.findIndex(el => el._id === item._id);
+                  return items.toSpliced(index, 1, item);
+              });
+    }
+
+    function removeItemHandler(id) {
+        // delete last letter 's' in url string
+        sendRequest(
+            { url: `${url.slice(0, -1)}/${id}`, method: 'DELETE' },
+            applyRemoveData()
+        );
+
+        function applyRemoveData() {
+            setItems(items => {
+                const newArr = [...items];
+                const index = newArr.findIndex(item => item._id === id);
+                newArr.splice(index, 1);
+                return newArr;
+            });
+        }
+    }
+
+    function searchHandler(event) {
+        setSearchVal(event.target.value);
     }
 
     // filter items
@@ -120,58 +146,24 @@ function AdminCabinet() {
         setIsNewItem(false);
     }
 
-    function searchHandler(event) {
-        setSearchVal(event.target.value);
-    }
-
     // change state of tabs
     function showTabsHandler(event) {
         switch (event.target.innerText) {
             case 'ЗАКАЗЫ':
-                setShowOrders(true);
-                setShowGoods(false);
-                setShowFeeds(false);
+                setShowPage({ orders: true, goods: false, feeds: false });
                 break;
 
             case 'ТОВАРЫ':
-                setShowOrders(false);
-                setShowGoods(true);
-                setShowFeeds(false);
+                setShowPage({ orders: false, goods: true, feeds: false });
                 break;
 
             case 'ОБРАТНАЯ СВЯЗЬ':
-                setShowOrders(false);
-                setShowGoods(false);
-                setShowFeeds(true);
+                setShowPage({ orders: false, goods: false, feeds: true });
                 break;
 
             default:
                 console.log('Что-то сломалось...');
                 break;
-        }
-    }
-
-    function removeItemHandler(id) {
-        // delete last letter 's' in url
-        sendRequest(
-            { url: `${url.slice(0, -1)}/${id}`, method: 'DELETE' },
-            applyRemoveData()
-        );
-
-        function applyRemoveData() {
-            setItems(items => {
-                const newArr = [...items];
-                const index = newArr.findIndex(item => item._id === id);
-                newArr.splice(index, 1);
-                return newArr;
-            });
-            setItemsToRender(items => {
-                const newArr = [...items];
-                const index = newArr.findIndex(item => item._id === id);
-
-                newArr.splice(index, 1);
-                return newArr;
-            });
         }
     }
 
@@ -185,14 +177,14 @@ function AdminCabinet() {
 
             <section className={classes.goods}>
                 <TextHeader className={classes.header}>
-                    {showOrders
+                    {showPage.orders
                         ? 'Заказы'
-                        : showGoods
+                        : showPage.goods
                         ? 'Товары'
                         : 'Обратная связь'}
                 </TextHeader>
 
-                {showGoods && (
+                {showPage.goods && (
                     <MenuBtn
                         className={classes['create-btn']}
                         onClick={showModalHandler}
@@ -231,7 +223,7 @@ function AdminCabinet() {
 
                 {itemsToRender.length !== 0 ? (
                     itemsToRender.map(item => {
-                        return showOrders ? (
+                        return showPage.orders ? (
                             <OrdersItem
                                 className={classes.item}
                                 key={item._id}
@@ -239,7 +231,7 @@ function AdminCabinet() {
                                 onClick={event => showModalHandler(event, item)}
                                 onRemove={() => removeItemHandler(item._id)}
                             />
-                        ) : showGoods ? (
+                        ) : showPage.goods ? (
                             <GoodsItem
                                 className={classes.item}
                                 key={item._id}
@@ -262,30 +254,34 @@ function AdminCabinet() {
                 ) : (
                     <p className={classes.excuse}>
                         {`${
-                            showOrders
+                            showPage.orders
                                 ? 'Заказов'
-                                : showGoods
+                                : showPage.goods
                                 ? 'Букетов'
                                 : 'Запросов обратной связи'
-                        } еще нет.${showGoods ? ' Создайте первый букет' : ''}`}
+                        } еще нет.${
+                            showPage.goods ? ' Создайте первый букет' : ''
+                        }`}
                     </p>
                 )}
             </section>
 
             {modalIsVisible &&
                 createPortal(
-                    showOrders ? (
+                    showPage.orders ? (
                         <EditOrderForm
                             item={itemToEdit}
                             onModalChange={item => modalChangeHandler(item)}
                             onClose={hideModalHandler}
                         ></EditOrderForm>
-                    ) : showGoods ? (
+                    ) : showPage.goods ? (
                         <EditItemForm
                             item={itemToEdit}
-                            onModalChange={item => modalChangeHandler(item)}
+                            onModalChange={(item, isNew) =>
+                                modalChangeHandler(item, isNew)
+                            }
                             onClose={hideModalHandler}
-                            isNewItem={isNewItem}
+                            newItem={isNewItem}
                         ></EditItemForm>
                     ) : (
                         <EditFeedForm

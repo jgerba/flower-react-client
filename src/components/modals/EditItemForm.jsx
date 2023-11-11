@@ -10,7 +10,7 @@ import ContentCard from '../UI/ContentCard';
 
 import classes from './EditItemForm.module.css';
 
-function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
+function EditItemForm({ item, onModalChange, onClose, newItem = false }) {
     const noBadgeRef = useRef();
     const saleBadgeRef = useRef();
     const newBadgeRef = useRef();
@@ -52,7 +52,7 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
         if (hasError) return;
 
         // upload new item
-        if (isNewItem) {
+        if (newItem) {
             if (
                 !formVal.title ||
                 !formVal.price ||
@@ -110,7 +110,7 @@ function EditItemForm({ item, onModalChange, onClose, isNewItem = false }) {
     function applyData(data) {
         console.log(data);
 
-        onModalChange(data);
+        onModalChange(data, newItem);
         onClose();
     }
 
