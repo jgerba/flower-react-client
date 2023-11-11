@@ -20,3 +20,8 @@
 
     right: -439px;
 }
+
+.btn,
+.btn:focus {
+    background-color: #0f2222;
+}

@@ -23,7 +23,7 @@
 }
 
 .modal-private {
-    height: calc(100vh - 520px);
+    height: calc(100vh - 440px);
 }
 
 .corporate,
@@ -75,7 +75,7 @@
 }
 
 .submit-btn--shift {
-    bottom: -640px;
+    bottom: -795px;
 }
 
 .capitalize {

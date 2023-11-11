@@ -37,13 +37,25 @@ function AdminsTabs(props) {
                 props.className ? props.className : ''
             }`}
         >
-            <MenuBtn blank={true} onClick={props.onShowOrders}>
+            <MenuBtn
+                className={classes.btn}
+                blank={true}
+                onClick={props.onShowOrders}
+            >
                 Заказы
             </MenuBtn>
-            <MenuBtn blank={true} onClick={props.onShowGoods}>
+            <MenuBtn
+                className={classes.btn}
+                blank={true}
+                onClick={props.onShowGoods}
+            >
                 Товары
             </MenuBtn>
-            <MenuBtn blank={true} onClick={props.onShowFeed}>
+            <MenuBtn
+                className={classes.btn}
+                blank={true}
+                onClick={props.onShowFeed}
+            >
                 Обратная связь
             </MenuBtn>
 

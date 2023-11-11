@@ -78,11 +78,11 @@
 
 .submit-btn {
     position: absolute;
-    bottom: 30px;
+    bottom: -110px;
 }
 
 .submit-btn--shift {
-    bottom: -450px;
+    bottom: -610px;
 }
 
 .capitalize {
