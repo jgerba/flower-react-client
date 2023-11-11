@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -6,14 +7,12 @@ import { cartActions } from '../store/cart';
 import MenuBtn from './UI/MenuBtn';
 
 import classes from './BouquetCard.module.css';
+import imgFallBack from '../images/bouq-fallback.jpg';
 
-function BouquetCard({
-    className,
-    item = {},
-    popular = false,
-    onError = () => {},
-}) {
+function BouquetCard({ className, item = {}, popular = false }) {
     const dispatch = useDispatch();
+
+    const [isBadImg, setIsBadImg] = useState(false);
 
     function addToCart() {
         dispatch(cartActions.addToCart(item));
@@ -26,9 +25,9 @@ function BouquetCard({
                     className={`${classes.image} ${
                         popular ? classes['popular-card'] : ''
                     }`}
-                    src={item.src}
+                    src={isBadImg ? imgFallBack : item.src}
                     alt={`Букет ${item.title}`}
-                    onError={() => onError()}
+                    onError={() => setIsBadImg(true)}
                 />
             </Link>
 
