@@ -18,6 +18,11 @@ import classes from './AdminCabinet.module.css';
 import crossImg from '../svg/closeBtn.svg';
 
 function AdminCabinet() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [showPage, setShowPage] = useState({
         orders: true,
         goods: false,

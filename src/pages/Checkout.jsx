@@ -31,6 +31,11 @@ const formInitVal = {
 };
 
 function Checkout() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

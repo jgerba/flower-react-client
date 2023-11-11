@@ -16,6 +16,11 @@ import FlagsFilter from '../components/filters/FlagsFilter';
 import classes from './Catalogue.module.css';
 
 function CataloguePage() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const dispatch = useDispatch();
 
     const [items, setItems] = useState([]);

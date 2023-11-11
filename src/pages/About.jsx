@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import SectionHeader from '../components/UI/SectionHeader';
 import ContentCard from '../components/UI/ContentCard';
 import AboutHeader from '../components/UI/AboutHeader';
@@ -5,6 +7,11 @@ import AboutHeader from '../components/UI/AboutHeader';
 import classes from './About.module.css';
 
 function AboutPage() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <main className={classes.main}>
             <SectionHeader className={classes.header}>о нас</SectionHeader>

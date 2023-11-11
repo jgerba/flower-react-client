@@ -10,6 +10,11 @@ import ScrollBtn from '../components/ScrollBtn';
 import classes from './Search.module.css';
 
 function SearchPage() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [items, setItems] = useState([]);
     const [foundItems, setFoundItems] = useState([]);
     const [showScrollBtn, setShowScrollBtn] = useState();

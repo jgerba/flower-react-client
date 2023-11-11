@@ -31,6 +31,11 @@ import strangeBouquet from '../images/social4.png';
 import classes from './Home.module.css';
 
 function HomePage() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

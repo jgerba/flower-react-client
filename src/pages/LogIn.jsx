@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,6 +18,11 @@ import hidePass from '../svg/hidePass.svg';
 import IconBtn from '../components/UI/IconBtn';
 
 function LogIn() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const formRef = useRef();

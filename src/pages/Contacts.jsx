@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import SectionHeader from '../components/UI/SectionHeader';
 import ContentCard from '../components/UI/ContentCard';
 import FeedBackForm from '../components/FeedBackForm';
@@ -6,6 +8,11 @@ import classes from './Contacts.module.css';
 import map from '../images/map.jpg';
 
 function ContactsPage() {
+    // reset scroll position
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <main className={classes.main}>
             <SectionHeader className={classes.header}>контакты</SectionHeader>
