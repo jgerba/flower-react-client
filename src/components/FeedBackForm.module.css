@@ -135,7 +135,7 @@
 
     transform: rotate(-46.961deg);
 
-    background-image: url('../images/feedbackImg.png');
+    background-image: url('../images/feedbackImg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -152,7 +152,7 @@
     top: 81px;
     left: -9%;
 
-    background-image: url('../images/feedbackShadow.png');
+    background-image: url('../images/feedbackShadow.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -172,7 +172,7 @@
 
     transform: rotate(2deg);
 
-    background-image: url('../images/feedbackContacts.png');
+    background-image: url('../images/feedbackContacts.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

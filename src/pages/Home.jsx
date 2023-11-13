@@ -19,14 +19,14 @@ import ScrollBtn from '../components/ScrollBtn';
 
 import logo from '../svg/loverFlower.svg';
 import socialSign from '../svg/ourSocialNetworks.svg';
-import specialImgGift from '../images/special-1.png';
-import specialImgBouquet from '../images/special-2.png';
-import specialImgCard from '../images/special-3.png';
+import specialImgGift from '../images/special-1.webp';
+import specialImgBouquet from '../images/special-2.webp';
+import specialImgCard from '../images/special-3.webp';
 import specialImgWreath from '../images/special-4.png';
-import xmasTree from '../images/social1.png';
-import xmasBouquet from '../images/social2.png';
-import xmasToys from '../images/social3.png';
-import strangeBouquet from '../images/social4.png';
+import xmasTree from '../images/social1.webp';
+import xmasBouquet from '../images/social2.webp';
+import xmasToys from '../images/social3.webp';
+import strangeBouquet from '../images/social4.webp';
 
 import classes from './Home.module.css';
 

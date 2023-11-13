@@ -5,7 +5,7 @@ import ContentCard from '../components/UI/ContentCard';
 import FeedBackForm from '../components/FeedBackForm';
 
 import classes from './Contacts.module.css';
-import map from '../images/map.jpg';
+import map from '../images/map.webp';
 
 function ContactsPage() {
     // reset scroll position

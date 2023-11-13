@@ -297,7 +297,7 @@
 
     transform: scaleX(-1) rotate(332deg);
 
-    background-image: url('../images/corp_flower.png');
+    background-image: url('../images/corp_flower.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -316,7 +316,7 @@
 
     transform: rotate(349deg);
 
-    background-image: url('../images/corp_flower.png');
+    background-image: url('../images/corp_flower.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -335,7 +335,7 @@
 
     transform: scaleX(-1) rotate(2deg);
 
-    background-image: url('../images/corp_flower.png');
+    background-image: url('../images/corp_flower.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -354,7 +354,7 @@
 
     transform: rotate(47.91deg);
 
-    background-image: url('../images/corp_flower.png');
+    background-image: url('../images/corp_flower.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

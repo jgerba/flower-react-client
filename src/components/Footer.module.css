@@ -63,6 +63,9 @@
 .catalogue {
     grid-area: cat;
     gap: 20px;
+
+    position: relative;
+    left: 20px;
 }
 
 .bouquet {
@@ -72,6 +75,9 @@
 .links {
     grid-area: links;
     gap: 20px;
+
+    position: relative;
+    right: 20px;
 }
 
 .address {
