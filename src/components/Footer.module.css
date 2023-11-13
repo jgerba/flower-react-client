@@ -62,6 +62,7 @@
 
 .catalogue {
     grid-area: cat;
+    gap: 20px;
 }
 
 .bouquet {

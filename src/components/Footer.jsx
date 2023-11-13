@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NavLink, useNavigation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getCookie } from '../utils/handleCookies';
@@ -40,23 +40,10 @@ function Footer() {
                     220007, г. Минск, улица Толстого
                 </p>
             </div>
+
             <div className={`${classes.column} ${classes.catalogue}`}>
-                <h3>
-                    <NavLink className={classes.header} to="/catalogue">
-                        Каталог
-                    </NavLink>
-                </h3>
-            </div>
-            <div className={`${classes.column} ${classes.bouquet}`}>
-                <h3>
-                    <NavLink className={classes.header} to="/catalogue">
-                        Букет
-                    </NavLink>
-                </h3>
-            </div>
-            <div className={`${classes.column} ${classes.links}`}>
-                <NavLink className={classes.header} to="/payment">
-                    ДОСТАВКА И ОПЛАТА
+                <NavLink className={classes.header} to="/catalogue">
+                    Каталог
                 </NavLink>
                 <NavLink className={classes.header} to="/about">
                     О НАС
@@ -67,6 +54,13 @@ function Footer() {
                 <NavLink className={classes.header} to="/faq">
                     FAQ
                 </NavLink>
+            </div>
+
+            <div className={`${classes.column} ${classes.links}`}>
+                <NavLink className={classes.header} to="/payment">
+                    ДОСТАВКА И ОПЛАТА
+                </NavLink>
+
                 <NavLink className={classes.header} to="/corporate">
                     для корпоративных <br /> клиентов
                 </NavLink>
@@ -80,6 +74,7 @@ function Footer() {
                     </NavLink>
                 )}
             </div>
+
             <div className={`${classes.column} ${classes.address}`}>
                 <AddressPanel footer={true} />
                 <SocialPanel className={classes.social} />
