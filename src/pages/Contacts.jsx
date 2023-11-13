@@ -21,14 +21,14 @@ function ContactsPage() {
                 <ContentCard className={classes['item-card']}>
                     <h3 className={classes['item-header']}>время работы</h3>
                     <p className={classes['item-text']}>
-                        с 10:00 до 21:00 без выходных
+                        с 10:00 до 21:00 <br /> без выходных
                     </p>
                 </ContentCard>
 
                 <ContentCard className={classes['item-card']}>
                     <h3 className={classes['item-header']}>Адрес</h3>
                     <p className={classes['item-text']}>
-                        г. Минск, ул. Тимирязева 67, комн. 112
+                        г. Минск, ул. Тимирязева <br /> 67, комн. 112
                     </p>
                 </ContentCard>
 
@@ -54,6 +54,14 @@ function ContactsPage() {
                 <h3 className={classes['item-header']}>Мы на карте</h3>
                 <img src={map} alt="Карта" />
             </div>
+
+            <div className={classes['decor-flower-top-right']}></div>
+
+            <div className={classes['decor-ellipse-top-left']}></div>
+            <div className={classes['decor-ellipse-top-right']}></div>
+            <div className={classes['decor-ellipse-middle']}></div>
+            <div className={classes['decor-ellipse-bottom-left']}></div>
+            <div className={classes['decor-ellipse-bottom-right']}></div>
         </main>
     );
 }

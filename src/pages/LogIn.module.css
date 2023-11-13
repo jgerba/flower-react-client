@@ -6,6 +6,8 @@
 
     width: 100vw;
     min-height: calc(100vh - 337px);
+
+    overflow: hidden;
 }
 
 .form {
@@ -59,4 +61,58 @@
 
 .submit-btn {
     width: 100%;
+}
+
+.decor-flower-top {
+    position: absolute;
+
+    width: 1086.759px;
+    height: 779.151px;
+
+    top: -66px;
+    left: -14vw;
+
+    transform: rotate(150deg);
+    background-image: url('../images/corp_flower.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-ellipse-top {
+    position: absolute;
+
+    width: 465.711px;
+    height: 220.329px;
+
+    top: 130px;
+    right: -7vw;
+
+    border-radius: 465.711px;
+    transform: rotate(-71.859deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-middle {
+    position: absolute;
+
+    width: 150.177px;
+    height: 867.785px;
+
+    bottom: -90px;
+    left: 48vw;
+
+    border-radius: 667.785px;
+    transform: rotate(111.267deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
 }

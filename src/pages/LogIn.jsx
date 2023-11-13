@@ -100,6 +100,12 @@ function LogIn() {
                     </MenuBtn>
                 </form>
             </ContentCard>
+
+            <div className={classes['decor-flower-top']}></div>
+            <div className={classes['decor-flower-bottom']}></div>
+
+            <div className={classes['decor-ellipse-top']}></div>
+            <div className={classes['decor-ellipse-middle']}></div>
         </main>
     );
 }

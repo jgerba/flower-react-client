@@ -38,6 +38,8 @@
 
     display: flex;
     justify-content: space-between;
+
+    margin-top: 40px;
 }
 
 .item-card {
@@ -95,4 +97,111 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.decor-flower-top-right {
+    position: absolute;
+
+    width: 1086.759px;
+    height: 779.151px;
+
+    top: -140px;
+    right: -25vw;
+
+    transform: rotate(307deg);
+    background-image: url('../images/feedbackContacts.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-ellipse-top-left {
+    position: absolute;
+
+    width: 565.711px;
+    height: 220.329px;
+
+    top: 130px;
+    left: -6vw;
+
+    border-radius: 465.711px;
+    transform: rotate(-71.859deg);
+
+    background-color: #922d2d;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-middle {
+    position: absolute;
+
+    width: 1006.455px;
+    height: 124.88px;
+
+    top: 500px;
+    left: 27vw;
+
+    border-radius: 1006.455px;
+    transform: rotate(-165.265deg);
+
+    background-color: #922d2d;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-top-right {
+    position: absolute;
+
+    width: 341.808px;
+    height: 273.932px;
+
+    top: 100px;
+    right: -4vw;
+
+    border-radius: 341.808px;
+    transform: rotate(-71.859deg);
+
+    background-color: #922d2d;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-bottom-left {
+    position: absolute;
+
+    width: 305.975px;
+    height: 536.521px;
+
+    bottom: -103px;
+    left: -1vw;
+
+    border-radius: 436.521px;
+    transform: rotate(21.097deg);
+
+    background-color: #922d2d;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-bottom-right {
+    position: absolute;
+
+    width: 354.93px;
+    height: 364.216px;
+
+    bottom: -103px;
+    right: -1vw;
+
+    transform: rotate(32.828deg);
+
+    background-color: #922d2d;
+    filter: blur(125px);
+
+    z-index: -3;
 }
