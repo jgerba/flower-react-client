@@ -15,11 +15,25 @@ const notifySlice = createSlice({
         applyError(state, action) {
             state.error = action.payload;
         },
+
+        applyError(state) {
+            state.error = null;
+        },
+
         applyMessage(state, action) {
             state.message = action.payload;
         },
+
+        clearMessage(state) {
+            state.message = null;
+        },
+
         applyLoading(state, action) {
             state.loading = action.payload;
+        },
+
+        clearLoading(state) {
+            state.loading = null;
         },
     },
 });
