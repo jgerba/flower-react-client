@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getCookie } from '../utils/handleCookies';
 import { authActions } from '../store/auth';
+import { notifyActions } from '../store/notify';
 
 import Logo from './Logo';
 import AddressPanel from './info/AddressPanel';
 import SocialPanel from './info/SocialPanel';
 
 import classes from './Footer.module.css';
+
+let timer;
 
 function Footer() {
     const dispatch = useDispatch();
@@ -27,6 +30,15 @@ function Footer() {
             dispatch(authActions.logOut());
         }
     }, [isAuth]);
+
+    useEffect(() => {
+        if (!message) return;
+
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            dispatch(notifyActions.clearMessage());
+        }, 3000);
+    }, [message]);
 
     return (
         <footer className={classes.footer}>

@@ -93,13 +93,19 @@
 }
 
 .info_pop-up {
-    position: absolute;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width: 100px;
-    height: 30px;
+    width: 180px;
+    height: 35px;
 
-    right: -10px;
-    top: 0px;
+    right: 20px;
+    bottom: 20px;
 
-    background-color: var(--customGreen);
+    border: 1px solid var(--customGreen);
+    border-radius: 5px;
+    color: var(--customWhite);
+    background-color: var(--customBlack);
 }
