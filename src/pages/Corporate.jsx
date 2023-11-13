@@ -8,6 +8,7 @@ import MenuBtn from '../components/UI/MenuBtn';
 import FormInput from '../components/FormInput';
 
 import classes from './Corporate.module.css';
+import logo from '../svg/loverFlower-orange.svg';
 
 const formInitVal = {
     name: '',
@@ -312,6 +313,19 @@ function CorporatePage() {
                     </small>
                 </div>
             </form>
+
+            <img className={classes.logo} src={logo} alt="Lower Flower logo" />
+
+            <div className={classes['decor-flower-left']}></div>
+            <div className={classes['decor-flower-right']}></div>
+            <div className={classes['decor-flower-middle-top']}></div>
+            <div className={classes['decor-flower-middle-bottom']}></div>
+
+            <div className={classes['decor-ellipse-top-left']}></div>
+            <div className={classes['decor-ellipse-top-right']}></div>
+            <div className={classes['decor-ellipse-middle']}></div>
+            <div className={classes['decor-ellipse-bottom-left']}></div>
+            <div className={classes['decor-ellipse-bottom-right']}></div>
         </main>
     );
 }

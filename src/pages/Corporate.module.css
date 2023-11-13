@@ -7,6 +7,10 @@
     padding-left: 11vw;
     padding-right: 11vw;
     padding-top: 180px;
+
+    max-height: 3900px;
+
+    overflow: hidden;
 }
 
 .header {
@@ -114,6 +118,7 @@
 
     display: flex;
     justify-content: space-between;
+    gap: 30px;
 
     margin-top: 75px;
 }
@@ -129,7 +134,7 @@
     justify-content: center;
     align-items: center;
 
-    width: 540px;
+    width: 570px;
     height: 100px;
 
     padding-top: 25px;
@@ -151,6 +156,7 @@
     font-size: 20px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
+    text-align: center;
 
     color: var(--customWhite);
 }
@@ -271,4 +277,174 @@
 
 .agreement a {
     color: var(--customPink);
+}
+
+.logo {
+    position: absolute;
+
+    right: 29vw;
+    bottom: 30px;
+}
+
+.decor-flower-left {
+    position: absolute;
+
+    width: 562.506px;
+    height: 350.96px;
+
+    top: 81px;
+    left: -9vw;
+
+    transform: scaleX(-1) rotate(332deg);
+
+    background-image: url('../images/corp_flower.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-right {
+    position: absolute;
+
+    width: 1208px;
+    height: 754px;
+
+    top: 81px;
+    right: -16vw;
+
+    transform: rotate(349deg);
+
+    background-image: url('../images/corp_flower.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-middle-top {
+    position: absolute;
+
+    width: 1176px;
+    height: 734px;
+
+    top: 1684px;
+    left: -19vw;
+
+    transform: scaleX(-1) rotate(2deg);
+
+    background-image: url('../images/corp_flower.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-middle-bottom {
+    position: absolute;
+
+    width: 890.464px;
+    height: 555.261px;
+
+    top: 1838px;
+    left: -26vw;
+
+    transform: rotate(47.91deg);
+
+    background-image: url('../images/corp_flower.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -3;
+}
+
+.decor-ellipse-top-left {
+    position: absolute;
+
+    width: 274.924px;
+    height: 220.329px;
+
+    top: 30px;
+    left: -3vw;
+
+    transform: rotate(-71.859deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-top-right {
+    position: absolute;
+
+    width: 346.02px;
+    height: 277.307px;
+
+    top: 230px;
+    right: 3vw;
+
+    transform: rotate(-71.859deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-middle {
+    position: absolute;
+
+    width: 216.177px;
+    height: 667.785px;
+
+    top: 1428px;
+    left: 46vw;
+
+    border-radius: 667.785px;
+    transform: rotate(111.267deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-bottom-left {
+    position: absolute;
+
+    width: 404.975px;
+    height: 436.521px;
+
+    bottom: -100px;
+    left: -3vw;
+
+    border-radius: 436.521px;
+    transform: rotate(21.097deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
+}
+
+.decor-ellipse-bottom-right {
+    position: absolute;
+
+    width: 354.93px;
+    height: 364.216px;
+
+    bottom: -103px;
+    right: -1vw;
+
+    transform: rotate(32.828deg);
+
+    background-color: #ea661c;
+    filter: blur(125px);
+
+    z-index: -3;
 }
