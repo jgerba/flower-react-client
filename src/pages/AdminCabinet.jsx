@@ -155,14 +155,17 @@ function AdminCabinet() {
     function showTabsHandler(event) {
         switch (event.target.innerText) {
             case 'ЗАКАЗЫ':
+                if (showPage.orders) return;
                 setShowPage({ orders: true, goods: false, feeds: false });
                 break;
 
             case 'ТОВАРЫ':
+                if (showPage.goods) return;
                 setShowPage({ orders: false, goods: true, feeds: false });
                 break;
 
             case 'ОБРАТНАЯ СВЯЗЬ':
+                if (showPage.feeds) return;
                 setShowPage({ orders: false, goods: false, feeds: true });
                 break;
 
