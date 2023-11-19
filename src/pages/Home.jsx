@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
+import handlePopItems from '../utils/handlePopItems';
 
 import { styleActions } from '../store/style';
 
@@ -60,20 +61,7 @@ function HomePage() {
         console.log(data);
         if (!data) return;
 
-        const popularItems = [];
-
-        // choose 3 random items as 'popular'
-        for (let i = 0; i < 3; i++) {
-            let index = Math.round(Math.random() * data.length - 1);
-
-            // change index if the same item
-            while (popularItems.some(item => item._id === data[index]._id)) {
-                index = Math.round(Math.random() * data.length - 1);
-            }
-
-            popularItems.push(data[index]);
-        }
-
+        const popularItems = handlePopItems(data);
         setItems(popularItems);
     }
 
