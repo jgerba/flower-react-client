@@ -73,3 +73,14 @@
 .blank:visited {
     color: var(--customWhite);
 }
+
+.btn:disabled,
+.btn:disabled:hover,
+.btn:disabled:focus,
+.btn:disabled:active {
+    color: var(--customGrey);
+    border: 0.5px solid var(--customGrey);
+    background-color: transparent;
+
+    cursor: default;
+}

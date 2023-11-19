@@ -8,6 +8,7 @@ function MenuBtn(props) {
             }`}
             onClick={props.onClick}
             type={props.type ? props.type : 'button'}
+            disabled={props.disabled}
         >
             {props.children}
         </button>
