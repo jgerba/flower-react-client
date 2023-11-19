@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import useFetch from '../hooks/useFetch';
 
@@ -31,6 +32,8 @@ function CorporatePage() {
         window.scrollTo(0, 0);
     }, []);
 
+    const navigate = useNavigate();
+
     const [formVal, setFormVal] = useState(formInitVal);
     const [hasError, setHasError] = useState(false);
 
@@ -57,6 +60,7 @@ function CorporatePage() {
     function applyData(data) {
         console.log(data);
         setFormVal(formInitVal);
+        navigate('/success');
     }
 
     function formChangeHandler(event) {
