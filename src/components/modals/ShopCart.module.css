@@ -44,7 +44,7 @@
     grid-row: 1/2;
     padding-bottom: 20px;
 
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid var(--customGrey);
 }
 
 .goods {
@@ -83,7 +83,7 @@
 
 .total {
     padding-top: 10px;
-    border-top: 1px solid #555;
+    border-top: 1px solid var(--customGrey);
 }
 
 .total strong {

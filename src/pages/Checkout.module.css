@@ -97,7 +97,7 @@
     letter-spacing: 1.4px;
     text-transform: uppercase;
 
-    color: #555;
+    color: var(--customGrey);
 }
 
 .time-input {

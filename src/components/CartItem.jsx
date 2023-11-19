@@ -1,6 +1,6 @@
+import classes from './CartItem.module.css';
 import minus from '../svg/minus.svg';
 import plus from '../svg/plus.svg';
-import classes from './CartItem.module.css';
 
 function CartItem({
     item = {},

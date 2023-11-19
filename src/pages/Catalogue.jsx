@@ -95,17 +95,17 @@ function CataloguePage() {
 
     return (
         <main className={classes.main}>
-            <ContentCard className={classes.head}>
+            <div className={classes.head}>
                 <div className={classes.header}>
                     <SectionHeader>каталог</SectionHeader>
                     <SectionHeader smallHeader={true}>букетов</SectionHeader>
                 </div>
                 <p>
                     В нашем магазине самый большой выбор букетов для любых
-                    событий:
+                    событий
                 </p>
                 <div className={classes['marks-filter']}></div>
-            </ContentCard>
+            </div>
 
             <DropdownMenu
                 className={classes['sort-menu']}
