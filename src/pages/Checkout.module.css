@@ -4,9 +4,11 @@
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 250px 1500px;
 
-    margin-left: 11vw;
-    margin-right: 11vw;
+    padding-left: 11vw;
+    padding-right: 11vw;
     padding-top: 180px;
+
+    overflow: hidden;
 }
 
 .main.main-delivery {
@@ -166,4 +168,184 @@
     text-decoration-line: underline;
 
     color: var(--customPink);
+}
+
+.decor-flower-left {
+    position: absolute;
+
+    width: 637.747px;
+    height: 956.621px;
+
+    top: -118px;
+    left: -400px;
+
+    transform: rotate(20.773deg);
+
+    background-image: url('../images/checkout.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-right {
+    position: absolute;
+
+    width: 790.312px;
+    height: 1185.469px;
+
+    top: -198px;
+    right: -290px;
+
+    transform: rotate(-52grad);
+
+    background-image: url('../images/checkout.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -2;
+}
+
+.decor-flower-back-right {
+    position: absolute;
+
+    width: 779.172px;
+    height: 1168.757px;
+
+    top: -245px;
+    right: -456px;
+
+    transform: rotate(-52grad);
+
+    background-image: url('../images/checkout.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: -3;
+}
+
+.decor-ellipse-green-top-left {
+    position: absolute;
+
+    width: 217.025px;
+    height: 173.928px;
+
+    top: 118px;
+    left: -2vw;
+
+    transform: rotate(-71.859deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-top-right {
+    position: absolute;
+
+    width: 504.417px;
+    height: 625.462px;
+
+    top: -105px;
+    right: -5vw;
+
+    border-radius: 625.462px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-middle {
+    position: absolute;
+
+    width: 354.93px;
+    height: 364.216px;
+
+    top: 1161px;
+    right: 5vw;
+
+    border-radius: 504.417px;
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-middle {
+    position: absolute;
+
+    width: 402.64px;
+    height: 211.054px;
+
+    top: 876px;
+    right: -7vw;
+
+    border-radius: 402.64px;
+    transform: rotate(139.226deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-bottom-left {
+    position: absolute;
+
+    width: 199.587px;
+    height: 311.054px;
+
+    bottom: -124px;
+    left: -12vw;
+
+    transform: rotate(21.097deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-green-bottom-middle {
+    position: absolute;
+
+    width: 779.44px;
+    height: 210.054px;
+
+    bottom: -196px;
+    left: 40vw;
+
+    border-radius: 879.44px;
+    transform: rotate(21.097deg);
+
+    background: var(--customGreen);
+    filter: blur(125px);
+
+    z-index: -4;
+}
+
+.decor-ellipse-purple-bottom-right {
+    position: absolute;
+
+    width: 454.93px;
+    height: 464.216px;
+
+    bottom: -206px;
+    right: -9vw;
+
+    transform: rotate(32.828deg);
+
+    background: var(--customPurple);
+    filter: blur(125px);
+
+    z-index: -4;
 }

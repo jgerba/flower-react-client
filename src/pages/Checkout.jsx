@@ -328,6 +328,18 @@ function Checkout() {
                     ознакомлен с условиями оплаты и доставки
                 </small>
             </form>
+
+            <div className={classes['decor-flower-left']}></div>
+            <div className={classes['decor-flower-right']}></div>
+            <div className={classes['decor-flower-back-right']}></div>
+
+            <div className={classes['decor-ellipse-green-top-left']}></div>
+            <div className={classes['decor-ellipse-purple-top-right']}></div>
+            <div className={classes['decor-ellipse-purple-middle']}></div>
+            <div className={classes['decor-ellipse-green-middle']}></div>
+            <div className={classes['decor-ellipse-green-bottom-left']}></div>
+            <div className={classes['decor-ellipse-green-bottom-middle']}></div>
+            <div className={classes['decor-ellipse-purple-bottom-right']}></div>
         </main>
     );
 }
