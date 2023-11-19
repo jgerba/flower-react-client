@@ -349,3 +349,17 @@
 
     z-index: -4;
 }
+
+.logo {
+    position: absolute;
+
+    right: 37vw;
+    top: 230px;
+}
+
+.pay-sign {
+    position: absolute;
+
+    right: 48vw;
+    bottom: 230px;
+}

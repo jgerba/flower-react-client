@@ -12,6 +12,8 @@ import TextHeader from '../components/UI/TextHeader';
 import ShopCart from '../components/modals/ShopCart';
 
 import classes from './Checkout.module.css';
+import logo from '../svg/loverFlower-pink.svg';
+import paySign from '../svg/payment.svg';
 
 const formInitVal = {
     name: '',
@@ -328,6 +330,13 @@ function Checkout() {
                     ознакомлен с условиями оплаты и доставки
                 </small>
             </form>
+
+            <img className={classes.logo} src={logo} alt="Lower Flower logo" />
+            <img
+                className={classes['pay-sign']}
+                src={paySign}
+                alt="Надпись 'Оплата'"
+            />
 
             <div className={classes['decor-flower-left']}></div>
             <div className={classes['decor-flower-right']}></div>
