@@ -308,7 +308,9 @@ function CorporatePage() {
                 />
 
                 <div className={classes['submit-section']}>
-                    <MenuBtn type="submit">отправить</MenuBtn>
+                    <MenuBtn type="submit" disabled={hasError}>
+                        отправить
+                    </MenuBtn>
 
                     <small className={classes.agreement}>
                         Нажимая на кнопку «Отправить», я даю свое согласие на

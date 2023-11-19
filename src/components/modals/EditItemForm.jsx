@@ -276,7 +276,7 @@ function EditItemForm({ item, onModalChange, onClose, newItem = false }) {
                 onFlagsUpd={flags => setFormVal({ ...formVal, flags: flags })}
             />
 
-            <MenuBtn type="submit" blank={true}>
+            <MenuBtn type="submit" blank={true} disabled={hasError}>
                 Сохранить
             </MenuBtn>
         </form>

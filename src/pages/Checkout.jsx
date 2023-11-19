@@ -314,7 +314,11 @@ function Checkout() {
                     <p>{`Скидка = ${0} ₽`}</p>
                 </section>
 
-                <MenuBtn className={classes['submit-btn']} type="submit">
+                <MenuBtn
+                    className={classes['submit-btn']}
+                    type="submit"
+                    disabled={hasError}
+                >
                     Заказать
                 </MenuBtn>
                 <small className={classes.policy}>

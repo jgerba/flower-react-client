@@ -262,6 +262,7 @@ function EditFeedForm({ item, onModalChange, onClose }) {
                     }`}
                     type="submit"
                     blank={true}
+                    disabled={hasError}
                 >
                     Сохранить
                 </MenuBtn>

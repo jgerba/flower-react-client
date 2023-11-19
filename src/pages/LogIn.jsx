@@ -26,7 +26,10 @@ function LogIn() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const formRef = useRef();
+
     const [passIsVisible, setPassIsVisible] = useState(false);
+    // error from the inputs, cancel sbm if true
+    const [hasError, setHasError] = useState(false);
 
     const { sendRequest, isLoading, error } = useFetch();
 
@@ -76,7 +79,9 @@ function LogIn() {
                         title="Введите ваш логин"
                         name="login"
                         placeholder="Логин администратора"
+                        required={true}
                         onChange={() => {}}
+                        onError={val => setHasError(val)}
                     />
 
                     <FormInput
@@ -84,7 +89,9 @@ function LogIn() {
                         name="password"
                         placeholder="Пароль администратора"
                         type={passIsVisible ? 'text' : 'password'}
+                        required={true}
                         onChange={() => {}}
+                        onError={val => setHasError(val)}
                     />
                     <IconBtn
                         src={passIsVisible ? hidePass : showPass}
@@ -95,7 +102,11 @@ function LogIn() {
                         onClick={() => setPassIsVisible(state => !state)}
                     />
 
-                    <MenuBtn type="submit" className={classes['submit-btn']}>
+                    <MenuBtn
+                        type="submit"
+                        className={classes['submit-btn']}
+                        disabled={hasError}
+                    >
                         Войти
                     </MenuBtn>
                 </form>
