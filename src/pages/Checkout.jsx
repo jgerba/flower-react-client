@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { cartActions } from '../store/cart';
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 
 import FormInput from '../components/FormInput';
 import MenuBtn from '../components/UI/MenuBtn';

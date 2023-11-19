@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 
 import { authActions } from '../store/auth';
 import { notifyActions } from '../store/notify';

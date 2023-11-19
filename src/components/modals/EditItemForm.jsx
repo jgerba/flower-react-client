@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import useFetch from '../../hooks/use-fetch';
+import useFetch from '../../hooks/useFetch';
 
 import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';

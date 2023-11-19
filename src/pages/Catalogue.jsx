@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../hooks/useWindowSize';
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 
 import { styleActions } from '../store/style';
 

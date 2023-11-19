@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { cartActions } from '../../store/cart';
-import useFetch from '../../hooks/use-fetch';
+import useFetch from '../../hooks/useFetch';
 
 import FormInput from '../FormInput';
 import MenuBtn from '../UI/MenuBtn';

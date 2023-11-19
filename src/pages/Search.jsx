@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 import useWindowSize from '../hooks/useWindowSize';
 
 import BouquetCard from '../components/BouquetCard';

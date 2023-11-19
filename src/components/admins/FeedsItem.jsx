@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import useFetch from '../../hooks/use-fetch';
+import useFetch from '../../hooks/useFetch';
 
 import classes from './FeedsItem.module.css';
 import bin from '../../svg/bin.svg';

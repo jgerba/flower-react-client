@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 
 import AdminsTabs from '../components/admins/AdminsTabs';
 import GoodsItem from '../components/admins/GoodsItem';

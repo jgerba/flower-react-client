@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { notifyActions } from '../../store/notify';
 
-import useFetch from '../../hooks/use-fetch';
+import useFetch from '../../hooks/useFetch';
 
 import MenuBtn from '../UI/MenuBtn';
 

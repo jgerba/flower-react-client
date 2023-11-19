@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import useFetch from '../hooks/use-fetch';
+import useFetch from '../hooks/useFetch';
 
 import SectionHeader from '../components/UI/SectionHeader';
 import ContentCard from '../components/UI/ContentCard';
