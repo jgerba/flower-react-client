@@ -60,8 +60,8 @@ function Header() {
                 <NavLink className={classes.link} to="/contacts">
                     КОНТАКТЫ
                 </NavLink>
-                <NavLink className={classes.link} to="/faq">
-                    FAQ
+                <NavLink className={classes.link} to="/corporate">
+                    для организаций
                 </NavLink>
                 <div className={classes.search}>
                     {showInput || (

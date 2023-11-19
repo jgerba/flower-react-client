@@ -9,7 +9,6 @@
         '. . tabs tabs tabs . .'
         '. . goods goods goods . .';
 
-    width: 100vw;
     min-height: calc(100vh - 337px);
 
     padding-top: 180px;
