@@ -27,6 +27,12 @@
     height: 70px;
 }
 
+.credentials img {
+    position: absolute;
+    right: 4px;
+    top: -26px;
+}
+
 .item p {
     width: 200px;
 

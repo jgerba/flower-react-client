@@ -6,6 +6,7 @@ import classes from './OrdersItem.module.css';
 import bin from '../../svg/bin.svg';
 import check from '../../svg/done.svg';
 import uncheck from '../../svg/undone.svg';
+import delivery from '../../svg/delivery.svg';
 
 const options = {
     year: 'numeric',
@@ -59,7 +60,13 @@ function OrdersItem({
                 <p className={classes.name}>{item.name}</p>
                 <p className={classes.phone}>{item.phone}</p>
                 <p className={classes.email}>{item.email}</p>
-                <p className={classes.price}>{item.totalPrice}</p>
+                <p className={classes.price}>
+                    {item.order?.reduce(
+                        (sum, item) => sum + item.price * item.inCart,
+                        0
+                    )}
+                </p>
+                {item.delivery && <img src={delivery} alt="С доставкой" />}
             </div>
 
             <p className={classes.order}>{`Заказ: ${item.order?.reduce(

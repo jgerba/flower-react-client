@@ -48,6 +48,7 @@ function AdminCabinet() {
             ? setUrl('/bouquets')
             : setUrl('/feedbacks');
 
+        setSearchVal('');
         // drop prev tab items
         if (items) {
             setItems([]);
@@ -110,9 +111,14 @@ function AdminCabinet() {
     useEffect(() => {
         if (!searchVal) return setItemsToRender(items);
 
-        const filteredItems = items.filter(item =>
-            item.title.toLowerCase().match(searchVal.toLowerCase())
-        );
+        let filteredItems;
+        url === '/bouquets'
+            ? (filteredItems = items.filter(item =>
+                  item.title.toLowerCase().match(searchVal.toLowerCase())
+              ))
+            : (filteredItems = items.filter(item =>
+                  item.name.toLowerCase().match(searchVal.toLowerCase())
+              ));
         setItemsToRender(filteredItems);
     }, [searchVal]);
 
@@ -213,7 +219,9 @@ function AdminCabinet() {
                         type="search"
                         name="Поле поиска"
                         maxLength="30"
-                        placeholder="Введите название для поиска"
+                        placeholder={`Введите ${
+                            url === '/bouquets' ? 'название' : 'имя'
+                        } для поиска`}
                         value={searchVal}
                         onChange={searchHandler}
                     />
