@@ -6,6 +6,7 @@
 
     margin-left: 11vw;
     margin-right: 11vw;
+
     padding-top: 190px;
 }
 
@@ -17,6 +18,8 @@
     justify-content: space-evenly;
 
     width: 100%;
+
+    margin-bottom: 80px;
 }
 
 .bouquet__img {
@@ -111,4 +114,139 @@
     text-transform: uppercase;
 
     color: var(--customGrey);
+}
+
+.extra__header {
+    grid-column: 3/6;
+    grid-row: 2/3;
+    justify-self: center;
+
+    margin-bottom: 45px;
+
+    font-family: Oswald;
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: var(--customPink);
+}
+
+.extra {
+    grid-column: 2/7;
+    grid-row: 3/4;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 100px;
+}
+
+.extra__card {
+    min-width: 245px;
+    max-width: 245px;
+    height: 300px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.extra h5 {
+    font-family: Oswald;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.56px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.extra p {
+    margin-top: 15px;
+
+    font-family: Oswald;
+    font-size: 14px;
+    letter-spacing: 0.84px;
+
+    color: var(--customWhite);
+}
+
+.ship {
+    grid-column: 2/7;
+    grid-row: 5/6;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    margin-bottom: 100px;
+}
+
+.ship__header {
+    align-self: center;
+
+    font-family: Oswald;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.ship h4 {
+    margin-bottom: 20px;
+
+    font-family: Oswald;
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    color: var(--customPink);
+}
+
+.ship li,
+.ship p {
+    margin-bottom: 10px;
+
+    font-family: Oswald;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    color: var(--customWhite);
+}
+
+.ship span {
+    color: var(--customGreen);
+}
+
+.popular {
+    grid-column: 1/8;
+    grid-row: 6/7;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    margin-bottom: 200px;
+}
+
+.popular h3 {
+    align-self: center;
+
+    font-family: Oswald;
+    font-size: 30px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: var(--customGreen);
+}
+
+.popular__items {
+    display: flex;
+    justify-content: space-evenly;
 }
