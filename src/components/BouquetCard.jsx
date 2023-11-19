@@ -9,7 +9,7 @@ import MenuBtn from './UI/MenuBtn';
 import classes from './BouquetCard.module.css';
 import imgFallBack from '../images/bouq-fallback.jpg';
 
-function BouquetCard({ className, item = {}, popular = false }) {
+function BouquetCard({ className, item = {}, home = false }) {
     const dispatch = useDispatch();
 
     const [isBadImg, setIsBadImg] = useState(false);
@@ -23,7 +23,7 @@ function BouquetCard({ className, item = {}, popular = false }) {
             <Link to={`/catalogue/${item._id}`} state={item}>
                 <img
                     className={`${classes.image} ${
-                        popular ? classes['popular-card'] : ''
+                        home ? classes['home-card'] : ''
                     }`}
                     src={isBadImg ? imgFallBack : item.src}
                     alt={`Букет ${item.title}`}
@@ -53,7 +53,7 @@ function BouquetCard({ className, item = {}, popular = false }) {
             {item.sale && (
                 <div
                     className={`${classes['sale-badge']} ${
-                        popular ? classes['popular-badge'] : ''
+                        home ? classes['home-badge'] : ''
                     }`}
                 >
                     <p>sale</p>
@@ -62,7 +62,7 @@ function BouquetCard({ className, item = {}, popular = false }) {
             {item.new && (
                 <div
                     className={`${classes['new-badge']} ${
-                        popular ? classes['popular-badge'] : ''
+                        home ? classes['home-badge'] : ''
                     }`}
                 >
                     <p>new</p>

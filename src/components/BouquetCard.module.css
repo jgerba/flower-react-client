@@ -15,14 +15,14 @@
     object-fit: cover;
 }
 
-.popular-card {
+.home-card {
     width: 350px;
     height: 450px;
 
     filter: grayscale();
 }
 
-.popular-card:hover {
+.home-card:hover {
     filter: none;
 }
 
@@ -101,6 +101,6 @@
     background-color: #d978ac;
 }
 
-.popular-badge {
+.home-badge {
     right: -105px;
 }
