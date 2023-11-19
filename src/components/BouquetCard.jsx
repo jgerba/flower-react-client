@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -20,7 +20,7 @@ function BouquetCard({ className, item = {}, popular = false }) {
 
     return (
         <div className={`${classes.card} ${className ? className : ''}`}>
-            <Link to={`/catalogue/${item._id}`}>
+            <Link to={`/catalogue/${item._id}`} state={item}>
                 <img
                     className={`${classes.image} ${
                         popular ? classes['popular-card'] : ''
