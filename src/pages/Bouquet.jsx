@@ -238,6 +238,17 @@ function BouquetPage() {
                     )}
                 </div>
             </article>
+
+            <div className={classes['decor-flower']}></div>
+
+            <div className={classes['decor-ellipse-green-top-left']}></div>
+            <div className={classes['decor-ellipse-purple-top-middle']}></div>
+            <div className={classes['decor-ellipse-purple-top-right']}></div>
+            <div className={classes['decor-ellipse-purple-middle']}></div>
+            <div className={classes['decor-ellipse-green-middle']}></div>
+            <div className={classes['decor-ellipse-green-bottom-left']}></div>
+            <div className={classes['decor-ellipse-green-bottom-middle']}></div>
+            <div className={classes['decor-ellipse-purple-bottom-right']}></div>
         </main>
     );
 }
