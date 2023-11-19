@@ -143,7 +143,7 @@
 
     transform: rotate(16.717deg);
 
-    background-image: url('../images/about.png');
+    background-image: url('../images/about.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -160,7 +160,7 @@
     top: -140px;
     right: -19vw;
 
-    background-image: url('../images/about.png');
+    background-image: url('../images/about.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -179,7 +179,7 @@
 
     transform: scaleX(-1) rotate(29deg);
 
-    background-image: url('../images/about.png');
+    background-image: url('../images/about.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

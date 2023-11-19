@@ -7,7 +7,7 @@ import { cartActions } from '../store/cart';
 import MenuBtn from './UI/MenuBtn';
 
 import classes from './BouquetCard.module.css';
-import imgFallBack from '../images/bouq-fallback.jpg';
+import imgFallBack from '../images/bouq-fallback.webp';
 
 function BouquetCard({ className, item = {}, home = false }) {
     const dispatch = useDispatch();
