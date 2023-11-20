@@ -67,7 +67,7 @@ function Footer() {
 
             <div className={`${classes.column} ${classes.links}`}>
                 <NavLink className={classes.header} to="/payment">
-                    ДОСТАВКА И ОПЛАТА
+                    УСЛОВИЯ ДОСТАВКИ
                 </NavLink>
 
                 <NavLink className={classes.header} to="/corporate">

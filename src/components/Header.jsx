@@ -52,7 +52,7 @@ function Header() {
                     КАТАЛОГ
                 </NavLink>
                 <NavLink className={classes.link} to="/payment">
-                    ДОСТАВКА И ОПЛАТА
+                    УСЛОВИЯ ДОСТАВКИ
                 </NavLink>
                 <NavLink className={classes.link} to="/about">
                     О НАС
