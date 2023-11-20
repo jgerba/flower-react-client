@@ -6,7 +6,7 @@
         'header header header header header . .'
         'results results results results results results results';
 
-    min-height: calc(100vh - 337px);
+    min-height: calc(100vh - 300px);
 
     margin-left: 11vw;
     margin-right: 11vw;

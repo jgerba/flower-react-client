@@ -9,7 +9,7 @@
         '. . tabs tabs tabs . .'
         '. . goods goods goods . .';
 
-    min-height: calc(100vh - 337px);
+    min-height: calc(100vh - 300px);
 
     padding-top: 180px;
     padding-bottom: 50px;
