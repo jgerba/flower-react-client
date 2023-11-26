@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import useFetch from '../hooks/useFetch';
 
@@ -22,6 +24,9 @@ function AdminCabinet() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const navigate = useNavigate();
+    const isAuth = useSelector(state => state.auth.isAuth);
 
     const [showPage, setShowPage] = useState({
         orders: true,
@@ -59,6 +64,12 @@ function AdminCabinet() {
     useEffect(() => {
         sendRequest({ url: url }, applyItemsData);
     }, [url]);
+
+    useEffect(() => {
+        if (isAuth) return;
+
+        navigate('/login');
+    }, [isAuth]);
 
     function applyItemsData(data) {
         console.log(data);
