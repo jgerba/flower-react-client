@@ -102,7 +102,7 @@ function FormInput(props) {
                     type={props.type ? props.type : 'text'}
                     name={props.name}
                     placeholder={props.placeholder}
-                    maxLength={props.name === 'src' ? '' : 25}
+                    // maxLength={props.name === 'src' ? '' : 25}
                     className={`${classes.input} ${
                         props.className ? props.className : ''
                     }`}

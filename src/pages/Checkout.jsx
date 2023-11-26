@@ -149,7 +149,9 @@ function Checkout() {
                         placeholder="Введите вашу почту"
                         name="email"
                         type="email"
+                        required={true}
                         value={formVal.email}
+                        onError={val => setHasError(val)}
                         onChange={formChangeHandler}
                     />
 
