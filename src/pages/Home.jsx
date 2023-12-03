@@ -44,7 +44,7 @@ function HomePage() {
     const [items, setItems] = useState([]);
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // show full info panel before scrolling
     // minimize it before redirecting to other pages

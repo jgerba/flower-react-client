@@ -29,7 +29,7 @@ function BouquetPage() {
     const [popItems, setPopItems] = useState([]);
     const [isInCart, setIsInCart] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // check if item is in cart, use as init item if true
     useEffect(() => {

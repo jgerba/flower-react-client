@@ -13,7 +13,7 @@ function AdminsTabs(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // logout from admin
     function logOut() {

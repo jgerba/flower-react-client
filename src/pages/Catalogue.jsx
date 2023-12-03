@@ -30,7 +30,7 @@ function CataloguePage() {
     const [showScrollBtn, setShowScrollBtn] = useState();
 
     const [scrollY, winWidth, winHeight] = useWindowSize();
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // get bouquets data
     useEffect(() => {

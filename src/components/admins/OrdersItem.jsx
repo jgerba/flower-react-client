@@ -24,7 +24,7 @@ function OrdersItem({
 }) {
     const [isDone, setIsDone] = useState(item.isDone);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     useEffect(() => {
         if (isDone === item.isDone) return;

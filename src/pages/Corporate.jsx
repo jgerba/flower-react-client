@@ -37,7 +37,7 @@ function CorporatePage() {
     const [formVal, setFormVal] = useState(formInitVal);
     const [hasError, setHasError] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     function submitHandler(event) {
         event.preventDefault();
@@ -45,7 +45,6 @@ function CorporatePage() {
         if (hasError) return;
         if (!formVal.name || !formVal.phone) return;
 
-        console.log(formVal);
         // upload edited data
         sendRequest(
             {

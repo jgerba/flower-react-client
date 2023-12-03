@@ -32,7 +32,7 @@ function EditItemForm({ item, onModalChange, onClose, newItem = false }) {
     // show sign if img src is broken
     const [isBadImg, setIsBadImg] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // set initial check attr for badges
     useEffect(() => {

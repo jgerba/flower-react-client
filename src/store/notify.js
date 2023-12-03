@@ -28,12 +28,12 @@ const notifySlice = createSlice({
             state.message = null;
         },
 
-        applyLoading(state, action) {
-            state.isLoading = action.payload;
+        applyLoading(state) {
+            state.isLoading = true;
         },
 
         clearLoading(state) {
-            state.isLoading = null;
+            state.isLoading = false;
         },
     },
 });

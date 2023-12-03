@@ -56,7 +56,7 @@ function Checkout() {
     const [promo, setPromo] = useState('');
     const [acceptPromo, setAcceptPromo] = useState(null);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // set initial check attr for badgesц
     useEffect(() => {

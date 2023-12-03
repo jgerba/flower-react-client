@@ -43,7 +43,7 @@ function AdminCabinet() {
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [isNewItem, setIsNewItem] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // change download url according to tab selection
     useEffect(() => {

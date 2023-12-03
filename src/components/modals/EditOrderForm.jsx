@@ -38,7 +38,7 @@ function EditOrderForm({ item, onModalChange, onClose }) {
     // error from the inputs, cancel sbm if true
     const [hasError, setHasError] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     // set initial check attr for delivery
     useEffect(() => {

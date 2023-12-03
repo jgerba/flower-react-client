@@ -21,7 +21,7 @@ function SearchPage() {
 
     const searchValue = useSelector(state => state.bouqets.searchValue);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
     const [scrollY, winWidth, winHeight] = useWindowSize();
 
     // get bouquets data

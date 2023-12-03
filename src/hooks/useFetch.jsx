@@ -1,18 +1,16 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { authActions } from '../store/auth';
+import { notifyActions } from '../store/notify';
 
 import { getCookie } from '../utils/handleCookies';
 
 function useFetch() {
     const dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     function sendRequest(config, applyData = () => {}, auth = true) {
-        setIsLoading(true);
-        setError(null);
+        dispatch(notifyActions.applyLoading());
+        dispatch(notifyActions.clearError());
 
         fetch(config.url, {
             method: config.method ? config.method : 'GET',
@@ -39,12 +37,19 @@ function useFetch() {
                 const data = await response.json();
                 applyData(data);
             })
-            .catch(error => setError(error.message || 'Something went wrong'))
+            .catch(error => {
+                console.log(error);
+                dispatch(
+                    notifyActions.applyError(
+                        error.message || 'Something went wrong'
+                    )
+                );
+            })
             .finally(() => {
-                setIsLoading(false);
+                dispatch(notifyActions.clearLoading());
             });
     }
-    return { sendRequest, isLoading, error };
+    return sendRequest;
 }
 
 export default useFetch;

@@ -12,12 +12,15 @@ import SocialPanel from './info/SocialPanel';
 
 import classes from './Footer.module.css';
 
-let timer;
+let messageTimer;
+let errorTimer;
 
 function Footer() {
     const dispatch = useDispatch();
     const isAuth = useSelector(state => state.auth.isAuth);
     const message = useSelector(state => state.notify.message);
+    const error = useSelector(state => state.notify.error);
+    const isLoading = useSelector(state => state.notify.isLoading);
 
     useEffect(() => {
         if (isAuth) return;
@@ -34,11 +37,20 @@ function Footer() {
     useEffect(() => {
         if (!message) return;
 
-        clearTimeout(timer);
-        timer = setTimeout(() => {
+        clearTimeout(messageTimer);
+        messageTimer = setTimeout(() => {
             dispatch(notifyActions.clearMessage());
         }, 3000);
     }, [message]);
+
+    useEffect(() => {
+        if (!error) return;
+
+        clearTimeout(errorTimer);
+        errorTimer = setTimeout(() => {
+            dispatch(notifyActions.clearError());
+        }, 3000);
+    }, [error]);
 
     return (
         <footer className={classes.footer}>
@@ -93,6 +105,19 @@ function Footer() {
                 <aside className={classes['info_pop-up']}>
                     <p>{message}</p>
                 </aside>
+            )}
+
+            {error && (
+                <aside className={classes['error_pop-up']}>
+                    <p>{error}</p>
+                </aside>
+            )}
+
+            {isLoading && (
+                <div className={classes.loader}>
+                    <div className={classes.ring}></div>
+                    <span className={classes['loader-text']}>Загрузка...</span>
+                </div>
             )}
         </footer>
     );

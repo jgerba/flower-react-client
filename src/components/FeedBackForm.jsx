@@ -20,7 +20,7 @@ function FeedBackForm(props) {
     const [formVal, setFormVal] = useState(formInitVal);
     const [hasError, setHasError] = useState(false);
 
-    const { sendRequest, isLoading, error } = useFetch();
+    const sendRequest = useFetch();
 
     function submitHandler(event) {
         event.preventDefault();
