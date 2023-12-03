@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     error: null,
     message: null,
-    loading: false,
+    isLoading: false,
 };
 
 // show pop-ups in the bottom right corner of the main
@@ -16,7 +16,7 @@ const notifySlice = createSlice({
             state.error = action.payload;
         },
 
-        applyError(state) {
+        clearError(state) {
             state.error = null;
         },
 
@@ -29,11 +29,11 @@ const notifySlice = createSlice({
         },
 
         applyLoading(state, action) {
-            state.loading = action.payload;
+            state.isLoading = action.payload;
         },
 
         clearLoading(state) {
-            state.loading = null;
+            state.isLoading = null;
         },
     },
 });
