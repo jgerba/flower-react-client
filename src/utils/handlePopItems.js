@@ -7,8 +7,6 @@ function handlePopItems(data, quantity = 3) {
     for (let i = 0; i < quantity; i++) {
         let index = Math.round(Math.random() * (data.length - 1));
 
-        console.log(index);
-
         // change index if the same item
         while (
             popularItems.length > 0 &&
