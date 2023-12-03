@@ -1,6 +1,4 @@
 function handlePopItems(data, quantity = 3) {
-    if (!data) return;
-
     const popularItems = [];
 
     // choose 3 random items as 'popular'
