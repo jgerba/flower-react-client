@@ -17,37 +17,38 @@ import LogIn from './pages/LogIn';
 import AdminCabinet from './pages/AdminCabinet';
 
 function App() {
-    const router = createBrowserRouter([
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <HomePage /> },
         {
-            path: '/',
-            element: <RootLayout />,
-            errorElement: <ErrorPage />,
-            children: [
-                { index: true, element: <HomePage /> },
-                {
-                    path: 'catalogue',
-                    element: <CataloguePage />,
-                },
-                {
-                    path: 'catalogue/:bouquetId',
-                    id: 'bouquet-details',
-                    element: <BouquetPage />,
-                },
-                { path: 'payment', element: <PaymentPage /> },
-                { path: 'about', element: <AboutPage /> },
-                { path: 'contacts', element: <ContactsPage /> },
-                { path: 'faq', element: <FaqPage /> },
-                { path: 'search', element: <SearchPage /> },
-                { path: 'corporate', element: <CorporatePage /> },
-                { path: 'checkout', element: <Checkout /> },
-                { path: 'success', element: <Success /> },
-                { path: 'login', element: <LogIn /> },
-                { path: 'cabinet', element: <AdminCabinet /> },
-            ],
+          path: 'catalogue',
+          element: <CataloguePage />,
         },
-    ]);
+        {
+          path: 'catalogue/:bouquetId',
+          id: 'bouquet-details',
+          element: <BouquetPage />,
+        },
+        { path: 'payment', element: <PaymentPage /> },
+        { path: 'about', element: <AboutPage /> },
+        { path: 'contacts', element: <ContactsPage /> },
+        { path: 'faq', element: <FaqPage /> },
+        { path: 'search', element: <SearchPage /> },
+        { path: 'corporate', element: <CorporatePage /> },
+        { path: 'checkout', element: <Checkout /> },
+        { path: 'success', element: <Success /> },
+        { path: 'login', element: <LogIn /> },
+        { path: 'cabinet', element: <AdminCabinet /> },
+      ],
+    },
+  ]);
 
-    return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
+

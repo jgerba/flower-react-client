@@ -1,106 +1,106 @@
 .card {
-    position: relative;
+  position: relative;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    width: 255px;
-    height: auto;
+  width: 255px;
+  height: auto;
 }
 
 .image {
-    width: 255px;
-    height: 335px;
+  width: 255px;
+  height: 335px;
 
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .home-card {
-    width: 350px;
-    height: 450px;
+  width: 350px;
+  height: 450px;
 
-    filter: grayscale();
+  filter: grayscale(100%);
 }
 
 .home-card:hover {
-    filter: none;
+  filter: none;
 }
 
 .title {
-    margin-top: 10px;
+  margin-top: 10px;
 
-    font-family: 'Oswald';
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
+  font-family: 'Oswald';
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 
-    color: var(--customWhite);
+  color: var(--customWhite);
 }
 
 .price {
-    font-family: 'Oswald';
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.56px;
-    text-transform: uppercase;
+  font-family: 'Oswald';
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
 
-    color: var(--customWhite);
+  color: var(--customWhite);
 }
 
 .price-section {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .old-price {
-    font-family: Oswald;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.56px;
-    text-decoration-line: line-through;
-    text-transform: uppercase;
+  font-family: Oswald;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  text-decoration-line: line-through;
+  text-transform: uppercase;
 
-    color: #939393;
+  color: #939393;
 }
 
 .button {
-    width: 100%;
-    margin-top: 20px;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .sale-badge,
 .new-badge {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 
-    right: -15px;
-    top: -15px;
+  right: -15px;
+  top: -15px;
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    font-family: 'Oswald';
-    font-size: 20px;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    color: #040a0a;
+  font-family: 'Oswald';
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #040a0a;
 
-    background-color: #31985a;
+  background-color: #31985a;
 }
 
 .sale-badge {
-    background-color: #d978ac;
+  background-color: #d978ac;
 }
 
 .home-badge {
-    right: -105px;
+  right: -105px;
 }
